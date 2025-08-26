@@ -14,3 +14,4 @@ uv sync
 source .venv/bin/activate
 pre-commit install
 ```
+# petrobras-offshore-wells-anomaly-detection-control-charts
