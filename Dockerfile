@@ -1,44 +1,30 @@
-FROM python:3.11-slim AS base
+FROM python:3.11-slim
 
+# Set environment variables for uv and Python
 ENV UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
     UV_PYTHON_DOWNLOADS=never \
     PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=on
 
-# Instale dependências de sistema para ciência de dados e zsh
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl zsh git wget fonts-powerline default-jre
+# Set the working directory
+WORKDIR /app
 
-# Instale o uv (instalador oficial)
+# Install uv using the official installer
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Prepare ambiente e usuário
-RUN useradd -ms /bin/bash python
-USER python
-WORKDIR /home/python/app
+# Copy dependency files
+COPY requirements.txt .
 
-# Copie apenas arquivos de dependências (build cache eficiente)
-COPY --chown=python:python pyproject.toml .
-# Se disponível (e recomendado p/ reprodutibilidade):
-# COPY --chown=python:python uv.lock .
+# Install project dependencies using uv
+RUN /root/.cargo/bin/uv pip install -r requirements.txt
 
-# Opcional — índices extras do torch
-# ENV PIP_EXTRA_INDEX_URL https://download.pytorch.org/whl/cu117
+# Copy the rest of the project code
+COPY . .
 
-# Instale dependências do projeto (prod e dev)
-RUN uv pip install -r pyproject.toml --dev
+# Expose the default Jupyter port
+EXPOSE 8888
 
-# Copie o resto do código do projeto
-COPY --chown=python:python . .
-
-# (Opcional) ZSH personalizado e powerlevel10k
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
-    -t https://github.com/romkatv/powerlevel10k \
-    -p git \
-    -p https://github.com/zsh-users/zsh-autosuggestions \
-    -p https://github.com/zsh-users/zsh-completions \
-    -a 'export TERM=xterm-256color'
-
-# Entrada do container: Jupyter Notebook (ajuste para o que preferir)
-CMD ["python", "-m", "jupyter", "notebook", "--ip=0.0.0.0", "--allow-root"]
+# Default command to run when the container starts
+# Starts a Jupyter Notebook, accessible from outside the container.
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
