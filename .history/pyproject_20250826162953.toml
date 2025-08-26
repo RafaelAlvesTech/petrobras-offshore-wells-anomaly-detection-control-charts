@@ -3,16 +3,10 @@ name = "jupyter"
 version = "0.1.0"
 description = "Jupyter Notebook Template"
 readme = "README.md"
-requires-python = "==3.11.13"
+requires-python = "=3.11"
 dependencies = [
-    "marimo>=0.15.0",
     "pandas>=2.3.2",
-    "pip>=25.2",
-    "polars>=1.32.3",
     "scikit-learn>=1.7.1",
-    "torch>=2.0.1",
-    "torchaudio>=2.0.2",
-    "torchvision>=0.15.2",
 ]
 
 [dependency-groups]
@@ -23,6 +17,3 @@ dev = [
     "ruff>=0.12.10",
     "uv>=0.8.13",
 ]
-
-[[tool.uv.index]]
-url = "https://download.pytorch.org/whl/cu117"
