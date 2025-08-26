@@ -1,0 +1,29 @@
+name: Publish Python package
+
+on:
+    release:
+        types: [created]
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        # environment block removed or corrected
+        # If you have a repository environment named 'production', you can use:
+        # environment:
+        #   name: production
+        #   url: https://pypi.org/project/<your-package-name>
+        permissions:
+            id-token: write  # Obrigatório para trusted publishing PyPI
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.11"
+            - name: Install build
+              run: python -m pip install --upgrade build
+            - name: Build package
+              run: python -m build
+            - name: Publish package to PyPI
+              uses: pypa/gh-action-pypi-publish@release/v1
+              # Por padrão publica para PyPI; adicione opções para TestPyPI se desejar
