@@ -1,0 +1,60 @@
+# 🛢️ Petrobras Offshore Wells - Conventional Commits Template
+#
+# Formato: <tipo>(<escopo>): <descrição>
+#
+# Tipos de commit:
+# 🚀 feat     - Nova funcionalidade
+# 🐛 fix      - Correção de bug
+# 📚 docs     - Documentação
+# 🎨 style    - Formatação de código (espaços, ponto e vírgula, etc)
+# ♻️ refactor - Refatoração de código
+# ⚡ perf     - Melhorias de performance
+# 🧪 test     - Adição ou correção de testes
+# 🔨 build    - Mudanças no sistema de build
+# 👷 ci       - Mudanças em CI/CD
+# 🔧 chore    - Tarefas de manutenção
+# ⏪ revert   - Reverter commit anterior
+# 📊 data     - Mudanças em datasets ou dados
+# 🤖 model    - Mudanças em modelos de ML/DL
+# 📈 analysis - Análises e experimentos
+#
+# Exemplos:
+# 🚀 feat(anomaly-detection): implementa modelo TranAD para detecção de anomalias
+# 🐛 fix(data-processing): corrige erro na normalização de dados
+# 📚 docs(readme): atualiza instruções de instalação
+# 🎨 style(src): aplica formatação com ruff
+# ♻️ refactor(models): refatora arquitetura do LSTM-VAE
+# ⚡ perf(data): otimiza carregamento com Polars
+# 🧪 test(utils): adiciona testes para funções de pré-processamento
+# 🔨 build(deps): atualiza dependências para versões mais recentes
+# 👷 ci(github): configura GitHub Actions para testes automáticos
+# 🔧 chore(scripts): adiciona script de instalação de extensões
+# ⏪ revert: reverte mudança que causou erro de performance
+# 📊 data(wells): adiciona novos dados de poços offshore
+# 🤖 model(usad): implementa modelo USAD para detecção de anomalias
+# 📈 analysis(eda): realiza análise exploratória dos dados de pressão
+#
+# Escopo (opcional):
+# - anomaly-detection: funcionalidades de detecção de anomalias
+# - data-processing: processamento e limpeza de dados
+# - models: modelos de machine learning
+# - utils: utilitários e funções auxiliares
+# - tests: testes automatizados
+# - docs: documentação
+# - ci: integração contínua
+# - deps: dependências
+#
+# Regras:
+# - Use imperativo na descrição ("adiciona" não "adicionado")
+# - Primeira letra minúscula
+# - Sem ponto final
+# - Máximo 72 caracteres no título
+# - Use emoji apropriado para o tipo
+#
+# Exemplo de commit:
+# 🚀 feat(anomaly-detection): implementa modelo TranAD para detecção de anomalias
+#
+# - Adiciona implementação do modelo TranAD
+# - Configura hiperparâmetros otimizados
+# - Inclui métricas de avaliação (AUC-PR, F1-Score)
+# - Adiciona testes unitários para o modelo

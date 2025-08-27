@@ -1,40 +1,30 @@
-# See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
+# 🛢️ Petrobras Offshore Wells - Pre-commit Configuration
+# Configuração para hooks de pré-commit que garantem qualidade do código
+
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+  # Conventional Commits
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.13.0
     hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-ast
-      - id: check-shebang-scripts-are-executable
-      - id: check-toml
-      - id: check-yaml
-      - id: check-added-large-files
-      - id: debug-statements
-      - id: mixed-line-ending
-      - id: detect-private-key
-      - id: forbid-submodules
-      - id: name-tests-test
-      - id: requirements-txt-fixer
-      - id: pretty-format-json
-        exclude: ^\.vscode/
-        exclude_types: [jupyter]
-      - id: sort-simple-yaml
-  - repo: https://github.com/astral-sh/uv-pre-commit
-    # uv version.
-    rev: 0.8.12
-    hooks:
-      - id: uv-lock
-      - id: uv-export
+      - id: commitizen
+        stages: [commit-msg]
+
+  # Python Linting e Formatação
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    # Ruff version.
-    rev: v0.12.9
+    rev: v0.1.6
     hooks:
-      # Run the linter.
-      - id: ruff-check
-        types_or: [python, pyi]
+      - id: ruff
         args: [--fix]
-      # Run the formatter.
       - id: ruff-format
-        types_or: [python, pyi]
+
+  # Verificação de merge conflicts e arquivos
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: debug-statements

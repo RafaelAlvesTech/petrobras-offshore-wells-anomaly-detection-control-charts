@@ -1,0 +1,19 @@
+# CODEOWNERS
+# Este arquivo define automaticamente quem deve revisar pull requests
+# baseado em quais arquivos foram modificados.
+
+# RafaelAlvesTech é o proprietário principal de todo o repositório
+* @RafaelAlvesTech
+
+# Configurações específicas para diferentes diretórios
+src/ @RafaelAlvesTech
+notebooks/ @RafaelAlvesTech
+tests/ @RafaelAlvesTech
+docs/ @RafaelAlvesTech
+data/ @RafaelAlvesTech
+
+# Arquivos de configuração importantes
+.github/ @RafaelAlvesTech
+pyproject.toml @RafaelAlvesTech
+README.md @RafaelAlvesTech
+CODEOWNERS @RafaelAlvesTech
