@@ -1,12 +1,17 @@
 {
+  "containerUser": "vscode",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "ms-toolsai.jupyter"
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker",
+        "GitHub.copilot"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python3"
+        "python.analysis.typeCheckingMode": "basic",
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "terminal.integrated.defaultProfile.linux": "zsh"
       }
     }
   },
@@ -16,11 +21,29 @@
       "version": "3.11"
     }
   },
+  "forwardPorts": [
+    8888
+  ],
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "initializeCommand": "",
   "mounts": [
-    "source=${localWorkspaceFolder},target=/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts,type=bind"
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
   ],
   "name": "Petrobras Offshore Wells Anomaly Detection",
-  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt",
+  "onCreateCommand": "/bin/bash -lc 'bash .devcontainer/setup_shell.sh'",
+  "portsAttributes": {
+    "8888": {
+      "label": "Jupyter",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "/bin/bash -lc 'python -m pip install --upgrade pip && if [ -f requirements.txt ]; then pip install -r requirements.txt; fi && python -m ipykernel install --user --name petrobras-3.11 --display-name \"Python 3.11 (petrobras)\"'",
+  "postStartCommand": "",
+  "remoteUser": "vscode",
+  "runArgs": [
+    "--cap-add=SYS_ADMIN",
+    "--security-opt=apparmor:unconfined"
+  ],
+  "updateRemoteUserUID": true,
   "workspaceFolder": "/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts"
 }

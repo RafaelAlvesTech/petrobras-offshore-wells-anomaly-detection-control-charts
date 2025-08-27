@@ -8,14 +8,13 @@ app = marimo.App(width="medium")
 def _():
     import polars as pl
 
-    df = pl.read_csv("languages.csv", infer_schema_length=1000)
+    df = pl.read_csv("../languages.csv", inter_schema_legth=1000)
     df.head()
-    return (df,)
+    return
 
 
 @app.cell
-def _(df):
-    df[0]["Abap":].sum_horizontal()
+def _():
     return
 
 
