@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange.svg)](https://github.com/your-username/petrobras-offshore-wells-anomaly-detection-control-charts)
+[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange.svg)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts)
 [![PIBIC](https://img.shields.io/badge/PIBIC-2025-purple.svg)](https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/programas-de-bolsa-de-iniciacao-cientifica)
 
 > **Detecção de Anomalias em Séries Temporais Multivariadas de Poços Offshore da Petrobras utilizando Modelos de Machine Learning Inovadores e Gráficos de Controle**
@@ -159,7 +159,7 @@ O **Polars** é uma biblioteca de manipulação de dados de alta performance que
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/your-username/petrobras-offshore-wells-anomaly-detection-control-charts.git
+git clone https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts.git
 cd petrobras-offshore-wells-anomaly-detection-control-charts
 
 # 2. Instale o uv (se ainda não tiver)
@@ -243,12 +243,12 @@ graph TD
 
 | Fase | Duração | Atividades Principais |
 |------|---------|----------------------|
-| 🎯 **Fase 1** | Mês 1-2 | Revisão bibliográfica, EDA inicial |
-| 🔧 **Fase 2** | Mês 3-4 | Pré-processamento, engenharia de atributos |
-| 🤖 **Fase 3** | Mês 5-8 | Implementação e treinamento dos modelos |
-| 📊 **Fase 4** | Mês 9-10 | Avaliação, interpretabilidade |
-| 🚀 **Fase 5** | Mês 11 | Prototipagem, MLOps |
-| 📝 **Fase 6** | Mês 12 | Documentação, relatório final |
+| 🎯 **Fase 1** | Set-Out/2025 | Revisão bibliográfica, EDA inicial |
+| 🔧 **Fase 2** | Nov-Dez/2025 | Pré-processamento, engenharia de atributos |
+| 🤖 **Fase 3** | Jan-Abr/2026 | Implementação e treinamento dos modelos |
+| 📊 **Fase 4** | Mai-Jun/2026 | Avaliação, interpretabilidade |
+| 🚀 **Fase 5** | Jul/2026 | Prototipagem, MLOps |
+| 📝 **Fase 6** | Ago/2026 | Documentação, relatório final |
 
 ## 📅 Cronograma
 
@@ -259,31 +259,31 @@ gantt
     title Cronograma do Projeto PIBIC
     dateFormat  YYYY-MM-DD
     section Fase 1
-    Revisão Bibliográfica    :done,    des1, 2024-01-01, 2024-02-29
-    EDA Inicial             :active,  des2, 2024-02-01, 2024-02-29
+    Revisão Bibliográfica    :         des1, 2025-09-01, 2025-10-31
+    EDA Inicial             :         des2, 2025-10-01, 2025-10-31
     section Fase 2
-    Pré-processamento       :         des3, 2024-03-01, 2024-04-30
-    Engenharia de Atributos :         des4, 2024-04-01, 2024-04-30
+    Pré-processamento       :         des3, 2025-11-01, 2025-12-31
+    Engenharia de Atributos :         des4, 2025-12-01, 2025-12-31
     section Fase 3
-    Modelo 1 (LSTM-VAE)     :         des5, 2024-05-01, 2024-06-30
-    Modelo 2 (TranAD)       :         des6, 2024-06-01, 2024-07-31
-    Modelo 3 (ECOD)         :         des7, 2024-07-01, 2024-08-31
+    Modelo 1 (LSTM-VAE)     :         des5, 2026-01-01, 2026-02-28
+    Modelo 2 (TranAD)       :         des6, 2026-02-01, 2026-03-31
+    Modelo 3 (ECOD)         :         des7, 2026-03-01, 2026-04-30
     section Fase 4
-    Avaliação               :         des8, 2024-09-01, 2024-10-31
+    Avaliação               :         des8, 2026-05-01, 2026-06-30
     section Fase 5
-    Prototipagem            :         des9, 2024-11-01, 2024-11-30
+    Prototipagem            :         des9, 2026-07-01, 2026-07-31
     section Fase 6
-    Documentação            :         des10, 2024-12-01, 2024-12-31
+    Documentação            :         des10, 2026-08-01, 2026-08-31
 ```
 
 ### 📋 Marcos Principais
 
-- [x] **Mês 2**: EDA completa e dicionário de dados
-- [ ] **Mês 4**: Dataset limpo e pré-processado
-- [ ] **Mês 8**: 3+ modelos implementados e treinados
-- [ ] **Mês 10**: Avaliação comparativa completa
-- [ ] **Mês 11**: Protótipo funcional
-- [ ] **Mês 12**: Relatório final PIBIC
+- [ ] **Mês 2 (Out/2025)**: EDA completa e dicionário de dados
+- [ ] **Mês 4 (Dez/2025)**: Dataset limpo e pré-processado
+- [ ] **Mês 8 (Abr/2026)**: 3+ modelos implementados e treinados
+- [ ] **Mês 10 (Jun/2026)**: Avaliação comparativa completa
+- [ ] **Mês 11 (Jul/2026)**: Protótipo funcional
+- [ ] **Mês 12 (Ago/2026)**: Relatório final PIBIC
 
 ## 🎯 Objetivos SMART
 
@@ -446,8 +446,8 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 - **Autor**: [Rafael Alves]
 - **Email**: [rafaelpereiraalves@ufba.br]
-- **GitHub**: [@seu-usuario](https://github.com/seu-usuario)
-- **LinkedIn**: [Seu Perfil](https://linkedin.com/in/seu-perfil)
+- **GitHub**: [@RafaelAlvesTech](https://github.com/RafaelAlvesTech)
+- **LinkedIn**: [@rafaelalvestech](https://linkedin.com/in/rafaelalvestech)
 
 ---
 
@@ -455,8 +455,8 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 **⭐ Se este projeto foi útil para você, considere dar uma estrela! ⭐**
 
-[![GitHub stars](https://img.shields.io/github/stars/your-username/petrobras-offshore-wells-anomaly-detection-control-charts?style=social)](https://github.com/your-username/petrobras-offshore-wells-anomaly-detection-control-charts/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/petrobras-offshore-wells-anomaly-detection-control-charts?style=social)](https://github.com/your-username/petrobras-offshore-wells-anomaly-detection-control-charts/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/your-username/petrobras-offshore-wells-anomaly-detection-control-charts)](https://github.com/your-username/petrobras-offshore-wells-anomaly-detection-control-charts/issues)
+[![GitHub stars](https://img.shields.io/github/stars/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts?style=social)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts?style=social)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts/issues)
 
 </div>
