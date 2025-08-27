@@ -27,7 +27,7 @@
 
 ## 🎯 Visão Geral
 
-Este projeto PIBIC foca na **detecção de anomalias em operações de poços de petróleo offshore**, utilizando modelos inovadores de Machine Learning para analisar séries temporais multivariadas complexas. O objetivo é identificar eventos críticos como vazamentos de gás, falhas de equipamento e instabilidades de fluxo de forma precoce e precisa.
+Este projeto PIBIC foca na **detecção de anomalias em operações de poços de petróleo offshore**, utilizando modelos inovadores de Machine Learning para analisar séries temporais multivariadas complexas. O objetivo é identificar eventos críticos como falhas de equipamento e instabilidades de fluxo de forma precoce e precisa.
 
 ### 🌟 Destaques
 
@@ -312,7 +312,7 @@ gantt
 | **ECOD** | Não-paramétrico | Interpretável, escalável | ⏳ Pendente |
 
 
-### 🎯 Foco Especial: Vazamento de Gás
+### 🎯 Foco Especial: Detecção de Anomalias
 
 - **Features específicas**: Taxas de variação de pressão/vazão
 - **Correlações cruzadas**: Relações entre múltiplos sensores
