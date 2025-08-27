@@ -1,0 +1,112 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🐍 Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "justMyCode": true
+        },
+        {
+            "name": "🐍 Python: Main Module",
+            "type": "python",
+            "request": "launch",
+            "module": "src.main",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "justMyCode": true
+        },
+        {
+            "name": "🧪 Python: Debug Tests",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "tests/",
+                "-v",
+                "--tb=short"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "justMyCode": false
+        },
+        {
+            "name": "📊 Python: Debug Jupyter Cell",
+            "type": "python",
+            "request": "launch",
+            "module": "jupyter",
+            "args": [
+                "notebook",
+                "--no-browser",
+                "--port=8888"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "justMyCode": true
+        },
+        {
+            "name": "📓 Python: Debug Marimo",
+            "type": "python",
+            "request": "launch",
+            "module": "marimo",
+            "args": [
+                "edit"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "justMyCode": true
+        },
+        {
+            "name": "🔧 Python: Debug with Arguments",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "DEBUG": "1"
+            },
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "justMyCode": false
+        },
+        {
+            "name": "🐳 Docker: Debug Container",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "🐳 Build Docker Image",
+            "dockerfile": "${workspaceFolder}/Dockerfile",
+            "context": "${workspaceFolder}",
+            "ports": [
+                {
+                    "hostPort": 8000,
+                    "containerPort": 8000
+                }
+            ]
+        }
+    ]
+}

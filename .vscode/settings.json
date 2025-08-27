@@ -1,9 +1,182 @@
 {
-  "notebook.formatOnSave.enabled": true,
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff"
-  },
-  "conventionalCommits.scopes": [
-    "readme"
-  ]
+    // 🛢️ Petrobras Offshore Wells Anomaly Detection - Cursor Settings
+    // 🐍 Python Configuration
+    "python.defaultInterpreterPath": "./.venv/bin/python",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.stubPath": "./typings",
+    "python.formatting.provider": "ruff",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.linting.ruffEnabled": true,
+    "python.linting.ruffPath": "./.venv/bin/ruff",
+    // 📊 Jupyter/Marimo Configuration
+    "jupyter.defaultKernel": "Python 3.11 (petrobras)",
+    "jupyter.askForKernelRestart": false,
+    "jupyter.enableAutoMatcher": true,
+    // 🔧 Editor Configuration
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+    },
+    "editor.rulers": [
+        88
+    ],
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.trimAutoWhitespace": true,
+    "editor.trimTrailingWhitespace": true,
+    "editor.insertFinalNewline": true,
+    // 🎨 Theme & Font Configuration (Suas preferências)
+    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "\"JetBrains Mono\", 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 1.6,
+    // 📁 File Associations
+    "files.associations": {
+        "*.py": "python",
+        "*.ipynb": "jupyter-notebook",
+        "*.md": "markdown",
+        "*.toml": "toml",
+        "*.yaml": "yaml",
+        "*.yml": "yaml",
+        "*.json": "json",
+        "*.sh": "shellscript"
+    },
+    // 🔍 Search Configuration
+    "search.exclude": {
+        "**/.venv": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.pytest_cache": true,
+        "**/node_modules": true,
+        "**/.git": true,
+        "**/data/raw": true,
+        "**/data/processed": true,
+        "**/models": true,
+        "**/logs": true
+    },
+    // 📝 Markdown Configuration
+    "markdown.preview.breaks": true,
+    "markdown.preview.fontSize": 14,
+    "markdown.preview.lineHeight": 1.6,
+    // 🐳 Docker Configuration
+    "docker.showStartPage": false,
+    "docker.commands.build": "docker build -t ${imageName} .",
+    "docker.commands.run": "docker run -it --rm ${imageName}",
+    // 🔄 Git Configuration
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "git.autofetchPeriod": 300,
+    // 🧪 Testing Configuration
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    // 📊 Data Science Extensions
+    "python.dataScience.enableAutoStartingServer": false,
+    "python.dataScience.askForKernelRestart": false,
+    // 🚀 Performance Settings
+    "files.watcherExclude": {
+        "**/.venv/**": true,
+        "**/__pycache__/**": true,
+        "**/*.pyc": true,
+        "**/data/**": true,
+        "**/models/**": true,
+        "**/logs/**": true
+    },
+    // 📋 Terminal Configuration (Suas preferências)
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    // 🔧 Extensions Configuration
+    "extensions.ignoreRecommendations": false,
+    "extensions.autoUpdate": true,
+    // 📁 Explorer Configuration
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.incrementalNaming": "smart",
+    // 🎯 Project-Specific Settings
+    "python.analysis.extraPaths": [
+        "./src",
+        "./notebooks"
+    ],
+    "python.analysis.include": [
+        "src/**/*.py",
+        "notebooks/**/*.py",
+        "tests/**/*.py"
+    ],
+    "python.analysis.exclude": [
+        "**/.venv/**",
+        "**/__pycache__/**",
+        "**/data/**",
+        "**/models/**",
+        "**/logs/**"
+    ],
+    // 🎨 Peacock Configuration (Suas cores personalizadas)
+    "peacock.favoriteColors": [
+        {
+            "name": "Python",
+            "value": "#25415d"
+        },
+        {
+            "name": "Docker",
+            "value": "#1d63ed"
+        },
+        {
+            "name": "Kubernetes",
+            "value": "#436ee3"
+        },
+        {
+            "name": "Data Science",
+            "value": "#007fff"
+        },
+        {
+            "name": "Machine Learning",
+            "value": "#dd0531"
+        },
+        {
+            "name": "Petrobras",
+            "value": "#0C4B33"
+        }
+    ],
+    // 🔍 Code Quality & Analysis
+    "sonarlint.rules": {
+        "python:S1481": "off",
+        "python:S1172": "off"
+    },
+    // 📊 Auto Save (Sua preferência)
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    // 🎯 Remote Container Extensions (Suas extensões padrão)
+    "remote.containers.defaultExtensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+    ]
 }

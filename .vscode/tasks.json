@@ -1,0 +1,296 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "🚀 Setup Environment",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "venv"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "📦 Install Dependencies",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "sync"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "🧪 Run Tests",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "pytest"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$pytest"
+            ]
+        },
+        {
+            "label": "🔍 Run Tests with Coverage",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "pytest",
+                "--cov=src",
+                "--cov-report=html"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$pytest"
+            ]
+        },
+        {
+            "label": "✨ Format Code",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "ruff",
+                "format",
+                "."
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "🔧 Lint Code",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "ruff",
+                "check",
+                "."
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$ruff"
+            ]
+        },
+        {
+            "label": "🔧 Fix Linting Issues",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "ruff",
+                "check",
+                "--fix",
+                "."
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$ruff"
+            ]
+        },
+        {
+            "label": "📓 Start Marimo",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "marimo",
+                "edit"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "🐳 Build Docker Image",
+            "type": "shell",
+            "command": "docker",
+            "args": [
+                "build",
+                "-t",
+                "anomaly-detection",
+                "."
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "🐳 Run Docker Container",
+            "type": "shell",
+            "command": "docker",
+            "args": [
+                "run",
+                "-p",
+                "8000:8000",
+                "anomaly-detection"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "📊 Generate Documentation",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "pdoc",
+                "--html",
+                "--output-dir",
+                "docs/api",
+                "src"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "🔍 Pre-commit Check",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "pre-commit",
+                "run",
+                "--all-files"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "📦 Add New Dependency",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "add"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "🔄 Update Dependencies",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "sync",
+                "--upgrade"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,130 @@
+# 🛢️ Petrobras Offshore Wells Anomaly Detection - Cursor Rules
+
+## 🎯 Contexto do Projeto
+Este é um projeto PIBIC focado na detecção de anomalias em séries temporais multivariadas de poços offshore da Petrobras. O projeto utiliza Python 3.11, uv para gerenciamento de dependências, Marimo para notebooks interativos, e Polars para manipulação de dados de alta performance.
+
+## 🐍 Padrões de Código Python
+- Use Python 3.11+ com type hints quando apropriado
+- Siga PEP 8 para formatação
+- Use f-strings para formatação de strings
+- Prefira list comprehensions e expressões lambda quando apropriado
+- Use docstrings no formato Google/NumPy para funções e classes
+
+## 📊 Bibliotecas e Ferramentas
+- **Polars**: Use Polars para manipulação de dados (mais rápido que Pandas)
+- **Marimo**: Use para notebooks interativos e desenvolvimento colaborativo
+- **uv**: Use para gerenciamento de dependências e ambiente virtual
+- **PyTorch/TensorFlow**: Para modelos de deep learning
+- **Scikit-learn**: Para machine learning tradicional
+- **SHAP**: Para interpretabilidade de modelos
+
+## 🏗️ Arquitetura do Projeto
+- **src/**: Código fonte principal
+- **notebooks/**: Notebooks Marimo para EDA e experimentos
+- **data/**: Datasets e dados processados
+- **tests/**: Testes automatizados
+- **docs/**: Documentação do projeto
+
+## 🔧 Padrões de Desenvolvimento
+- Use commits convencionais (feat:, fix:, docs:, etc.)
+- Mantenha o README atualizado
+- Adicione testes para novas funcionalidades
+- Use `uv add <package>` para novas dependências
+- Sempre execute `uv sync` após mudanças nas dependências
+
+## 📈 Detecção de Anomalias
+- Foque em séries temporais multivariadas
+- Considere interdependência entre variáveis
+- Use métricas apropriadas (AUC-PR, F1-Score para dados desbalanceados)
+- Implemente modelos SOTA: TranAD, LSTM-VAE, USAD, ECOD
+- Priorize interpretabilidade dos modelos
+
+## 🚀 Performance e Escalabilidade
+- Use Polars para operações de dados grandes
+- Considere paralelização quando apropriado
+- Otimize uso de memória para grandes datasets
+- Use profiling para identificar gargalos
+
+## 🧪 Testes e Qualidade
+- Escreva testes unitários para funções críticas
+- Use pytest para execução de testes
+- Mantenha cobertura de testes adequada
+- Use pre-commit hooks para qualidade de código
+
+## 📚 Documentação
+- Documente APIs e interfaces principais
+- Mantenha exemplos de uso atualizados
+- Use docstrings descritivos
+- Atualize o README com mudanças significativas
+
+## 🔒 Segurança e Boas Práticas
+- Não hardcode credenciais ou chaves de API
+- Use variáveis de ambiente para configurações sensíveis
+- Valide inputs de dados
+- Trate exceções de forma apropriada
+
+## 🌟 Dicas Específicas
+- Para EDA, use Marimo notebooks com Polars
+- Para modelos ML, comece com baselines simples
+- Use Optuna para otimização de hiperparâmetros
+- Considere containerização com Docker para deployment
+- Mantenha versionamento de modelos com DVC se apropriado
+
+## 🔌 Extensões Essenciais do VS Code/Cursor
+O projeto inclui configurações automáticas para as seguintes extensões essenciais:
+
+### 🐍 Python Development
+- **ms-python.python**: Suporte completo ao Python
+- **ms-python.vscode-pylance**: IntelliSense avançado para Python
+- **charliermarsh.ruff**: Linting e formatação rápida
+
+### 📊 Data Science & Jupyter
+- **ms-toolsai.jupyter**: Suporte completo ao Jupyter
+- **ms-toolsai.jupyter-keymap**: Atalhos de teclado para Jupyter
+
+### 🔧 Development Tools
+- **ms-vscode.vscode-json**: Suporte ao JSON
+- **yzhang.markdown-all-in-one**: Editor Markdown avançado
+
+### 🐳 Docker & Containers
+- **ms-azuretools.vscode-docker**: Suporte ao Docker
+
+### 🔄 Git & Version Control
+- **eamodio.gitlens**: Git supercharged
+
+### 🎨 Themes & Icons
+- **pkief.material-icon-theme**: Ícones Material Design
+
+### 🧪 Testing
+- **littlefoxteam.vscode-python-test-adapter**: Test runner para Python
+
+### 🚀 AI & Productivity
+- **GitHub.copilot**: Assistente de IA para código
+- **GitHub.copilot-chat**: Chat com IA para desenvolvimento
+
+## 🚀 Setup Automático
+Para instalar todas as extensões automaticamente:
+
+### Linux/macOS
+```bash
+chmod +x scripts/install_extensions.sh
+./scripts/install_extensions.sh
+```
+
+### Windows (PowerShell)
+```powershell
+.\scripts\install_extensions.ps1
+```
+
+### Cross-platform (Python)
+```bash
+python scripts/install_extensions.py
+```
+
+## ⚙️ Configurações do Workspace
+O projeto inclui configurações otimizadas no `.vscode/settings.json`:
+- Python interpreter configurado para `.venv`
+- Formatação automática com Ruff
+- Linting automático
+- Configurações de terminal otimizadas
+- Exclusões de pastas para performance

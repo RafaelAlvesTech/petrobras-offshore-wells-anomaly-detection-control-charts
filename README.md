@@ -127,6 +127,45 @@ petrobras-offshore-wells-anomaly-detection-control-charts/
 
 ## ⚡ Instalação e Configuração
 
+### 🚀 Setup Automático Completo
+
+Para uma configuração completa e automática do ambiente de desenvolvimento:
+
+#### 🔌 **1. Instalar Extensões do VS Code/Cursor**
+```bash
+# Linux/macOS
+chmod +x scripts/install_extensions.sh
+./scripts/install_extensions.sh
+
+# Windows (PowerShell)
+.\scripts\install_extensions.ps1
+
+# Cross-platform (Python)
+python scripts/install_extensions.py
+```
+
+#### 🐍 **2. Configurar Ambiente Python**
+```bash
+# Clone o repositório
+git clone https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts.git
+cd petrobras-offshore-wells-anomaly-detection-control-charts
+
+# Instalar uv e criar ambiente
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv venv
+source .venv/bin/activate  # Linux/Mac
+# ou
+.venv\Scripts\activate     # Windows
+
+# Instalar dependências
+uv sync
+```
+
+#### ⚙️ **3. Configurar Pre-commit Hooks**
+```bash
+uv run pre-commit install
+```
+
 ### 🆕 Por que usar uv, Marimo e Polars?
 
 O **uv** é um gerenciador de pacotes Python moderno que oferece:
@@ -224,6 +263,22 @@ uv sync --upgrade
 # Verificar dependências desatualizadas
 uv sync --check
 ```
+
+### 🎯 **Extensões Recomendadas**
+O projeto inclui scripts automáticos para instalar as extensões essenciais baseadas nas suas configurações pessoais do VSCode:
+
+| Categoria | Extensões | Descrição |
+|-----------|-----------|-----------|
+| 🐍 **Python** | ms-python.python, ms-python.vscode-pylance, ms-python.debugpy, ms-python.isort, charliermarsh.ruff | Desenvolvimento Python completo |
+| 📊 **Data Science** | ms-toolsai.jupyter, ms-toolsai.jupyter-keymap | Notebooks Jupyter e Marimo |
+| 🔧 **Dev Tools** | ms-vscode.vscode-json, yzhang.markdown-all-in-one, esbenp.prettier-vscode | Suporte a JSON, Markdown e formatação |
+| 🐳 **Docker** | ms-azuretools.vscode-docker, ms-kubernetes-tools.vscode-kubernetes-tools | Containerização e Kubernetes |
+| 🔄 **Git** | eamodio.gitlens, donjayamanne.githistory, github.vscode-github-actions | Git supercharged e GitHub Actions |
+| 🎨 **Themes** | pkief.material-icon-theme, github.github-vscode-theme, johnpapa.vscode-peacock | Temas e cores personalizadas |
+| 🧪 **Testing** | littlefoxteam.vscode-python-test-adapter, firsttris.vscode-jest-runner | Test runners Python e JavaScript |
+| 🚀 **AI** | GitHub.copilot, GitHub.copilot-chat, visualstudioexptteam.vscodeintellicode | Assistente de IA e IntelliCode |
+| 🔍 **Code Quality** | sonarsource.sonarlint-vscode, streetsidesoftware.code-spell-checker | Análise de código e spell checker |
+| 🛠️ **Utilities** | chakrounanas.turbo-console-log, gruntfuggly.todo-tree, wallabyjs.quokka-vscode | Ferramentas de produtividade |
 
 ## 📈 Metodologia
 
@@ -391,6 +446,7 @@ jobs:
 ### 📖 Documentos Disponíveis
 
 - [📋 README.md](README.md) - Este arquivo
+- [🚀 Setup Guide](docs/setup-guide.md) - Guia completo de configuração
 - [📊 Dataset Documentation](docs/dataset.md) - Documentação do dataset 3W
 - [🔧 API Reference](docs/api.md) - Referência da API
 - [🤖 Model Documentation](docs/models.md) - Documentação dos modelos
