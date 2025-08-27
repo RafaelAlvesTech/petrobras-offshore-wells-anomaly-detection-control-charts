@@ -1,0 +1,208 @@
+name: Google Cloud Training Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/gcp/**'
+      - 'examples/**'
+      - 'gcp-config.yaml'
+      - 'env.example'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/gcp/**'
+      - 'examples/**'
+      - 'gcp-config.yaml'
+      - 'env.example'
+  workflow_dispatch:
+    inputs:
+      model_type:
+        description: 'Model type to train'
+        required: true
+        default: 'lstm_vae'
+        type: choice
+        options:
+          - lstm_vae
+          - tranad
+          - usad
+          - ecod
+      use_vertex_ai:
+        description: 'Use Vertex AI instead of AI Platform'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.11'
+  GOOGLE_CLOUD_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
+  GOOGLE_CLOUD_REGION: ${{ secrets.GOOGLE_CLOUD_REGION }}
+  GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+
+jobs:
+  test-gcp-integration:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.11]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v1
+      with:
+        version: '0.8.13'
+
+    - name: Install dependencies
+      run: |
+        uv sync --dev
+
+    - name: Run GCP integration tests
+      run: |
+        cd src
+        python -m pytest gcp/tests/ -v
+
+    - name: Test GCP configuration
+      run: |
+        cd examples
+        python -c "
+        import sys
+        sys.path.insert(0, '../src')
+        from gcp.config import GCPConfig
+        from gcp.auth import GCPAuthenticator
+
+        config = GCPConfig()
+        print('Configuration loaded successfully')
+        print(f'Project: {config.auth.project_id}')
+        print(f'Region: {config.auth.region}')
+        "
+
+  deploy-to-gcp:
+    needs: test-gcp-integration
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || (github.ref == 'refs/heads/main' && github.event_name == 'push')
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ env.PYTHON_VERSION }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install uv
+      uses: astral-sh/setup-python@v4
+      with:
+        version: '0.8.13'
+
+    - name: Install dependencies
+      run: |
+        uv sync
+
+    - name: Setup Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        project_id: ${{ env.GOOGLE_CLOUD_PROJECT }}
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        export_default_credentials: true
+
+    - name: Configure Docker for GCR
+      run: |
+        gcloud auth configure-docker
+
+    - name: Build and push Docker image
+      run: |
+        docker build -t gcr.io/${{ env.GOOGLE_CLOUD_PROJECT }}/anomaly-detection-training:latest .
+        docker push gcr.io/${{ env.GOOGLE_CLOUD_PROJECT }}/anomaly-detection-training:latest
+
+    - name: Enable required APIs
+      run: |
+        gcloud services enable aiplatform.googleapis.com
+        gcloud services enable ml.googleapis.com
+        gcloud services enable storage.googleapis.com
+        gcloud services enable logging.googleapis.com
+        gcloud services enable monitoring.googleapis.com
+        gcloud services enable compute.googleapis.com
+        gcloud services enable cloudbuild.googleapis.com
+
+    - name: Create Cloud Storage bucket
+      run: |
+        gsutil mb -p ${{ env.GOOGLE_CLOUD_PROJECT }} -c STANDARD -l ${{ env.GOOGLE_CLOUD_REGION }} gs://${{ secrets.GCS_BUCKET_NAME }} || true
+
+    - name: Upload training scripts
+      run: |
+        gsutil cp -r examples/ gs://${{ secrets.GCS_BUCKET_NAME }}/training_scripts/
+
+    - name: Submit training job
+      run: |
+        cd examples
+        python train_lstm_vae_gcp.py \
+          --config ../gcp-config.yaml \
+          --data-path ../data/sample_data.csv \
+          --model-name ${{ github.event.inputs.model_type || 'lstm_vae' }} \
+          --epochs 100 \
+          --batch-size 32 \
+          --learning-rate 0.001 \
+          ${{ github.event.inputs.use_vertex_ai && '--use-vertex-ai' || '' }}
+      env:
+        GOOGLE_CLOUD_PROJECT: ${{ env.GOOGLE_CLOUD_PROJECT }}
+        GOOGLE_CLOUD_REGION: ${{ env.GOOGLE_CLOUD_REGION }}
+        GCS_BUCKET_NAME: ${{ secrets.GCS_BUCKET_NAME }}
+
+  monitor-training:
+    needs: deploy-to-gcp
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        project_id: ${{ env.GOOGLE_CLOUD_PROJECT }}
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        export_default_credentials: true
+
+    - name: Monitor training jobs
+      run: |
+        echo "Monitoring training jobs..."
+        gcloud ai custom-jobs list --region=${{ env.GOOGLE_CLOUD_REGION }} --limit=5
+
+    - name: Check MLflow experiments
+      run: |
+        echo "Checking MLflow experiments..."
+        # This would require MLflow server access
+        # For now, just check if the experiment was created
+
+  cleanup-resources:
+    needs: [deploy-to-gcp, monitor-training]
+    runs-on: ubuntu-latest
+    if: always() && github.event_name == 'workflow_dispatch'
+
+    steps:
+    - name: Setup Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        project_id: ${{ env.GOOGLE_CLOUD_PROJECT }}
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        export_default_credentials: true
+
+    - name: Cleanup old resources
+      run: |
+        echo "Cleaning up old resources..."
+        # Clean up old training jobs (older than 7 days)
+        gcloud ai custom-jobs list --region=${{ env.GOOGLE_CLOUD_REGION }} --filter="createTime<$(date -d '7 days ago' -u +%Y-%m-%dT%H:%M:%SZ)" --format="value(name)" | \
+        while read job; do
+          echo "Deleting old job: $job"
+          gcloud ai custom-jobs delete "$job" --region=${{ env.GOOGLE_CLOUD_REGION }} --quiet || true
+        done

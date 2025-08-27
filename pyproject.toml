@@ -15,6 +15,22 @@ dependencies = [
     "torch>=2.0.1",
     "torchaudio>=2.0.2",
     "torchvision>=0.15.2",
+    # Google Cloud AI Platform
+    "google-cloud-aiplatform>=1.38.0",
+    "google-cloud-storage>=2.10.0",
+    "google-cloud-logging>=3.8.0",
+    "google-cloud-monitoring>=2.16.0",
+    "google-auth>=2.40.3",
+    "google-api-python-client>=2.179.0",
+    # ML e treinamento distribuído
+    "tensorboard>=2.15.0",
+    "mlflow>=2.8.0",
+    "optuna>=3.4.0",
+    "wandb>=0.16.0",
+    # Utilitários para cloud
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.1",
+    "click>=8.1.7",
 ]
 
 [dependency-groups]
@@ -24,6 +40,8 @@ dev = [
     "pre-commit>=4.3.0",
     "ruff>=0.12.10",
     "uv>=0.8.13",
+    # Ferramentas de desenvolvimento para cloud
+    # google-cloud-cli e gcloud são instalados via sistema
 ]
 
 [[tool.uv.index]]

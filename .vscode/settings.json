@@ -178,5 +178,7 @@
         "eamodio.gitlens",
         "GitHub.copilot",
         "GitHub.copilot-chat"
-    ]
+    ],
+    "containers.commands.build": "docker build -t ${imageName} .",
+    "containers.commands.run": "docker run -it --rm ${imageName}"
 }

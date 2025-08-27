@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange.svg)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts)
 [![PIBIC](https://img.shields.io/badge/PIBIC-2025-purple.svg)](https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/programas-de-bolsa-de-iniciacao-cientifica)
+[![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Platform-blue.svg)](https://cloud.google.com/)
 
 > **Detecção de Anomalias em Séries Temporais Multivariadas de Poços Offshore da Petrobras utilizando Modelos de Machine Learning Inovadores e Gráficos de Controle**
 
@@ -13,6 +14,7 @@
 - [🚀 Funcionalidades](#-funcionalidades)
 - [📊 Dataset](#-dataset)
 - [🛠️ Tecnologias](#️-tecnologias)
+- [☁️ Google Cloud Platform](#️-google-cloud-platform)
 - [📁 Estrutura do Projeto](#-estrutura-do-projeto)
 - [⚡ Instalação e Configuração](#-instalação-e-configuração)
 - [📈 Metodologia](#-metodologia)
@@ -34,7 +36,7 @@ Este projeto PIBIC foca na **detecção de anomalias em operações de poços de
 - 🔍 **Análise Multivariada**: Processamento de múltiplas variáveis interdependentes (pressão, temperatura, vazão, vibração)
 - 🤖 **Modelos SOTA**: Implementação dos algoritmos mais recentes em detecção de anomalias
 - 📊 **Gráficos de Controle**: Visualização avançada para monitoramento em tempo real
-
+- ☁️ **Google Cloud**: Treinamento distribuído e escalável na nuvem
 
 ## 🚀 Funcionalidades
 
@@ -47,6 +49,9 @@ Este projeto PIBIC foca na **detecção de anomalias em operações de poços de
 - [ ] Protótipo de API para inferência
 - [ ] Containerização com Docker
 - [ ] CI/CD básico com GitHub Actions
+- [x] **Integração com Google Cloud Platform**
+- [x] **Treinamento distribuído na nuvem**
+- [x] **Experiment tracking com MLflow**
 
 ### 🔄 Em Desenvolvimento
 - [ ] Treinamento dos modelos selecionados
@@ -54,8 +59,7 @@ Este projeto PIBIC foca na **detecção de anomalias em operações de poços de
 - [ ] Análise de interpretabilidade
 
 ### 📋 Planejadas
-- [ ] Interface de usuário para monitorament
-
+- [ ] Interface de usuário para monitoramento
 - [ ] Relatório final PIBIC
 
 ## 📊 Dataset
@@ -84,6 +88,14 @@ Este projeto PIBIC foca na **detecção de anomalias em operações de poços de
 - **Matplotlib/Seaborn**: Visualização
 - **Marimo**: Notebooks interativos Python modernos
 
+### ☁️ Google Cloud Platform
+- **Vertex AI**: Treinamento e deployment de modelos
+- **AI Platform**: Treinamento distribuído
+- **Cloud Storage**: Armazenamento de dados e modelos
+- **Cloud Build**: CI/CD automatizado
+- **Cloud Run**: Servidor MLflow
+- **Cloud Logging & Monitoring**: Observabilidade
+
 ### 📦 Gerenciamento de Dependências
 - **uv**: Gerenciador de pacotes Python moderno e rápido
 - **pyproject.toml**: Configuração centralizada do projeto
@@ -97,32 +109,138 @@ Este projeto PIBIC foca na **detecção de anomalias em operações de poços de
 - **PyOD**: Detecção de outliers
 - **pre-commit**: Hooks de qualidade de código
 - **Marimo**: Notebooks interativos e desenvolvimento colaborativo
+- **MLflow**: Experiment tracking e model registry
 
-### 📊 Bibliotecas Especializadas
-- **SHAP**: Interpretabilidade de modelos
-- **SMOTE/ADASYN**: Tratamento de desbalanceamento
-- **FFT/Wavelets**: Análise de frequência
-- **Polars**: Processamento de dados em paralelo com sintaxe similar ao Pandas
+## ☁️ Google Cloud Platform
+
+### 🚀 Treinamento Distribuído
+
+O projeto está configurado para treinamento de modelos na Google Cloud Platform, oferecendo:
+
+- **Escalabilidade**: Treinamento em múltiplas GPUs e máquinas
+- **Custo-efetividade**: Pagamento apenas pelo uso
+- **Integração**: Seamless integration com MLflow e experiment tracking
+- **Automação**: CI/CD pipeline para treinamento automático
+
+### 🏗️ Arquitetura
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Local Dev     │    │   Google Cloud   │    │   MLflow UI     │
+│                 │    │                  │    │                 │
+│ ┌─────────────┐ │    │ ┌──────────────┐ │    │ ┌─────────────┐ │
+│ │   Code      │ │───▶│ │ Vertex AI    │ │───▶│ │ Experiments │ │
+│ │             │ │    │ │              │ │    │ │             │ │
+│ └─────────────┘ │    │ └──────────────┘ │    │ └─────────────┘ │
+│                 │    │                  │    │                 │
+│ ┌─────────────┐ │    │ ┌──────────────┐ │    │ ┌─────────────┐ │
+│ │   Data      │ │───▶│ │ Cloud Storage│ │───▶│ │ Model      │ │
+│ │             │ │    │ │              │ │    │ │ Registry   │ │
+│ └─────────────┘ │    │ └──────────────┘ │    │ └─────────────┘ │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
+
+### 🔧 Serviços Utilizados
+
+| Serviço | Propósito | Configuração |
+|---------|-----------|--------------|
+| **Vertex AI** | Treinamento e deployment | n1-standard-4 + T4 GPU |
+| **AI Platform** | Treinamento distribuído | Scale tier: BASIC_GPU |
+| **Cloud Storage** | Dados e modelos | Bucket com versioning |
+| **Cloud Build** | CI/CD pipeline | Build automático |
+| **Cloud Run** | MLflow server | 2GB RAM, 1 CPU |
+| **Cloud Logging** | Monitoramento | Logs estruturados |
+
+### 📊 Configuração de Treinamento
+
+```yaml
+# Exemplo de configuração para LSTM-VAE
+training:
+  model: lstm_vae
+  epochs: 150
+  batch_size: 64
+  learning_rate: 0.0001
+  machine_type: n1-standard-4
+  accelerator: NVIDIA_TESLA_T4
+  worker_count: 2
+```
+
+### 🚀 Quick Start
+
+1. **Configurar GCP**:
+   ```bash
+   export GOOGLE_CLOUD_PROJECT="your-project-id"
+   export GOOGLE_CLOUD_REGION="us-central1"
+   export GCS_BUCKET_NAME="your-bucket-name"
+
+   chmod +x scripts/setup_gcp.sh
+   ./scripts/setup_gcp.sh
+   ```
+
+2. **Instalar dependências**:
+   ```bash
+   uv sync
+   ```
+
+3. **Treinar modelo**:
+   ```bash
+   python examples/train_lstm_vae_gcp.py \
+     --data-path data/your_data.csv \
+     --model-name my-model \
+     --epochs 100
+   ```
+
+### 📈 Monitoramento
+
+- **MLflow**: Tracking de experimentos e métricas
+- **TensorBoard**: Visualização de treinamento
+- **Cloud Logging**: Logs centralizados
+- **Cloud Monitoring**: Métricas e alertas
+
+### 💰 Estimativa de Custos
+
+| Serviço | Custo/Hora | Uso Estimado | Custo Mensal |
+|----------|------------|--------------|--------------|
+| Vertex AI (n1-standard-4 + T4) | $0.47 | 10 horas | $4.70 |
+| Cloud Storage | $0.02/GB | 100 GB | $2.00 |
+| Cloud Build | $0.003/min | 30 min | $0.09 |
+| **Total** | - | - | **~$6.79** |
+
+*Estimativas baseadas em uso moderado. Custos reais podem variar.*
 
 ## 📁 Estrutura do Projeto
 
 ```
 petrobras-offshore-wells-anomaly-detection-control-charts/
-├── 📁 data/                    # Datasets e dados processados
-├── 📁 notebooks/               # Marimo notebooks para EDA e experimentos
-├── 📁 src/                     # Código fonte
-│   ├── 📁 data/               # Scripts de pré-processamento
-│   ├── 📁 models/             # Implementação dos modelos
-│   ├── 📁 evaluation/         # Scripts de avaliação
-│   └── 📁 api/                # API para inferência
-├── 📁 tests/                   # Testes automatizados
-├── 📁 docs/                    # Documentação
-├── 📁 docker/                  # Arquivos Docker
-├── 📁 .github/                 # GitHub Actions
-├── 📄 pyproject.toml           # Configuração do projeto e dependências
-├── 📄 requirements.txt          # Dependências Python (compatibilidade)
-├── 📄 Dockerfile               # Containerização
-└── 📄 README.md                # Este arquivo
+├── 📁 src/
+│   ├── 📁 gcp/                    # ☁️ Integração Google Cloud
+│   │   ├── __init__.py
+│   │   ├── config.py              # Configuração GCP
+│   │   ├── auth.py                # Autenticação
+│   │   ├── storage.py             # Cloud Storage
+│   │   ├── vertex_ai.py           # Vertex AI
+│   │   ├── training.py            # AI Platform Training
+│   │   └── mlflow_integration.py  # MLflow + GCS
+│   ├── 📁 models/                 # Modelos de ML
+│   ├── 📁 data/                   # Processamento de dados
+│   ├── 📁 utils/                  # Utilitários
+│   └── 📁 evaluation/             # Avaliação de modelos
+├── 📁 examples/                   # Exemplos de uso
+│   └── train_lstm_vae_gcp.py     # 🚀 Treinamento na nuvem
+├── 📁 notebooks/                  # Notebooks Marimo
+├── 📁 data/                       # Datasets
+├── 📁 scripts/                    # Scripts de automação
+│   └── setup_gcp.sh              # 🚀 Setup automático GCP
+├── 📁 docker/                     # Containerização
+│   └── mlflow.Dockerfile         # MLflow server
+├── 📁 .github/workflows/          # CI/CD
+│   └── gcp-training.yml          # 🚀 Pipeline de treinamento
+├── 📁 docs/                       # Documentação
+├── 📄 gcp-config.yaml            # ⚙️ Configuração GCP
+├── 📄 env.example                 # 📝 Variáveis de ambiente
+├── 📄 mlflow-requirements.txt     # 📦 Requirements MLflow
+├── 📄 pyproject.toml             # 📦 Configuração do projeto
+└── 📄 README.md                   # 📚 Este arquivo
 ```
 
 ## ⚡ Instalação e Configuração

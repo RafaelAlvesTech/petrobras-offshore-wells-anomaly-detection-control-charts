@@ -1,0 +1,162 @@
+# Google Cloud Configuration for Petrobras Offshore Wells Anomaly Detection
+# Este arquivo contém todas as configurações necessárias para treinamento na GCP
+
+google_cloud:
+  project_id: "your-project-id"
+  region: "us-central1"
+  zone: "us-central1-a"
+
+  # Configurações de autenticação
+  authentication:
+    service_account_key_path: "path/to/service-account-key.json"
+    application_default_credentials: true
+
+  # APIs necessárias
+  required_apis:
+    - "aiplatform.googleapis.com"
+    - "ml.googleapis.com"
+    - "storage.googleapis.com"
+    - "logging.googleapis.com"
+    - "monitoring.googleapis.com"
+    - "compute.googleapis.com"
+    - "cloudbuild.googleapis.com"
+
+vertex_ai:
+  location: "us-central1"
+  experiment:
+    name: "petrobras-anomaly-detection"
+    description: "Experimentos para detecção de anomalias em poços offshore"
+
+  model_registry:
+    name: "anomaly-detection-models"
+    description: "Registro de modelos de detecção de anomalias"
+
+  training_jobs:
+    default_machine_type: "n1-standard-4"
+    default_accelerator_type: "NVIDIA_TESLA_T4"
+    default_accelerator_count: 1
+
+  hyperparameter_tuning:
+    max_trial_count: 20
+    parallel_trial_count: 5
+    algorithm: "GRID_SEARCH"
+
+ai_platform_training:
+  region: "us-central1"
+
+  # Configurações de escala
+  scale_tiers:
+    basic: "BASIC"
+    basic_gpu: "BASIC_GPU"
+    standard: "STANDARD_1"
+    premium: "PREMIUM_1"
+
+  # Tipos de máquina
+  machine_types:
+    master:
+      - "n1-standard-4"
+      - "n1-standard-8"
+      - "n1-standard-16"
+    worker:
+      - "n1-standard-4"
+      - "n1-standard-8"
+      - "n1-standard-16"
+
+  # Aceleradores GPU
+  accelerators:
+    - "NVIDIA_TESLA_T4"
+    - "NVIDIA_TESLA_V100"
+    - "NVIDIA_TESLA_P100"
+    - "NVIDIA_TESLA_K80"
+
+cloud_storage:
+  bucket_name: "your-bucket-name"
+
+  # Estrutura de pastas
+  paths:
+    data: "gs://{bucket}/data"
+    models: "gs://{bucket}/models"
+    experiments: "gs://{bucket}/experiments"
+    logs: "gs://{bucket}/logs"
+    checkpoints: "gs://{bucket}/checkpoints"
+
+  # Configurações de backup
+  backup:
+    enabled: true
+    retention_days: 30
+    versioning: true
+
+mlflow:
+  tracking_uri: "http://localhost:5000"
+  experiment_name: "petrobras-anomaly-detection"
+
+  # Configurações de artefatos
+  artifacts:
+    storage: "gcs"
+    bucket: "your-bucket-name"
+    path: "mlflow-artifacts"
+
+tensorboard:
+  enabled: true
+  log_dir: "gs://your-bucket-name/tensorboard-logs"
+  port: 6006
+
+# Configurações de treinamento
+training:
+  # Configurações padrão
+  default:
+    batch_size: 32
+    learning_rate: 0.001
+    epochs: 100
+    validation_split: 0.2
+
+  # Configurações específicas por modelo
+  models:
+    lstm_vae:
+      batch_size: 64
+      learning_rate: 0.0001
+      epochs: 150
+
+    tranad:
+      batch_size: 128
+      learning_rate: 0.0005
+      epochs: 200
+
+    usad:
+      batch_size: 256
+      learning_rate: 0.001
+      epochs: 100
+
+    ecod:
+      batch_size: 512
+      learning_rate: 0.01
+      epochs: 50
+
+# Configurações de monitoramento
+monitoring:
+  logging:
+    level: "INFO"
+    format: "json"
+
+  metrics:
+    - "training_loss"
+    - "validation_loss"
+    - "accuracy"
+    - "f1_score"
+    - "auc_pr"
+
+  alerts:
+    enabled: true
+    training_failure: true
+    model_degradation: true
+
+# Configurações de deployment
+deployment:
+  model_serving:
+    machine_type: "n1-standard-2"
+    min_replicas: 1
+    max_replicas: 10
+
+  endpoints:
+    prediction: "anomaly-detection-prediction"
+    explanation: "anomaly-detection-explanation"
