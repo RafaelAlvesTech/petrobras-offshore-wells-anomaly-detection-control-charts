@@ -1,0 +1,346 @@
+# AWS Configuration for Petrobras Offshore Wells Anomaly Detection
+# Este arquivo contém todas as configurações necessárias para treinamento na AWS
+
+aws:
+  region: "us-east-1"
+  account_id: "your-account-id"
+
+  # Configurações de autenticação
+  authentication:
+    profile_name: "default"
+    access_key_id: "${AWS_ACCESS_KEY_ID}"
+    secret_access_key: "${AWS_SECRET_ACCESS_KEY}"
+    session_token: "${AWS_SESSION_TOKEN}"
+
+  # Configurações de IAM
+  iam:
+    role_name: "PetrobrasAnomalyDetectionRole"
+    policy_name: "PetrobrasAnomalyDetectionPolicy"
+    user_name: "petrobras-ml-user"
+
+# Amazon SageMaker Configuration
+sagemaker:
+  region: "us-east-1"
+
+  # Configurações de domínio
+  domain:
+    name: "petrobras-anomaly-detection"
+    auth_mode: "IAM"
+    vpc_id: "vpc-xxxxxxxxx"
+    subnet_ids: ["subnet-xxxxxxxxx", "subnet-xxxxxxxxx"]
+
+  # Configurações de notebook
+  notebook:
+    instance_type: "ml.t3.medium"
+    volume_size_gb: 5
+    lifecycle_config_name: "petrobras-lifecycle"
+
+  # Configurações de treinamento
+  training:
+    default_instance_type: "ml.p3.2xlarge"
+    gpu_instance_types:
+      - "ml.p3.2xlarge"    # 1x V100
+      - "ml.p3.8xlarge"    # 4x V100
+      - "ml.p3.16xlarge"   # 8x V100
+      - "ml.g4dn.xlarge"   # 1x T4
+      - "ml.g4dn.2xlarge"  # 1x T4
+      - "ml.g4dn.4xlarge"  # 1x T4
+      - "ml.g4dn.8xlarge"  # 1x T4
+      - "ml.g5.xlarge"     # 1x A10G
+      - "ml.g5.2xlarge"    # 1x A10G
+      - "ml.g5.4xlarge"    # 1x A10G
+      - "ml.g5.8xlarge"    # 1x A10G
+      - "ml.g5.12xlarge"   # 4x A10G
+      - "ml.g5.16xlarge"   # 1x A10G
+      - "ml.g5.24xlarge"   # 4x A10G
+      - "ml.g5.48xlarge"   # 8x A10G
+
+    cpu_instance_types:
+      - "ml.c5.xlarge"
+      - "ml.c5.2xlarge"
+      - "ml.c5.4xlarge"
+      - "ml.c5.9xlarge"
+      - "ml.c5.18xlarge"
+      - "ml.c5n.xlarge"
+      - "ml.c5n.2xlarge"
+      - "ml.c5n.4xlarge"
+      - "ml.c5n.9xlarge"
+      - "ml.c5n.18xlarge"
+
+  # Configurações de experimentos
+  experiments:
+    name: "petrobras-anomaly-detection"
+    description: "Experimentos para detecção de anomalias em poços offshore"
+
+  # Configurações de modelo
+  model_registry:
+    name: "anomaly-detection-models"
+    description: "Registro de modelos de detecção de anomalias"
+
+  # Configurações de endpoint
+  endpoints:
+    prediction: "anomaly-detection-prediction"
+    explanation: "anomaly-detection-explanation"
+    instance_type: "ml.m5.large"
+    min_capacity: 1
+    max_capacity: 10
+
+# Amazon EC2 Configuration
+ec2:
+  region: "us-east-1"
+
+  # Configurações de instâncias para treinamento
+  training_instances:
+    gpu:
+      - "p3.2xlarge"      # 1x V100, 16 vCPU, 61 GB RAM
+      - "p3.8xlarge"      # 4x V100, 32 vCPU, 244 GB RAM
+      - "p3.16xlarge"     # 8x V100, 64 vCPU, 488 GB RAM
+      - "g4dn.xlarge"     # 1x T4, 4 vCPU, 16 GB RAM
+      - "g4dn.2xlarge"    # 1x T4, 8 vCPU, 32 GB RAM
+      - "g4dn.4xlarge"    # 1x T4, 16 vCPU, 64 GB RAM
+      - "g4dn.8xlarge"    # 1x T4, 32 vCPU, 128 GB RAM
+      - "g5.xlarge"       # 1x A10G, 4 vCPU, 16 GB RAM
+      - "g5.2xlarge"      # 1x A10G, 8 vCPU, 32 GB RAM
+      - "g5.4xlarge"      # 1x A10G, 16 vCPU, 64 GB RAM
+      - "g5.8xlarge"      # 1x A10G, 32 vCPU, 128 GB RAM
+      - "g5.12xlarge"     # 4x A10G, 48 vCPU, 192 GB RAM
+      - "g5.16xlarge"     # 1x A10G, 64 vCPU, 256 GB RAM
+      - "g5.24xlarge"     # 4x A10G, 96 vCPU, 384 GB RAM
+      - "g5.48xlarge"     # 8x A10G, 192 vCPU, 768 GB RAM
+
+    cpu:
+      - "c5.xlarge"       # 4 vCPU, 8 GB RAM
+      - "c5.2xlarge"      # 8 vCPU, 16 GB RAM
+      - "c5.4xlarge"      # 16 vCPU, 32 GB RAM
+      - "c5.9xlarge"      # 36 vCPU, 72 GB RAM
+      - "c5.18xlarge"     # 72 vCPU, 144 GB RAM
+      - "c5n.xlarge"      # 4 vCPU, 10.5 GB RAM
+      - "c5n.2xlarge"     # 8 vCPU, 21 GB RAM
+      - "c5n.4xlarge"     # 16 vCPU, 42 GB RAM
+      - "c5n.9xlarge"     # 36 vCPU, 96 GB RAM
+      - "c5n.18xlarge"    # 72 vCPU, 192 GB RAM
+
+  # Configurações de AMI
+  ami:
+    base_ami: "ami-0c02fb55956c7d316"  # Deep Learning AMI GPU PyTorch 2.0.1
+    custom_ami: "ami-xxxxxxxxx"         # AMI customizada se necessário
+
+  # Configurações de storage
+  storage:
+    root_volume_size_gb: 100
+    data_volume_size_gb: 500
+    volume_type: "gp3"
+    iops: 3000
+    throughput: 125
+
+# Amazon S3 Configuration
+s3:
+  bucket_name: "petrobras-anomaly-detection"
+  region: "us-east-1"
+
+  # Estrutura de pastas
+  paths:
+    data: "s3://{bucket}/data"
+    models: "s3://{bucket}/models"
+    experiments: "s3://{bucket}/experiments"
+    logs: "s3://{bucket}/logs"
+    checkpoints: "s3://{bucket}/checkpoints"
+    datasets: "s3://{bucket}/datasets"
+
+  # Configurações de backup
+  backup:
+    enabled: true
+    retention_days: 30
+    versioning: true
+    lifecycle_rules:
+      - name: "transition-to-ia"
+        transition_days: 30
+        storage_class: "STANDARD_IA"
+      - name: "transition-to-glacier"
+        transition_days: 90
+        storage_class: "GLACIER"
+      - name: "expire"
+        expiration_days: 365
+
+# Amazon CloudWatch Configuration
+cloudwatch:
+  enabled: true
+
+  # Configurações de logs
+  logs:
+    log_group: "/aws/sagemaker/petrobras-anomaly-detection"
+    retention_days: 30
+
+  # Configurações de métricas
+  metrics:
+    - "TrainingJobStatus"
+    - "TrainingJobDuration"
+    - "TrainingJobError"
+    - "ModelLatency"
+    - "InvocationCount"
+    - "InvocationErrors"
+
+  # Configurações de alarmes
+  alarms:
+    training_failure:
+      enabled: true
+      threshold: 1
+      period: 300
+    model_degradation:
+      enabled: true
+      threshold: 0.1
+      period: 300
+
+# MLflow Configuration
+mlflow:
+  tracking_uri: "http://localhost:5000"
+  experiment_name: "petrobras-anomaly-detection"
+
+  # Configurações de artefatos
+  artifacts:
+    storage: "s3"
+    bucket: "petrobras-anomaly-detection"
+    path: "mlflow-artifacts"
+
+  # Configurações de tracking
+  tracking:
+    backend_store_uri: "sqlite:///mlflow.db"
+    default_artifact_root: "s3://petrobras-anomaly-detection/mlflow-artifacts"
+
+# TensorBoard Configuration
+tensorboard:
+  enabled: true
+  log_dir: "s3://petrobras-anomaly-detection/tensorboard-logs"
+  port: 6006
+
+  # Configurações de SageMaker
+  sagemaker:
+    domain_id: "d-xxxxxxxxx"
+    user_profile_name: "petrobras-user"
+
+# Configurações de treinamento
+training:
+  # Configurações padrão
+  default:
+    batch_size: 32
+    learning_rate: 0.001
+    epochs: 100
+    validation_split: 0.2
+    early_stopping_patience: 10
+    checkpoint_save_freq: 5
+
+  # Configurações específicas por modelo
+  models:
+    lstm_vae:
+      batch_size: 64
+      learning_rate: 0.0001
+      epochs: 150
+      hidden_dim: 128
+      latent_dim: 32
+
+    tranad:
+      batch_size: 128
+      learning_rate: 0.0005
+      epochs: 200
+      attention_heads: 8
+      transformer_layers: 6
+
+    usad:
+      batch_size: 256
+      learning_rate: 0.001
+      epochs: 100
+      window_size: 100
+      feature_dim: 64
+
+    ecod:
+      batch_size: 512
+      learning_rate: 0.01
+      epochs: 50
+      contamination: 0.1
+      n_estimators: 100
+
+# Configurações de hiperparâmetros
+hyperparameter_tuning:
+  max_jobs: 20
+  max_parallel_jobs: 5
+  strategy: "Bayesian"
+
+  # Espaço de busca para cada modelo
+  search_spaces:
+    lstm_vae:
+      learning_rate:
+        min_value: 0.0001
+        max_value: 0.01
+        type: "Continuous"
+      hidden_dim:
+        values: [64, 128, 256]
+        type: "Categorical"
+      latent_dim:
+        values: [16, 32, 64]
+        type: "Categorical"
+
+    tranad:
+      learning_rate:
+        min_value: 0.0001
+        max_value: 0.01
+        type: "Continuous"
+      attention_heads:
+        values: [4, 8, 16]
+        type: "Categorical"
+      transformer_layers:
+        values: [4, 6, 8]
+        type: "Categorical"
+
+# Configurações de deployment
+deployment:
+  model_serving:
+    instance_type: "ml.m5.large"
+    min_capacity: 1
+    max_capacity: 10
+    target_cpu_utilization: 70
+
+  # Configurações de A/B testing
+  a_b_testing:
+    enabled: true
+    traffic_split: 0.5
+
+  # Configurações de rollback
+  rollback:
+    enabled: true
+    automatic: true
+    threshold: 0.1
+
+# Configurações de segurança
+security:
+  vpc:
+    vpc_id: "vpc-xxxxxxxxx"
+    subnet_ids: ["subnet-xxxxxxxxx", "subnet-xxxxxxxxx"]
+    security_group_ids: ["sg-xxxxxxxxx"]
+
+  encryption:
+    s3_encryption: true
+    ebs_encryption: true
+    in_transit_encryption: true
+
+  access_control:
+    s3_bucket_policy: true
+    iam_least_privilege: true
+    vpc_endpoints: true
+
+# Configurações de custos
+cost_optimization:
+  spot_instances:
+    enabled: true
+    max_wait_time: 3600
+
+  reserved_instances:
+    enabled: false
+
+  savings_plans:
+    enabled: false
+
+  # Alertas de custo
+  cost_alerts:
+    enabled: true
+    monthly_budget: 1000
+    daily_budget: 50

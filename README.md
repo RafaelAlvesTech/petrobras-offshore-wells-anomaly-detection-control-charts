@@ -41,22 +41,21 @@ Este projeto PIBIC foca na **detecção de anomalias em operações de poços de
 ## 🚀 Funcionalidades
 
 ### ✅ Implementadas
-- [ ] Análise exploratória de dados (EDA)
-- [ ] Pré-processamento e limpeza de dados
-- [ ] Engenharia de atributos avançada
-- [ ] Implementação de modelos SOTA
-- [ ] Avaliação comparativa de performance
-- [ ] Protótipo de API para inferência
-- [ ] Containerização com Docker
-- [ ] CI/CD básico com GitHub Actions
+- [x] **Integração completa com Dataset 3W da Petrobras**
+- [x] **Sistema de carregamento de dados unificado**
+- [x] **Pré-processamento avançado para séries temporais**
+- [x] **Sistema de configuração YAML**
+- [x] **Cache inteligente de dados**
+- [x] **Validação cruzada estratificada**
 - [x] **Integração com Google Cloud Platform**
 - [x] **Treinamento distribuído na nuvem**
 - [x] **Experiment tracking com MLflow**
 
 ### 🔄 Em Desenvolvimento
 - [ ] Treinamento dos modelos selecionados
-- [ ] Otimização de hiperparâmetros
-- [ ] Análise de interpretabilidade
+- [ ] Otimização de hiperparâmetros com Optuna
+- [ ] Análise de interpretabilidade com SHAP
+- [ ] Implementação de modelos SOTA (TranAD, LSTM-VAE, USAD)
 
 ### 📋 Planejadas
 - [ ] Interface de usuário para monitoramento
@@ -72,10 +71,12 @@ Este projeto PIBIC foca na **detecção de anomalias em operações de poços de
   - Alta dimensionalidade
   - Interdependência entre variáveis
   - Eventos anômalos raros e imprevisíveis
+- **Integração**: ✅ **Completamente integrado** com módulos nativos
 
 ### 🎯 Foco Especial
 - **Falhas de equipamento**: Identificação de problemas incipientes
 - **Instabilidades de fluxo**: Monitoramento de operações anormais
+- **Problemas disponíveis**: Classificador binário de fechamento espúrio de DHSV
 
 ## 🛠️ Tecnologias
 
@@ -88,13 +89,22 @@ Este projeto PIBIC foca na **detecção de anomalias em operações de poços de
 - **Matplotlib/Seaborn**: Visualização
 - **Marimo**: Notebooks interativos Python modernos
 
-### ☁️ Google Cloud Platform
+### ☁️ Cloud Platforms
+
+#### Google Cloud Platform (GCP)
 - **Vertex AI**: Treinamento e deployment de modelos
 - **AI Platform**: Treinamento distribuído
 - **Cloud Storage**: Armazenamento de dados e modelos
 - **Cloud Build**: CI/CD automatizado
 - **Cloud Run**: Servidor MLflow
 - **Cloud Logging & Monitoring**: Observabilidade
+
+#### Amazon Web Services (AWS)
+- **SageMaker**: Plataforma de ML para treinamento e deployment
+- **S3**: Armazenamento de dados, modelos e artefatos
+- **EC2**: Instâncias para treinamento customizado
+- **CloudWatch**: Monitoramento e logging
+- **IAM**: Gerenciamento de permissões e segurança
 
 ### 📦 Gerenciamento de Dependências
 - **uv**: Gerenciador de pacotes Python moderno e rápido
@@ -167,6 +177,7 @@ training:
 
 ### 🚀 Quick Start
 
+#### ☁️ **Opção A: Google Cloud Platform (GCP)**
 1. **Configurar GCP**:
    ```bash
    export GOOGLE_CLOUD_PROJECT="your-project-id"
@@ -190,15 +201,44 @@ training:
      --epochs 100
    ```
 
+#### 🚀 **Opção B: Amazon Web Services (AWS)**
+1. **Configurar AWS**:
+   ```bash
+   export AWS_ACCESS_KEY_ID="your-access-key"
+   export AWS_SECRET_ACCESS_KEY="your-secret-key"
+   export AWS_REGION="us-east-1"
+
+   chmod +x scripts/setup_aws.sh
+   ./scripts/setup_aws.sh
+   ```
+
+2. **Instalar dependências**:
+   ```bash
+   uv sync
+   ```
+
+3. **Treinar modelo**:
+   ```bash
+   python src/aws_training.py
+   ```
+
 ### 📈 Monitoramento
 
+#### Google Cloud Platform
 - **MLflow**: Tracking de experimentos e métricas
 - **TensorBoard**: Visualização de treinamento
 - **Cloud Logging**: Logs centralizados
 - **Cloud Monitoring**: Métricas e alertas
 
+#### Amazon Web Services
+- **MLflow**: Tracking de experimentos e métricas
+- **TensorBoard**: Visualização de treinamento
+- **CloudWatch**: Logs centralizados, métricas e alertas
+- **SageMaker Studio**: Monitoramento integrado de treinamentos
+
 ### 💰 Estimativa de Custos
 
+#### Google Cloud Platform
 | Serviço | Custo/Hora | Uso Estimado | Custo Mensal |
 |----------|------------|--------------|--------------|
 | Vertex AI (n1-standard-4 + T4) | $0.47 | 10 horas | $4.70 |
@@ -206,7 +246,15 @@ training:
 | Cloud Build | $0.003/min | 30 min | $0.09 |
 | **Total** | - | - | **~$6.79** |
 
-*Estimativas baseadas em uso moderado. Custos reais podem variar.*
+#### Amazon Web Services
+| Serviço | Custo/Hora | Uso Estimado | Custo Mensal |
+|----------|------------|--------------|--------------|
+| SageMaker (ml.p3.2xlarge + V100) | $3.06 | 10 horas | $30.60 |
+| S3 Storage | $0.023/GB | 100 GB | $2.30 |
+| CloudWatch | $0.50/milhão | 1 milhão | $0.50 |
+| **Total** | - | - | **~$33.40** |
+
+*Estimativas baseadas em uso moderado. Custos reais podem variar. AWS oferece Spot Instances para redução de custos.*
 
 ## 📁 Estrutura do Projeto
 
@@ -221,8 +269,20 @@ petrobras-offshore-wells-anomaly-detection-control-charts/
 │   │   ├── vertex_ai.py           # Vertex AI
 │   │   ├── training.py            # AI Platform Training
 │   │   └── mlflow_integration.py  # MLflow + GCS
+│   ├── 📁 aws/                    # 🚀 Integração Amazon Web Services
+│   │   ├── __init__.py
+│   │   ├── aws_config_manager.py  # Gerenciador de configuração AWS
+│   │   └── aws_training.py        # Gerenciador de treinamento AWS
 │   ├── 📁 models/                 # Modelos de ML
-│   ├── 📁 data/                   # Processamento de dados
+│   ├── 📁 data/                   # 🛢️ Processamento de dados + Integração 3W
+│   │   ├── __init__.py
+│   │   ├── threew_dataset.py      # Interface com Dataset 3W
+│   │   ├── data_loader.py         # Carregador unificado de dados
+│   │   └── preprocessing.py       # Pré-processamento avançado
+│   ├── 📁 config/                 # ⚙️ Sistema de configuração
+│   │   ├── __init__.py
+│   │   ├── config_manager.py      # Gerenciador de configurações
+│   │   └── threew_config.py      # Configurações específicas 3W
 │   ├── 📁 utils/                  # Utilitários
 │   └── 📁 evaluation/             # Avaliação de modelos
 ├── 📁 examples/                   # Exemplos de uso
@@ -230,13 +290,21 @@ petrobras-offshore-wells-anomaly-detection-control-charts/
 ├── 📁 notebooks/                  # Notebooks Marimo
 ├── 📁 data/                       # Datasets
 ├── 📁 scripts/                    # Scripts de automação
-│   └── setup_gcp.sh              # 🚀 Setup automático GCP
+│   ├── setup_gcp.sh              # 🚀 Setup automático GCP
+│   ├── setup_aws.sh              # 🚀 Setup automático AWS
+│   ├── setup_3w_integration.sh   # 🛢️ Setup automático 3W (Linux/macOS)
+│   └── setup_3w_integration.ps1  # 🛢️ Setup automático 3W (Windows)
 ├── 📁 docker/                     # Containerização
 │   └── mlflow.Dockerfile         # MLflow server
 ├── 📁 .github/workflows/          # CI/CD
 │   └── gcp-training.yml          # 🚀 Pipeline de treinamento
 ├── 📁 docs/                       # Documentação
+│   ├── AWS_SETUP.md              # 📚 Setup AWS
+│   └── 3W_INTEGRATION.md         # 🛢️ Integração com Dataset 3W
 ├── 📄 gcp-config.yaml            # ⚙️ Configuração GCP
+├── 📄 aws-config.yaml            # ⚙️ Configuração AWS
+├── 📄 config/3w_config.yaml      # ⚙️ Configuração 3W
+├── 📄 env.aws.example            # 📝 Variáveis de ambiente AWS
 ├── 📄 env.example                 # 📝 Variáveis de ambiente
 ├── 📄 mlflow-requirements.txt     # 📦 Requirements MLflow
 ├── 📄 pyproject.toml             # 📦 Configuração do projeto
@@ -340,7 +408,38 @@ source .venv/bin/activate  # Linux/Mac
 uv pip install -r requirements.txt
 # ou sincronize o projeto (recomendado)
 uv sync
+
+### 🛢️ **7. Configurar Integração com Dataset 3W da Petrobras**
+
+#### 🚀 **Setup Automático (Recomendado)**
+```bash
+# Linux/macOS
+chmod +x scripts/setup_3w_integration.sh
+./scripts/setup_3w_integration.sh
+
+# Windows (PowerShell)
+.\scripts\setup_3w_integration.ps1
 ```
+
+#### 🔧 **Setup Manual**
+```bash
+# 1. Clonar o dataset 3W
+git clone https://github.com/petrobras/3W.git
+
+# 2. Verificar integração
+python -c "from src.data.threew_dataset import is_threew_available; print('3W disponível:', is_threew_available())"
+
+# 3. Executar notebook de exemplo
+marimo edit notebooks/3W_integration_example.py
+```
+
+#### 📊 **O que a integração 3W oferece:**
+- ✅ **Dataset real da Petrobras**: Dados de poços offshore reais
+- ✅ **Problemas implementados**: Classificador binário de fechamento espúrio de DHSV
+- ✅ **Carregamento automático**: Sistema unificado para dados
+- ✅ **Pré-processamento avançado**: Normalização, seleção de features, PCA
+- ✅ **Validação cruzada**: Folds configurados automaticamente
+- ✅ **Cache inteligente**: Performance otimizada para grandes datasets
 
 # 7. Configure as variáveis de ambiente
 cp .env.example .env

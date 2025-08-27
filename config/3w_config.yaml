@@ -1,0 +1,87 @@
+# Configuração para integração com o Dataset 3W da Petrobras
+# Este arquivo contém configurações específicas para o dataset 3W
+
+# Configurações do Dataset
+dataset:
+  name: "3W"
+  version: "1.1.0"
+  description: "Dataset 3W da Petrobras para detecção de anomalias em poços offshore"
+
+  # Caminhos
+  paths:
+    toolkit: "3W/toolkit"
+    dataset: "3W/dataset"
+    folds: "3W/dataset/folds"
+    problems: "3W/problems"
+    overviews: "3W/overviews"
+
+  # Configurações de carregamento
+  loading:
+    use_cache: true
+    cache_size: 1000  # MB
+    normalize_data: true
+    test_size: 0.2
+    random_state: 42
+
+  # Configurações de pré-processamento
+  preprocessing:
+    imputation_strategy: "mean"  # mean, median, most_frequent
+    scaling_method: "robust"     # standard, minmax, robust
+    feature_selection_method: "mutual_info"  # mutual_info, f_classif, variance
+    n_features: null             # null para usar todas, ou número específico
+    pca_components: null         # null para não usar PCA, ou número específico
+
+  # Configurações de janelas deslizantes
+  rolling_window:
+    window_size: 100
+    step_size: 1
+    padding: "same"  # same, valid, full
+
+# Problemas disponíveis
+problems:
+  - name: "01_binary_classifier_of_spurious_closure_of_dhsv"
+    description: "Classificador binário para fechamento espúrio de DHSV"
+    type: "classification"
+    target_column: 0  # Primeira coluna é o target
+
+# Configurações de experimentos
+experiments:
+  default:
+    n_folds: 5
+    cross_validation: true
+    hyperparameter_optimization: true
+    optimization_trials: 100
+
+# Configurações de logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/3w_integration.log"
+
+# Configurações de cache
+cache:
+  enabled: true
+  max_size: 1000  # MB
+  ttl: 3600       # segundos
+  backend: "memory"  # memory, disk, redis
+
+# Configurações de validação
+validation:
+  check_data_integrity: true
+  validate_schema: true
+  check_missing_values: true
+  outlier_detection: true
+
+# Configurações de performance
+performance:
+  use_multiprocessing: true
+  n_jobs: -1  # -1 para usar todos os cores
+  batch_size: 1000
+  memory_efficient: true
+
+# Configurações de exportação
+export:
+  formats: ["parquet", "csv", "numpy"]
+  compression: "brotli"
+  include_metadata: true
+  save_preprocessing_pipeline: true

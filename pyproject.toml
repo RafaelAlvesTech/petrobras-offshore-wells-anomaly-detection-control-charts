@@ -5,32 +5,33 @@ description = "Jupyter Notebook Template"
 readme = "README.md"
 requires-python = "==3.11.13"
 dependencies = [
-    "google-genai>=1.31.0",
-    "google-generativeai>=0.8.5",
     "marimo>=0.15.0",
     "pandas>=2.3.2",
-    "pip>=25.2",
     "polars>=1.32.3",
     "scikit-learn>=1.7.1",
     "torch>=2.0.1",
     "torchaudio>=2.0.2",
     "torchvision>=0.15.2",
-    # Google Cloud AI Platform
-    "google-cloud-aiplatform>=1.38.0",
-    "google-cloud-storage>=2.10.0",
-    "google-cloud-logging>=3.8.0",
-    "google-cloud-monitoring>=2.16.0",
-    "google-auth>=2.40.3",
-    "google-api-python-client>=2.179.0",
-    # ML e treinamento distribuído
+    # ML e treinamento
     "tensorboard>=2.15.0",
     "mlflow>=2.8.0",
     "optuna>=3.4.0",
     "wandb>=0.16.0",
-    # Utilitários para cloud
+    # Utilitários básicos
     "python-dotenv>=1.0.0",
     "pyyaml>=6.0.1",
     "click>=8.1.7",
+    # Dependências para dados
+    "pyarrow>=19.0",
+    "h5py>=3.13",
+    "tslearn>=0.6",
+    "ydata-profiling>=4.15",
+    "numba>=0.61",
+    "missingno>=0.5",
+    "alive-progress>=3.2",
+    "natsort>=8.4",
+    "plotly>=6.0",
+    "pydantic>=2.10",
 ]
 
 [dependency-groups]
