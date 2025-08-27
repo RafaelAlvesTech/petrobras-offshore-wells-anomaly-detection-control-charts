@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange.svg)](https://github.com/your-username/petrobras-offshore-wells-anomaly-detection-control-charts)
-[![PIBIC](https://img.shields.io/badge/PIBIC-2024-purple.svg)](https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/programas-de-bolsa-de-iniciacao-cientifica)
+[![PIBIC](https://img.shields.io/badge/PIBIC-2025-purple.svg)](https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/programas-de-bolsa-de-iniciacao-cientifica)
 
 > **Detecção de Anomalias em Séries Temporais Multivariadas de Poços Offshore da Petrobras utilizando Modelos de Machine Learning Inovadores e Gráficos de Controle**
 
@@ -444,8 +444,8 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 📞 Contato
 
-- **Autor**: [Seu Nome]
-- **Email**: [seu.email@exemplo.com]
+- **Autor**: [Rafael Alves]
+- **Email**: [rafaelpereiraalves@ufba.br]
 - **GitHub**: [@seu-usuario](https://github.com/seu-usuario)
 - **LinkedIn**: [Seu Perfil](https://linkedin.com/in/seu-perfil)
 
