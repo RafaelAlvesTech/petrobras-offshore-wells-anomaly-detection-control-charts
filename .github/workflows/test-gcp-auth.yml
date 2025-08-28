@@ -33,6 +33,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
+      - name: Quick Secret Check
+        run: |
+          echo "🔍 Quick check for Workload Identity secrets..."
+          if [ -z "${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}" ] || [ -z "${{ secrets.GCP_SERVICE_ACCOUNT }}" ]; then
+            echo "❌ Workload Identity secrets not configured"
+            echo "💡 This workflow requires Workload Identity Federation setup"
+            echo "🔧 Use test-gcp-auth-simple.yml for Service Account authentication instead"
+            echo "📚 See: https://github.com/google-github-actions/auth#workload-identity-federation"
+            exit 1
+          fi
+          echo "✅ Workload Identity secrets found - proceeding with authentication test"
+
       - name: Check Required Secrets
         run: |
           echo "=== GCP Workload Identity Authentication Test ==="

@@ -33,6 +33,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
+      - name: Quick Secret Check
+        run: |
+          echo "🔍 Quick check for Service Account secrets..."
+          if [ -z "${{ secrets.GCP_CREDENTIALS_JSON }}" ] || [ -z "${{ secrets.GCP_PROJECT_ID }}" ]; then
+            echo "❌ Service Account secrets not configured"
+            echo "💡 This workflow requires GCP Service Account credentials"
+            echo "🔧 Use test-gcp-auth.yml for Workload Identity Federation instead"
+            echo "📚 See: https://github.com/google-github-actions/auth#service-account-key-authentication"
+            exit 1
+          fi
+          echo "✅ Service Account secrets found - proceeding with authentication test"
+
       - name: Check Required Secrets
         run: |
           echo "=== GCP Service Account Authentication Test ==="
