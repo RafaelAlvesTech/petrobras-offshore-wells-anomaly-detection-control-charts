@@ -286,12 +286,6 @@ CER-UFBA welcomes collaboration with:
 
 **📚 This project is proudly developed under the academic supervision of CER-UFBA, contributing to the advancement of statistical methodologies for industrial risk assessment and anomaly detection.**
 
-## 📞 Contact
-
-- **Project Lead**: [Your Name]
-- **Institution**: [Your University]
-- **Email**: [your.email@university.edu]
-
 ---
 
 > **🇧🇷 [Ver documentação em Português Brasileiro](README.pt-BR.md)**
@@ -300,73 +294,35 @@ CER-UFBA welcomes collaboration with:
   <sub>Built with ❤️ for offshore well safety and efficiency</sub>
 </div>
 
-## 🔌 Extensões Essenciais do VS Code/Cursor
-O projeto inclui configurações automáticas para as seguintes extensões essenciais:
+## 🔌 VS Code/Cursor Extensions
 
-### 🐍 Python Development
-- **ms-python.python**: Suporte completo ao Python
-- **ms-python.vscode-pylance**: IntelliSense avançado para Python
-- **charliermarsh.ruff**: Linting e formatação rápida
-
-### 📊 Data Science & Jupyter
-- **ms-toolsai.jupyter**: Suporte completo ao Jupyter
-- **ms-toolsai.jupyter-keymap**: Atalhos de teclado para Jupyter
-
-### 🔧 Development Tools
-- **ms-vscode.vscode-json**: Suporte ao JSON
-- **yzhang.markdown-all-in-one**: Editor Markdown avançado
-
-### 🐳 Docker & Containers
-- **ms-azuretools.vscode-docker**: Suporte ao Docker
-
-### 🔄 Git & Version Control
+### Essential Extensions
+- **ms-python.python**: Complete Python support
+- **ms-python.vscode-pylance**: Advanced IntelliSense for Python
+- **charliermarsh.ruff**: Fast linting and formatting
+- **ms-toolsai.jupyter**: Complete Jupyter support
+- **ms-toolsai.jupyter-keymap**: Jupyter keyboard shortcuts
+- **ms-vscode.vscode-json**: JSON support
+- **yzhang.markdown-all-in-one**: Advanced Markdown editor
+- **ms-azuretools.vscode-docker**: Docker support
 - **eamodio.gitlens**: Git supercharged
+- **pkief.material-icon-theme**: Material Design icons
+- **littlefoxteam.vscode-python-test-adapter**: Python test runner
+- **GitHub.copilot**: AI code assistant
+- **GitHub.copilot-chat**: AI development chat
 
-### 🎨 Themes & Icons
-- **pkief.material-icon-theme**: Ícones Material Design
+## 🤖 Claude Code Configuration
 
-### 🧪 Testing
-- **littlefoxteam.vscode-python-test-adapter**: Test runner para Python
+### Development Tools
+- **ms-python.black-formatter**: Automatic Python code formatting
+- **ms-python.isort**: Automatic import organization
+- **ms-python.flake8**: Advanced Python linting
+- **ms-python.mypy-type-checker**: Static type checking
+- **ms-python.pylint**: Python code analysis
+- **ms-python.autopep8**: Automatic PEP 8 formatting
+- **ms-toolsai.jupyter-renderers**: Renderers for different formats
 
-### 🚀 AI & Productivity
-- **GitHub.copilot**: Assistente de IA para código
-- **GitHub.copilot-chat**: Chat com IA para desenvolvimento
-
-## 🤖 Claude Code - Configurações Específicas
-
-### 🧠 Extensões de IA e Machine Learning
-- **ms-python.black-formatter**: Formatação automática de código Python
-- **ms-python.isort**: Organização automática de imports
-- **ms-python.flake8**: Linting avançado para Python
-- **ms-python.mypy-type-checker**: Verificação de tipos estática
-- **ms-python.pylint**: Análise de código Python
-- **ms-python.autopep8**: Formatação automática PEP 8
-
-### 📈 Análise de Dados e Visualização
-- **ms-python.python**: Suporte nativo ao Python
-- **ms-python.vscode-pylance**: IntelliSense e análise de código
-- **ms-toolsai.jupyter**: Suporte completo ao Jupyter
-- **ms-toolsai.jupyter-keymap**: Atalhos para notebooks
-- **ms-toolsai.jupyter-renderers**: Renderizadores para diferentes formatos
-- **ms-python.python**: Interpretador Python configurável
-
-### 🔬 Ciência de Dados e ML
-- **ms-python.python**: Suporte ao Python científico
-- **ms-python.vscode-pylance**: Análise de código avançada
-- **ms-toolsai.jupyter**: Notebooks interativos
-- **ms-python.black-formatter**: Formatação consistente
-- **ms-python.isort**: Organização de imports
-- **ms-python.flake8**: Qualidade de código
-
-### 🚀 Produtividade e Desenvolvimento
-- **ms-vscode.vscode-json**: Suporte ao JSON
-- **yzhang.markdown-all-in-one**: Editor Markdown
-- **ms-azuretools.vscode-docker**: Suporte ao Docker
-- **eamodio.gitlens**: Git avançado
-- **pkief.material-icon-theme**: Ícones Material Design
-- **littlefoxteam.vscode-python-test-adapter**: Testes Python
-
-### ⚙️ Configurações Específicas para o Projeto
+### ⚙️ Project Specific Settings
 
 #### Python Interpreter
 ```json
@@ -405,30 +361,30 @@ O projeto inclui configurações automáticas para as seguintes extensões essen
 }
 ```
 
-### 🎯 Configurações Recomendadas para Claude Code
+### 🎯 Recommended Settings for Claude Code
 
-#### 1. **Configuração do Ambiente Python**
-- Use o ambiente virtual `.venv` criado pelo `uv`
-- Configure o Python interpreter para `./.venv/bin/python`
-- Ative o ambiente automaticamente no terminal
+#### 1. **Python Environment Setup**
+- Use virtual environment `.venv` created by `uv`
+- Configure Python interpreter to `./.venv/bin/python`
+- Activate environment automatically in terminal
 
-#### 2. **Formatação e Linting**
-- Black para formatação automática (linha 88)
-- isort para organização de imports
-- Flake8 para linting de código
-- MyPy para verificação de tipos
+#### 2. **Formatting and Linting**
+- Black for automatic formatting (line 88)
+- isort for import organization
+- Flake8 for code linting
+- MyPy for type checking
 
-#### 3. **Notebooks e Jupyter**
-- Suporte completo ao Marimo
-- Kernel Python 3.11 configurado
-- Renderizadores para diferentes formatos de dados
+#### 3. **Notebooks and Jupyter**
+- Complete Marimo support
+- Python 3.11 kernel configured
+- Renderers for different data formats
 
-#### 4. **Desenvolvimento Científico**
-- IntelliSense avançado para bibliotecas científicas
-- Suporte a Polars, PyTorch, TensorFlow
-- Integração com ferramentas de ML
+#### 4. **Scientific Development**
+- Advanced IntelliSense for scientific libraries
+- Support for Polars, PyTorch, TensorFlow
+- Integration with ML tools
 
-### 🚀 Setup Automático para Claude Code
+### 🚀 Automatic Setup for Claude Code
 
 #### Linux/macOS
 ```bash
@@ -446,18 +402,18 @@ chmod +x scripts/install_claude_extensions.sh
 python scripts/install_claude_extensions.py
 ```
 
-### 📁 Estrutura de Configurações
+### 📁 Configuration Structure
 ```
 .vscode/
-├── settings.json          # Configurações do workspace
-├── extensions.json        # Extensões recomendadas
-├── launch.json           # Configurações de debug
-└── tasks.json            # Tarefas automatizadas
+├── settings.json          # Workspace settings
+├── extensions.json        # Recommended extensions
+├── launch.json           # Debug configurations
+└── tasks.json            # Automated tasks
 ```
 
-### 🔧 Configurações Avançadas
+### 🔧 Advanced Settings
 
-#### Debug e Testing
+#### Debug and Testing
 ```json
 {
     "python.testing.pytestEnabled": true,
@@ -467,7 +423,7 @@ python scripts/install_claude_extensions.py
 }
 ```
 
-#### Terminal e Ambiente
+#### Terminal and Environment
 ```json
 {
     "terminal.integrated.defaultProfile.linux": "zsh",
@@ -477,7 +433,7 @@ python scripts/install_claude_extensions.py
 }
 ```
 
-#### Git e Versionamento
+#### Git and Versioning
 ```json
 {
     "git.enableSmartCommit": true,
@@ -485,5 +441,3 @@ python scripts/install_claude_extensions.py
     "git.autofetch": true
 }
 ```
-
-## �� Setup Automático
