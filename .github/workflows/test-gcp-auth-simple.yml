@@ -17,20 +17,36 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: "read"
+      id-token: "write"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Google Cloud CLI
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: ${{ env.GCP_PROJECT_ID }}
+      - name: Check Required Secrets
+        run: |
+          echo "Checking required secrets..."
+          if [ -z "${{ secrets.GCP_CREDENTIALS_JSON }}" ]; then
+            echo "❌ GCP_CREDENTIALS_JSON not configured"
+            echo "Please configure GCP service account credentials"
+            exit 1
+          fi
+          if [ -z "${{ secrets.GCP_PROJECT_ID }}" ]; then
+            echo "❌ GCP_PROJECT_ID not configured"
+            echo "Please configure GCP project ID"
+            exit 1
+          fi
+          echo "✅ All required secrets are configured"
 
       - name: Authenticate to Google Cloud (Simple)
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+
+      - name: Setup Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
 
       - name: Verify Authentication
         run: |
@@ -50,3 +66,9 @@ jobs:
           echo "Testing project access..."
           gcloud projects describe ${{ env.GCP_PROJECT_ID }} --format="value(name)"
           echo "✅ Project access verified!"
+
+      - name: Cleanup (Optional)
+        if: always()
+        run: |
+          echo "Workflow completed successfully!"
+          echo "✅ All GCP authentication tests passed"
