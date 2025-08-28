@@ -1,735 +1,235 @@
-# 🛢️ Petrobras Offshore Wells Anomaly Detection Control Charts
+# 🛢️ Petrobras Offshore Wells Anomaly Detection
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange.svg)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts)
-[![PIBIC](https://img.shields.io/badge/PIBIC-2025-purple.svg)](https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/programas-de-bolsa-de-iniciacao-cientifica)
-[![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Platform-blue.svg)](https://cloud.google.com/)
+[![Python 3.11](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Linting: ruff](https://img.shields.io/badge/linting-ruff-red.svg)](https://github.com/astral-sh/ruff)
 
-> **Detecção de Anomalias em Séries Temporais Multivariadas de Poços Offshore da Petrobras utilizando Modelos de Machine Learning Inovadores e Gráficos de Controle**
+> **🇧🇷 [Ver documentação em Português Brasileiro](README.pt-BR.md)**
 
-## 📋 Índice
+## 🎯 Project Overview
 
-- [🎯 Visão Geral](#-visão-geral)
-- [🚀 Funcionalidades](#-funcionalidades)
-- [📊 Dataset](#-dataset)
-- [🛠️ Tecnologias](#️-tecnologias)
-- [☁️ Google Cloud Platform](#️-google-cloud-platform)
-- [📁 Estrutura do Projeto](#-estrutura-do-projeto)
-- [⚡ Instalação e Configuração](#-instalação-e-configuração)
-- [📈 Metodologia](#-metodologia)
-- [📅 Cronograma](#-cronograma)
-- [🎯 Objetivos SMART](#-objetivos-smart)
-- [🔬 Modelos Implementados](#-modelos-implementados)
-- [📊 Métricas de Avaliação](#-métricas-de-avaliação)
-- [🚀 Deployment](#-deployment)
-- [📚 Documentação](#-documentação)
-- [🤝 Contribuição](#-contribuição)
-- [📄 Licença](#-licença)
+This is a PIBIC (Undergraduate Research) project focused on **anomaly detection in multivariate time series** from Petrobras offshore wells. The project leverages state-of-the-art machine learning and deep learning techniques to identify operational anomalies in real-time drilling and production data.
 
-## 🎯 Visão Geral
+## 🚀 Key Features
 
-Este projeto PIBIC foca na **detecção de anomalias em operações de poços de petróleo offshore**, utilizando modelos inovadores de Machine Learning para analisar séries temporais multivariadas complexas. O objetivo é identificar eventos críticos como falhas de equipamento e instabilidades de fluxo de forma precoce e precisa.
+- **Multivariate Time Series Analysis**: Handles complex interdependencies between multiple well parameters
+- **State-of-the-Art Models**: Implements TranAD, LSTM-VAE, USAD, and ECOD algorithms
+- **Real-time Processing**: Optimized for high-frequency offshore well data
+- **Interpretable Results**: SHAP-based model explanations for operational decisions
+- **Cloud-Ready**: AWS and GCP deployment configurations included
 
-### 🌟 Destaques
-
-- 🔍 **Análise Multivariada**: Processamento de múltiplas variáveis interdependentes (pressão, temperatura, vazão, vibração)
-- 🤖 **Modelos SOTA**: Implementação dos algoritmos mais recentes em detecção de anomalias
-- 📊 **Gráficos de Controle**: Visualização avançada para monitoramento em tempo real
-- ☁️ **Google Cloud**: Treinamento distribuído e escalável na nuvem
-
-## 🚀 Funcionalidades
-
-### ✅ Implementadas
-- [x] **Integração completa com Dataset 3W da Petrobras**
-- [x] **Sistema de carregamento de dados unificado**
-- [x] **Pré-processamento avançado para séries temporais**
-- [x] **Sistema de configuração YAML**
-- [x] **Cache inteligente de dados**
-- [x] **Validação cruzada estratificada**
-- [x] **Integração com Google Cloud Platform**
-- [x] **Treinamento distribuído na nuvem**
-- [x] **Experiment tracking com MLflow**
-
-### 🔄 Em Desenvolvimento
-- [ ] Treinamento dos modelos selecionados
-- [ ] Otimização de hiperparâmetros com Optuna
-- [ ] Análise de interpretabilidade com SHAP
-- [ ] Implementação de modelos SOTA (TranAD, LSTM-VAE, USAD)
-
-### 📋 Planejadas
-- [ ] Interface de usuário para monitoramento
-- [ ] Relatório final PIBIC
-
-## 📊 Dataset
-
-### Dataset 3W da Petrobras
-- **Tipo**: Séries temporais multivariadas
-- **Variáveis**: Pressão, temperatura, vazão, vibração
-- **Características**:
-  - Grande volume de dados
-  - Alta dimensionalidade
-  - Interdependência entre variáveis
-  - Eventos anômalos raros e imprevisíveis
-- **Integração**: ✅ **Completamente integrado** com módulos nativos
-
-### 🎯 Foco Especial
-- **Falhas de equipamento**: Identificação de problemas incipientes
-- **Instabilidades de fluxo**: Monitoramento de operações anormais
-- **Problemas disponíveis**: Classificador binário de fechamento espúrio de DHSV
-
-## 🛠️ Tecnologias
-
-### 🐍 Linguagens e Frameworks
-- **Python 3.11**: Linguagem principal (versão LTS)
-- **PyTorch/TensorFlow**: Deep Learning
-- **Scikit-learn**: Machine Learning tradicional
-- **Pandas/NumPy**: Manipulação de dados
-- **Polars**: Manipulação de dados de alta performance (alternativa ao Pandas)
-- **Matplotlib/Seaborn**: Visualização
-- **Marimo**: Notebooks interativos Python modernos
-
-### ☁️ Cloud Platforms
-
-#### Google Cloud Platform (GCP)
-- **Vertex AI**: Treinamento e deployment de modelos
-- **AI Platform**: Treinamento distribuído
-- **Cloud Storage**: Armazenamento de dados e modelos
-- **Cloud Build**: CI/CD automatizado
-- **Cloud Run**: Servidor MLflow
-- **Cloud Logging & Monitoring**: Observabilidade
-
-#### Amazon Web Services (AWS)
-- **SageMaker**: Plataforma de ML para treinamento e deployment
-- **S3**: Armazenamento de dados, modelos e artefatos
-- **EC2**: Instâncias para treinamento customizado
-- **CloudWatch**: Monitoramento e logging
-- **IAM**: Gerenciamento de permissões e segurança
-
-### 📦 Gerenciamento de Dependências
-- **uv**: Gerenciador de pacotes Python moderno e rápido
-- **pyproject.toml**: Configuração centralizada do projeto
-- **requirements.txt**: Dependências tradicionais (compatibilidade)
-
-### 🔧 Ferramentas de Desenvolvimento
-- **Docker**: Containerização
-- **Git/GitHub**: Versionamento
-- **GitHub Actions**: CI/CD
-- **Optuna**: Otimização de hiperparâmetros
-- **PyOD**: Detecção de outliers
-- **pre-commit**: Hooks de qualidade de código
-- **Marimo**: Notebooks interativos e desenvolvimento colaborativo
-- **MLflow**: Experiment tracking e model registry
-
-## ☁️ Google Cloud Platform
-
-### 🚀 Treinamento Distribuído
-
-O projeto está configurado para treinamento de modelos na Google Cloud Platform, oferecendo:
-
-- **Escalabilidade**: Treinamento em múltiplas GPUs e máquinas
-- **Custo-efetividade**: Pagamento apenas pelo uso
-- **Integração**: Seamless integration com MLflow e experiment tracking
-- **Automação**: CI/CD pipeline para treinamento automático
-
-### 🏗️ Arquitetura
+## 🏗️ Architecture
 
 ```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Local Dev     │    │   Google Cloud   │    │   MLflow UI     │
-│                 │    │                  │    │                 │
-│ ┌─────────────┐ │    │ ┌──────────────┐ │    │ ┌─────────────┐ │
-│ │   Code      │ │───▶│ │ Vertex AI    │ │───▶│ │ Experiments │ │
-│ │             │ │    │ │              │ │    │ │             │ │
-│ └─────────────┘ │    │ └──────────────┘ │    │ └─────────────┘ │
-│                 │    │                  │    │                 │
-│ ┌─────────────┐ │    │ ┌──────────────┐ │    │ ┌─────────────┐ │
-│ │   Data      │ │───▶│ │ Cloud Storage│ │───▶│ │ Model      │ │
-│ │             │ │    │ │              │ │    │ │ Registry   │ │
-│ └─────────────┘ │    │ └──────────────┘ │    │ └─────────────┘ │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
+petrobras-offshore-wells-anomaly-detection/
+├── src/                    # Core source code
+│   ├── models/            # ML/DL model implementations
+│   ├── data/              # Data processing pipelines
+│   ├── features/          # Feature engineering
+│   └── utils/             # Utility functions
+├── notebooks/             # Marimo interactive notebooks
+├── data/                  # Datasets and processed data
+├── tests/                 # Automated test suite
+├── docs/                  # Documentation
+├── config/                # Configuration files
+├── docker/                # Containerization
+└── scripts/               # Automation scripts
 ```
 
-### 🔧 Serviços Utilizados
+## 🛠️ Technology Stack
 
-| Serviço | Propósito | Configuração |
-|---------|-----------|--------------|
-| **Vertex AI** | Treinamento e deployment | n1-standard-4 + T4 GPU |
-| **AI Platform** | Treinamento distribuído | Scale tier: BASIC_GPU |
-| **Cloud Storage** | Dados e modelos | Bucket com versioning |
-| **Cloud Build** | CI/CD pipeline | Build automático |
-| **Cloud Run** | MLflow server | 2GB RAM, 1 CPU |
-| **Cloud Logging** | Monitoramento | Logs estruturados |
+### Core Technologies
+- **Python 3.11+** - Modern Python with type hints
+- **Polars** - High-performance data manipulation (faster than Pandas)
+- **Marimo** - Interactive notebooks for collaborative development
+- **uv** - Fast Python package manager and environment management
 
-### 📊 Configuração de Treinamento
+### Machine Learning & Deep Learning
+- **PyTorch** - Deep learning framework
+- **Scikit-learn** - Traditional ML algorithms
+- **Optuna** - Hyperparameter optimization
+- **SHAP** - Model interpretability
 
-```yaml
-# Exemplo de configuração para LSTM-VAE
-training:
-  model: lstm_vae
-  epochs: 150
-  batch_size: 64
-  learning_rate: 0.0001
-  machine_type: n1-standard-4
-  accelerator: NVIDIA_TESLA_T4
-  worker_count: 2
-```
+### Data Science & Visualization
+- **Plotly** - Interactive visualizations
+- **ydata-profiling** - Automated EDA
+- **tslearn** - Time series learning utilities
 
-### 🚀 Quick Start
+### Cloud & Deployment
+- **AWS** - Cloud infrastructure and ML services
+- **GCP** - Google Cloud Platform integration
+- **MLflow** - Model lifecycle management
+- **Docker** - Containerization
 
-#### ☁️ **Opção A: Google Cloud Platform (GCP)**
-1. **Configurar GCP**:
-   ```bash
-   export GOOGLE_CLOUD_PROJECT="your-project-id"
-   export GOOGLE_CLOUD_REGION="us-central1"
-   export GCS_BUCKET_NAME="your-bucket-name"
+## 🚀 Quick Start
 
-   chmod +x scripts/setup_gcp.sh
-   ./scripts/setup_gcp.sh
-   ```
-
-2. **Instalar dependências**:
-   ```bash
-   uv sync
-   ```
-
-3. **Treinar modelo**:
-   ```bash
-   python examples/train_lstm_vae_gcp.py \
-     --data-path data/your_data.csv \
-     --model-name my-model \
-     --epochs 100
-   ```
-
-#### 🚀 **Opção B: Amazon Web Services (AWS)**
-1. **Configurar AWS**:
-   ```bash
-   export AWS_ACCESS_KEY_ID="your-access-key"
-   export AWS_SECRET_ACCESS_KEY="your-secret-key"
-   export AWS_REGION="us-east-1"
-
-   chmod +x scripts/setup_aws.sh
-   ./scripts/setup_aws.sh
-   ```
-
-2. **Instalar dependências**:
-   ```bash
-   uv sync
-   ```
-
-3. **Treinar modelo**:
-   ```bash
-   python src/aws_training.py
-   ```
-
-### 📈 Monitoramento
-
-#### Google Cloud Platform
-- **MLflow**: Tracking de experimentos e métricas
-- **TensorBoard**: Visualização de treinamento
-- **Cloud Logging**: Logs centralizados
-- **Cloud Monitoring**: Métricas e alertas
-
-#### Amazon Web Services
-- **MLflow**: Tracking de experimentos e métricas
-- **TensorBoard**: Visualização de treinamento
-- **CloudWatch**: Logs centralizados, métricas e alertas
-- **SageMaker Studio**: Monitoramento integrado de treinamentos
-
-### 💰 Estimativa de Custos
-
-#### Google Cloud Platform
-| Serviço | Custo/Hora | Uso Estimado | Custo Mensal |
-|----------|------------|--------------|--------------|
-| Vertex AI (n1-standard-4 + T4) | $0.47 | 10 horas | $4.70 |
-| Cloud Storage | $0.02/GB | 100 GB | $2.00 |
-| Cloud Build | $0.003/min | 30 min | $0.09 |
-| **Total** | - | - | **~$6.79** |
-
-#### Amazon Web Services
-| Serviço | Custo/Hora | Uso Estimado | Custo Mensal |
-|----------|------------|--------------|--------------|
-| SageMaker (ml.p3.2xlarge + V100) | $3.06 | 10 horas | $30.60 |
-| S3 Storage | $0.023/GB | 100 GB | $2.30 |
-| CloudWatch | $0.50/milhão | 1 milhão | $0.50 |
-| **Total** | - | - | **~$33.40** |
-
-*Estimativas baseadas em uso moderado. Custos reais podem variar. AWS oferece Spot Instances para redução de custos.*
-
-## 📁 Estrutura do Projeto
-
-```
-petrobras-offshore-wells-anomaly-detection-control-charts/
-├── 📁 src/
-│   ├── 📁 gcp/                    # ☁️ Integração Google Cloud
-│   │   ├── __init__.py
-│   │   ├── config.py              # Configuração GCP
-│   │   ├── auth.py                # Autenticação
-│   │   ├── storage.py             # Cloud Storage
-│   │   ├── vertex_ai.py           # Vertex AI
-│   │   ├── training.py            # AI Platform Training
-│   │   └── mlflow_integration.py  # MLflow + GCS
-│   ├── 📁 aws/                    # 🚀 Integração Amazon Web Services
-│   │   ├── __init__.py
-│   │   ├── aws_config_manager.py  # Gerenciador de configuração AWS
-│   │   └── aws_training.py        # Gerenciador de treinamento AWS
-│   ├── 📁 models/                 # Modelos de ML
-│   ├── 📁 data/                   # 🛢️ Processamento de dados + Integração 3W
-│   │   ├── __init__.py
-│   │   ├── threew_dataset.py      # Interface com Dataset 3W
-│   │   ├── data_loader.py         # Carregador unificado de dados
-│   │   └── preprocessing.py       # Pré-processamento avançado
-│   ├── 📁 config/                 # ⚙️ Sistema de configuração
-│   │   ├── __init__.py
-│   │   ├── config_manager.py      # Gerenciador de configurações
-│   │   └── threew_config.py      # Configurações específicas 3W
-│   ├── 📁 utils/                  # Utilitários
-│   └── 📁 evaluation/             # Avaliação de modelos
-├── 📁 examples/                   # Exemplos de uso
-│   └── train_lstm_vae_gcp.py     # 🚀 Treinamento na nuvem
-├── 📁 notebooks/                  # Notebooks Marimo
-├── 📁 data/                       # Datasets
-├── 📁 scripts/                    # Scripts de automação
-│   ├── setup_gcp.sh              # 🚀 Setup automático GCP
-│   ├── setup_aws.sh              # 🚀 Setup automático AWS
-│   ├── setup_3w_integration.sh   # 🛢️ Setup automático 3W (Linux/macOS)
-│   └── setup_3w_integration.ps1  # 🛢️ Setup automático 3W (Windows)
-├── 📁 docker/                     # Containerização
-│   └── mlflow.Dockerfile         # MLflow server
-├── 📁 .github/workflows/          # CI/CD
-│   └── gcp-training.yml          # 🚀 Pipeline de treinamento
-├── 📁 docs/                       # Documentação
-│   ├── AWS_SETUP.md              # 📚 Setup AWS
-│   └── 3W_INTEGRATION.md         # 🛢️ Integração com Dataset 3W
-├── 📄 gcp-config.yaml            # ⚙️ Configuração GCP
-├── 📄 aws-config.yaml            # ⚙️ Configuração AWS
-├── 📄 config/3w_config.yaml      # ⚙️ Configuração 3W
-├── 📄 env.aws.example            # 📝 Variáveis de ambiente AWS
-├── 📄 env.example                 # 📝 Variáveis de ambiente
-├── 📄 mlflow-requirements.txt     # 📦 Requirements MLflow
-├── 📄 pyproject.toml             # 📦 Configuração do projeto
-└── 📄 README.md                   # 📚 Este arquivo
-```
-
-## ⚡ Instalação e Configuração
-
-### 🚀 Setup Automático Completo
-
-Para uma configuração completa e automática do ambiente de desenvolvimento:
-
-#### 🔌 **1. Instalar Extensões do VS Code/Cursor**
-```bash
-# Linux/macOS
-chmod +x scripts/install_extensions.sh
-./scripts/install_extensions.sh
-
-# Windows (PowerShell)
-.\scripts\install_extensions.ps1
-
-# Cross-platform (Python)
-python scripts/install_extensions.py
-```
-
-#### 🐍 **2. Configurar Ambiente Python**
-```bash
-# Clone o repositório
-git clone https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts.git
-cd petrobras-offshore-wells-anomaly-detection-control-charts
-
-# Instalar uv e criar ambiente
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv venv
-source .venv/bin/activate  # Linux/Mac
-# ou
-.venv\Scripts\activate     # Windows
-
-# Instalar dependências
-uv sync
-```
-
-#### ⚙️ **3. Configurar Pre-commit Hooks**
-```bash
-uv run pre-commit install
-```
-
-### 🆕 Por que usar uv, Marimo e Polars?
-
-O **uv** é um gerenciador de pacotes Python moderno que oferece:
-- ⚡ **Velocidade**: 10-100x mais rápido que pip
-- 🔒 **Reproduzibilidade**: Lock files para dependências exatas
-- 🐍 **Compatibilidade**: Funciona com ferramentas existentes
-- 🚀 **Simplicidade**: Comandos intuitivos e configuração automática
-
-O **Marimo** é uma ferramenta moderna para notebooks Python que oferece:
-- 🎯 **Interatividade**: Widgets e componentes reativos
-- 🔄 **Reatividade**: Atualizações automáticas baseadas em dependências
-- 🚀 **Performance**: Execução rápida e eficiente
-- 🤝 **Colaboração**: Desenvolvimento em equipe simplificado
-
-O **Polars** é uma biblioteca de manipulação de dados de alta performance que oferece:
-- ⚡ **Velocidade**: 10-100x mais rápido que Pandas para operações complexas
-- 🔄 **Paralelização**: Processamento automático em múltiplos núcleos
-- 🐍 **Sintaxe Familiar**: API similar ao Pandas para fácil migração
-- 🚀 **Memória Eficiente**: Uso otimizado de memória para grandes datasets
-
-### 📋 Pré-requisitos
+### Prerequisites
 - Python 3.11+
-- uv (gerenciador de pacotes Python moderno)
-- Marimo (notebooks interativos Python)
-- Polars (manipulação de dados de alta performance)
-- Docker (opcional)
+- uv package manager
 - Git
 
-### 🚀 Instalação Rápida
+### Installation
 
-```bash
-# 1. Clone o repositório
-git clone https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts.git
-cd petrobras-offshore-wells-anomaly-detection-control-charts
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/petrobras-offshore-wells-anomaly-detection.git
+   cd petrobras-offshore-wells-anomaly-detection
+   ```
 
-# 2. Instale o uv (se ainda não tiver)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-# ou via pip
-pip install uv
+2. **Install uv (if not already installed)**
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
 
-# 3. Instale o Marimo (notebooks interativos)
-uv add marimo
+3. **Create virtual environment and install dependencies**
+   ```bash
+   uv sync
+   ```
 
-# 4. Instale o Polars (manipulação de dados de alta performance)
-uv add polars
+4. **Activate the environment**
+   ```bash
+   source .venv/bin/activate  # Linux/macOS
+   # or
+   .venv\Scripts\activate     # Windows
+   ```
 
-# 5. Crie e ative o ambiente virtual com uv
-uv venv
-source .venv/bin/activate  # Linux/Mac
-# ou
-.venv\Scripts\activate     # Windows
+### Running the Project
 
-# 6. Instale as dependências
-uv pip install -r requirements.txt
-# ou sincronize o projeto (recomendado)
-uv sync
+1. **Start Marimo notebook server**
+   ```bash
+   marimo edit notebooks/
+   ```
 
-### 🛢️ **7. Configurar Integração com Dataset 3W da Petrobras**
+2. **Run anomaly detection models**
+   ```bash
+   python src/main.py
+   ```
 
-#### 🚀 **Setup Automático (Recomendado)**
-```bash
-# Linux/macOS
-chmod +x scripts/setup_3w_integration.sh
-./scripts/setup_3w_integration.sh
+3. **Execute tests**
+   ```bash
+   pytest tests/
+   ```
 
-# Windows (PowerShell)
-.\scripts\setup_3w_integration.ps1
-```
+## 📊 Usage Examples
 
-#### 🔧 **Setup Manual**
-```bash
-# 1. Clonar o dataset 3W
-git clone https://github.com/petrobras/3W.git
-
-# 2. Verificar integração
-python -c "from src.data.threew_dataset import is_threew_available; print('3W disponível:', is_threew_available())"
-
-# 3. Executar notebook de exemplo
-marimo edit notebooks/3W_integration_example.py
-```
-
-#### 📊 **O que a integração 3W oferece:**
-- ✅ **Dataset real da Petrobras**: Dados de poços offshore reais
-- ✅ **Problemas implementados**: Classificador binário de fechamento espúrio de DHSV
-- ✅ **Carregamento automático**: Sistema unificado para dados
-- ✅ **Pré-processamento avançado**: Normalização, seleção de features, PCA
-- ✅ **Validação cruzada**: Folds configurados automaticamente
-- ✅ **Cache inteligente**: Performance otimizada para grandes datasets
-
-# 7. Configure as variáveis de ambiente
-cp .env.example .env
-# Edite o arquivo .env com suas configurações
-```
-
-### 🐳 Com Docker
-
-```bash
-# Build da imagem
-docker build -t anomaly-detection .
-
-# Executar o container
-docker run -p 8000:8000 anomaly-detection
-```
-
-### 🔧 Configuração Avançada
-
-```bash
-# Instalar pre-commit hooks
-uv run pre-commit install
-
-# Executar testes
-uv run pytest
-
-# Executar linting
-uv run ruff check .
-
-# Iniciar Marimo (notebooks interativos)
-uv run marimo edit
-
-# Benchmark de performance (Polars vs Pandas)
-uv run python -c "import polars as pl; print('Polars version:', pl.__version__)"
-
-# Atualizar dependências
-uv sync --upgrade
-
-# Verificar dependências desatualizadas
-uv sync --check
-```
-
-### 🎯 **Extensões Recomendadas**
-O projeto inclui scripts automáticos para instalar as extensões essenciais baseadas nas suas configurações pessoais do VSCode:
-
-| Categoria | Extensões | Descrição |
-|-----------|-----------|-----------|
-| 🐍 **Python** | ms-python.python, ms-python.vscode-pylance, ms-python.debugpy, ms-python.isort, charliermarsh.ruff | Desenvolvimento Python completo |
-| 📊 **Data Science** | ms-toolsai.jupyter, ms-toolsai.jupyter-keymap | Notebooks Jupyter e Marimo |
-| 🔧 **Dev Tools** | ms-vscode.vscode-json, yzhang.markdown-all-in-one, esbenp.prettier-vscode | Suporte a JSON, Markdown e formatação |
-| 🐳 **Docker** | ms-azuretools.vscode-docker, ms-kubernetes-tools.vscode-kubernetes-tools | Containerização e Kubernetes |
-| 🔄 **Git** | eamodio.gitlens, donjayamanne.githistory, github.vscode-github-actions | Git supercharged e GitHub Actions |
-| 🎨 **Themes** | pkief.material-icon-theme, github.github-vscode-theme, johnpapa.vscode-peacock | Temas e cores personalizadas |
-| 🧪 **Testing** | littlefoxteam.vscode-python-test-adapter, firsttris.vscode-jest-runner | Test runners Python e JavaScript |
-| 🚀 **AI** | GitHub.copilot, GitHub.copilot-chat, visualstudioexptteam.vscodeintellicode | Assistente de IA e IntelliCode |
-| 🔍 **Code Quality** | sonarsource.sonarlint-vscode, streetsidesoftware.code-spell-checker | Análise de código e spell checker |
-| 🛠️ **Utilities** | chakrounanas.turbo-console-log, gruntfuggly.todo-tree, wallabyjs.quokka-vscode | Ferramentas de produtividade |
-
-## 📈 Metodologia
-
-### 🔄 CRISP-DM Adaptado
-
-```mermaid
-graph TD
-    A[Entendimento do Negócio] --> B[Entendimento dos Dados]
-    B --> C[Preparação dos Dados]
-    C --> D[Modelagem]
-    D --> E[Avaliação]
-    E --> F[Deployment]
-    F --> G[Monitoramento]
-```
-
-### 📊 Fases do Projeto
-
-| Fase | Duração | Atividades Principais |
-|------|---------|----------------------|
-| 🎯 **Fase 1** | Set-Out/2025 | Revisão bibliográfica, EDA inicial |
-| 🔧 **Fase 2** | Nov-Dez/2025 | Pré-processamento, engenharia de atributos |
-| 🤖 **Fase 3** | Jan-Abr/2026 | Implementação e treinamento dos modelos |
-| 📊 **Fase 4** | Mai-Jun/2026 | Avaliação, interpretabilidade |
-| 🚀 **Fase 5** | Jul/2026 | Prototipagem, MLOps |
-| 📝 **Fase 6** | Ago/2026 | Documentação, relatório final |
-
-## 📅 Cronograma
-
-### 📅 Visão Geral (12 meses)
-
-```mermaid
-gantt
-    title Cronograma do Projeto PIBIC
-    dateFormat  YYYY-MM-DD
-    section Fase 1
-    Revisão Bibliográfica    :         des1, 2025-09-01, 2025-10-31
-    EDA Inicial             :         des2, 2025-10-01, 2025-10-31
-    section Fase 2
-    Pré-processamento       :         des3, 2025-11-01, 2025-12-31
-    Engenharia de Atributos :         des4, 2025-12-01, 2025-12-31
-    section Fase 3
-    Modelo 1 (LSTM-VAE)     :         des5, 2026-01-01, 2026-02-28
-    Modelo 2 (TranAD)       :         des6, 2026-02-01, 2026-03-31
-    Modelo 3 (ECOD)         :         des7, 2026-03-01, 2026-04-30
-    section Fase 4
-    Avaliação               :         des8, 2026-05-01, 2026-06-30
-    section Fase 5
-    Prototipagem            :         des9, 2026-07-01, 2026-07-31
-    section Fase 6
-    Documentação            :         des10, 2026-08-01, 2026-08-31
-```
-
-### 📋 Marcos Principais
-
-- [ ] **Mês 2 (Out/2025)**: EDA completa e dicionário de dados
-- [ ] **Mês 4 (Dez/2025)**: Dataset limpo e pré-processado
-- [ ] **Mês 8 (Abr/2026)**: 3+ modelos implementados e treinados
-- [ ] **Mês 10 (Jun/2026)**: Avaliação comparativa completa
-- [ ] **Mês 11 (Jul/2026)**: Protótipo funcional
-- [ ] **Mês 12 (Ago/2026)**: Relatório final PIBIC
-
-## 🎯 Objetivos SMART
-
-### 🎯 Objetivo Principal
-**Investigar, implementar e avaliar a eficácia de modelos inovadores de ML/DL para detecção de anomalias em séries temporais multivariadas do dataset 3W.**
-
-### 📊 Key Results (KRs)
-
-| KR | Descrição | Prazo | Status |
-|----|-----------|-------|--------|
-| **KR1** | Análise exploratória completa e pré-processamento | Mês 4 | 🔄 Em andamento |
-| **KR2** | Implementação de 3+ modelos SOTA | Mês 8 | ⏳ Pendente |
-| **KR3** | Análise comparativa e identificação do melhor modelo | Mês 10 | ⏳ Pendente |
-| **KR4** | Protótipo básico containerizado | Mês 11 | ⏳ Pendente |
-| **KR5** | Relatório final PIBIC e documentação | Mês 12 | ⏳ Pendente |
-
-## 🔬 Modelos Implementados
-
-### 🏆 Modelos Selecionados (SOTA - Últimos 3 anos)
-
-| Modelo | Tipo | Características | Status |
-|--------|------|----------------|--------|
-| **TranAD** | Transformer | Dependências temporais longas | 🔄 Em implementação |
-| **LSTM-VAE** | RNN + Autoencoder | Modelagem de sequências | 🔄 Em implementação |
-| **USAD** | Autoencoder Adversarial | Treinamento rápido | ⏳ Pendente |
-| **ECOD** | Não-paramétrico | Interpretável, escalável | ⏳ Pendente |
-
-
-### 🎯 Foco Especial: Detecção de Anomalias
-
-- **Features específicas**: Taxas de variação de pressão/vazão
-- **Correlações cruzadas**: Relações entre múltiplos sensores
-- **Análise temporal**: Padrões de evolução das anomalias
-- **Processamento eficiente**: Uso do Polars para análise de grandes volumes de dados em tempo real
-
-## 📊 Métricas de Avaliação
-
-### 🎯 Métricas Principais
-
-| Métrica | Descrição | Importância |
-|---------|-----------|-------------|
-| **AUC-PR** | Área sob curva Precision-Recall | Alta (dados desbalanceados) |
-| **F1-Score** | Média harmônica de precisão e recall | Alta |
-| **Precision@k** | Precisão nos top-k predições | Média |
-| **Recall@k** | Recall nos top-k predições | Média |
-
-### 📈 Baselines de Comparação
-
-- **Isolation Forest**: Algoritmo clássico de detecção de outliers
-- **One-Class SVM**: Método de separação de classes
-- **LOF (Local Outlier Factor)**: Detecção baseada em densidade local
-
-## 🚀 Deployment
-
-### 🐳 Containerização
-
-```dockerfile
-# Dockerfile exemplo
-FROM python:3.9-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-EXPOSE 8000
-CMD ["python", "src/api/main.py"]
-```
-
-### 🌐 API REST
+### Basic Anomaly Detection
 
 ```python
-# Exemplo de endpoint
-POST /api/v1/predict
-{
-    "data": [[timestamp, pressure, temperature, flow, vibration]],
-    "model": "lstm-vae"
-}
+from src.models import TranADModel
+from src.data import WellDataProcessor
 
-Response:
-{
-    "anomaly_score": 0.85,
-    "is_anomaly": true,
-    "confidence": 0.92
-}
+# Load and preprocess well data
+processor = WellDataProcessor()
+data = processor.load_data("well_001.csv")
+
+# Initialize and train model
+model = TranADModel()
+model.train(data)
+
+# Detect anomalies
+anomalies = model.detect_anomalies(data)
 ```
 
-### 🔄 CI/CD Pipeline
+### Interactive Analysis with Marimo
 
-```yaml
-# .github/workflows/ci.yml
-name: CI/CD Pipeline
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run tests
-        run: pytest
-      - name: Build Docker image
-        run: docker build -t anomaly-detection .
+```python
+# In Marimo notebook
+import marimo as mo
+import polars as pl
+
+# Load data
+df = pl.read_csv("data/well_data.csv")
+
+# Interactive visualization
+mo.md(f"## Well Data Analysis\n\nDataset shape: {df.shape}")
 ```
 
-## 📚 Documentação
+## 📚 Documentation
 
-### 📖 Documentos Disponíveis
+### Core Documentation
+- **[Setup Guide](docs/setup-guide.md)** - Complete project setup instructions
+- **[3W Integration](docs/3W_INTEGRATION.md)** - Integration with 3W system
+- **[AWS Setup](docs/AWS_SETUP.md)** - AWS deployment and configuration
+- **[GCP Setup](docs/GCP_SETUP.md)** - Google Cloud Platform setup
 
-- [📋 README.md](README.md) - Este arquivo
-- [🚀 Setup Guide](docs/setup-guide.md) - Guia completo de configuração
-- [📊 Dataset Documentation](docs/dataset.md) - Documentação do dataset 3W
-- [🔧 API Reference](docs/api.md) - Referência da API
-- [🤖 Model Documentation](docs/models.md) - Documentação dos modelos
-- [📈 Results](docs/results.md) - Resultados e análises
-- [📓 Marimo Notebooks](notebooks/) - Notebooks interativos para EDA e experimentos
+### Development Guidelines
+- **[Conventional Commits](docs/CONVENTIONAL_COMMITS.md)** - Git commit standards
+- **[Contributing Guidelines](CONTRIBUTING.md)** - How to contribute to the project
 
-### 📝 Relatórios
+## 🔬 Research Focus
 
-- [📊 Relatório PIBIC](docs/pibic-report.md) - Relatório final do projeto
-- [📈 Apresentação](docs/presentation.md) - Slides da apresentação
-- [🔬 Metodologia](docs/methodology.md) - Detalhes metodológicos
+### Anomaly Detection Challenges
+- **Multivariate Dependencies**: Complex relationships between well parameters
+- **Real-time Processing**: High-frequency data streams from offshore sensors
+- **Operational Context**: Domain-specific anomaly definitions
+- **Interpretability**: Explainable AI for operational decisions
 
-## 🤝 Contribuição
+### Model Performance Metrics
+- **AUC-PR**: Precision-Recall curves for imbalanced data
+- **F1-Score**: Balanced precision and recall
+- **Detection Latency**: Time to anomaly identification
+- **False Positive Rate**: Operational efficiency considerations
 
-### 👥 Como Contribuir
+## 🧪 Testing
 
-1. **Fork** o projeto
-2. **Clone** o repositório
-3. **Crie** uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-4. **Commit** suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-5. **Push** para a branch (`git push origin feature/AmazingFeature`)
-6. **Abra** um Pull Request
+```bash
+# Run all tests
+pytest
 
-### 📋 Padrões de Contribuição
+# Run with coverage
+pytest --cov=src
 
-- **Commits**: Use [Conventional Commits](https://www.conventionalcommits.org/)
-- **Código**: Siga as diretrizes PEP 8 para Python
-- **Documentação**: Mantenha o README atualizado
-- **Testes**: Adicione testes para novas funcionalidades
-- **Dependências**: Use `uv add <package>` para adicionar novas dependências
-- **Ambiente**: Sempre use `uv sync` para sincronizar o ambiente
-- **Notebooks**: Use Marimo para desenvolvimento interativo e colaborativo
-- **Dados**: Use Polars para operações de dados de alta performance
+# Run specific test categories
+pytest tests/test_models.py
+pytest tests/test_data_processing.py
+```
 
-### 🐛 Reportando Bugs
+## 🚀 Performance Optimization
 
-- Use o template de issue para bugs
-- Inclua informações sobre o ambiente
-- Adicione logs e screenshots quando relevante
+- **Polars**: 10-100x faster than Pandas for large datasets
+- **Vectorized Operations**: Optimized numerical computations
+- **Memory Management**: Efficient data structures for time series
+- **Parallel Processing**: Multi-core support for model training
 
-## 📄 Licença
+## 🌟 Contributing
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
-## 🙏 Agradecimentos
+### Development Setup
+```bash
+# Install development dependencies
+uv sync --group dev
 
-- **Petrobras** pelo dataset 3W
-- **CNPq** pelo suporte via PIBIC
-- **Orientador** pela orientação acadêmica
-- **Comunidade open source** pelas ferramentas utilizadas
+# Install pre-commit hooks
+pre-commit install
 
-## 📞 Contato
+# Run code quality checks
+ruff check src/
+black src/
+mypy src/
+```
 
-- **Autor**: [Rafael Alves]
-- **Email**: [rafaelpereiraalves@ufba.br]
-- **GitHub**: [@RafaelAlvesTech](https://github.com/RafaelAlvesTech)
-- **LinkedIn**: [@rafaelalvestech](https://linkedin.com/in/rafaelalvestech)
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+
+## 🤝 Acknowledgments
+
+- **Petrobras** - For providing domain expertise and data access
+- **PIBIC Program** - Undergraduate research funding
+- **Open Source Community** - For the amazing tools and libraries
+
+## 📞 Contact
+
+- **Project Lead**: [Your Name]
+- **Institution**: [Your University]
+- **Email**: [your.email@university.edu]
 
 ---
 
+> **🇧🇷 [Ver documentação em Português Brasileiro](README.pt-BR.md)**
+
 <div align="center">
-
-**⭐ Se este projeto foi útil para você, considere dar uma estrela! ⭐**
-
-[![GitHub stars](https://img.shields.io/github/stars/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts?style=social)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts?style=social)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts)](https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts/issues)
-
+  <sub>Built with ❤️ for offshore well safety and efficiency</sub>
 </div>

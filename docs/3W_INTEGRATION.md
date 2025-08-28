@@ -1,29 +1,31 @@
-# 🛢️ Integração com Dataset 3W da Petrobras
+# 🛢️ Integration with Petrobras 3W Dataset
 
-## 📋 Visão Geral
+> **🇧🇷 [Ver integração em Português Brasileiro](3W_INTEGRATION.pt-BR.md)**
 
-Este documento descreve a integração completa do projeto com o **Dataset 3W da Petrobras**, um dataset público para detecção de anomalias em poços offshore. A integração permite usar dados reais da indústria petrolífera para treinar e avaliar modelos de machine learning.
+## 📋 Overview
 
-## 🎯 Sobre o Dataset 3W
+This document describes the complete integration of the project with the **Petrobras 3W Dataset**, a public dataset for anomaly detection in offshore wells. The integration allows using real data from the oil industry to train and evaluate machine learning models.
 
-### Características Principais
-- **Fonte**: Petrobras (primeiro repositório público da empresa)
-- **Tipo**: Séries temporais multivariadas de poços offshore
-- **Eventos**: Detecção de eventos indesejáveis em poços
-- **Formato**: Arquivos Parquet com compressão Brotli
-- **Licença**: Creative Commons Attribution 4.0 International
+## 🎯 About the 3W Dataset
 
-### Estrutura dos Dados
-- **Instâncias**: Cada arquivo representa uma instância de evento
-- **Variáveis**: Pressão, temperatura, vazão, vibração, etc.
-- **Labels**: Classificação binária (normal vs. anômalo)
-- **Timestamps**: Índice temporal para cada observação
+### Main Characteristics
+- **Source**: Petrobras (company's first public repository)
+- **Type**: Multivariate time series from offshore wells
+- **Events**: Detection of undesirable events in wells
+- **Format**: Parquet files with Brotli compression
+- **License**: Creative Commons Attribution 4.0 International
 
-### Problemas Disponíveis
-1. **Classificador Binário de Fechamento Espúrio de DHSV**
-   - Tipo: Classificação binária
-   - Objetivo: Identificar fechamentos não intencionais de válvulas
-   - Aplicação: Segurança e integridade de poços
+### Data Structure
+- **Instances**: Each file represents an event instance
+- **Variables**: Pressure, temperature, flow, vibration, etc.
+- **Labels**: Binary classification (normal vs. anomalous)
+- **Timestamps**: Temporal index for each observation
+
+### Available Problems
+1. **Binary Classifier for Spurious DHSV Closure**
+   - Type: Binary classification
+   - Objective: Identify unintended valve closures
+   - Application: Well safety and integrity
 
 ## 🏗️ Arquitetura da Integração
 

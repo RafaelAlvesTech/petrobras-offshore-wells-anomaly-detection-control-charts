@@ -1,114 +1,116 @@
-# 🚀 Guia de Setup Completo - Petrobras Offshore Wells Anomaly Detection
+# 🚀 Complete Setup Guide - Petrobras Offshore Wells Anomaly Detection
 
-## 📋 Índice
-- [🎯 Visão Geral](#-visão-geral)
-- [🔌 Setup das Extensões](#-setup-das-extensões)
-- [🔧 Script Robusto de Extensões](#-script-robusto-de-extensões)
-- [🐍 Setup do Ambiente Python](#-setup-do-ambiente-python)
-- [⚙️ Configurações do Workspace](#️-configurações-do-workspace)
-- [🧪 Configuração de Testes](#-configuração-de-testes)
+> **🇧🇷 [Ver guia em Português Brasileiro](setup-guide.pt-BR.md)**
+
+## 📋 Table of Contents
+- [🎯 Overview](#-overview)
+- [🔌 Extension Setup](#-extension-setup)
+- [🔧 Robust Extension Script](#-robust-extension-script)
+- [🐍 Python Environment Setup](#-python-environment-setup)
+- [⚙️ Workspace Configuration](#️-workspace-configuration)
+- [🧪 Testing Configuration](#-testing-configuration)
 - [🔧 Troubleshooting](#-troubleshooting)
 
-## 🎯 Visão Geral
+## 🎯 Overview
 
-Este guia fornece instruções passo a passo para configurar completamente o ambiente de desenvolvimento do projeto PIBIC de detecção de anomalias em poços offshore da Petrobras.
+This guide provides step-by-step instructions to completely set up the development environment for the PIBIC project on anomaly detection in Petrobras offshore wells.
 
-### 🎯 **O que será configurado:**
-- ✅ Extensões essenciais do VS Code/Cursor
-- ✅ Ambiente Python com uv
-- ✅ Dependências do projeto
+### 🎯 **What will be configured:**
+- ✅ Essential VS Code/Cursor extensions
+- ✅ Python environment with uv
+- ✅ Project dependencies
 - ✅ Pre-commit hooks
-- ✅ Configurações do workspace
-- ✅ Ambiente de testes
+- ✅ Workspace configurations
+- ✅ Testing environment
 
-## 🔌 Setup das Extensões
+## 🔌 Extension Setup
 
-### 🚀 **Instalação Automática (Recomendado)**
+### 🚀 **Automatic Installation (Recommended)**
 
-#### **Linux/macOS - Script Robusto (Recomendado)**
+#### **Linux/macOS - Robust Script (Recommended)**
 ```bash
-# Dar permissão de execução
+# Give execution permission
 chmod +x scripts/install_extensions_robust.sh
 
-# Executar script robusto (continua mesmo com erros)
+# Run robust script (continues even with errors)
 ./scripts/install_extensions_robust.sh
 ```
 
-#### **Linux/macOS - Script Original**
+#### **Linux/macOS - Original Script**
 ```bash
-# Dar permissão de execução
+# Give execution permission
 chmod +x scripts/install_extensions.sh
 
-# Executar script original
+# Run original script
 ./scripts/install_extensions.sh
 ```
 
 #### **Windows (PowerShell)**
 ```powershell
-# Executar script PowerShell
+# Run PowerShell script
 .\scripts\install_extensions.ps1
 
-# Ou com força (reinstalar)
+# Or with force (reinstall)
 .\scripts\install_extensions.ps1 -Force
 ```
 
 #### **Cross-platform (Python)**
 ```bash
-# Executar script Python
+# Run Python script
 python scripts/install_extensions.py
 ```
 
-### 🔍 **Diferenças entre os Scripts**
+### 🔍 **Script Differences**
 
-| Script | Característica | Recomendação |
+| Script | Characteristic | Recommendation |
 |--------|----------------|--------------|
-| `install_extensions_robust.sh` | ✅ Continua mesmo com erros<br>✅ Instala todas as extensões<br>✅ Melhor para instalação completa | **🌟 Recomendado** |
-| `install_extensions.sh` | ⚠️ Para em caso de erro<br>⚠️ Pode não instalar todas<br>⚠️ Melhor para debug | Para desenvolvimento |
-| `install_extensions.py` | 🔄 Cross-platform<br>🔄 Instalação via Python<br>🔄 Mais lento | Para Windows/Linux |
+| `install_extensions_robust.sh` | ✅ Continues even with errors<br>✅ Installs all extensions<br>✅ Better for complete installation | **🌟 Recommended** |
+| `install_extensions.sh` | ⚠️ Stops on error<br>⚠️ May not install all<br>⚠️ Better for debugging | For development |
+| `install_extensions.py` | 🔄 Cross-platform<br>🔄 Installation via Python<br>🔄 Slower | For Windows/Linux |
 
-### 📦 **Extensões que serão instaladas:**
+### 📦 **Extensions that will be installed:**
 
-| Categoria | Extensão | ID | Descrição |
+| Category | Extension | ID | Description |
 |-----------|----------|-----|-----------|
-| 🐍 **Python** | Python | ms-python.python | Suporte completo ao Python |
-| 🐍 **Python** | Pylance | ms-python.vscode-pylance | IntelliSense avançado |
-| 🐍 **Python** | Ruff | charliermarsh.ruff | Linting e formatação |
-| 📊 **Data Science** | Jupyter | ms-toolsai.jupyter | Suporte ao Jupyter |
-| 📊 **Data Science** | Jupyter Keymap | ms-toolsai.jupyter-keymap | Atalhos de teclado |
-| 🔧 **Dev Tools** | JSON | ms-vscode.vscode-json | Suporte ao JSON |
-| 🔧 **Dev Tools** | Markdown | yzhang.markdown-all-in-one | Editor Markdown |
-| 🐳 **Docker** | Docker | ms-azuretools.vscode-docker | Suporte ao Docker |
+| 🐍 **Python** | Python | ms-python.python | Complete Python support |
+| 🐍 **Python** | Pylance | ms-python.vscode-pylance | Advanced IntelliSense |
+| 🐍 **Python** | Ruff | charliermarsh.ruff | Linting and formatting |
+| 📊 **Data Science** | Jupyter | ms-toolsai.jupyter | Jupyter support |
+| 📊 **Data Science** | Jupyter Keymap | ms-toolsai.jupyter-keymap | Keyboard shortcuts |
+| 🔧 **Dev Tools** | JSON | ms-vscode.vscode-json | JSON support |
+| 🔧 **Dev Tools** | Markdown | yzhang.markdown-all-in-one | Markdown editor |
+| 🐳 **Docker** | Docker | ms-azuretools.vscode-docker | Docker support |
 | 🔄 **Git** | GitLens | eamodio.gitlens | Git supercharged |
-| 🎨 **Themes** | Material Icons | pkief.material-icon-theme | Ícones Material |
+| 🎨 **Themes** | Material Icons | pkief.material-icon-theme | Material icons |
 | 🧪 **Testing** | Python Test Adapter | littlefoxteam.vscode-python-test-adapter | Test runner |
-| 🚀 **AI** | GitHub Copilot | GitHub.copilot | Assistente de IA |
-| 🚀 **AI** | GitHub Copilot Chat | GitHub.copilot-chat | Chat com IA |
+| 🚀 **AI** | GitHub Copilot | GitHub.copilot | AI assistant |
+| 🚀 **AI** | GitHub Copilot Chat | GitHub.copilot-chat | AI chat |
 
-### 🔧 **Instalação Manual (Alternativa)**
+### 🔧 **Manual Installation (Alternative)**
 
-Se preferir instalar manualmente:
+If you prefer to install manually:
 
-1. **Abra o VS Code/Cursor**
-2. **Pressione `Ctrl+Shift+X`** (ou `Cmd+Shift+X` no Mac)
-3. **Pesquise e instale** cada extensão da lista acima
-4. **Reinicie o editor** após a instalação
+1. **Open VS Code/Cursor**
+2. **Press `Ctrl+Shift+X`** (or `Cmd+Shift+X` on Mac)
+3. **Search and install** each extension from the list above
+4. **Restart the editor** after installation
 
-## 🐍 Setup do Ambiente Python
+## 🐍 Python Environment Setup
 
-### 📋 **Pré-requisitos**
-- Python 3.11+ instalado
-- Git instalado
-- VS Code/Cursor instalado
+### 📋 **Prerequisites**
+- Python 3.11+ installed
+- Git installed
+- VS Code/Cursor installed
 
-### 🚀 **Passo a Passo**
+### 🚀 **Step by Step**
 
-#### **1. Clone o Repositório**
+#### **1. Clone the Repository**
 ```bash
 git clone https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts.git
 cd petrobras-offshore-wells-anomaly-detection-control-charts
 ```
 
-#### **2. Instalar uv**
+#### **2. Install uv**
 ```bash
 # Linux/macOS
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -116,16 +118,16 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 # Windows (PowerShell)
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
-# Ou via pip
+# Or via pip
 pip install uv
 ```
 
-#### **3. Criar Ambiente Virtual**
+#### **3. Create Virtual Environment**
 ```bash
-# Criar ambiente
+# Create environment
 uv venv
 
-# Ativar ambiente
+# Activate environment
 # Linux/macOS
 source .venv/bin/activate
 
@@ -133,238 +135,238 @@ source .venv/bin/activate
 .venv\Scripts\activate
 ```
 
-#### **4. Instalar Dependências**
+#### **4. Install Dependencies**
 ```bash
-# Sincronizar projeto (recomendado)
+# Sync project (recommended)
 uv sync
 
-# Ou instalar manualmente
+# Or install manually
 uv pip install -r requirements.txt
 ```
 
-#### **5. Instalar Dependências de Desenvolvimento**
+#### **5. Install Development Dependencies**
 ```bash
-# Marimo para notebooks
+# Marimo for notebooks
 uv add marimo
 
-# Polars para dados
+# Polars for data
 uv add polars
 
-# Pre-commit para hooks
+# Pre-commit for hooks
 uv add pre-commit
 
-# Ruff para linting
+# Ruff for linting
 uv add ruff
 
-# Pytest para testes
+# Pytest for testing
 uv add pytest
 ```
 
-#### **6. Configurar Pre-commit**
+#### **6. Configure Pre-commit**
 ```bash
-# Instalar hooks
+# Install hooks
 uv run pre-commit install
 
-# Verificar instalação
+# Verify installation
 uv run pre-commit run --all-files
 ```
 
-## ⚙️ Configurações do Workspace
+## ⚙️ Workspace Configuration
 
-### 🔧 **Configurações Automáticas**
+### 🔧 **Automatic Configuration**
 
-O projeto inclui configurações otimizadas em `.vscode/settings.json`:
+The project includes optimized configurations in `.vscode/settings.json`:
 
-- **Python interpreter**: Configurado para `.venv`
-- **Formatação**: Automática com Ruff
-- **Linting**: Automático com Ruff
-- **Terminal**: Configurado para o ambiente virtual
-- **Performance**: Exclusões de pastas pesadas
+- **Python interpreter**: Configured for `.venv`
+- **Formatting**: Automatic with Ruff
+- **Linting**: Automatic with Ruff
+- **Terminal**: Configured for virtual environment
+- **Performance**: Heavy folder exclusions
 
-### 🎯 **Configurações Manuais**
+### 🎯 **Manual Configuration**
 
-#### **1. Selecionar Python Interpreter**
-1. **Pressione `Ctrl+Shift+P`** (ou `Cmd+Shift+P` no Mac)
-2. **Digite**: `Python: Select Interpreter`
-3. **Selecione**: `./.venv/bin/python`
+#### **1. Select Python Interpreter**
+1. **Press `Ctrl+Shift+P`** (or `Cmd+Shift+P` on Mac)
+2. **Type**: `Python: Select Interpreter`
+3. **Select**: `./.venv/bin/python`
 
-#### **2. Verificar Configurações**
-1. **Abra Command Palette** (`Ctrl+Shift+P`)
-2. **Digite**: `Preferences: Open Workspace Settings (JSON)`
-3. **Verifique** se as configurações estão corretas
+#### **2. Verify Configuration**
+1. **Open Command Palette** (`Ctrl+Shift+P`)
+2. **Type**: `Preferences: Open Workspace Settings (JSON)`
+3. **Verify** if configurations are correct
 
-### 📁 **Estrutura de Pastas**
+### 📁 **Folder Structure**
 
 ```
 petrobras-offshore-wells-anomaly-detection-control-charts/
-├── 📁 .vscode/                    # Configurações do workspace
-│   ├── 📄 settings.json           # Configurações do projeto
-│   ├── 📄 extensions.json         # Extensões recomendadas
-│   ├── 📄 tasks.json              # Tasks automatizadas
-│   └── 📄 launch.json             # Configurações de debug
-├── 📁 scripts/                    # Scripts de setup
-│   ├── 📄 install_extensions_robust.sh  # Setup Linux/macOS (Recomendado)
-│   ├── 📄 install_extensions.sh   # Setup Linux/macOS (Original)
-│   ├── 📄 install_extensions.ps1  # Setup Windows
-│   └── 📄 install_extensions.py   # Setup cross-platform
-├── 📁 src/                        # Código fonte
-├── 📁 notebooks/                  # Notebooks Marimo
-├── 📁 tests/                      # Testes
-└── 📁 docs/                       # Documentação
+├── 📁 .vscode/                    # Workspace configurations
+│   ├── 📄 settings.json           # Project settings
+│   ├── 📄 extensions.json         # Recommended extensions
+│   ├── 📄 tasks.json              # Automated tasks
+│   └── 📄 launch.json             # Debug configurations
+├── 📁 scripts/                    # Setup scripts
+│   ├── 📄 install_extensions_robust.sh  # Linux/macOS setup (Recommended)
+│   ├── 📄 install_extensions.sh   # Linux/macOS setup (Original)
+│   ├── 📄 install_extensions.ps1  # Windows setup
+│   └── 📄 install_extensions.py   # Cross-platform setup
+├── 📁 src/                        # Source code
+├── 📁 notebooks/                  # Marimo notebooks
+├── 📁 tests/                      # Tests
+└── 📁 docs/                       # Documentation
 ```
 
-## 🧪 Configuração de Testes
+## 🧪 Testing Configuration
 
-### 🚀 **Executar Testes**
+### 🚀 **Run Tests**
 
 ```bash
-# Executar todos os testes
+# Run all tests
 uv run pytest
 
-# Executar com coverage
+# Run with coverage
 uv run pytest --cov=src --cov-report=html
 
-# Executar testes específicos
+# Run specific tests
 uv run pytest tests/test_models.py
 
-# Executar em modo verbose
+# Run in verbose mode
 uv run pytest -v
 ```
 
-### 🔧 **Configuração de Debug**
+### 🔧 **Debug Configuration**
 
-O projeto inclui configurações de debug em `.vscode/launch.json`:
+The project includes debug configurations in `.vscode/launch.json`:
 
-- **🐍 Python: Current File**: Debug do arquivo atual
-- **🧪 Python: Debug Tests**: Debug de testes
-- **📓 Python: Debug Marimo**: Debug de notebooks
-- **🐳 Docker: Debug Container**: Debug de containers
+- **🐍 Python: Current File**: Debug current file
+- **🧪 Python: Debug Tests**: Debug tests
+- **📓 Python: Debug Marimo**: Debug notebooks
+- **🐳 Docker: Debug Container**: Debug containers
 
 ## 🔧 Troubleshooting
 
-### ❌ **Problemas Comuns**
+### ❌ **Common Issues**
 
-#### **1. Extensões não instalam**
+#### **1. Extensions don't install**
 ```bash
-# Verificar se o code está no PATH
+# Check if code is in PATH
 code --version
 
-# Tentar instalação manual
+# Try manual installation
 code --install-extension ms-python.python
 
-# Usar script robusto (recomendado)
+# Use robust script (recommended)
 ./scripts/install_extensions_robust.sh
 ```
 
-#### **2. Python interpreter não encontrado**
+#### **2. Python interpreter not found**
 ```bash
-# Verificar se o ambiente foi criado
+# Check if environment was created
 ls -la .venv/bin/python
 
-# Recriar ambiente
+# Recreate environment
 rm -rf .venv
 uv venv
 source .venv/bin/activate
 uv sync
 ```
 
-#### **3. Pre-commit falha**
+#### **3. Pre-commit fails**
 ```bash
-# Reinstalar hooks
+# Reinstall hooks
 uv run pre-commit uninstall
 uv run pre-commit install
 
-# Executar manualmente
+# Run manually
 uv run pre-commit run --all-files
 ```
 
-#### **4. Dependências não instalam**
+#### **4. Dependencies don't install**
 ```bash
-# Limpar cache do uv
+# Clear uv cache
 uv cache clean
 
-# Reinstalar dependências
+# Reinstall dependencies
 uv sync --reinstall
 ```
 
-### 🆘 **Ainda com Problemas?**
+### 🆘 **Still Having Issues?**
 
-1. **Verifique logs**: `uv run pre-commit run --all-files --verbose`
-2. **Reinicie o editor**: Feche e abra o VS Code/Cursor
-3. **Verifique versões**: `python --version`, `uv --version`
-4. **Consulte issues**: GitHub do projeto
+1. **Check logs**: `uv run pre-commit run --all-files --verbose`
+2. **Restart editor**: Close and open VS Code/Cursor
+3. **Check versions**: `python --version`, `uv --version`
+4. **Check issues**: Project GitHub
 
-## 🔧 **Script Robusto de Extensões**
+## 🔧 **Robust Extension Script**
 
-### 🚀 **Por que usar o script robusto?**
+### 🚀 **Why use the robust script?**
 
-O `install_extensions_robust.sh` foi criado para resolver problemas comuns de instalação:
+The `install_extensions_robust.sh` was created to solve common installation problems:
 
-- **✅ Continua mesmo com erros**: Não para se uma extensão falhar
-- **✅ Instala todas as extensões**: Garante instalação completa
-- **✅ Melhor feedback**: Mostra progresso detalhado
-- **✅ Tratamento de erros**: Continua tentando instalar as demais
+- **✅ Continues even with errors**: Doesn't stop if an extension fails
+- **✅ Installs all extensions**: Ensures complete installation
+- **✅ Better feedback**: Shows detailed progress
+- **✅ Error handling**: Continues trying to install the rest
 
-### 📊 **Monitoramento da Instalação**
+### 📊 **Installation Monitoring**
 
-O script fornece feedback em tempo real:
+The script provides real-time feedback:
 
 ```bash
-🚀 Instalando extensões essenciais para o projeto...
-📦 Total de extensões a instalar: 54
+🚀 Installing essential extensions for the project...
+📦 Total extensions to install: 54
 
-📥 Instalando ms-python.python... ✅ Sucesso
-📥 Instalando ms-python.vscode-pylance... ✅ Sucesso
-📥 Instalando ms-python.debugpy... ✅ Sucesso
-# ... continua com todas as extensões
+📥 Installing ms-python.python... ✅ Success
+📥 Installing ms-python.vscode-pylance... ✅ Success
+📥 Installing ms-python.debugpy... ✅ Success
+# ... continues with all extensions
 
-📊 Resumo da instalação:
-✅ Instaladas com sucesso: 52
-❌ Falhas: 2
+📊 Installation summary:
+✅ Successfully installed: 52
+❌ Failures: 2
 📦 Total: 54
 ```
 
-### 🔄 **Reinstalação de Extensões**
+### 🔄 **Extension Reinstallation**
 
-Para reinstalar todas as extensões:
+To reinstall all extensions:
 
 ```bash
-# Reinstalar com força
+# Reinstall with force
 ./scripts/install_extensions_robust.sh
 
-# Ou usar o comando code diretamente
+# Or use code command directly
 code --install-extension ms-python.python --force
 ```
 
-## 🎉 **Próximos Passos**
+## 🎉 **Next Steps**
 
-Após o setup completo:
+After complete setup:
 
-1. **✅ Reinicie o VS Code/Cursor**
-2. **✅ Verifique se as extensões estão ativas**
-3. **✅ Teste o ambiente Python**
-4. **✅ Execute alguns testes**
-5. **✅ Comece a desenvolver!**
+1. **✅ Restart VS Code/Cursor**
+2. **✅ Verify extensions are active**
+3. **✅ Test Python environment**
+4. **✅ Run some tests**
+5. **✅ Start developing!**
 
-### 🚀 **Comandos Úteis**
+### 🚀 **Useful Commands**
 
 ```bash
-# Iniciar Marimo
+# Start Marimo
 uv run marimo edit
 
-# Formatar código
+# Format code
 uv run ruff format .
 
-# Lint código
+# Lint code
 uv run ruff check .
 
-# Executar testes
+# Run tests
 uv run pytest
 
-# Atualizar dependências
+# Update dependencies
 uv sync --upgrade
 ```
 
 ---
 
-**🎯 Agora você tem um ambiente de desenvolvimento completo e otimizado para o projeto PIBIC!**
+**🎯 Now you have a complete and optimized development environment for the PIBIC project!**
