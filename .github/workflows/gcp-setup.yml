@@ -1,0 +1,77 @@
+name: GCP Authentication Setup
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/gcp/**'
+      - 'gcp-config.yaml'
+
+env:
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCP_REGION: us-central1
+  GCP_BUCKET_NAME: ${{ secrets.GCP_BUCKET_NAME }}
+
+jobs:
+  setup-gcp:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.GCP_SA_KEY != '' }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+
+    - name: Sync dependencies
+      run: uv sync
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Verify GCP Authentication
+      run: |
+        gcloud auth list
+        gcloud config list project
+
+    - name: Test GCP Configuration
+      run: |
+        source .venv/bin/activate
+        python -c "
+        import sys
+        sys.path.append('src')
+        from config.gcp_env_config import gcp_config
+        if gcp_config:
+            print('✓ GCP configuration loaded successfully')
+            print(f'Project ID: {gcp_config.project_id}')
+            print(f'Region: {gcp_config.region}')
+        else:
+            print('✗ GCP configuration failed')
+            sys.exit(1)
+        "
+
+    - name: Create GCS bucket if not exists
+      run: |
+        gsutil ls gs://${{ secrets.GCP_BUCKET_NAME }} || \
+        gsutil mb -p ${{ secrets.GCP_PROJECT_ID }} -c STANDARD -l $GCP_REGION gs://${{ secrets.GCP_BUCKET_NAME }}
+
+    - name: Test GCS access
+      run: |
+        echo "Testing GCS access..." > test-file.txt
+        gsutil cp test-file.txt gs://${{ secrets.GCP_BUCKET_NAME }}/test/
+        gsutil rm gs://${{ secrets.GCP_BUCKET_NAME }}/test/test-file.txt
+        rm test-file.txt
+        echo "✓ GCS access verified"

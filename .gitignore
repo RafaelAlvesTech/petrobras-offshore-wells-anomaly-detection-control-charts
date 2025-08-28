@@ -21,6 +21,14 @@ wheels/
 aws-credentials.json
 *.pem
 
+# Google Cloud credentials (NEVER COMMIT THESE!)
+google-cloud-keyfile.json
+*-service-account-key.json
+service-account-*.json
+gcp-credentials.json
+.gcp/
+GOOGLE_APPLICATION_CREDENTIALS
+
 # Logs
 *.log
 logs/

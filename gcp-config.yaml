@@ -2,7 +2,7 @@
 # Este arquivo contém todas as configurações necessárias para treinamento na GCP
 
 google_cloud:
-  project_id: "your-project-id"
+  project_id: "cer-ufba"
   region: "us-central1"
   zone: "us-central1-a"
 
@@ -70,7 +70,7 @@ ai_platform_training:
     - "NVIDIA_TESLA_K80"
 
 cloud_storage:
-  bucket_name: "your-bucket-name"
+  bucket_name: "cer-ufba-petrobras-anomaly-detection"
 
   # Estrutura de pastas
   paths:
@@ -93,12 +93,12 @@ mlflow:
   # Configurações de artefatos
   artifacts:
     storage: "gcs"
-    bucket: "your-bucket-name"
+    bucket: "cer-ufba-petrobras-anomaly-detection"
     path: "mlflow-artifacts"
 
 tensorboard:
   enabled: true
-  log_dir: "gs://your-bucket-name/tensorboard-logs"
+  log_dir: "gs://cer-ufba-petrobras-anomaly-detection/tensorboard-logs"
   port: 6006
 
 # Configurações de treinamento
