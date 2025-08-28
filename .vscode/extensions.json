@@ -1,91 +1,65 @@
 {
   "recommendations": [
-    // 🐍 Python Development (Essenciais)
     "ms-python.python",
     "ms-python.vscode-pylance",
     "ms-python.debugpy",
     "ms-python.isort",
     "charliermarsh.ruff",
-
-    // 📊 Data Science & Jupyter
     "ms-toolsai.jupyter",
     "ms-toolsai.jupyter-keymap",
-
-    // 🔧 Development Tools
+    "ms-toolsai.jupyter-renderers",
     "ms-vscode.vscode-json",
     "yzhang.markdown-all-in-one",
     "esbenp.prettier-vscode",
     "ms-vscode.vscode-typescript-next",
     "bradlc.vscode-tailwindcss",
-
-    // 🐳 Docker & Containers
     "ms-azuretools.vscode-docker",
     "ms-kubernetes-tools.vscode-kubernetes-tools",
-
-    // 🔄 Git & Version Control
     "eamodio.gitlens",
     "donjayamanne.githistory",
     "github.vscode-github-actions",
     "github.vscode-pull-request-github",
     "vivaxy.vscode-conventional-commits",
-
-    // 🎨 Themes & Icons
     "pkief.material-icon-theme",
     "github.github-vscode-theme",
     "johnpapa.vscode-peacock",
-
-    // 🧪 Testing
     "littlefoxteam.vscode-python-test-adapter",
     "firsttris.vscode-jest-runner",
     "orta.vscode-jest",
     "vitest.explorer",
-
-    // 🚀 AI & Productivity
     "GitHub.copilot",
     "GitHub.copilot-chat",
     "visualstudioexptteam.vscodeintellicode",
     "visualstudioexptteam.intellicode-api-usage-examples",
-
-    // 🔍 Code Quality & Analysis
     "sonarsource.sonarlint-vscode",
     "streetsidesoftware.code-spell-checker",
     "streetsidesoftware.code-spell-checker-portuguese-brazilian",
     "sourcery.sourcery",
-
-    // 🎯 Language Support
     "redhat.vscode-yaml",
     "tamasfe.even-better-toml",
     "ms-vscode.makefile-tools",
     "naumovs.color-highlight",
     "oderwat.indent-rainbow",
-
-    // 🛠️ Utilities
     "chakrounanas.turbo-console-log",
     "christian-kohler.path-intellisense",
     "gruntfuggly.todo-tree",
     "wallabyjs.quokka-vscode",
     "xyz.local-history",
-
-    // 🌐 Web Development
     "ms-vscode.live-server",
     "vue.volar",
     "zignd.html-css-class-completion",
-
-    // 📊 Database & APIs
     "cweijan.dbclient-jdbc",
     "cweijan.vscode-redis-client",
     "humao.rest-client",
-
-    // 🔧 Advanced Tools
     "adpyke.codesnap",
     "jebbs.plantuml",
     "quicktype.quicktype",
-    "tim-koehler.helm-intellisense"
-  ],
-  "unwantedRecommendations": [
-    // Extensões que podem conflitar
-    "ms-python.pylint",
+    "tim-koehler.helm-intellisense",
+    "ms-python.black-formatter",
     "ms-python.flake8",
-    "ms-python.black-formatter"
-  ]
+    "ms-python.mypy-type-checker",
+    "ms-python.pylint",
+    "ms-python.autopep8"
+  ],
+  "unwantedRecommendations": []
 }

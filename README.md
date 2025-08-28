@@ -149,6 +149,7 @@ mo.md(f"## Well Data Analysis\n\nDataset shape: {df.shape}")
 
 ### Core Documentation
 - **[Setup Guide](docs/setup-guide.md)** - Complete project setup instructions
+- **[Claude Code Setup](docs/CLAUDE_CODE_SETUP.md)** - Claude Code configuration and optimization
 - **[3W Integration](docs/3W_INTEGRATION.md)** - Integration with 3W system
 - **[AWS Setup](docs/AWS_SETUP.md)** - AWS deployment and configuration
 - **[GCP Setup](docs/GCP_SETUP.md)** - Google Cloud Platform setup
@@ -233,3 +234,191 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 <div align="center">
   <sub>Built with ❤️ for offshore well safety and efficiency</sub>
 </div>
+
+## 🔌 Extensões Essenciais do VS Code/Cursor
+O projeto inclui configurações automáticas para as seguintes extensões essenciais:
+
+### 🐍 Python Development
+- **ms-python.python**: Suporte completo ao Python
+- **ms-python.vscode-pylance**: IntelliSense avançado para Python
+- **charliermarsh.ruff**: Linting e formatação rápida
+
+### 📊 Data Science & Jupyter
+- **ms-toolsai.jupyter**: Suporte completo ao Jupyter
+- **ms-toolsai.jupyter-keymap**: Atalhos de teclado para Jupyter
+
+### 🔧 Development Tools
+- **ms-vscode.vscode-json**: Suporte ao JSON
+- **yzhang.markdown-all-in-one**: Editor Markdown avançado
+
+### 🐳 Docker & Containers
+- **ms-azuretools.vscode-docker**: Suporte ao Docker
+
+### 🔄 Git & Version Control
+- **eamodio.gitlens**: Git supercharged
+
+### 🎨 Themes & Icons
+- **pkief.material-icon-theme**: Ícones Material Design
+
+### 🧪 Testing
+- **littlefoxteam.vscode-python-test-adapter**: Test runner para Python
+
+### 🚀 AI & Productivity
+- **GitHub.copilot**: Assistente de IA para código
+- **GitHub.copilot-chat**: Chat com IA para desenvolvimento
+
+## 🤖 Claude Code - Configurações Específicas
+
+### 🧠 Extensões de IA e Machine Learning
+- **ms-python.black-formatter**: Formatação automática de código Python
+- **ms-python.isort**: Organização automática de imports
+- **ms-python.flake8**: Linting avançado para Python
+- **ms-python.mypy-type-checker**: Verificação de tipos estática
+- **ms-python.pylint**: Análise de código Python
+- **ms-python.autopep8**: Formatação automática PEP 8
+
+### 📈 Análise de Dados e Visualização
+- **ms-python.python**: Suporte nativo ao Python
+- **ms-python.vscode-pylance**: IntelliSense e análise de código
+- **ms-toolsai.jupyter**: Suporte completo ao Jupyter
+- **ms-toolsai.jupyter-keymap**: Atalhos para notebooks
+- **ms-toolsai.jupyter-renderers**: Renderizadores para diferentes formatos
+- **ms-python.python**: Interpretador Python configurável
+
+### 🔬 Ciência de Dados e ML
+- **ms-python.python**: Suporte ao Python científico
+- **ms-python.vscode-pylance**: Análise de código avançada
+- **ms-toolsai.jupyter**: Notebooks interativos
+- **ms-python.black-formatter**: Formatação consistente
+- **ms-python.isort**: Organização de imports
+- **ms-python.flake8**: Qualidade de código
+
+### 🚀 Produtividade e Desenvolvimento
+- **ms-vscode.vscode-json**: Suporte ao JSON
+- **yzhang.markdown-all-in-one**: Editor Markdown
+- **ms-azuretools.vscode-docker**: Suporte ao Docker
+- **eamodio.gitlens**: Git avançado
+- **pkief.material-icon-theme**: Ícones Material Design
+- **littlefoxteam.vscode-python-test-adapter**: Testes Python
+
+### ⚙️ Configurações Específicas para o Projeto
+
+#### Python Interpreter
+```json
+{
+    "python.defaultInterpreterPath": "./.venv/bin/python",
+    "python.terminal.activateEnvironment": true
+}
+```
+
+#### Formatação Automática
+```json
+{
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length", "88"],
+    "editor.formatOnSave": true,
+    "python.sortImports.args": ["--profile", "black"]
+}
+```
+
+#### Linting e Qualidade
+```json
+{
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true
+}
+```
+
+#### Jupyter e Notebooks
+```json
+{
+    "jupyter.defaultKernel": "Python 3.11",
+    "jupyter.askForKernelRestart": false,
+    "jupyter.enableAutoMatcher": true
+}
+```
+
+### 🎯 Configurações Recomendadas para Claude Code
+
+#### 1. **Configuração do Ambiente Python**
+- Use o ambiente virtual `.venv` criado pelo `uv`
+- Configure o Python interpreter para `./.venv/bin/python`
+- Ative o ambiente automaticamente no terminal
+
+#### 2. **Formatação e Linting**
+- Black para formatação automática (linha 88)
+- isort para organização de imports
+- Flake8 para linting de código
+- MyPy para verificação de tipos
+
+#### 3. **Notebooks e Jupyter**
+- Suporte completo ao Marimo
+- Kernel Python 3.11 configurado
+- Renderizadores para diferentes formatos de dados
+
+#### 4. **Desenvolvimento Científico**
+- IntelliSense avançado para bibliotecas científicas
+- Suporte a Polars, PyTorch, TensorFlow
+- Integração com ferramentas de ML
+
+### 🚀 Setup Automático para Claude Code
+
+#### Linux/macOS
+```bash
+chmod +x scripts/install_claude_extensions.sh
+./scripts/install_claude_extensions.sh
+```
+
+#### Windows (PowerShell)
+```powershell
+.\scripts\install_claude_extensions.ps1
+```
+
+#### Cross-platform (Python)
+```bash
+python scripts/install_claude_extensions.py
+```
+
+### 📁 Estrutura de Configurações
+```
+.vscode/
+├── settings.json          # Configurações do workspace
+├── extensions.json        # Extensões recomendadas
+├── launch.json           # Configurações de debug
+└── tasks.json            # Tarefas automatizadas
+```
+
+### 🔧 Configurações Avançadas
+
+#### Debug e Testing
+```json
+{
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": ["tests"],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false
+}
+```
+
+#### Terminal e Ambiente
+```json
+{
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    }
+}
+```
+
+#### Git e Versionamento
+```json
+{
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true
+}
+```
+
+## �� Setup Automático
