@@ -11,6 +11,25 @@
 
 This is a PIBIC (Undergraduate Research) project focused on **anomaly detection in multivariate time series** from Petrobras offshore wells. The project leverages state-of-the-art machine learning and deep learning techniques to identify operational anomalies in real-time drilling and production data.
 
+## 🏛️ Institutional Affiliation
+
+**Risk Studies Center (CER-UFBA)**
+Department of Statistics (DEst)
+Federal University of Bahia (UFBA)
+📍 Ondina, Salvador-BA, Brazil
+🌐 [cer.ufba.br](https://cer.ufba.br) | [ufba.br](https://ufba.br)
+
+CER-UFBA is an emerging research laboratory of the Department of Statistics (DEst) at the Federal University of Bahia (UFBA), located in Ondina, Salvador-BA, created in 2016. Its main objective is to bring together researchers involved in the study, proposal of statistical procedures, and risk data analysis.
+
+This project is developed under the academic supervision and research infrastructure of CER-UFBA, contributing to the center's mission of advancing statistical methodologies for risk assessment and anomaly detection in complex industrial systems.
+
+### 🎓 CER-UFBA Research Areas
+- **Statistical Risk Analysis**: Advanced methodologies for risk assessment
+- **Time Series Analysis**: Multivariate and univariate time series modeling
+- **Anomaly Detection**: Statistical and machine learning approaches
+- **Industrial Applications**: Oil & gas, manufacturing, and critical systems
+- **Data Science**: Big data analytics and statistical computing
+
 ## 🚀 Key Features
 
 - **Multivariate Time Series Analysis**: Handles complex interdependencies between multiple well parameters
@@ -36,6 +55,30 @@ petrobras-offshore-wells-anomaly-detection/
 ├── docker/                # Containerization
 └── scripts/               # Automation scripts
 ```
+
+## 🔬 CER-UFBA Research Project
+
+### 📋 Project Details
+- **Research Type**: PIBIC (Undergraduate Research) Project
+- **Institution**: Federal University of Bahia (UFBA)
+- **Research Center**: Risk Studies Center (CER-UFBA)
+- **Department**: Department of Statistics (DEst)
+- **Academic Year**: 2024-2025
+- **Research Area**: Statistical Anomaly Detection in Industrial Systems
+
+### 🎯 CER-UFBA Contribution
+This project represents a significant contribution to CER-UFBA's research portfolio in:
+- **Statistical Risk Assessment**: Developing novel methodologies for offshore well monitoring
+- **Industrial Data Science**: Applying advanced statistical techniques to real-world oil & gas data
+- **Time Series Analysis**: Advancing multivariate time series anomaly detection
+- **Machine Learning Integration**: Combining traditional statistics with modern ML approaches
+
+### 📚 Academic Context
+The project aligns with CER-UFBA's mission to:
+- Foster interdisciplinary research in statistical risk analysis
+- Develop practical applications of statistical methodologies
+- Contribute to the advancement of Brazilian oil & gas industry safety
+- Train students in cutting-edge statistical and data science techniques
 
 ## 🛠️ Technology Stack
 
@@ -215,11 +258,33 @@ mypy src/
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
-## 🤝 Acknowledgments
+## 🙏 Acknowledgments
 
-- **Petrobras** - For providing domain expertise and data access
-- **PIBIC Program** - Undergraduate research funding
-- **Open Source Community** - For the amazing tools and libraries
+### 🏛️ CER-UFBA Support
+This project is made possible by the academic and research support of the **Risk Studies Center (CER-UFBA)** at the Federal University of Bahia.
+
+**Special thanks to:**
+- **CER-UFBA Research Team** - For providing the research infrastructure and statistical expertise
+- **Department of Statistics (DEst)** - For academic supervision and methodological guidance
+- **UFBA Faculty** - For supporting undergraduate research initiatives
+- **Petrobras** - For providing real-world data and industry context
+
+### 📞 Contact Information
+- **CER-UFBA Website**: [cer.ufba.br](https://cer.ufba.br)
+- **UFBA Main Site**: [ufba.br](https://ufba.br)
+- **Location**: Department of Statistics, Ondina Campus, Salvador-BA, Brazil
+- **Research Focus**: Statistical risk analysis, time series, anomaly detection, industrial applications
+
+### 🔬 Join Our Research
+CER-UFBA welcomes collaboration with:
+- **Students**: Undergraduate and graduate research opportunities
+- **Researchers**: Academic partnerships and joint publications
+- **Industry**: Applied research projects and consulting
+- **Institutions**: Research collaboration and knowledge exchange
+
+---
+
+**📚 This project is proudly developed under the academic supervision of CER-UFBA, contributing to the advancement of statistical methodologies for industrial risk assessment and anomaly detection.**
 
 ## 📞 Contact
 
