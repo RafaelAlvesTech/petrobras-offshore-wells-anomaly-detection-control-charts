@@ -60,18 +60,19 @@ Este projeto está configurado para treinamento de modelos de detecção de anom
 
 ### 💰 Orçamento Estimado
 
-| Serviço | Custo/Hora | Uso Estimado | Custo Mensal |
-|----------|------------|--------------|--------------|
-| Vertex AI (n1-standard-4 + T4) | $0.47 | 10 horas | $4.70 |
-| Cloud Storage | $0.02/GB | 100 GB | $2.00 |
-| Cloud Build | $0.003/min | 30 min | $0.09 |
-| **Total** | - | - | **~$6.79** |
+| Serviço                        | Custo/Hora | Uso Estimado | Custo Mensal |
+| ------------------------------ | ---------- | ------------ | ------------ |
+| Vertex AI (n1-standard-4 + T4) | $0.47      | 10 horas     | $4.70        |
+| Cloud Storage                  | $0.02/GB   | 100 GB       | $2.00        |
+| Cloud Build                    | $0.003/min | 30 min       | $0.09        |
+| **Total**                      | -          | -            | **~$6.79**   |
 
 ## ⚙️ Configuração Inicial
 
 ### 1. Instalar Google Cloud SDK
 
 #### Linux/macOS
+
 ```bash
 # Baixar e instalar
 curl https://sdk.cloud.google.com | bash
@@ -84,6 +85,7 @@ gcloud version
 ```
 
 #### Windows
+
 ```bash
 # Baixar do site oficial
 # https://cloud.google.com/sdk/docs/install
@@ -237,28 +239,31 @@ gcloud iam workload-identity-pools providers describe "$WORKLOAD_IDENTITY_PROVID
 ## 🔑 Configurar Secrets no GitHub
 
 ### 1. Acessar Settings do Repositório
+
 - Vá para `Settings` > `Secrets and variables` > `Actions`
 
 ### 2. Adicionar os Seguintes Secrets
 
-| Secret Name | Valor | Descrição |
-|-------------|-------|-----------|
-| `GCP_PROJECT_ID` | `seu-projeto-id` | ID do projeto Google Cloud |
-| `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/123456789/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider` | Provider do Workload Identity |
-| `GCP_SERVICE_ACCOUNT` | `github-actions-sa@seu-projeto-id.iam.gserviceaccount.com` | Email do Service Account |
-| `GCP_BUCKET_NAME` | `nome-do-bucket` | Nome do bucket do Cloud Storage |
-| `GOOGLE_CLOUD_PROJECT` | `seu-projeto-id` | ID do projeto (para compatibilidade) |
-| `GOOGLE_CLOUD_REGION` | `us-central1` | Região padrão do Google Cloud |
-| `GCS_BUCKET_NAME` | `nome-do-bucket` | Nome do bucket (para compatibilidade) |
+| Secret Name                      | Valor                                                                                                             | Descrição                             |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| `GCP_PROJECT_ID`                 | `seu-projeto-id`                                                                                                  | ID do projeto Google Cloud            |
+| `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/123456789/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider` | Provider do Workload Identity         |
+| `GCP_SERVICE_ACCOUNT`            | `github-actions-sa@seu-projeto-id.iam.gserviceaccount.com`                                                        | Email do Service Account              |
+| `GCP_BUCKET_NAME`                | `nome-do-bucket`                                                                                                  | Nome do bucket do Cloud Storage       |
+| `GOOGLE_CLOUD_PROJECT`           | `seu-projeto-id`                                                                                                  | ID do projeto (para compatibilidade)  |
+| `GOOGLE_CLOUD_REGION`            | `us-central1`                                                                                                     | Região padrão do Google Cloud         |
+| `GCS_BUCKET_NAME`                | `nome-do-bucket`                                                                                                  | Nome do bucket (para compatibilidade) |
 
 ## 🧪 Testar a Configuração
 
 ### 1. Executar Workflow de Teste
+
 - Vá para `Actions` no repositório
 - Execute o workflow `Test GCP Authentication` manualmente
 - Verifique se a autenticação foi bem-sucedida
 
 ### 2. Verificar Logs
+
 - Se houver erros, verifique:
   - Se todos os secrets estão configurados
   - Se o Workload Identity está configurado corretamente
@@ -267,12 +272,14 @@ gcloud iam workload-identity-pools providers describe "$WORKLOAD_IDENTITY_PROVID
 ## 🔒 Segurança
 
 ### Vantagens do Workload Identity Federation:
+
 - ✅ **Sem chaves de serviço**: Não há risco de vazamento de credenciais
 - ✅ **Tempo de vida limitado**: Tokens expiram automaticamente
 - ✅ **Auditoria**: Todas as ações são registradas no Cloud Audit Logs
 - ✅ **Princípio do menor privilégio**: Permite granularidade nas permissões
 
 ### Permissões Mínimas Recomendadas:
+
 - `roles/storage.admin` - Para gerenciar buckets e objetos
 - `roles/aiplatform.admin` - Para treinar modelos no Vertex AI
 - `roles/ml.admin` - Para usar AI Platform (legacy)
@@ -282,16 +289,19 @@ gcloud iam workload-identity-pools providers describe "$WORKLOAD_IDENTITY_PROVID
 ## 🚨 Troubleshooting
 
 ### Erro: "workload_identity_provider or credentials_json must be specified"
+
 - ✅ Verifique se `GCP_WORKLOAD_IDENTITY_PROVIDER` está configurado
 - ✅ Verifique se `GCP_SERVICE_ACCOUNT` está configurado
 - ❌ Não use `credentials_json` (método legado)
 
 ### Erro: "Permission denied"
+
 - ✅ Verifique se o Service Account tem as permissões necessárias
 - ✅ Verifique se o Workload Identity está configurado corretamente
 - ✅ Verifique se o repositório está na lista de repositórios permitidos
 
 ### Erro: "Service account not found"
+
 - ✅ Verifique se o Service Account existe
 - ✅ Verifique se o email está correto no secret `GCP_SERVICE_ACCOUNT`
 

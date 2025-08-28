@@ -18,6 +18,7 @@ Thank you for your interest in contributing to the **Petrobras Offshore Wells An
 ### 🔄 Contribution Workflow
 
 #### 1. **Fork & Clone**
+
 ```bash
 # Fork the repository on GitHub
 # Then clone your fork
@@ -29,6 +30,7 @@ git remote add upstream https://github.com/ORIGINAL_REPO/petrobras-offshore-well
 ```
 
 #### 2. **Create Feature Branch**
+
 ```bash
 # Create and switch to a new branch
 git checkout -b feature/your-feature-name
@@ -38,12 +40,14 @@ git checkout -b fix/your-bug-description
 ```
 
 #### 3. **Make Changes**
+
 - Follow the [coding standards](#-coding-standards)
 - Write tests for new functionality
 - Update documentation as needed
 - Ensure all tests pass
 
 #### 4. **Commit Your Changes**
+
 ```bash
 # Use conventional commits
 git commit -m "feat: add new anomaly detection model"
@@ -53,6 +57,7 @@ git commit -m "fix: resolve data preprocessing issue"
 ```
 
 #### 5. **Push & Create Pull Request**
+
 ```bash
 git push origin feature/your-feature-name
 # Create PR on GitHub with detailed description
@@ -63,6 +68,7 @@ git push origin feature/your-feature-name
 ### 🐍 Python Code Style
 
 #### **Type Hints & Documentation**
+
 ```python
 from typing import List, Optional, Union
 import numpy as np
@@ -95,12 +101,14 @@ def detect_anomalies(
 ```
 
 #### **Code Formatting**
+
 - Use **Ruff** for formatting and linting
 - Maximum line length: **88 characters**
 - Use **f-strings** for string formatting
 - Prefer **list comprehensions** over explicit loops when appropriate
 
 #### **Import Organization**
+
 ```python
 # Standard library imports
 import os
@@ -120,6 +128,7 @@ from src.utils.helpers import validate_data
 ### 🧪 Testing Standards
 
 #### **Test Structure**
+
 ```python
 # tests/test_models.py
 import pytest
@@ -153,6 +162,7 @@ class TestAnomalyDetector:
 ```
 
 #### **Test Coverage Requirements**
+
 - **Minimum coverage**: 80%
 - **Critical functions**: 95% coverage
 - **New features**: Must include tests
@@ -161,6 +171,7 @@ class TestAnomalyDetector:
 ### 📚 Documentation Standards
 
 #### **Docstring Format (Google Style)**
+
 ```python
 def train_model(
     data: pl.DataFrame,
@@ -192,6 +203,7 @@ def train_model(
 ```
 
 #### **README Updates**
+
 - Update README.md for new features
 - Include usage examples
 - Update installation instructions if needed
@@ -200,6 +212,7 @@ def train_model(
 ## 🔧 Development Setup
 
 ### **Environment Setup**
+
 ```bash
 # Clone and setup
 git clone <your-fork>
@@ -218,13 +231,16 @@ uv run pre-commit install
 ```
 
 ### **Pre-commit Hooks**
+
 The project uses pre-commit hooks to ensure code quality:
+
 - **Ruff**: Code formatting and linting
 - **Black**: Code formatting
 - **MyPy**: Type checking
 - **Pytest**: Test execution
 
 ### **Running Quality Checks**
+
 ```bash
 # Format code
 uv run ruff format .
@@ -245,26 +261,32 @@ uv run pre-commit run --all-files
 ## 📊 Pull Request Guidelines
 
 ### **PR Template**
+
 ```markdown
 ## 🎯 Description
+
 Brief description of changes and motivation
 
 ## 🔧 Changes Made
+
 - [ ] Feature A added
 - [ ] Bug B fixed
 - [ ] Documentation C updated
 
 ## 🧪 Testing
+
 - [ ] Unit tests pass
 - [ ] Integration tests pass
 - [ ] Manual testing completed
 
 ## 📚 Documentation
+
 - [ ] Code documented
 - [ ] README updated
 - [ ] API docs updated
 
 ## 🔍 Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Tests added for new functionality
 - [ ] All existing tests pass
@@ -273,6 +295,7 @@ Brief description of changes and motivation
 ```
 
 ### **Review Process**
+
 1. **Automated checks** must pass
 2. **Code review** by maintainers
 3. **Test coverage** requirements met
@@ -282,48 +305,60 @@ Brief description of changes and motivation
 ## 🐛 Bug Reports
 
 ### **Bug Report Template**
+
 ```markdown
 ## 🐛 Bug Description
+
 Clear description of the bug
 
 ## 🔍 Steps to Reproduce
+
 1. Step 1
 2. Step 2
 3. Step 3
 
 ## 📱 Expected vs Actual Behavior
+
 - **Expected**: What should happen
 - **Actual**: What actually happens
 
 ## 💻 Environment
+
 - OS: [e.g., Ubuntu 20.04]
 - Python: [e.g., 3.11.5]
 - Package versions: [e.g., polars==1.32.3]
 
 ## 📋 Additional Context
+
 Any other relevant information
 ```
 
 ## 💡 Feature Requests
 
 ### **Feature Request Template**
+
 ```markdown
 ## 🚀 Feature Description
+
 Clear description of the requested feature
 
 ## 🎯 Use Case
+
 Why this feature is needed and how it will be used
 
 ## 🔧 Implementation Ideas
+
 Any thoughts on how to implement this feature
 
 ## 📚 Related Issues
+
 Links to related issues or discussions
 ```
 
 ## 🤝 Community Guidelines
 
 ### **Code of Conduct**
+
 - **Be respectful** and inclusive
 - **Help newcomers** get started
 - **Provide constructive feedback**
@@ -331,6 +366,7 @@ Links to related issues or discussions
 - **Celebrate contributions** and improvements
 
 ### **Communication Channels**
+
 - **GitHub Issues**: Bug reports and feature requests
 - **GitHub Discussions**: General questions and ideas
 - **Pull Requests**: Code contributions
@@ -339,13 +375,16 @@ Links to related issues or discussions
 ## 🏆 Recognition
 
 ### **Contributor Levels**
+
 - **🌱 New Contributor**: First contribution
 - **🌿 Regular Contributor**: Multiple contributions
 - **🌳 Core Contributor**: Significant contributions
 - **🏆 Maintainer**: Project leadership
 
 ### **Hall of Fame**
+
 Contributors will be recognized in:
+
 - Project README
 - Release notes
 - Contributor documentation
@@ -354,12 +393,14 @@ Contributors will be recognized in:
 ## 📞 Getting Help
 
 ### **Resources**
+
 - [Project Documentation](docs/)
 - [Setup Guide](docs/setup-guide.md)
 - [3W Integration](docs/3W_INTEGRATION.md)
 - [GitHub Issues](https://github.com/your-repo/issues)
 
 ### **Contact**
+
 - **Project Lead**: [Your Name]
 - **Email**: [your.email@university.edu]
 - **Institution**: [Your University]

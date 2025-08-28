@@ -1,4 +1,5 @@
 ## Executable
+
 Unpack the archive relevant to your machine and place in $PATH
 
 ## Shell Completion Scripts
@@ -28,7 +29,6 @@ and then add the directory to your `$fpath` in your `.zshrc`, `.zsh_profile` or
 
     export fpath=(~/.zsh/functions $fpath)
     autoload -U compinit && compinit
-
 
 #### Oh My Zsh
 

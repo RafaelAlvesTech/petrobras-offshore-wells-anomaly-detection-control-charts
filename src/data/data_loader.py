@@ -10,7 +10,7 @@ Este módulo fornece funcionalidades para:
 
 import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -31,7 +31,7 @@ class TimeSeriesDataLoader:
 
     def __init__(
         self,
-        data_path: Optional[Union[str, Path]] = None,
+        data_path: str | Path | None = None,
         use_threew: bool = True,
         cache_data: bool = True,
     ):
@@ -68,8 +68,8 @@ class TimeSeriesDataLoader:
         logging.info(f"TimeSeriesDataLoader inicializado - 3W: {self.use_threew}")
 
     def load_from_parquet(
-        self, file_path: Union[str, Path], columns: Optional[List[str]] = None
-    ) -> Optional[pd.DataFrame]:
+        self, file_path: str | Path, columns: list[str] | None = None
+    ) -> pd.DataFrame | None:
         """
         Carrega dados de um arquivo Parquet.
 
@@ -101,10 +101,10 @@ class TimeSeriesDataLoader:
 
     def load_from_csv(
         self,
-        file_path: Union[str, Path],
+        file_path: str | Path,
         separator: str = ",",
-        columns: Optional[List[str]] = None,
-    ) -> Optional[pd.DataFrame]:
+        columns: list[str] | None = None,
+    ) -> pd.DataFrame | None:
         """
         Carrega dados de um arquivo CSV.
 
@@ -140,7 +140,7 @@ class TimeSeriesDataLoader:
         fold_index: int = 0,
         normalize: bool = True,
         test_size: float = 0.2,
-    ) -> Optional[Dict[str, Any]]:
+    ) -> dict[str, Any] | None:
         """
         Carrega dados de um problema específico do dataset 3W.
 
@@ -221,7 +221,7 @@ class TimeSeriesDataLoader:
 
     def _normalize_data(
         self, X_train: np.ndarray, X_test: np.ndarray, method: str = "standard"
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """
         Normaliza os dados de treino e teste.
 
@@ -249,7 +249,7 @@ class TimeSeriesDataLoader:
         logging.info(f"Dados normalizados usando {method}")
         return X_train_normalized, X_test_normalized
 
-    def get_cached_data(self, cache_key: str) -> Optional[Dict[str, Any]]:
+    def get_cached_data(self, cache_key: str) -> dict[str, Any] | None:
         """
         Obtém dados do cache.
 
@@ -266,7 +266,7 @@ class TimeSeriesDataLoader:
         self._data_cache.clear()
         logging.info("Cache de dados limpo")
 
-    def get_data_info(self) -> Dict[str, Any]:
+    def get_data_info(self) -> dict[str, Any]:
         """
         Retorna informações sobre o carregador de dados.
 
@@ -281,7 +281,7 @@ class TimeSeriesDataLoader:
             "data_path": str(self.data_path) if self.data_path else None,
         }
 
-    def list_available_problems(self) -> List[str]:
+    def list_available_problems(self) -> list[str]:
         """
         Lista os problemas disponíveis no dataset 3W.
 
@@ -292,7 +292,7 @@ class TimeSeriesDataLoader:
             return self.threew_dataset.list_available_problems()
         return []
 
-    def get_problem_info(self, problem_name: str) -> Optional[Dict[str, Any]]:
+    def get_problem_info(self, problem_name: str) -> dict[str, Any] | None:
         """
         Obtém informações sobre um problema específico.
 
@@ -309,7 +309,7 @@ class TimeSeriesDataLoader:
 
 # Função de conveniência para criar um carregador
 def create_data_loader(
-    data_path: Optional[Union[str, Path]] = None,
+    data_path: str | Path | None = None,
     use_threew: bool = True,
     cache_data: bool = True,
 ) -> TimeSeriesDataLoader:

@@ -4,7 +4,7 @@ MLflow integration with Google Cloud Storage for experiment tracking.
 
 import logging
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import mlflow
 import mlflow.pytorch
@@ -99,7 +99,7 @@ class MLflowGCSIntegration:
             logger.error(f"Failed to get/create MLflow experiment: {e}")
             raise
 
-    def start_run(self, run_name: str, tags: Optional[Dict[str, str]] = None) -> Run:
+    def start_run(self, run_name: str, tags: dict[str, str] | None = None) -> Run:
         """
         Start a new MLflow run.
 
@@ -131,7 +131,7 @@ class MLflowGCSIntegration:
             logger.error(f"Failed to end MLflow run: {e}")
             raise
 
-    def log_params(self, params: Dict[str, Any]) -> None:
+    def log_params(self, params: dict[str, Any]) -> None:
         """
         Log parameters to the current run.
 
@@ -148,9 +148,7 @@ class MLflowGCSIntegration:
             logger.error(f"Failed to log parameters: {e}")
             raise
 
-    def log_metrics(
-        self, metrics: Dict[str, float], step: Optional[int] = None
-    ) -> None:
+    def log_metrics(self, metrics: dict[str, float], step: int | None = None) -> None:
         """
         Log metrics to the current run.
 
@@ -168,9 +166,7 @@ class MLflowGCSIntegration:
             logger.error(f"Failed to log metrics: {e}")
             raise
 
-    def log_artifact(
-        self, local_path: str, artifact_path: Optional[str] = None
-    ) -> None:
+    def log_artifact(self, local_path: str, artifact_path: str | None = None) -> None:
         """
         Log an artifact to the current run.
 
@@ -248,7 +244,7 @@ class MLflowGCSIntegration:
             logger.error(f"Failed to load model from {model_uri}: {e}")
             raise
 
-    def search_runs(self, filter_string: str = "", max_results: int = 100) -> List[Run]:
+    def search_runs(self, filter_string: str = "", max_results: int = 100) -> list[Run]:
         """
         Search for runs in the experiment.
 
@@ -292,7 +288,7 @@ class MLflowGCSIntegration:
             logger.error(f"Failed to get run {run_id}: {e}")
             raise
 
-    def list_artifacts(self, run_id: str, path: Optional[str] = None) -> List[str]:
+    def list_artifacts(self, run_id: str, path: str | None = None) -> list[str]:
         """
         List artifacts for a specific run.
 
@@ -365,7 +361,7 @@ class MLflowGCSIntegration:
             logger.error(f"Failed to register model {name}: {e}")
             raise
 
-    def list_registered_models(self) -> List[str]:
+    def list_registered_models(self) -> list[str]:
         """
         List all registered models.
 
@@ -383,7 +379,7 @@ class MLflowGCSIntegration:
             logger.error(f"Failed to list registered models: {e}")
             raise
 
-    def get_experiment_info(self) -> Dict[str, Any]:
+    def get_experiment_info(self) -> dict[str, Any]:
         """Get information about the current experiment."""
         try:
             info = {

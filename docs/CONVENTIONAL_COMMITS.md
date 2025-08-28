@@ -13,6 +13,7 @@ Este projeto utiliza **Conventional Commits** com emojis para manter um históri
 ## 🚀 Tipos de Commit
 
 ### Funcionalidades e Melhorias
+
 - **🚀 feat** - Nova funcionalidade
 - **⚡ perf** - Melhorias de performance
 - **📊 data** - Mudanças em datasets ou dados
@@ -20,6 +21,7 @@ Este projeto utiliza **Conventional Commits** com emojis para manter um históri
 - **📈 analysis** - Análises e experimentos
 
 ### Correções e Manutenção
+
 - **🐛 fix** - Correção de bug
 - **♻️ refactor** - Refatoração de código
 - **🔧 chore** - Tarefas de manutenção
@@ -27,6 +29,7 @@ Este projeto utiliza **Conventional Commits** com emojis para manter um históri
 - **📚 docs** - Documentação
 
 ### Infraestrutura e Qualidade
+
 - **🧪 test** - Adição ou correção de testes
 - **🔨 build** - Mudanças no sistema de build
 - **👷 ci** - Mudanças em CI/CD
@@ -35,12 +38,14 @@ Este projeto utiliza **Conventional Commits** com emojis para manter um históri
 ## 🎯 Escopos Recomendados
 
 ### Domínio Principal
+
 - **anomaly-detection** - Funcionalidades de detecção de anomalias
 - **data-processing** - Processamento e limpeza de dados
 - **models** - Modelos de machine learning
 - **analysis** - Análises exploratórias e experimentos
 
 ### Infraestrutura
+
 - **utils** - Utilitários e funções auxiliares
 - **tests** - Testes automatizados
 - **docs** - Documentação
@@ -62,6 +67,7 @@ Este projeto utiliza **Conventional Commits** com emojis para manter um históri
 ### Exemplos Práticos
 
 #### 🚀 Nova Funcionalidade
+
 ```bash
 🚀 feat(anomaly-detection): implementa modelo TranAD para detecção de anomalias
 
@@ -75,6 +81,7 @@ Closes #123
 ```
 
 #### 🐛 Correção de Bug
+
 ```bash
 🐛 fix(data-processing): corrige erro na normalização de dados de pressão
 
@@ -86,6 +93,7 @@ Fixes #456
 ```
 
 #### 📚 Documentação
+
 ```bash
 📚 docs(readme): atualiza instruções de instalação e configuração
 
@@ -96,6 +104,7 @@ Fixes #456
 ```
 
 #### ♻️ Refatoração
+
 ```bash
 ♻️ refactor(models): refatora arquitetura do LSTM-VAE para melhor performance
 
@@ -110,16 +119,19 @@ Breaking Change: Interface do modelo alterada
 ## 🔧 Configuração
 
 ### 1. Template de Commit
+
 ```bash
 git config commit.template .gitmessage
 ```
 
 ### 2. Pre-commit Hooks
+
 ```bash
 uv run pre-commit install
 ```
 
 ### 3. Script Helper
+
 ```bash
 ./scripts/commit-emoji.sh generate
 ```
@@ -127,6 +139,7 @@ uv run pre-commit install
 ## 📊 Exemplos por Categoria
 
 ### 🚀 Funcionalidades de ML
+
 ```bash
 🚀 feat(models): implementa modelo USAD para detecção de anomalias
 🚀 feat(anomaly-detection): adiciona threshold adaptativo baseado em percentil
@@ -134,6 +147,7 @@ uv run pre-commit install
 ```
 
 ### 📊 Análise de Dados
+
 ```bash
 📈 analysis(eda): realiza análise exploratória dos dados de pressão
 📊 data(wells): adiciona novos dados de poços offshore do campo Tupi
@@ -141,6 +155,7 @@ uv run pre-commit install
 ```
 
 ### 🔧 Infraestrutura
+
 ```bash
 🔧 chore(deps): atualiza Polars para versão 0.20.0
 👷 ci(github): configura GitHub Actions para testes automáticos
@@ -150,6 +165,7 @@ uv run pre-commit install
 ## 🚫 O que NÃO fazer
 
 ### ❌ Commits Ruins
+
 ```bash
 # Muito vago
 fix: bug fix
@@ -165,6 +181,7 @@ feat(anomaly-detection): implementa modelo TranAD
 ```
 
 ### ✅ Commits Bons
+
 ```bash
 # Específico e claro
 🐛 fix(data-processing): corrige erro na normalização de dados de pressão
@@ -194,6 +211,7 @@ feat(anomaly-detection): implementa modelo TranAD
 ## 📞 Suporte
 
 Para dúvidas sobre commits convencionais:
+
 - Execute `./scripts/commit-emoji.sh help`
 - Consulte este documento
 - Abra uma issue no repositório

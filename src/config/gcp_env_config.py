@@ -4,7 +4,6 @@ Secure configuration loading for Google Cloud Platform credentials.
 """
 
 import os
-from typing import Dict
 from pathlib import Path
 
 
@@ -44,7 +43,7 @@ class GCPEnvConfig:
                     f"Service account key file not found: {self.service_account_path}"
                 )
 
-    def get_storage_paths(self) -> Dict[str, str]:
+    def get_storage_paths(self) -> dict[str, str]:
         """Get GCS storage paths."""
         base_path = f"gs://{self.bucket_name}"
         return {
@@ -57,7 +56,7 @@ class GCPEnvConfig:
             "mlflow_artifacts": f"{base_path}/mlflow-artifacts",
         }
 
-    def get_vertex_ai_config(self) -> Dict[str, str]:
+    def get_vertex_ai_config(self) -> dict[str, str]:
         """Get Vertex AI configuration."""
         return {
             "project_id": self.project_id,

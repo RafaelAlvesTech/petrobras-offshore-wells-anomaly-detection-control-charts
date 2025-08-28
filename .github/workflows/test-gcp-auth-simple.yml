@@ -3,10 +3,10 @@ name: Test GCP Authentication (Simple)
 on:
   workflow_dispatch:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
     paths:
-      - '.github/workflows/**'
-      - 'gcp-config.yaml'
+      - ".github/workflows/**"
+      - "gcp-config.yaml"
 
 env:
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
@@ -16,37 +16,37 @@ jobs:
   test-auth-simple:
     runs-on: ubuntu-latest
     permissions:
-      contents: 'read'
+      contents: "read"
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup Google Cloud CLI
-      uses: google-github-actions/setup-gcloud@v2
-      with:
-        project_id: ${{ env.GCP_PROJECT_ID }}
+      - name: Setup Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
 
-    - name: Authenticate to Google Cloud (Simple)
-      uses: google-github-actions/auth@v2
-      with:
-        credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+      - name: Authenticate to Google Cloud (Simple)
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
 
-    - name: Verify Authentication
-      run: |
-        echo "Testing GCP authentication..."
-        gcloud auth list
-        gcloud config list project
-        echo "✅ Authentication successful!"
+      - name: Verify Authentication
+        run: |
+          echo "Testing GCP authentication..."
+          gcloud auth list
+          gcloud config list project
+          echo "✅ Authentication successful!"
 
-    - name: Test Basic GCP Commands
-      run: |
-        echo "Testing basic GCP commands..."
-        gcloud services list --enabled --limit=5
-        echo "✅ Basic GCP commands working!"
+      - name: Test Basic GCP Commands
+        run: |
+          echo "Testing basic GCP commands..."
+          gcloud services list --enabled --limit=5
+          echo "✅ Basic GCP commands working!"
 
-    - name: Test Project Access
-      run: |
-        echo "Testing project access..."
-        gcloud projects describe ${{ env.GCP_PROJECT_ID }} --format="value(name)"
-        echo "✅ Project access verified!"
+      - name: Test Project Access
+        run: |
+          echo "Testing project access..."
+          gcloud projects describe ${{ env.GCP_PROJECT_ID }} --format="value(name)"
+          echo "✅ Project access verified!"

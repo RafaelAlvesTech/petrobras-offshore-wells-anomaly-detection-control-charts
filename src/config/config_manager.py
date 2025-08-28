@@ -12,7 +12,7 @@ import logging
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Dict, Optional, Union
+from typing import Any
 
 import yaml
 
@@ -24,10 +24,10 @@ class DatasetConfig:
     name: str
     version: str
     description: str
-    paths: Dict[str, str]
-    loading: Dict[str, Any]
-    preprocessing: Dict[str, Any]
-    rolling_window: Dict[str, Any]
+    paths: dict[str, str]
+    loading: dict[str, Any]
+    preprocessing: dict[str, Any]
+    rolling_window: dict[str, Any]
 
 
 @dataclass
@@ -95,7 +95,7 @@ class ThreeWConfig:
 
     dataset: DatasetConfig
     problems: list
-    experiments: Dict[str, ExperimentConfig]
+    experiments: dict[str, ExperimentConfig]
     logging: LoggingConfig
     cache: CacheConfig
     validation: ValidationConfig
@@ -111,7 +111,7 @@ class ConfigManager:
     arquivos e ambientes.
     """
 
-    def __init__(self, config_dir: Optional[Union[str, Path]] = None):
+    def __init__(self, config_dir: str | Path | None = None):
         """
         Inicializa o gerenciador de configurações.
 
@@ -134,7 +134,7 @@ class ConfigManager:
             self.config_dir.mkdir(parents=True, exist_ok=True)
             self.logger.info(f"Diretório de configurações criado: {self.config_dir}")
 
-    def load_config(self, config_name: str) -> Dict[str, Any]:
+    def load_config(self, config_name: str) -> dict[str, Any]:
         """
         Carrega uma configuração específica.
 
@@ -153,7 +153,7 @@ class ConfigManager:
             return {}
 
         try:
-            with open(config_file, "r", encoding="utf-8") as f:
+            with open(config_file, encoding="utf-8") as f:
                 config = yaml.safe_load(f)
                 self.configs[config_name] = config
                 self.logger.info(f"Configuração carregada: {config_name}")
@@ -162,7 +162,7 @@ class ConfigManager:
             self.logger.error(f"Erro ao carregar configuração {config_name}: {e}")
             return {}
 
-    def get_config(self, config_name: str) -> Dict[str, Any]:
+    def get_config(self, config_name: str) -> dict[str, Any]:
         """
         Obtém uma configuração (carrega se necessário).
 
@@ -176,7 +176,7 @@ class ConfigManager:
             return self.load_config(config_name)
         return self.configs[config_name]
 
-    def save_config(self, config_name: str, config: Dict[str, Any]) -> bool:
+    def save_config(self, config_name: str, config: dict[str, Any]) -> bool:
         """
         Salva uma configuração em arquivo.
 
@@ -203,7 +203,7 @@ class ConfigManager:
             self.logger.error(f"Erro ao salvar configuração {config_name}: {e}")
             return False
 
-    def update_config(self, config_name: str, updates: Dict[str, Any]) -> bool:
+    def update_config(self, config_name: str, updates: dict[str, Any]) -> bool:
         """
         Atualiza uma configuração existente.
 
@@ -224,8 +224,8 @@ class ConfigManager:
         return self.save_config(config_name, updated_config)
 
     def _deep_update(
-        self, base: Dict[str, Any], updates: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, base: dict[str, Any], updates: dict[str, Any]
+    ) -> dict[str, Any]:
         """
         Atualiza recursivamente um dicionário.
 
@@ -275,7 +275,7 @@ class ConfigManager:
         self.logger.info(f"Configuração {config_name} validada com sucesso")
         return True
 
-    def get_default_config(self, config_name: str) -> Dict[str, Any]:
+    def get_default_config(self, config_name: str) -> dict[str, Any]:
         """
         Retorna a configuração padrão para um tipo específico.
 
@@ -345,7 +345,7 @@ class ConfigManager:
 
 
 # Instância global do gerenciador de configurações
-@lru_cache()
+@lru_cache
 def get_config_manager() -> ConfigManager:
     """
     Retorna uma instância global do gerenciador de configurações.
@@ -357,7 +357,7 @@ def get_config_manager() -> ConfigManager:
 
 
 # Funções de conveniência
-def load_threew_config() -> Dict[str, Any]:
+def load_threew_config() -> dict[str, Any]:
     """
     Carrega a configuração do 3W.
 
@@ -368,7 +368,7 @@ def load_threew_config() -> Dict[str, Any]:
     return config_manager.get_config("3w")
 
 
-def save_threew_config(config: Dict[str, Any]) -> bool:
+def save_threew_config(config: dict[str, Any]) -> bool:
     """
     Salva a configuração do 3W.
 

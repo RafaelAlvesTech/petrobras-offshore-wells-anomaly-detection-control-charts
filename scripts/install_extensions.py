@@ -9,7 +9,6 @@ import subprocess
 import sys
 import platform
 import time
-from typing import List
 
 
 # Cores para output (ANSI escape codes)
@@ -50,7 +49,7 @@ def install_extension(extension: str, force: bool = False) -> bool:
         return False
 
 
-def get_extensions() -> List[str]:
+def get_extensions() -> list[str]:
     """Retorna a lista de extensões essenciais baseada nas suas configurações"""
     return [
         # 🐍 Python Development

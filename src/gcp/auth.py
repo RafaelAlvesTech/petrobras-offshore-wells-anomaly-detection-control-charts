@@ -3,7 +3,7 @@ Google Cloud Platform authentication management.
 """
 
 import os
-from typing import Any, Dict
+from typing import Any
 
 from google.auth import default
 from google.auth.exceptions import DefaultCredentialsError, GoogleAuthError
@@ -146,7 +146,7 @@ class GCPAuthenticator:
         """Get Cloud Monitoring client."""
         return self.get_client("monitoring")
 
-    def test_authentication(self) -> Dict[str, Any]:
+    def test_authentication(self) -> dict[str, Any]:
         """
         Test authentication with all services.
 
@@ -198,7 +198,7 @@ class GCPAuthenticator:
 
         return results
 
-    def get_credentials_info(self) -> Dict[str, Any]:
+    def get_credentials_info(self) -> dict[str, Any]:
         """Get information about current credentials."""
         if not self.credentials:
             return {"error": "No credentials available"}
@@ -209,12 +209,16 @@ class GCPAuthenticator:
             "service_account_email": getattr(
                 self.credentials, "service_account_email", None
             ),
-            "expired": self.credentials.expired
-            if hasattr(self.credentials, "expired")
-            else None,
-            "valid": not self.credentials.expired
-            if hasattr(self.credentials, "expired")
-            else None,
+            "expired": (
+                self.credentials.expired
+                if hasattr(self.credentials, "expired")
+                else None
+            ),
+            "valid": (
+                not self.credentials.expired
+                if hasattr(self.credentials, "expired")
+                else None
+            ),
         }
 
         # Add scopes if available

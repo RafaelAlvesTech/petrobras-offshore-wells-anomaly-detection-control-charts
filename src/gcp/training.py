@@ -6,7 +6,7 @@ import json
 import logging
 import os
 import subprocess
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from google.cloud.aiplatform_v1 import CreateCustomJobRequest, JobServiceClient
 from google.cloud.aiplatform_v1.types import (
@@ -51,11 +51,11 @@ class AIPlatformTrainer:
         self,
         display_name: str,
         script_path: str,
-        requirements: List[str],
-        machine_type: Optional[str] = None,
-        accelerator_type: Optional[str] = None,
-        accelerator_count: Optional[int] = None,
-        worker_count: Optional[int] = None,
+        requirements: list[str],
+        machine_type: str | None = None,
+        accelerator_type: str | None = None,
+        accelerator_count: int | None = None,
+        worker_count: int | None = None,
         **kwargs,
     ) -> CustomJob:
         """
@@ -109,9 +109,7 @@ class AIPlatformTrainer:
             # Create custom job spec
             custom_job_spec = CustomJobSpec(
                 worker_pool_specs=[worker_pool_spec],
-                scheduling=Scheduling(
-                    timeout="7200s"  # 2 hours
-                ),
+                scheduling=Scheduling(timeout="7200s"),  # 2 hours
             )
 
             # Create training job request
@@ -136,7 +134,7 @@ class AIPlatformTrainer:
             raise
 
     def submit_training_job(
-        self, job_name: str, script_path: str, requirements: List[str], **kwargs
+        self, job_name: str, script_path: str, requirements: list[str], **kwargs
     ) -> str:
         """
         Submit a training job using gcloud CLI.
@@ -225,7 +223,7 @@ class AIPlatformTrainer:
 
         raise ValueError("Could not extract job ID from output")
 
-    def get_training_job(self, job_id: str) -> Dict[str, Any]:
+    def get_training_job(self, job_id: str) -> dict[str, Any]:
         """
         Get information about a training job.
 
@@ -264,8 +262,8 @@ class AIPlatformTrainer:
             raise
 
     def list_training_jobs(
-        self, filter_expr: Optional[str] = None
-    ) -> List[Dict[str, Any]]:
+        self, filter_expr: str | None = None
+    ) -> list[dict[str, Any]]:
         """
         List training jobs in the project.
 
@@ -340,7 +338,7 @@ class AIPlatformTrainer:
             logger.error(f"Failed to cancel training job {job_id}: {e}")
             return False
 
-    def get_job_logs(self, job_id: str, max_lines: Optional[int] = None) -> str:
+    def get_job_logs(self, job_id: str, max_lines: int | None = None) -> str:
         """
         Get logs from a training job.
 
@@ -461,7 +459,7 @@ class AIPlatformTrainer:
             raise
 
     def _generate_training_script(
-        self, model_type: str, model_config: Dict[str, Any], **kwargs
+        self, model_type: str, model_config: dict[str, Any], **kwargs
     ) -> str:
         """Generate training script content based on model type."""
         # This is a template - you would customize based on your actual model implementations

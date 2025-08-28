@@ -10,7 +10,7 @@ import logging
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import boto3
 import sagemaker
@@ -37,9 +37,9 @@ class TrainingJobConfig:
     instance_count: int
     volume_size_gb: int
     max_run_seconds: int
-    hyperparameters: Dict[str, Any]
-    input_data_config: Dict[str, Any]
-    output_data_config: Dict[str, Any]
+    hyperparameters: dict[str, Any]
+    input_data_config: dict[str, Any]
+    output_data_config: dict[str, Any]
 
 
 class AWSTrainingManager:
@@ -65,13 +65,13 @@ class AWSTrainingManager:
 
         logger.info("AWS Training Manager inicializado com sucesso")
 
-    def _load_config(self) -> Dict[str, Any]:
+    def _load_config(self) -> dict[str, Any]:
         """Carrega configuração do arquivo YAML."""
         try:
             import yaml
 
             if self.config_path.exists():
-                with open(self.config_path, "r", encoding="utf-8") as f:
+                with open(self.config_path, encoding="utf-8") as f:
                     return yaml.safe_load(f)
             else:
                 logger.warning(
@@ -328,7 +328,7 @@ class AWSTrainingManager:
             logger.error(f"Erro ao fazer deploy do modelo: {e}")
             raise
 
-    def monitor_training_job(self, job_name: str) -> Dict[str, Any]:
+    def monitor_training_job(self, job_name: str) -> dict[str, Any]:
         """
         Monitora job de treinamento.
 
@@ -372,9 +372,7 @@ class AWSTrainingManager:
             logger.error(f"Erro ao monitorar job: {e}")
             raise
 
-    def list_training_jobs(
-        self, model_name: Optional[str] = None
-    ) -> List[Dict[str, Any]]:
+    def list_training_jobs(self, model_name: str | None = None) -> list[dict[str, Any]]:
         """
         Lista jobs de treinamento.
 
@@ -485,7 +483,7 @@ class AWSTrainingManager:
             logger.error(f"Erro ao limpar recursos: {e}")
             return False
 
-    def get_cost_estimate(self, config: TrainingJobConfig) -> Dict[str, float]:
+    def get_cost_estimate(self, config: TrainingJobConfig) -> dict[str, float]:
         """
         Estima custo do treinamento.
 

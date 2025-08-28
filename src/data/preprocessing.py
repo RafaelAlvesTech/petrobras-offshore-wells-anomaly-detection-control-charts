@@ -10,7 +10,7 @@ Este módulo fornece funcionalidades para:
 
 import logging
 import warnings
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 import numpy as np
 from sklearn.decomposition import PCA
@@ -34,8 +34,8 @@ class TimeSeriesPreprocessor:
         imputation_strategy: str = "mean",
         scaling_method: str = "robust",
         feature_selection_method: str = "mutual_info",
-        n_features: Optional[int] = None,
-        pca_components: Optional[int] = None,
+        n_features: int | None = None,
+        pca_components: int | None = None,
     ):
         """
         Inicializa o pré-processador.
@@ -64,9 +64,7 @@ class TimeSeriesPreprocessor:
 
         logging.info("TimeSeriesPreprocessor inicializado")
 
-    def fit_transform(
-        self, X: np.ndarray, y: Optional[np.ndarray] = None
-    ) -> np.ndarray:
+    def fit_transform(self, X: np.ndarray, y: np.ndarray | None = None) -> np.ndarray:
         """
         Ajusta o pré-processador e transforma os dados.
 
@@ -80,7 +78,7 @@ class TimeSeriesPreprocessor:
         return self.fit(X, y).transform(X)
 
     def fit(
-        self, X: np.ndarray, y: Optional[np.ndarray] = None
+        self, X: np.ndarray, y: np.ndarray | None = None
     ) -> "TimeSeriesPreprocessor":
         """
         Ajusta o pré-processador aos dados.
@@ -171,7 +169,7 @@ class TimeSeriesPreprocessor:
         self.scaler.fit(X)
         logging.info(f"Scaler ajustado com método: {self.scaling_method}")
 
-    def _fit_feature_selector(self, X: np.ndarray, y: Optional[np.ndarray]) -> None:
+    def _fit_feature_selector(self, X: np.ndarray, y: np.ndarray | None) -> None:
         """Ajusta o seletor de atributos."""
         if y is None:
             logging.warning(
@@ -212,8 +210,8 @@ class TimeSeriesPreprocessor:
         )
 
     def get_feature_names(
-        self, original_features: Optional[List[str]] = None
-    ) -> List[str]:
+        self, original_features: list[str] | None = None
+    ) -> list[str]:
         """
         Retorna os nomes dos atributos após o pré-processamento.
 
@@ -241,7 +239,7 @@ class TimeSeriesPreprocessor:
 
         return features
 
-    def get_preprocessing_info(self) -> Dict[str, Any]:
+    def get_preprocessing_info(self) -> dict[str, Any]:
         """
         Retorna informações sobre o pré-processamento aplicado.
 
@@ -323,8 +321,8 @@ class RollingWindowPreprocessor:
         )
 
     def create_windows(
-        self, X: np.ndarray, y: Optional[np.ndarray] = None
-    ) -> Tuple[np.ndarray, Optional[np.ndarray]]:
+        self, X: np.ndarray, y: np.ndarray | None = None
+    ) -> tuple[np.ndarray, np.ndarray | None]:
         """
         Cria janelas deslizantes dos dados.
 
@@ -396,8 +394,8 @@ def create_preprocessor(
     imputation_strategy: str = "mean",
     scaling_method: str = "robust",
     feature_selection_method: str = "mutual_info",
-    n_features: Optional[int] = None,
-    pca_components: Optional[int] = None,
+    n_features: int | None = None,
+    pca_components: int | None = None,
 ) -> TimeSeriesPreprocessor:
     """
     Cria um pré-processador configurado.

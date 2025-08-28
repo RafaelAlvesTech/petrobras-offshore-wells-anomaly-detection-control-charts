@@ -9,6 +9,7 @@ This document describes the complete integration of the project with the **Petro
 ## 🎯 About the 3W Dataset
 
 ### Main Characteristics
+
 - **Source**: Petrobras (company's first public repository)
 - **Type**: Multivariate time series from offshore wells
 - **Events**: Detection of undesirable events in wells
@@ -16,12 +17,14 @@ This document describes the complete integration of the project with the **Petro
 - **License**: Creative Commons Attribution 4.0 International
 
 ### Data Structure
+
 - **Instances**: Each file represents an event instance
 - **Variables**: Pressure, temperature, flow, vibration, etc.
 - **Labels**: Binary classification (normal vs. anomalous)
 - **Timestamps**: Temporal index for each observation
 
 ### Available Problems
+
 1. **Binary Classifier for Spurious DHSV Closure**
    - Type: Binary classification
    - Objective: Identify unintended valve closures
@@ -32,21 +35,27 @@ This document describes the complete integration of the project with the **Petro
 ### Módulos Principais
 
 #### 1. `src/data/threew_dataset.py`
+
 Interface principal com o dataset 3W:
+
 - Carregamento de instâncias
 - Configuração de folds
 - Metadados do dataset
 - Gerenciamento de problemas
 
 #### 2. `src/data/data_loader.py`
+
 Carregador de dados unificado:
+
 - Suporte a múltiplos formatos (Parquet, CSV)
 - Cache inteligente de dados
 - Normalização automática
 - Divisão treino/validação/teste
 
 #### 3. `src/data/preprocessing.py`
+
 Pré-processamento avançado:
+
 - Imputação de valores faltantes
 - Normalização robusta
 - Seleção de atributos
@@ -54,7 +63,9 @@ Pré-processamento avançado:
 - Janelas deslizantes para séries temporais
 
 #### 4. `src/config/`
+
 Sistema de configuração:
+
 - Configurações YAML
 - Valores padrão otimizados
 - Validação de configurações
@@ -65,12 +76,14 @@ Sistema de configuração:
 ### 1. Pré-requisitos
 
 #### Clonar o Repositório 3W
+
 ```bash
 # Na raiz do projeto
 git clone https://github.com/petrobras/3W.git
 ```
 
 #### Instalar Dependências
+
 ```bash
 # Atualizar dependências do projeto principal
 uv sync
@@ -84,6 +97,7 @@ conda activate 3W
 ### 2. Uso Básico
 
 #### Verificar Disponibilidade
+
 ```python
 from src.data.threew_dataset import is_threew_available, get_threew_info
 
@@ -94,6 +108,7 @@ if is_threew_available():
 ```
 
 #### Carregar Dados
+
 ```python
 from src.data.data_loader import create_data_loader
 
@@ -120,6 +135,7 @@ X_test, y_test = data["X_test"], data["y_test"]
 ```
 
 #### Pré-processamento
+
 ```python
 from src.data.preprocessing import create_preprocessor
 
@@ -141,6 +157,7 @@ X_test_processed = preprocessor.transform(X_test)
 ### 3. Uso Avançado
 
 #### Configurações Personalizadas
+
 ```python
 from src.config.threew_config import (
     get_threew_dataset_config,
@@ -155,6 +172,7 @@ problem_config = get_threew_problem_config("01_binary_classifier_of_spurious_clo
 ```
 
 #### Janelas Deslizantes
+
 ```python
 from src.data.preprocessing import create_rolling_window_preprocessor
 
@@ -175,6 +193,7 @@ X_flat = window_preprocessor.flatten_windows(X_windows)
 ## ⚙️ Configurações
 
 ### Arquivo de Configuração Principal
+
 ```yaml
 # config/3w_config.yaml
 dataset:
@@ -204,6 +223,7 @@ rolling_window:
 ```
 
 ### Configurações por Problema
+
 ```python
 # Configurações específicas para cada problema
 problem_configs = {
@@ -220,6 +240,7 @@ problem_configs = {
 ## 📊 Notebooks de Exemplo
 
 ### Notebook Principal
+
 - **Arquivo**: `notebooks/3W_integration_example.py`
 - **Descrição**: Demonstração completa da integração
 - **Funcionalidades**:
@@ -230,6 +251,7 @@ problem_configs = {
   - Visualizações
 
 ### Como Executar
+
 ```bash
 # Ativar ambiente virtual
 source .venv/bin/activate  # Linux/Mac
@@ -243,6 +265,7 @@ marimo edit notebooks/3W_integration_example.py
 ## 🔧 Personalização
 
 ### 1. Adicionar Novos Problemas
+
 ```python
 # Em src/config/threew_config.py
 THREEW_AVAILABLE_PROBLEMS.append("novo_problema")
@@ -260,6 +283,7 @@ def get_threew_problem_config(problem_name: str):
 ```
 
 ### 2. Novos Métodos de Pré-processamento
+
 ```python
 # Em src/data/preprocessing.py
 class CustomPreprocessor(TimeSeriesPreprocessor):
@@ -273,6 +297,7 @@ class CustomPreprocessor(TimeSeriesPreprocessor):
 ```
 
 ### 3. Configurações de Ambiente
+
 ```python
 # Configurações específicas por ambiente
 import os
@@ -286,11 +311,13 @@ else:
 ## 📈 Métricas e Avaliação
 
 ### Métricas Padrão
+
 - **Classificação Binária**: Accuracy, Precision, Recall, F1-Score, ROC-AUC
 - **Detecção de Anomalias**: AUC-PR, F1-Score (para dados desbalanceados)
 - **Validação Cruzada**: Stratified K-Fold para dados desbalanceados
 
 ### Estratégias de Validação
+
 ```python
 from sklearn.model_selection import StratifiedKFold
 
@@ -311,6 +338,7 @@ for train_idx, val_idx in cv.split(X, y):
 ### Problemas Comuns
 
 #### 1. Dataset 3W Não Encontrado
+
 ```bash
 # Verificar se o diretório existe
 ls -la 3W/
@@ -320,6 +348,7 @@ git clone https://github.com/petrobras/3W.git
 ```
 
 #### 2. Erro de Importação
+
 ```python
 # Verificar se o toolkit está no sys.path
 import sys
@@ -330,6 +359,7 @@ pip install pyarrow h5py tslearn ydata-profiling
 ```
 
 #### 3. Erro de Memória
+
 ```python
 # Reduzir tamanho do cache
 loader = create_data_loader(cache_data=False)
@@ -339,6 +369,7 @@ loader = create_data_loader(batch_size=1000)
 ```
 
 #### 4. Problemas de Performance
+
 ```python
 # Habilitar multiprocessamento
 from src.config.threew_config import get_threew_n_jobs
@@ -352,12 +383,14 @@ df = pl.read_parquet("arquivo.parquet")
 ## 🔄 Atualizações e Manutenção
 
 ### Atualizar Dataset 3W
+
 ```bash
 cd 3W
 git pull origin main
 ```
 
 ### Verificar Versões
+
 ```python
 from src.data.threew_dataset import get_threew_info
 
@@ -366,6 +399,7 @@ print(f"Versão atual: {info['version']}")
 ```
 
 ### Backup de Configurações
+
 ```python
 from src.config.config_manager import get_config_manager
 
@@ -376,22 +410,26 @@ config_manager.save_config("3w_backup", current_config)
 ## 📚 Recursos Adicionais
 
 ### Documentação Oficial
+
 - [README do Projeto 3W](https://github.com/petrobras/3W)
 - [Estrutura do Dataset](https://github.com/petrobras/3W/blob/main/3W_DATASET_STRUCTURE.md)
 - [Estrutura do Toolkit](https://github.com/petrobras/3W/blob/main/3W_TOOLKIT_STRUCTURE.md)
 - [Guia de Contribuição](https://github.com/petrobras/3W/blob/main/CONTRIBUTING.md)
 
 ### Artigos Científicos
+
 - **Paper Principal**: [A realistic and public dataset with rare undesirable real events in oil wells](https://doi.org/10.1016/j.petrol.2019.106223)
 - **Journal**: Journal of Petroleum Science and Engineering
 
 ### Comunidade
+
 - [Workshop 3W](https://forms.gle/cmLa2u4VaXd1T7qp8) - 4ª edição em 2025
 - [Discussions no GitHub](https://github.com/petrobras/3W/discussions)
 
 ## 🎯 Próximos Passos
 
 ### Desenvolvimento Futuro
+
 1. **Novos Problemas**: Incorporação de mais tipos de eventos
 2. **Modelos SOTA**: Implementação de TranAD, LSTM-VAE, USAD
 3. **Otimização**: Hiperparâmetros com Optuna
@@ -399,6 +437,7 @@ config_manager.save_config("3w_backup", current_config)
 5. **Monitoramento**: Dashboards para acompanhamento de performance
 
 ### Contribuições
+
 - Implementar novos algoritmos
 - Adicionar métricas de avaliação
 - Melhorar documentação
@@ -410,6 +449,7 @@ config_manager.save_config("3w_backup", current_config)
 ## 📞 Suporte
 
 Para dúvidas ou problemas com a integração:
+
 1. Verificar a documentação oficial do 3W
 2. Abrir uma issue no repositório do projeto
 3. Consultar as discussions do 3W no GitHub

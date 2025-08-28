@@ -18,31 +18,31 @@ dataset:
   # Configurações de carregamento
   loading:
     use_cache: true
-    cache_size: 1000  # MB
+    cache_size: 1000 # MB
     normalize_data: true
     test_size: 0.2
     random_state: 42
 
   # Configurações de pré-processamento
   preprocessing:
-    imputation_strategy: "mean"  # mean, median, most_frequent
-    scaling_method: "robust"     # standard, minmax, robust
-    feature_selection_method: "mutual_info"  # mutual_info, f_classif, variance
-    n_features: null             # null para usar todas, ou número específico
-    pca_components: null         # null para não usar PCA, ou número específico
+    imputation_strategy: "mean" # mean, median, most_frequent
+    scaling_method: "robust" # standard, minmax, robust
+    feature_selection_method: "mutual_info" # mutual_info, f_classif, variance
+    n_features: null # null para usar todas, ou número específico
+    pca_components: null # null para não usar PCA, ou número específico
 
   # Configurações de janelas deslizantes
   rolling_window:
     window_size: 100
     step_size: 1
-    padding: "same"  # same, valid, full
+    padding: "same" # same, valid, full
 
 # Problemas disponíveis
 problems:
   - name: "01_binary_classifier_of_spurious_closure_of_dhsv"
     description: "Classificador binário para fechamento espúrio de DHSV"
     type: "classification"
-    target_column: 0  # Primeira coluna é o target
+    target_column: 0 # Primeira coluna é o target
 
 # Configurações de experimentos
 experiments:
@@ -61,9 +61,9 @@ logging:
 # Configurações de cache
 cache:
   enabled: true
-  max_size: 1000  # MB
-  ttl: 3600       # segundos
-  backend: "memory"  # memory, disk, redis
+  max_size: 1000 # MB
+  ttl: 3600 # segundos
+  backend: "memory" # memory, disk, redis
 
 # Configurações de validação
 validation:
@@ -75,7 +75,7 @@ validation:
 # Configurações de performance
 performance:
   use_multiprocessing: true
-  n_jobs: -1  # -1 para usar todos os cores
+  n_jobs: -1 # -1 para usar todos os cores
   batch_size: 1000
   memory_efficient: true
 

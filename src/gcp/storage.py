@@ -5,7 +5,7 @@ Google Cloud Storage management for data and model storage.
 import logging
 import os
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from google.cloud.exceptions import GoogleCloudError, NotFound
 
@@ -76,7 +76,7 @@ class GCSManager:
                 logger.info(f"Created folder: {folder}")
 
     def upload_file(
-        self, local_path: str, gcs_path: str, content_type: Optional[str] = None
+        self, local_path: str, gcs_path: str, content_type: str | None = None
     ) -> str:
         """
         Upload a local file to Google Cloud Storage.
@@ -112,7 +112,7 @@ class GCSManager:
             logger.error(f"Failed to upload {local_path}: {e}")
             raise
 
-    def upload_directory(self, local_dir: str, gcs_prefix: str) -> List[str]:
+    def upload_directory(self, local_dir: str, gcs_prefix: str) -> list[str]:
         """
         Upload an entire directory to Google Cloud Storage.
 
@@ -175,7 +175,7 @@ class GCSManager:
             logger.error(f"Failed to download {gcs_path}: {e}")
             raise
 
-    def download_directory(self, gcs_prefix: str, local_dir: str) -> List[str]:
+    def download_directory(self, gcs_prefix: str, local_dir: str) -> list[str]:
         """
         Download an entire directory from Google Cloud Storage.
 
@@ -214,8 +214,8 @@ class GCSManager:
             raise
 
     def list_files(
-        self, prefix: str = "", max_results: Optional[int] = None
-    ) -> List[Dict[str, Any]]:
+        self, prefix: str = "", max_results: int | None = None
+    ) -> list[dict[str, Any]]:
         """
         List files in Google Cloud Storage with given prefix.
 
@@ -305,7 +305,7 @@ class GCSManager:
             logger.error(f"Failed to copy {source_path} to {dest_path}: {e}")
             raise
 
-    def get_file_metadata(self, gcs_path: str) -> Dict[str, Any]:
+    def get_file_metadata(self, gcs_path: str) -> dict[str, Any]:
         """
         Get metadata for a file in Google Cloud Storage.
 
@@ -347,7 +347,7 @@ class GCSManager:
             logger.error(f"Failed to get metadata for {gcs_path}: {e}")
             raise
 
-    def set_file_metadata(self, gcs_path: str, metadata: Dict[str, str]) -> None:
+    def set_file_metadata(self, gcs_path: str, metadata: dict[str, str]) -> None:
         """
         Set custom metadata for a file in Google Cloud Storage.
 
@@ -372,7 +372,7 @@ class GCSManager:
             logger.error(f"Failed to set metadata for {gcs_path}: {e}")
             raise
 
-    def get_bucket_info(self) -> Dict[str, Any]:
+    def get_bucket_info(self) -> dict[str, Any]:
         """Get information about the configured bucket."""
         try:
             bucket = self.client.bucket(self.bucket_name)

@@ -3,6 +3,7 @@
 > **🇺🇸 [View setup guide in English](setup-guide.md)**
 
 ## 📋 Índice
+
 - [🎯 Visão Geral](#-visão-geral)
 - [🔌 Setup das Extensões](#-setup-das-extensões)
 - [🔧 Script Robusto de Extensões](#-script-robusto-de-extensões)
@@ -16,6 +17,7 @@
 Este guia fornece instruções passo a passo para configurar completamente o ambiente de desenvolvimento do projeto PIBIC de detecção de anomalias em poços offshore da Petrobras.
 
 ### 🎯 **O que será configurado:**
+
 - ✅ Extensões essenciais do VS Code/Cursor
 - ✅ Ambiente Python com uv
 - ✅ Dependências do projeto
@@ -28,6 +30,7 @@ Este guia fornece instruções passo a passo para configurar completamente o amb
 ### 🚀 **Instalação Automática (Recomendado)**
 
 #### **Linux/macOS - Script Robusto (Recomendado)**
+
 ```bash
 # Dar permissão de execução
 chmod +x scripts/install_extensions_robust.sh
@@ -37,6 +40,7 @@ chmod +x scripts/install_extensions_robust.sh
 ```
 
 #### **Linux/macOS - Script Original**
+
 ```bash
 # Dar permissão de execução
 chmod +x scripts/install_extensions.sh
@@ -46,6 +50,7 @@ chmod +x scripts/install_extensions.sh
 ```
 
 #### **Windows (PowerShell)**
+
 ```powershell
 # Executar script PowerShell
 .\scripts\install_extensions.ps1
@@ -55,6 +60,7 @@ chmod +x scripts/install_extensions.sh
 ```
 
 #### **Cross-platform (Python)**
+
 ```bash
 # Executar script Python
 python scripts/install_extensions.py
@@ -62,29 +68,29 @@ python scripts/install_extensions.py
 
 ### 🔍 **Diferenças entre os Scripts**
 
-| Script | Característica | Recomendação |
-|--------|----------------|--------------|
-| `install_extensions_robust.sh` | ✅ Continua mesmo com erros<br>✅ Instala todas as extensões<br>✅ Melhor para instalação completa | **🌟 Recomendado** |
-| `install_extensions.sh` | ⚠️ Para em caso de erro<br>⚠️ Pode não instalar todas<br>⚠️ Melhor para debug | Para desenvolvimento |
-| `install_extensions.py` | 🔄 Cross-platform<br>🔄 Instalação via Python<br>🔄 Mais lento | Para Windows/Linux |
+| Script                         | Característica                                                                                     | Recomendação         |
+| ------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------- |
+| `install_extensions_robust.sh` | ✅ Continua mesmo com erros<br>✅ Instala todas as extensões<br>✅ Melhor para instalação completa | **🌟 Recomendado**   |
+| `install_extensions.sh`        | ⚠️ Para em caso de erro<br>⚠️ Pode não instalar todas<br>⚠️ Melhor para debug                      | Para desenvolvimento |
+| `install_extensions.py`        | 🔄 Cross-platform<br>🔄 Instalação via Python<br>🔄 Mais lento                                     | Para Windows/Linux   |
 
 ### 📦 **Extensões que serão instaladas:**
 
-| Categoria | Extensão | ID | Descrição |
-|-----------|----------|-----|-----------|
-| 🐍 **Python** | Python | ms-python.python | Suporte completo ao Python |
-| 🐍 **Python** | Pylance | ms-python.vscode-pylance | IntelliSense avançado |
-| 🐍 **Python** | Ruff | charliermarsh.ruff | Linting e formatação |
-| 📊 **Data Science** | Jupyter | ms-toolsai.jupyter | Suporte ao Jupyter |
-| 📊 **Data Science** | Jupyter Keymap | ms-toolsai.jupyter-keymap | Atalhos de teclado |
-| 🔧 **Dev Tools** | JSON | ms-vscode.vscode-json | Suporte ao JSON |
-| 🔧 **Dev Tools** | Markdown | yzhang.markdown-all-in-one | Editor Markdown |
-| 🐳 **Docker** | Docker | ms-azuretools.vscode-docker | Suporte ao Docker |
-| 🔄 **Git** | GitLens | eamodio.gitlens | Git supercharged |
-| 🎨 **Themes** | Material Icons | pkief.material-icon-theme | Ícones Material |
-| 🧪 **Testing** | Python Test Adapter | littlefoxteam.vscode-python-test-adapter | Test runner |
-| 🚀 **AI** | GitHub Copilot | GitHub.copilot | Assistente de IA |
-| 🚀 **AI** | GitHub Copilot Chat | GitHub.copilot-chat | Chat com IA |
+| Categoria           | Extensão            | ID                                       | Descrição                  |
+| ------------------- | ------------------- | ---------------------------------------- | -------------------------- |
+| 🐍 **Python**       | Python              | ms-python.python                         | Suporte completo ao Python |
+| 🐍 **Python**       | Pylance             | ms-python.vscode-pylance                 | IntelliSense avançado      |
+| 🐍 **Python**       | Ruff                | charliermarsh.ruff                       | Linting e formatação       |
+| 📊 **Data Science** | Jupyter             | ms-toolsai.jupyter                       | Suporte ao Jupyter         |
+| 📊 **Data Science** | Jupyter Keymap      | ms-toolsai.jupyter-keymap                | Atalhos de teclado         |
+| 🔧 **Dev Tools**    | JSON                | ms-vscode.vscode-json                    | Suporte ao JSON            |
+| 🔧 **Dev Tools**    | Markdown            | yzhang.markdown-all-in-one               | Editor Markdown            |
+| 🐳 **Docker**       | Docker              | ms-azuretools.vscode-docker              | Suporte ao Docker          |
+| 🔄 **Git**          | GitLens             | eamodio.gitlens                          | Git supercharged           |
+| 🎨 **Themes**       | Material Icons      | pkief.material-icon-theme                | Ícones Material            |
+| 🧪 **Testing**      | Python Test Adapter | littlefoxteam.vscode-python-test-adapter | Test runner                |
+| 🚀 **AI**           | GitHub Copilot      | GitHub.copilot                           | Assistente de IA           |
+| 🚀 **AI**           | GitHub Copilot Chat | GitHub.copilot-chat                      | Chat com IA                |
 
 ### 🔧 **Instalação Manual (Alternativa)**
 
@@ -98,6 +104,7 @@ Se preferir instalar manualmente:
 ## 🐍 Setup do Ambiente Python
 
 ### 📋 **Pré-requisitos**
+
 - Python 3.11+ instalado
 - Git instalado
 - VS Code/Cursor instalado
@@ -105,12 +112,14 @@ Se preferir instalar manualmente:
 ### 🚀 **Passo a Passo**
 
 #### **1. Clone o Repositório**
+
 ```bash
 git clone https://github.com/RafaelAlvesTech/petrobras-offshore-wells-anomaly-detection-control-charts.git
 cd petrobras-offshore-wells-anomaly-detection-control-charts
 ```
 
 #### **2. Instalar uv**
+
 ```bash
 # Linux/macOS
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -123,6 +132,7 @@ pip install uv
 ```
 
 #### **3. Criar Ambiente Virtual**
+
 ```bash
 # Criar ambiente
 uv venv
@@ -136,6 +146,7 @@ source .venv/bin/activate
 ```
 
 #### **4. Instalar Dependências**
+
 ```bash
 # Sincronizar projeto (recomendado)
 uv sync
@@ -145,6 +156,7 @@ uv pip install -r requirements.txt
 ```
 
 #### **5. Instalar Dependências de Desenvolvimento**
+
 ```bash
 # Marimo para notebooks
 uv add marimo
@@ -163,6 +175,7 @@ uv add pytest
 ```
 
 #### **6. Configurar Pre-commit**
+
 ```bash
 # Instalar hooks
 uv run pre-commit install
@@ -186,11 +199,13 @@ O projeto inclui configurações otimizadas em `.vscode/settings.json`:
 ### 🎯 **Configurações Manuais**
 
 #### **1. Selecionar Python Interpreter**
+
 1. **Pressione `Ctrl+Shift+P`** (ou `Cmd+Shift+P` no Mac)
 2. **Digite**: `Python: Select Interpreter`
 3. **Selecione**: `./.venv/bin/python`
 
 #### **2. Verificar Configurações**
+
 1. **Abra Command Palette** (`Ctrl+Shift+P`)
 2. **Digite**: `Preferences: Open Workspace Settings (JSON)`
 3. **Verifique** se as configurações estão corretas
@@ -262,6 +277,7 @@ addopts = "-v --tb=short"
 ### ❌ **Problemas Comuns**
 
 #### **1. Extensões não instalam**
+
 ```bash
 # Verificar permissões
 ls -la scripts/
@@ -274,6 +290,7 @@ sudo ./scripts/install_extensions.sh
 ```
 
 #### **2. Ambiente Python não ativa**
+
 ```bash
 # Verificar se o ambiente existe
 ls -la .venv/
@@ -285,6 +302,7 @@ source .venv/bin/activate
 ```
 
 #### **3. Dependências não instalam**
+
 ```bash
 # Limpar cache do uv
 uv cache clean
@@ -294,6 +312,7 @@ uv sync --reinstall
 ```
 
 #### **4. Pre-commit não funciona**
+
 ```bash
 # Reinstalar hooks
 uv run pre-commit uninstall

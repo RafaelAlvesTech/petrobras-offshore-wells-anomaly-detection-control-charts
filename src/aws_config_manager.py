@@ -10,7 +10,7 @@ import logging
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 import boto3
 import yaml
@@ -26,10 +26,10 @@ class AWSConfig:
     """Classe para armazenar configurações AWS."""
 
     region: str
-    access_key_id: Optional[str] = None
-    secret_access_key: Optional[str] = None
-    session_token: Optional[str] = None
-    profile_name: Optional[str] = None
+    access_key_id: str | None = None
+    secret_access_key: str | None = None
+    session_token: str | None = None
+    profile_name: str | None = None
 
 
 @dataclass
@@ -82,7 +82,7 @@ class AWSConfigManager:
         """Carrega configurações do arquivo YAML."""
         try:
             if self.config_path.exists():
-                with open(self.config_path, "r", encoding="utf-8") as f:
+                with open(self.config_path, encoding="utf-8") as f:
                     self.config = yaml.safe_load(f)
                 logger.info(f"Configuração carregada de {self.config_path}")
             else:
@@ -98,7 +98,7 @@ class AWSConfigManager:
         """Carrega variáveis de ambiente."""
         try:
             if self.env_path.exists():
-                with open(self.env_path, "r", encoding="utf-8") as f:
+                with open(self.env_path, encoding="utf-8") as f:
                     for line in f:
                         line = line.strip()
                         if line and not line.startswith("#") and "=" in line:
@@ -181,7 +181,7 @@ class AWSConfigManager:
             logger.error(f"Erro ao validar credenciais: {e}")
             return False
 
-    def create_s3_bucket(self, bucket_name: Optional[str] = None) -> bool:
+    def create_s3_bucket(self, bucket_name: str | None = None) -> bool:
         """
         Cria bucket S3 se não existir.
 
@@ -251,7 +251,7 @@ class AWSConfigManager:
             logger.error(f"Erro ao criar bucket S3: {e}")
             return False
 
-    def setup_s3_structure(self, bucket_name: Optional[str] = None) -> bool:
+    def setup_s3_structure(self, bucket_name: str | None = None) -> bool:
         """
         Configura estrutura de pastas no S3.
 
@@ -293,7 +293,7 @@ class AWSConfigManager:
             logger.error(f"Erro ao configurar estrutura S3: {e}")
             return False
 
-    def validate_sagemaker_setup(self) -> Dict[str, Any]:
+    def validate_sagemaker_setup(self) -> dict[str, Any]:
         """
         Valida configuração do SageMaker.
 
@@ -378,7 +378,7 @@ class AWSConfigManager:
             logger.error(f"Erro ao validar SageMaker: {e}")
             return result
 
-    def get_training_config(self, model_name: str) -> Dict[str, Any]:
+    def get_training_config(self, model_name: str) -> dict[str, Any]:
         """
         Obtém configuração de treinamento para um modelo específico.
 
@@ -413,7 +413,7 @@ class AWSConfigManager:
             logger.error(f"Erro ao obter configuração de treinamento: {e}")
             return {}
 
-    def get_hyperparameter_search_space(self, model_name: str) -> Dict[str, Any]:
+    def get_hyperparameter_search_space(self, model_name: str) -> dict[str, Any]:
         """
         Obtém espaço de busca de hiperparâmetros para um modelo.
 

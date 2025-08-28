@@ -4,7 +4,7 @@ Configuration management for Google Cloud Platform integration.
 
 import os
 from dataclasses import dataclass
-from typing import Any, Dict, Optional
+from typing import Any
 
 import yaml
 from dotenv import load_dotenv
@@ -14,9 +14,9 @@ from dotenv import load_dotenv
 class GCPAuthConfig:
     """Configuration for GCP authentication."""
 
-    service_account_key_path: Optional[str] = None
+    service_account_key_path: str | None = None
     application_default_credentials: bool = True
-    project_id: Optional[str] = None
+    project_id: str | None = None
     region: str = "us-central1"
     zone: str = "us-central1-a"
 
@@ -85,9 +85,7 @@ class GCPConfig:
     Vertex AI, AI Platform Training, Cloud Storage, and MLflow integration.
     """
 
-    def __init__(
-        self, config_path: Optional[str] = None, env_file: Optional[str] = None
-    ):
+    def __init__(self, config_path: str | None = None, env_file: str | None = None):
         """
         Initialize GCP configuration.
 
@@ -120,7 +118,7 @@ class GCPConfig:
     def _load_yaml_config(self, config_path: str) -> None:
         """Load configuration from YAML file."""
         try:
-            with open(config_path, "r", encoding="utf-8") as f:
+            with open(config_path, encoding="utf-8") as f:
                 self._yaml_config = yaml.safe_load(f)
         except FileNotFoundError:
             print(
@@ -339,7 +337,7 @@ class GCPConfig:
             ],
         )
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Convert configuration to dictionary."""
         return {
             "auth": self.auth.__dict__,

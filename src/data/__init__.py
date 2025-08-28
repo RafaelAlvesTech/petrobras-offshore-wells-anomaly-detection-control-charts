@@ -8,6 +8,7 @@ Este módulo contém funcionalidades para:
 - Validação e limpeza de dados
 """
 
-from . import data_loader, preprocessing, threew_dataset
+# Importações relativas comentadas para evitar conflitos de módulos
+# from . import data_loader, preprocessing, threew_dataset
 
-__all__ = ["threew_dataset", "data_loader", "preprocessing"]
+# __all__ = ["threew_dataset", "data_loader", "preprocessing"]

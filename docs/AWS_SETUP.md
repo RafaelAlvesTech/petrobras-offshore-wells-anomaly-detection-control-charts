@@ -36,18 +36,21 @@ O projeto utiliza os seguintes serviços AWS para treinamento de modelos:
 ## 🔧 Pré-requisitos
 
 ### Sistema
+
 - Linux (Ubuntu 18.04+, CentOS 7+, Amazon Linux 2)
 - Python 3.8+
 - 4GB RAM mínimo
 - 10GB espaço em disco
 
 ### Conta AWS
+
 - Conta AWS ativa
 - Access Key ID e Secret Access Key
 - Permissões para SageMaker, S3, EC2, IAM, CloudWatch
 - Região com SageMaker disponível (us-east-1, us-west-2, eu-west-1)
 
 ### Software
+
 - AWS CLI v2
 - Python 3.8+
 - Git
@@ -197,9 +200,9 @@ sagemaker:
   training:
     default_instance_type: "ml.p3.2xlarge"
     gpu_instance_types:
-      - "ml.p3.2xlarge"    # 1x V100
-      - "ml.p3.8xlarge"    # 4x V100
-      - "ml.g5.xlarge"     # 1x A10G
+      - "ml.p3.2xlarge" # 1x V100
+      - "ml.p3.8xlarge" # 4x V100
+      - "ml.g5.xlarge" # 1x A10G
 
 s3:
   bucket_name: "petrobras-anomaly-detection"
@@ -337,12 +340,12 @@ mlflow.log_metric("validation_loss", val_loss_value)
 
 ### Estimativas de Custo
 
-| Instance Type | GPU | vCPU | RAM | Custo/Hora | Custo/Dia |
-|---------------|-----|------|-----|------------|-----------|
-| ml.p3.2xlarge | 1x V100 | 8 | 61GB | $3.06 | $73.44 |
-| ml.p3.8xlarge | 4x V100 | 32 | 244GB | $12.24 | $293.76 |
-| ml.g5.xlarge | 1x A10G | 4 | 16GB | $0.526 | $12.62 |
-| ml.g5.2xlarge | 1x A10G | 8 | 32GB | $0.736 | $17.66 |
+| Instance Type | GPU     | vCPU | RAM   | Custo/Hora | Custo/Dia |
+| ------------- | ------- | ---- | ----- | ---------- | --------- |
+| ml.p3.2xlarge | 1x V100 | 8    | 61GB  | $3.06      | $73.44    |
+| ml.p3.8xlarge | 4x V100 | 32   | 244GB | $12.24     | $293.76   |
+| ml.g5.xlarge  | 1x A10G | 4    | 16GB  | $0.526     | $12.62    |
+| ml.g5.2xlarge | 1x A10G | 8    | 32GB  | $0.736     | $17.66    |
 
 ### Otimização de Custos
 
@@ -508,16 +511,19 @@ aws logs filter-log-events \
 ## 📚 Recursos Adicionais
 
 ### Documentação
+
 - [AWS SageMaker Developer Guide](https://docs.aws.amazon.com/sagemaker/)
 - [Boto3 Documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
 - [SageMaker Python SDK](https://sagemaker.readthedocs.io/)
 
 ### Exemplos e Tutoriais
+
 - [SageMaker Examples](https://github.com/aws/amazon-sagemaker-examples)
 - [MLOps with SageMaker](https://aws.amazon.com/sagemaker/mlops/)
 - [Distributed Training](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
 
 ### Comunidade
+
 - [AWS ML Blog](https://aws.amazon.com/blogs/machine-learning/)
 - [SageMaker Community](https://aws.amazon.com/sagemaker/community/)
 - [AWS re:Invent Sessions](https://reinvent.awsevents.com/)

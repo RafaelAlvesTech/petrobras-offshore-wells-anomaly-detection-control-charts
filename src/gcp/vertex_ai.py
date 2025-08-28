@@ -4,7 +4,7 @@ Vertex AI management for model training and deployment.
 
 import logging
 from datetime import datetime, timedelta
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from google.cloud import aiplatform
 from google.cloud.aiplatform import CustomJob, Endpoint, HyperparameterTuningJob, Model
@@ -75,10 +75,10 @@ class VertexAIManager:
         self,
         display_name: str,
         script_path: str,
-        requirements: List[str],
-        machine_type: Optional[str] = None,
-        accelerator_type: Optional[str] = None,
-        accelerator_count: Optional[int] = None,
+        requirements: list[str],
+        machine_type: str | None = None,
+        accelerator_type: str | None = None,
+        accelerator_count: int | None = None,
         **kwargs,
     ) -> CustomJob:
         """
@@ -151,9 +151,9 @@ class VertexAIManager:
         self,
         display_name: str,
         base_job: CustomJob,
-        parameter_specs: Dict[str, Any],
-        max_trial_count: Optional[int] = None,
-        parallel_trial_count: Optional[int] = None,
+        parameter_specs: dict[str, Any],
+        max_trial_count: int | None = None,
+        parallel_trial_count: int | None = None,
         **kwargs,
     ) -> HyperparameterTuningJob:
         """
@@ -223,7 +223,7 @@ class VertexAIManager:
             logger.error(f"Failed to deploy model {model.display_name}: {e}")
             raise
 
-    def list_models(self, filter_expr: Optional[str] = None) -> List[Model]:
+    def list_models(self, filter_expr: str | None = None) -> list[Model]:
         """
         List models in the project.
 
@@ -261,7 +261,7 @@ class VertexAIManager:
             logger.error(f"Failed to get model {model_id}: {e}")
             raise
 
-    def list_endpoints(self, filter_expr: Optional[str] = None) -> List[Endpoint]:
+    def list_endpoints(self, filter_expr: str | None = None) -> list[Endpoint]:
         """
         List endpoints in the project.
 
@@ -299,7 +299,7 @@ class VertexAIManager:
             logger.error(f"Failed to get endpoint {endpoint_id}: {e}")
             raise
 
-    def list_training_jobs(self, filter_expr: Optional[str] = None) -> List[CustomJob]:
+    def list_training_jobs(self, filter_expr: str | None = None) -> list[CustomJob]:
         """
         List training jobs in the project.
 
@@ -357,7 +357,7 @@ class VertexAIManager:
             logger.error(f"Failed to create experiment run {run_name}: {e}")
             raise
 
-    def log_metrics(self, run, metrics: Dict[str, float], step: Optional[int] = None):
+    def log_metrics(self, run, metrics: dict[str, float], step: int | None = None):
         """
         Log metrics to an experiment run.
 
@@ -376,7 +376,7 @@ class VertexAIManager:
             logger.error(f"Failed to log metrics: {e}")
             raise
 
-    def log_params(self, run, params: Dict[str, Any]):
+    def log_params(self, run, params: dict[str, Any]):
         """
         Log parameters to an experiment run.
 
@@ -394,7 +394,7 @@ class VertexAIManager:
             logger.error(f"Failed to log parameters: {e}")
             raise
 
-    def get_experiment_info(self) -> Dict[str, Any]:
+    def get_experiment_info(self) -> dict[str, Any]:
         """Get information about the current experiment."""
         try:
             info = {
@@ -403,9 +403,11 @@ class VertexAIManager:
                 "description": self.experiment.description,
                 "create_time": self.experiment.create_time,
                 "update_time": self.experiment.update_time,
-                "state": self.experiment.state.name
-                if hasattr(self.experiment.state, "name")
-                else str(self.experiment.state),
+                "state": (
+                    self.experiment.state.name
+                    if hasattr(self.experiment.state, "name")
+                    else str(self.experiment.state)
+                ),
             }
 
             # Get run count

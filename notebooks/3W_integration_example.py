@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Exemplo de Integração com o Dataset 3W da Petrobras
 
@@ -225,9 +224,9 @@ def summary(problems, data, preprocessing_result):
         "Dataset 3W": "✅ Integrado com sucesso",
         "Problemas Disponíveis": len(problems) if problems else 0,
         "Dados Carregados": "✅ Sim" if data else "❌ Não",
-        "Pré-processamento": "✅ Aplicado"
-        if preprocessing_result
-        else "❌ Não aplicado",
+        "Pré-processamento": (
+            "✅ Aplicado" if preprocessing_result else "❌ Não aplicado"
+        ),
     }
 
     mo.json(summary_data)

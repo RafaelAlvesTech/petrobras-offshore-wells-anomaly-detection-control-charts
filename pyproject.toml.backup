@@ -33,8 +33,6 @@ dependencies = [
     "plotly>=6.0",
     "pydantic>=2.10",
     # Dependências de segurança serão resolvidas automaticamente
-    "pre-commit>=4.3.0",
-    "mypy>=1.17.1",
 ]
 
 [project.optional-dependencies]
@@ -72,5 +70,3 @@ priority = 1
 [[tool.uv.index]]
 url = "https://pypi.org/simple/"
 priority = 2
-
-# Configuração do mypy movida para mypy.ini para evitar conflitos

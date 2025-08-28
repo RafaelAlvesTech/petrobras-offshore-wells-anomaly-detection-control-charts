@@ -5,7 +5,7 @@ Este módulo contém configurações e constantes específicas
 para trabalhar com o dataset 3W.
 """
 
-from typing import Any, Dict
+from typing import Any
 
 from .config_manager import get_threew_setting
 
@@ -109,7 +109,7 @@ DEFAULT_LOGGING_CONFIG = {
 }
 
 
-def get_threew_dataset_config() -> Dict[str, Any]:
+def get_threew_dataset_config() -> dict[str, Any]:
     """
     Retorna a configuração completa do dataset 3W.
 
@@ -142,7 +142,7 @@ def get_threew_dataset_config() -> Dict[str, Any]:
     }
 
 
-def get_threew_problem_config(problem_name: str) -> Dict[str, Any]:
+def get_threew_problem_config(problem_name: str) -> dict[str, Any]:
     """
     Retorna a configuração específica de um problema.
 
@@ -181,7 +181,7 @@ def get_threew_problem_config(problem_name: str) -> Dict[str, Any]:
     }
 
 
-def get_threew_preprocessing_config() -> Dict[str, Any]:
+def get_threew_preprocessing_config() -> dict[str, Any]:
     """
     Retorna a configuração de pré-processamento.
 
@@ -191,7 +191,7 @@ def get_threew_preprocessing_config() -> Dict[str, Any]:
     return DEFAULT_PREPROCESSING_CONFIG.copy()
 
 
-def get_threew_experiment_config(experiment_name: str = "default") -> Dict[str, Any]:
+def get_threew_experiment_config(experiment_name: str = "default") -> dict[str, Any]:
     """
     Retorna a configuração de experimentos.
 
@@ -208,7 +208,7 @@ def get_threew_experiment_config(experiment_name: str = "default") -> Dict[str, 
     return DEFAULT_EXPERIMENT_CONFIG.copy()
 
 
-def get_threew_validation_config() -> Dict[str, Any]:
+def get_threew_validation_config() -> dict[str, Any]:
     """
     Retorna a configuração de validação.
 
@@ -218,7 +218,7 @@ def get_threew_validation_config() -> Dict[str, Any]:
     return DEFAULT_VALIDATION_CONFIG.copy()
 
 
-def get_threew_performance_config() -> Dict[str, Any]:
+def get_threew_performance_config() -> dict[str, Any]:
     """
     Retorna a configuração de performance.
 
@@ -228,7 +228,7 @@ def get_threew_performance_config() -> Dict[str, Any]:
     return DEFAULT_PERFORMANCE_CONFIG.copy()
 
 
-def get_threew_cache_config() -> Dict[str, Any]:
+def get_threew_cache_config() -> dict[str, Any]:
     """
     Retorna a configuração de cache.
 
@@ -238,7 +238,7 @@ def get_threew_cache_config() -> Dict[str, Any]:
     return DEFAULT_CACHE_CONFIG.copy()
 
 
-def get_threew_export_config() -> Dict[str, Any]:
+def get_threew_export_config() -> dict[str, Any]:
     """
     Retorna a configuração de exportação.
 
@@ -248,7 +248,7 @@ def get_threew_export_config() -> Dict[str, Any]:
     return DEFAULT_EXPORT_CONFIG.copy()
 
 
-def get_threew_logging_config() -> Dict[str, Any]:
+def get_threew_logging_config() -> dict[str, Any]:
     """
     Retorna a configuração de logging.
 

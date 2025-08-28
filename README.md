@@ -24,6 +24,7 @@ CER-UFBA is an emerging research laboratory of the Department of Statistics (DEs
 This project is developed under the academic supervision and research infrastructure of CER-UFBA, contributing to the center's mission of advancing statistical methodologies for risk assessment and anomaly detection in complex industrial systems.
 
 ### 🎓 CER-UFBA Research Areas
+
 - **Statistical Risk Analysis**: Advanced methodologies for risk assessment
 - **Time Series Analysis**: Multivariate and univariate time series modeling
 - **Anomaly Detection**: Statistical and machine learning approaches
@@ -59,6 +60,7 @@ petrobras-offshore-wells-anomaly-detection/
 ## 🔬 CER-UFBA Research Project
 
 ### 📋 Project Details
+
 - **Research Type**: PIBIC (Graduate Research) Project
 - **Institution**: Federal University of Bahia (UFBA)
 - **Research Center**: Risk Studies Center (CER-UFBA)
@@ -67,14 +69,18 @@ petrobras-offshore-wells-anomaly-detection/
 - **Research Area**: Statistical Anomaly Detection in Industrial Systems with Control Charts
 
 ### 🎯 CER-UFBA Contribution
+
 This project represents a significant contribution to CER-UFBA's research portfolio in:
+
 - **Statistical Risk Assessment**: Developing novel methodologies for offshore well monitoring
 - **Industrial Data Science**: Applying advanced statistical techniques to real-world oil & gas data
 - **Time Series Analysis**: Advancing multivariate time series anomaly detection
 - **Machine Learning Integration**: Combining traditional statistics with modern ML approaches
 
 ### 📚 Academic Context
+
 The project aligns with CER-UFBA's mission to:
+
 - Foster interdisciplinary research in statistical risk analysis
 - Develop practical applications of statistical methodologies
 - Contribute to the advancement of Brazilian oil & gas industry safety
@@ -83,23 +89,27 @@ The project aligns with CER-UFBA's mission to:
 ## 🛠️ Technology Stack
 
 ### Core Technologies
+
 - **Python 3.11+** - Modern Python with type hints
 - **Polars** - High-performance data manipulation (faster than Pandas)
 - **Marimo** - Interactive notebooks for collaborative development
 - **uv** - Fast Python package manager and environment management
 
 ### Machine Learning & Deep Learning
+
 - **PyTorch** - Deep learning framework
 - **Scikit-learn** - Traditional ML algorithms
 - **Optuna** - Hyperparameter optimization
 - **SHAP** - Model interpretability
 
 ### Data Science & Visualization
+
 - **Plotly** - Interactive visualizations
 - **ydata-profiling** - Automated EDA
 - **tslearn** - Time series learning utilities
 
 ### Cloud & Deployment
+
 - **AWS** - Cloud infrastructure and ML services
 - **GCP** - Google Cloud Platform integration
 - **MLflow** - Model lifecycle management
@@ -108,6 +118,7 @@ The project aligns with CER-UFBA's mission to:
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Python 3.11+
 - uv package manager
 - Git
@@ -115,17 +126,20 @@ The project aligns with CER-UFBA's mission to:
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/petrobras-offshore-wells-anomaly-detection.git
    cd petrobras-offshore-wells-anomaly-detection
    ```
 
 2. **Install uv (if not already installed)**
+
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
 3. **Create virtual environment and install dependencies**
+
    ```bash
    uv sync
    ```
@@ -140,11 +154,13 @@ The project aligns with CER-UFBA's mission to:
 ### Running the Project
 
 1. **Start Marimo notebook server**
+
    ```bash
    marimo edit notebooks/
    ```
 
 2. **Run anomaly detection models**
+
    ```bash
    python src/main.py
    ```
@@ -191,6 +207,7 @@ mo.md(f"## Well Data Analysis\n\nDataset shape: {df.shape}")
 ## 📚 Documentation
 
 ### Core Documentation
+
 - **[Setup Guide](docs/setup-guide.md)** - Complete project setup instructions
 - **[Claude Code Setup](docs/CLAUDE_CODE_SETUP.md)** - Claude Code configuration and optimization
 - **[3W Integration](docs/3W_INTEGRATION.md)** - Integration with 3W system
@@ -198,18 +215,21 @@ mo.md(f"## Well Data Analysis\n\nDataset shape: {df.shape}")
 - **[GCP Setup](docs/GCP_SETUP.md)** - Google Cloud Platform setup
 
 ### Development Guidelines
+
 - **[Conventional Commits](docs/CONVENTIONAL_COMMITS.md)** - Git commit standards
 - **[Contributing Guidelines](CONTRIBUTING.md)** - How to contribute to the project
 
 ## 🔬 Research Focus
 
 ### Anomaly Detection Challenges
+
 - **Multivariate Dependencies**: Complex relationships between well parameters
 - **Real-time Processing**: High-frequency data streams from offshore sensors
 - **Operational Context**: Domain-specific anomaly definitions
 - **Interpretability**: Explainable AI for operational decisions
 
 ### Model Performance Metrics
+
 - **AUC-PR**: Precision-Recall curves for imbalanced data
 - **F1-Score**: Balanced precision and recall
 - **Detection Latency**: Time to anomaly identification
@@ -241,6 +261,7 @@ pytest tests/test_data_processing.py
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ### Development Setup
+
 ```bash
 # Install development dependencies
 uv sync --group dev
@@ -261,22 +282,27 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 ## 🙏 Acknowledgments
 
 ### 🏛️ CER-UFBA Support
+
 This project is made possible by the academic and research support of the **Risk Studies Center (CER-UFBA)** at the Federal University of Bahia.
 
 **Special thanks to:**
+
 - **CER-UFBA Research Team** - For providing the research infrastructure and statistical expertise
 - **Department of Statistics (DEst)** - For academic supervision and methodological guidance
 - **UFBA Faculty** - For supporting undergraduate research initiatives
 - **Petrobras** - For providing real-world data and industry context
 
 ### 📞 Contact Information
+
 - **CER-UFBA Website**: [cer.ufba.br](https://cer.ufba.br)
 - **UFBA Main Site**: [ufba.br](https://ufba.br)
 - **Location**: Department of Statistics, Ondina Campus, Salvador-BA, Brazil
 - **Research Focus**: Statistical risk analysis, time series, anomaly detection, industrial applications
 
 ### 🔬 Join Our Research
+
 CER-UFBA welcomes collaboration with:
+
 - **Students**: Undergraduate and graduate research opportunities
 - **Researchers**: Academic partnerships and joint publications
 - **Industry**: Applied research projects and consulting
@@ -301,6 +327,7 @@ CER-UFBA welcomes collaboration with:
 ## 🔌 VS Code/Cursor Extensions
 
 ### Essential Extensions
+
 - **ms-python.python**: Complete Python support
 - **ms-python.vscode-pylance**: Advanced IntelliSense for Python
 - **charliermarsh.ruff**: Fast linting and formatting
@@ -318,6 +345,7 @@ CER-UFBA welcomes collaboration with:
 ## 🤖 Claude Code Configuration
 
 ### Development Tools
+
 - **ms-python.black-formatter**: Automatic Python code formatting
 - **ms-python.isort**: Automatic import organization
 - **ms-python.flake8**: Advanced Python linting
@@ -329,61 +357,69 @@ CER-UFBA welcomes collaboration with:
 ### ⚙️ Project Specific Settings
 
 #### Python Interpreter
+
 ```json
 {
-    "python.defaultInterpreterPath": "./.venv/bin/python",
-    "python.terminal.activateEnvironment": true
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  "python.terminal.activateEnvironment": true
 }
 ```
 
 #### Formatação Automática
+
 ```json
 {
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length", "88"],
-    "editor.formatOnSave": true,
-    "python.sortImports.args": ["--profile", "black"]
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "88"],
+  "editor.formatOnSave": true,
+  "python.sortImports.args": ["--profile", "black"]
 }
 ```
 
 #### Linting e Qualidade
+
 ```json
 {
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": true
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true
 }
 ```
 
 #### Jupyter e Notebooks
+
 ```json
 {
-    "jupyter.defaultKernel": "Python 3.11",
-    "jupyter.askForKernelRestart": false,
-    "jupyter.enableAutoMatcher": true
+  "jupyter.defaultKernel": "Python 3.11",
+  "jupyter.askForKernelRestart": false,
+  "jupyter.enableAutoMatcher": true
 }
 ```
 
 ### 🎯 Recommended Settings for Claude Code
 
 #### 1. **Python Environment Setup**
+
 - Use virtual environment `.venv` created by `uv`
 - Configure Python interpreter to `./.venv/bin/python`
 - Activate environment automatically in terminal
 
 #### 2. **Formatting and Linting**
+
 - Black for automatic formatting (line 88)
 - isort for import organization
 - Flake8 for code linting
 - MyPy for type checking
 
 #### 3. **Notebooks and Jupyter**
+
 - Complete Marimo support
 - Python 3.11 kernel configured
 - Renderers for different data formats
 
 #### 4. **Scientific Development**
+
 - Advanced IntelliSense for scientific libraries
 - Support for Polars, PyTorch, TensorFlow
 - Integration with ML tools
@@ -391,22 +427,26 @@ CER-UFBA welcomes collaboration with:
 ### 🚀 Automatic Setup for Claude Code
 
 #### Linux/macOS
+
 ```bash
 chmod +x scripts/install_claude_extensions.sh
 ./scripts/install_claude_extensions.sh
 ```
 
 #### Windows (PowerShell)
+
 ```powershell
 .\scripts\install_claude_extensions.ps1
 ```
 
 #### Cross-platform (Python)
+
 ```bash
 python scripts/install_claude_extensions.py
 ```
 
 ### 📁 Configuration Structure
+
 ```
 .vscode/
 ├── settings.json          # Workspace settings
@@ -418,31 +458,34 @@ python scripts/install_claude_extensions.py
 ### 🔧 Advanced Settings
 
 #### Debug and Testing
+
 ```json
 {
-    "python.testing.pytestEnabled": true,
-    "python.testing.pytestArgs": ["tests"],
-    "python.testing.unittestEnabled": false,
-    "python.testing.nosetestsEnabled": false
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false
 }
 ```
 
 #### Terminal and Environment
+
 ```json
 {
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.env.linux": {
-        "PYTHONPATH": "${workspaceFolder}/src"
-    }
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.env.linux": {
+    "PYTHONPATH": "${workspaceFolder}/src"
+  }
 }
 ```
 
 #### Git and Versioning
+
 ```json
 {
-    "git.enableSmartCommit": true,
-    "git.confirmSync": false,
-    "git.autofetch": true
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true
 }
 ```
 
@@ -451,22 +494,26 @@ python scripts/install_claude_extensions.py
 ### ✅ Problema Resolvido: Autenticação Google Cloud
 
 **Erro Original:**
+
 ```
 Error: google-github-actions/auth failed with: the GitHub Action workflow must specify exactly one of "workload_identity_provider" or "credentials_json"!
 ```
 
 **Solução Implementada:**
+
 - ✅ Migração para **Workload Identity Federation** (método recomendado)
 - ✅ Remoção de `credentials_json` (método legado inseguro)
 - ✅ Configuração correta de `workload_identity_provider` e `service_account`
 - ✅ Adição de permissões `id-token: 'write'` nos jobs
 
 **Workflows Corrigidos:**
+
 - `.github/workflows/gcp-setup.yml` - Setup e autenticação
 - `.github/workflows/gcp-training.yml` - Pipeline de treinamento
 - `.github/workflows/test-gcp-auth.yml` - Teste de autenticação (novo)
 
 **Secrets Necessários:**
+
 ```bash
 GCP_PROJECT_ID                    # ID do projeto Google Cloud
 GCP_WORKLOAD_IDENTITY_PROVIDER    # Provider do Workload Identity
@@ -478,6 +525,7 @@ GCS_BUCKET_NAME                  # Nome do bucket (compatibilidade)
 ```
 
 **Documentação Completa:**
+
 - 📖 [Guia de Configuração GCP](docs/GCP_SETUP.md) - Setup detalhado
 - 🔐 [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation)
 - 🧪 Workflow de teste para validação

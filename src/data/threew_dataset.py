@@ -9,7 +9,6 @@ implementados.
 import logging
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Union
 
 # Adiciona o caminho do toolkit 3W ao sys.path
 THREEW_PATH = Path(__file__).parent.parent.parent / "3W"
@@ -53,7 +52,7 @@ class ThreeWDataset:
     - Gerenciar metadados do dataset
     """
 
-    def __init__(self, dataset_path: Optional[Union[str, Path]] = None):
+    def __init__(self, dataset_path: str | Path | None = None):
         """
         Inicializa o acesso ao dataset 3W.
 
@@ -83,7 +82,7 @@ class ThreeWDataset:
         logging.info(f"Dataset path: {self.dataset_path}")
         logging.info(f"Folds path: {self.folds_path}")
 
-    def get_dataset_info(self) -> Dict[str, str]:
+    def get_dataset_info(self) -> dict[str, str]:
         """
         Retorna informações sobre o dataset.
 
@@ -97,7 +96,7 @@ class ThreeWDataset:
             "available": THREEW_AVAILABLE,
         }
 
-    def list_available_problems(self) -> List[str]:
+    def list_available_problems(self) -> list[str]:
         """
         Lista os problemas disponíveis no toolkit 3W.
 
@@ -115,7 +114,7 @@ class ThreeWDataset:
 
         return problems
 
-    def load_problem_config(self, problem_name: str) -> Optional[Dict]:
+    def load_problem_config(self, problem_name: str) -> dict | None:
         """
         Carrega a configuração de um problema específico.
 
@@ -134,7 +133,7 @@ class ThreeWDataset:
 
         config_file = problem_dir / "README.md"
         if config_file.exists():
-            with open(config_file, "r", encoding="utf-8") as f:
+            with open(config_file, encoding="utf-8") as f:
                 content = f.read()
                 return {
                     "name": problem_name,
@@ -144,9 +143,7 @@ class ThreeWDataset:
 
         return None
 
-    def get_event_folds(
-        self, problem_name: str, fold_config: str
-    ) -> Optional[EventFolds]:
+    def get_event_folds(self, problem_name: str, fold_config: str) -> EventFolds | None:
         """
         Carrega os folds para um problema específico.
 
@@ -175,7 +172,7 @@ class ThreeWDataset:
 
     def load_instances_for_problem(
         self, problem_name: str, fold_config: str, fold_index: int = 0
-    ) -> Optional[Tuple]:
+    ) -> tuple | None:
         """
         Carrega as instâncias de treino e teste para um problema específico.
 
@@ -229,7 +226,7 @@ class ThreeWDataset:
             logging.error(f"Erro ao carregar instâncias: {e}")
             return None
 
-    def get_problem_experiment(self, problem_name: str) -> Optional[Experiment]:
+    def get_problem_experiment(self, problem_name: str) -> Experiment | None:
         """
         Cria um experimento para um problema específico.
 
@@ -260,7 +257,7 @@ class ThreeWDataset:
             return None
 
 
-def load_instances(instances_path: str) -> List:
+def load_instances(instances_path: str) -> list:
     """
     Carrega instâncias de dados do caminho especificado.
 
@@ -292,7 +289,7 @@ def is_threew_available() -> bool:
 
 
 # Função para obter informações do dataset
-def get_threew_info() -> Dict[str, str]:
+def get_threew_info() -> dict[str, str]:
     """
     Retorna informações básicas sobre o dataset 3W.
 

@@ -11,6 +11,7 @@ This is a **PIBIC (Graduate Research) project 2025-2026** focused on **anomaly d
 ## 🚀 Essential Development Commands
 
 ### Environment Setup
+
 ```bash
 # Setup virtual environment and dependencies
 uv sync
@@ -24,6 +25,7 @@ uv sync --group dev
 ```
 
 ### Code Quality and Testing
+
 ```bash
 # Format code with Ruff
 uv run ruff format .
@@ -48,6 +50,7 @@ uv run pre-commit install
 ```
 
 ### Interactive Development
+
 ```bash
 # Start Marimo notebook server
 marimo edit notebooks/
@@ -62,6 +65,7 @@ python src/main.py
 ```
 
 ### Git and Commit Management
+
 ```bash
 # Generate conventional commit helper
 ./scripts/commit-emoji.sh generate
@@ -74,6 +78,7 @@ python src/main.py
 ## 🏗️ Project Architecture
 
 ### Core Structure
+
 ```
 src/
 ├── api/                    # API endpoints and interfaces
@@ -99,6 +104,7 @@ src/
 ```
 
 ### Key Configuration Files
+
 - **`pyproject.toml`**: Main dependency management (uses `uv`)
 - **`config/3w_config.yaml`**: 3W dataset configuration with preprocessing, caching, and performance settings
 - **`aws-config.yaml`**: Complete AWS SageMaker, EC2, and S3 configuration
@@ -106,6 +112,7 @@ src/
 - **`.cursorrules`**: Development rules and coding standards
 
 ### Data Processing Architecture
+
 The project uses a **three-tier data architecture**:
 
 1. **Raw Data Layer**: Original 3W dataset files
@@ -113,6 +120,7 @@ The project uses a **three-tier data architecture**:
 3. **Model Layer**: `src/models/` implements TranAD, LSTM-VAE, USAD, and ECOD algorithms
 
 The `ConfigManager` class (`src/config/config_manager.py`) provides:
+
 - YAML-based configuration loading with caching
 - Environment-specific settings
 - Runtime configuration updates
@@ -121,12 +129,14 @@ The `ConfigManager` class (`src/config/config_manager.py`) provides:
 ## 🛠️ Technology Stack & Key Dependencies
 
 ### Core Technologies
+
 - **Python 3.11.13** (strict version requirement)
 - **uv**: Package manager and environment management
 - **Polars >= 1.32.3**: High-performance data manipulation (prefer over Pandas)
 - **Marimo >= 0.15.0**: Interactive notebooks for collaborative development
 
 ### ML/DL Stack
+
 - **PyTorch >= 2.0.1**: Deep learning framework with GPU support
 - **Scikit-learn >= 1.7.1**: Traditional ML algorithms
 - **Optuna >= 3.4.0**: Hyperparameter optimization
@@ -134,6 +144,7 @@ The `ConfigManager` class (`src/config/config_manager.py`) provides:
 - **TensorBoard >= 2.15.0**: Training visualization
 
 ### Data Processing
+
 - **PyArrow >= 19.0**: Columnar data processing
 - **TSlearn >= 0.6**: Time series utilities
 - **ydata-profiling >= 4.15**: Automated EDA
@@ -142,6 +153,7 @@ The `ConfigManager` class (`src/config/config_manager.py`) provides:
 ## 📊 Development Patterns
 
 ### Data Processing Patterns
+
 ```python
 # Always prefer Polars over Pandas for performance
 import polars as pl
@@ -156,6 +168,7 @@ config = get_config_manager().get_config("3w")
 ```
 
 ### Model Development Pattern
+
 ```python
 # Follow this structure for new anomaly detection models
 from typing import Dict, List, Tuple
@@ -177,6 +190,7 @@ class NewAnomalyModel(BaseModel):
 ```
 
 ### Configuration Usage Pattern
+
 ```python
 from src.config.config_manager import get_threew_setting
 
@@ -188,19 +202,23 @@ batch_size = get_threew_setting("performance.batch_size", default=1000)
 ## 🔬 Anomaly Detection Domain Knowledge
 
 ### Core Models Implemented
+
 - **TranAD**: Transformer-based anomaly detection for multivariate time series
 - **LSTM-VAE**: Long Short-Term Memory Variational Autoencoder
 - **USAD**: UnSupervised Anomaly Detection with adversarial training
 - **ECOD**: Empirical Cumulative Distribution Outlier Detection
 
 ### Evaluation Metrics Focus
+
 - **AUC-PR**: Precision-Recall curves (critical for imbalanced offshore well data)
 - **F1-Score**: Balanced precision and recall for anomaly detection
 - **Detection Latency**: Time to identify anomalies in real-time scenarios
 - **False Positive Rate**: Critical for operational efficiency
 
 ### 3W Dataset Integration
+
 The project integrates with the **3W (Three Worlds) dataset** from Petrobras:
+
 - **Problem Types**: Binary classification for spurious DHSV closures
 - **Data Format**: Multivariate time series with rolling windows
 - **Preprocessing**: Robust scaling, imputation, and feature selection
@@ -209,12 +227,14 @@ The project integrates with the **3W (Three Worlds) dataset** from Petrobras:
 ## 🚀 Cloud Integration
 
 ### AWS Integration (SageMaker/EC2)
+
 - **Training**: GPU instances (P3, G4dn, G5 families) for deep learning models
 - **Storage**: S3 bucket structure with lifecycle policies
 - **Monitoring**: CloudWatch integration with custom metrics
 - **MLflow**: Artifact storage and experiment tracking
 
 ### GCP Integration (Vertex AI)
+
 - **Training Jobs**: Vertex AI custom jobs with GPU support
 - **Model Registry**: Vertex AI model registry integration
 - **Storage**: Google Cloud Storage for datasets and models
@@ -223,6 +243,7 @@ The project integrates with the **3W (Three Worlds) dataset** from Petrobras:
 ## 🧪 Testing and Quality Standards
 
 ### Test Structure
+
 ```bash
 tests/
 ├── test_models.py           # Model unit tests
@@ -232,6 +253,7 @@ tests/
 ```
 
 ### Pre-commit Hooks Configured
+
 - **Ruff**: Fast Python linting and formatting
 - **MyPy**: Static type checking
 - **YAML validation**: Configuration file validation
@@ -241,7 +263,9 @@ tests/
 ## 🌟 Development Best Practices
 
 ### Commit Standards
+
 Use **Conventional Commits** with emojis (see `docs/CONVENTIONAL_COMMITS.md`):
+
 ```bash
 🚀 feat(anomaly-detection): implement TranAD model
 🐛 fix(data-processing): correct normalization for pressure data
@@ -250,12 +274,14 @@ Use **Conventional Commits** with emojis (see `docs/CONVENTIONAL_COMMITS.md`):
 ```
 
 ### Code Style Enforced
+
 - **Line length**: 88 characters (Black standard)
 - **Type hints**: Required for public APIs
 - **Docstrings**: Google/NumPy style for all classes and functions
 - **Import organization**: Standard library, third-party, local imports
 
 ### Configuration Management
+
 - Use `ConfigManager` class for all configuration access
 - Store sensitive data in environment variables
 - Validate configurations before use
@@ -264,6 +290,7 @@ Use **Conventional Commits** with emojis (see `docs/CONVENTIONAL_COMMITS.md`):
 ## 🔧 Special Integration Notes
 
 ### 3W Dataset Integration
+
 ```python
 # Use the specialized 3W configuration and loader
 from src.config.threew_config import ThreeWConfig
@@ -275,6 +302,7 @@ data = dataset.load_problem("01_binary_classifier_of_spurious_closure_of_dhsv")
 ```
 
 ### Cloud Training Pattern
+
 ```python
 # AWS training example
 from src.aws.aws_training import train_on_sagemaker
@@ -286,6 +314,7 @@ train_on_vertex_ai(model_config, data_path, machine_type="n1-standard-4")
 ```
 
 ### Performance Optimization
+
 - Use **Polars** for data operations (10-100x faster than Pandas)
 - Enable **multiprocessing** in config for CPU-intensive tasks
 - Use **memory-efficient** mode for large datasets

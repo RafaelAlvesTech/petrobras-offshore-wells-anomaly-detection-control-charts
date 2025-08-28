@@ -40,23 +40,27 @@ petrobras-offshore-wells-anomaly-detection/
 ## 🛠️ Stack Tecnológico
 
 ### Tecnologias Principais
+
 - **Python 3.11+** - Python moderno com type hints
 - **Polars** - Manipulação de dados de alta performance (mais rápido que Pandas)
 - **Marimo** - Notebooks interativos para desenvolvimento colaborativo
 - **uv** - Gerenciador de pacotes Python rápido e gerenciamento de ambiente
 
 ### Machine Learning & Deep Learning
+
 - **PyTorch** - Framework de deep learning
 - **Scikit-learn** - Algoritmos tradicionais de ML
 - **Optuna** - Otimização de hiperparâmetros
 - **SHAP** - Interpretabilidade de modelos
 
 ### Data Science & Visualização
+
 - **Plotly** - Visualizações interativas
 - **ydata-profiling** - EDA automatizado
 - **tslearn** - Utilitários para aprendizado de séries temporais
 
 ### Cloud & Implantação
+
 - **AWS** - Infraestrutura cloud e serviços de ML
 - **GCP** - Integração com Google Cloud Platform
 - **MLflow** - Gerenciamento do ciclo de vida dos modelos
@@ -65,6 +69,7 @@ petrobras-offshore-wells-anomaly-detection/
 ## 🚀 Início Rápido
 
 ### Pré-requisitos
+
 - Python 3.11+
 - Gerenciador de pacotes uv
 - Git
@@ -72,17 +77,20 @@ petrobras-offshore-wells-anomaly-detection/
 ### Instalação
 
 1. **Clone o repositório**
+
    ```bash
    git clone https://github.com/your-username/petrobras-offshore-wells-anomaly-detection.git
    cd petrobras-offshore-wells-anomaly-detection
    ```
 
 2. **Instale o uv (se ainda não estiver instalado)**
+
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
 3. **Crie o ambiente virtual e instale as dependências**
+
    ```bash
    uv sync
    ```
@@ -97,11 +105,13 @@ petrobras-offshore-wells-anomaly-detection/
 ### Executando o Projeto
 
 1. **Inicie o servidor de notebooks Marimo**
+
    ```bash
    marimo edit notebooks/
    ```
 
 2. **Execute os modelos de detecção de anomalias**
+
    ```bash
    python src/main.py
    ```
@@ -148,24 +158,28 @@ mo.md(f"## Análise de Dados do Poço\n\nFormato do dataset: {df.shape}")
 ## 📚 Documentação
 
 ### Documentação Principal
+
 - **[Guia de Configuração](docs/setup-guide.md)** - Instruções completas de configuração do projeto
 - **[Integração 3W](docs/3W_INTEGRATION.md)** - Integração com sistema 3W
 - **[Configuração AWS](docs/AWS_SETUP.md)** - Implantação e configuração AWS
 - **[Configuração GCP](docs/GCP_SETUP.md)** - Configuração Google Cloud Platform
 
 ### Diretrizes de Desenvolvimento
+
 - **[Commits Convencionais](docs/CONVENTIONAL_COMMITS.md)** - Padrões de commits Git
 - **[Diretrizes de Contribuição](CONTRIBUTING.md)** - Como contribuir para o projeto
 
 ## 🔬 Foco da Pesquisa
 
 ### Desafios da Detecção de Anomalias
+
 - **Dependências Multivariadas**: Relacionamentos complexos entre parâmetros dos poços
 - **Processamento em Tempo Real**: Fluxos de dados de alta frequência de sensores offshore
 - **Contexto Operacional**: Definições de anomalias específicas do domínio
 - **Interpretabilidade**: IA explicável para decisões operacionais
 
 ### Métricas de Performance dos Modelos
+
 - **AUC-PR**: Curvas Precision-Recall para dados desbalanceados
 - **F1-Score**: Precisão e recall balanceados
 - **Latência de Detecção**: Tempo para identificação de anomalias
@@ -197,6 +211,7 @@ pytest tests/test_data_processing.py
 Aceitamos contribuições! Por favor, veja nossas [Diretrizes de Contribuição](CONTRIBUTING.md) para detalhes.
 
 ### Configuração de Desenvolvimento
+
 ```bash
 # Instale dependências de desenvolvimento
 uv sync --group dev

@@ -39,21 +39,21 @@ sagemaker:
   training:
     default_instance_type: "ml.p3.2xlarge"
     gpu_instance_types:
-      - "ml.p3.2xlarge"    # 1x V100
-      - "ml.p3.8xlarge"    # 4x V100
-      - "ml.p3.16xlarge"   # 8x V100
-      - "ml.g4dn.xlarge"   # 1x T4
-      - "ml.g4dn.2xlarge"  # 1x T4
-      - "ml.g4dn.4xlarge"  # 1x T4
-      - "ml.g4dn.8xlarge"  # 1x T4
-      - "ml.g5.xlarge"     # 1x A10G
-      - "ml.g5.2xlarge"    # 1x A10G
-      - "ml.g5.4xlarge"    # 1x A10G
-      - "ml.g5.8xlarge"    # 1x A10G
-      - "ml.g5.12xlarge"   # 4x A10G
-      - "ml.g5.16xlarge"   # 1x A10G
-      - "ml.g5.24xlarge"   # 4x A10G
-      - "ml.g5.48xlarge"   # 8x A10G
+      - "ml.p3.2xlarge" # 1x V100
+      - "ml.p3.8xlarge" # 4x V100
+      - "ml.p3.16xlarge" # 8x V100
+      - "ml.g4dn.xlarge" # 1x T4
+      - "ml.g4dn.2xlarge" # 1x T4
+      - "ml.g4dn.4xlarge" # 1x T4
+      - "ml.g4dn.8xlarge" # 1x T4
+      - "ml.g5.xlarge" # 1x A10G
+      - "ml.g5.2xlarge" # 1x A10G
+      - "ml.g5.4xlarge" # 1x A10G
+      - "ml.g5.8xlarge" # 1x A10G
+      - "ml.g5.12xlarge" # 4x A10G
+      - "ml.g5.16xlarge" # 1x A10G
+      - "ml.g5.24xlarge" # 4x A10G
+      - "ml.g5.48xlarge" # 8x A10G
 
     cpu_instance_types:
       - "ml.c5.xlarge"
@@ -92,38 +92,38 @@ ec2:
   # Configurações de instâncias para treinamento
   training_instances:
     gpu:
-      - "p3.2xlarge"      # 1x V100, 16 vCPU, 61 GB RAM
-      - "p3.8xlarge"      # 4x V100, 32 vCPU, 244 GB RAM
-      - "p3.16xlarge"     # 8x V100, 64 vCPU, 488 GB RAM
-      - "g4dn.xlarge"     # 1x T4, 4 vCPU, 16 GB RAM
-      - "g4dn.2xlarge"    # 1x T4, 8 vCPU, 32 GB RAM
-      - "g4dn.4xlarge"    # 1x T4, 16 vCPU, 64 GB RAM
-      - "g4dn.8xlarge"    # 1x T4, 32 vCPU, 128 GB RAM
-      - "g5.xlarge"       # 1x A10G, 4 vCPU, 16 GB RAM
-      - "g5.2xlarge"      # 1x A10G, 8 vCPU, 32 GB RAM
-      - "g5.4xlarge"      # 1x A10G, 16 vCPU, 64 GB RAM
-      - "g5.8xlarge"      # 1x A10G, 32 vCPU, 128 GB RAM
-      - "g5.12xlarge"     # 4x A10G, 48 vCPU, 192 GB RAM
-      - "g5.16xlarge"     # 1x A10G, 64 vCPU, 256 GB RAM
-      - "g5.24xlarge"     # 4x A10G, 96 vCPU, 384 GB RAM
-      - "g5.48xlarge"     # 8x A10G, 192 vCPU, 768 GB RAM
+      - "p3.2xlarge" # 1x V100, 16 vCPU, 61 GB RAM
+      - "p3.8xlarge" # 4x V100, 32 vCPU, 244 GB RAM
+      - "p3.16xlarge" # 8x V100, 64 vCPU, 488 GB RAM
+      - "g4dn.xlarge" # 1x T4, 4 vCPU, 16 GB RAM
+      - "g4dn.2xlarge" # 1x T4, 8 vCPU, 32 GB RAM
+      - "g4dn.4xlarge" # 1x T4, 16 vCPU, 64 GB RAM
+      - "g4dn.8xlarge" # 1x T4, 32 vCPU, 128 GB RAM
+      - "g5.xlarge" # 1x A10G, 4 vCPU, 16 GB RAM
+      - "g5.2xlarge" # 1x A10G, 8 vCPU, 32 GB RAM
+      - "g5.4xlarge" # 1x A10G, 16 vCPU, 64 GB RAM
+      - "g5.8xlarge" # 1x A10G, 32 vCPU, 128 GB RAM
+      - "g5.12xlarge" # 4x A10G, 48 vCPU, 192 GB RAM
+      - "g5.16xlarge" # 1x A10G, 64 vCPU, 256 GB RAM
+      - "g5.24xlarge" # 4x A10G, 96 vCPU, 384 GB RAM
+      - "g5.48xlarge" # 8x A10G, 192 vCPU, 768 GB RAM
 
     cpu:
-      - "c5.xlarge"       # 4 vCPU, 8 GB RAM
-      - "c5.2xlarge"      # 8 vCPU, 16 GB RAM
-      - "c5.4xlarge"      # 16 vCPU, 32 GB RAM
-      - "c5.9xlarge"      # 36 vCPU, 72 GB RAM
-      - "c5.18xlarge"     # 72 vCPU, 144 GB RAM
-      - "c5n.xlarge"      # 4 vCPU, 10.5 GB RAM
-      - "c5n.2xlarge"     # 8 vCPU, 21 GB RAM
-      - "c5n.4xlarge"     # 16 vCPU, 42 GB RAM
-      - "c5n.9xlarge"     # 36 vCPU, 96 GB RAM
-      - "c5n.18xlarge"    # 72 vCPU, 192 GB RAM
+      - "c5.xlarge" # 4 vCPU, 8 GB RAM
+      - "c5.2xlarge" # 8 vCPU, 16 GB RAM
+      - "c5.4xlarge" # 16 vCPU, 32 GB RAM
+      - "c5.9xlarge" # 36 vCPU, 72 GB RAM
+      - "c5.18xlarge" # 72 vCPU, 144 GB RAM
+      - "c5n.xlarge" # 4 vCPU, 10.5 GB RAM
+      - "c5n.2xlarge" # 8 vCPU, 21 GB RAM
+      - "c5n.4xlarge" # 16 vCPU, 42 GB RAM
+      - "c5n.9xlarge" # 36 vCPU, 96 GB RAM
+      - "c5n.18xlarge" # 72 vCPU, 192 GB RAM
 
   # Configurações de AMI
   ami:
-    base_ami: "ami-0c02fb55956c7d316"  # Deep Learning AMI GPU PyTorch 2.0.1
-    custom_ami: "ami-xxxxxxxxx"         # AMI customizada se necessário
+    base_ami: "ami-0c02fb55956c7d316" # Deep Learning AMI GPU PyTorch 2.0.1
+    custom_ami: "ami-xxxxxxxxx" # AMI customizada se necessário
 
   # Configurações de storage
   storage:

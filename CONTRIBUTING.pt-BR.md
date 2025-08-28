@@ -18,6 +18,7 @@ Obrigado pelo seu interesse em contribuir para o projeto **Detecção de Anomali
 ### 🔄 Fluxo de Contribuição
 
 #### 1. **Fork & Clone**
+
 ```bash
 # Faça fork do repositório no GitHub
 # Então clone seu fork
@@ -29,6 +30,7 @@ git remote add upstream https://github.com/REPO_ORIGINAL/petrobras-offshore-well
 ```
 
 #### 2. **Criar Branch de Feature**
+
 ```bash
 # Crie e mude para uma nova branch
 git checkout -b feature/nome-da-sua-feature
@@ -38,12 +40,14 @@ git checkout -b fix/descricao-do-seu-bug
 ```
 
 #### 3. **Fazer Mudanças**
+
 - Siga os [padrões de código](#-padrões-de-código)
 - Escreva testes para nova funcionalidade
 - Atualize documentação conforme necessário
 - Certifique-se de que todos os testes passem
 
 #### 4. **Commit das Mudanças**
+
 ```bash
 # Use commits convencionais
 git commit -m "feat: adicionar novo modelo de detecção de anomalias"
@@ -53,6 +57,7 @@ git commit -m "fix: resolver problema de pré-processamento de dados"
 ```
 
 #### 5. **Push & Criar Pull Request**
+
 ```bash
 git push origin feature/nome-da-sua-feature
 # Crie PR no GitHub com descrição detalhada
@@ -63,6 +68,7 @@ git push origin feature/nome-da-sua-feature
 ### 🐍 Estilo de Código Python
 
 #### **Type Hints & Documentação**
+
 ```python
 from typing import List, Optional, Union
 import numpy as np
@@ -95,12 +101,14 @@ def detect_anomalies(
 ```
 
 #### **Formatação de Código**
+
 - Use **Ruff** para formatação e linting
 - Comprimento máximo de linha: **88 caracteres**
 - Use **f-strings** para formatação de strings
 - Prefira **list comprehensions** sobre loops explícitos quando apropriado
 
 #### **Organização de Imports**
+
 ```python
 # Imports da biblioteca padrão
 import os
@@ -120,6 +128,7 @@ from src.utils.helpers import validate_data
 ### 🧪 Padrões de Teste
 
 #### **Estrutura de Teste**
+
 ```python
 # tests/test_models.py
 import pytest
@@ -153,6 +162,7 @@ class TestAnomalyDetector:
 ```
 
 #### **Requisitos de Cobertura de Testes**
+
 - **Cobertura mínima**: 80%
 - **Funções críticas**: 95% de cobertura
 - **Novas funcionalidades**: Devem incluir testes
@@ -161,6 +171,7 @@ class TestAnomalyDetector:
 ### 📚 Padrões de Documentação
 
 #### **Formato de Docstring (Estilo Google)**
+
 ```python
 def train_model(
     data: pl.DataFrame,
@@ -192,6 +203,7 @@ def train_model(
 ```
 
 #### **Atualizações do README**
+
 - Atualize README.md para novas funcionalidades
 - Inclua exemplos de uso
 - Atualize instruções de instalação se necessário
@@ -200,6 +212,7 @@ def train_model(
 ## 🔧 Configuração de Desenvolvimento
 
 ### **Configuração do Ambiente**
+
 ```bash
 # Clone e configuração
 git clone <seu-fork>
@@ -218,13 +231,16 @@ uv run pre-commit install
 ```
 
 ### **Hooks Pre-commit**
+
 O projeto usa hooks pre-commit para garantir qualidade do código:
+
 - **Ruff**: Formatação e linting de código
 - **Black**: Formatação de código
 - **MyPy**: Verificação de tipos
 - **Pytest**: Execução de testes
 
 ### **Executar Verificações de Qualidade**
+
 ```bash
 # Formatar código
 uv run ruff format .
@@ -245,26 +261,32 @@ uv run pre-commit run --all-files
 ## 📊 Diretrizes de Pull Request
 
 ### **Template de PR**
+
 ```markdown
 ## 🎯 Descrição
+
 Breve descrição das mudanças e motivação
 
 ## 🔧 Mudanças Feitas
+
 - [ ] Funcionalidade A adicionada
 - [ ] Bug B corrigido
 - [ ] Documentação C atualizada
 
 ## 🧪 Testes
+
 - [ ] Testes unitários passam
 - [ ] Testes de integração passam
 - [ ] Teste manual completado
 
 ## 📚 Documentação
+
 - [ ] Código documentado
 - [ ] README atualizado
 - [ ] Documentação da API atualizada
 
 ## 🔍 Checklist
+
 - [ ] Código segue diretrizes de estilo
 - [ ] Testes adicionados para nova funcionalidade
 - [ ] Todos os testes existentes passam
@@ -273,6 +295,7 @@ Breve descrição das mudanças e motivação
 ```
 
 ### **Processo de Revisão**
+
 1. **Verificações automatizadas** devem passar
 2. **Revisão de código** por mantenedores
 3. **Requisitos de cobertura de testes** atendidos
@@ -282,48 +305,60 @@ Breve descrição das mudanças e motivação
 ## 🐛 Relatórios de Bugs
 
 ### **Template de Relatório de Bug**
+
 ```markdown
 ## 🐛 Descrição do Bug
+
 Descrição clara do bug
 
 ## 🔍 Passos para Reproduzir
+
 1. Passo 1
 2. Passo 2
 3. Passo 3
 
 ## 📱 Comportamento Esperado vs Atual
+
 - **Esperado**: O que deveria acontecer
 - **Atual**: O que realmente acontece
 
 ## 💻 Ambiente
+
 - OS: [ex: Ubuntu 20.04]
 - Python: [ex: 3.11.5]
 - Versões dos pacotes: [ex: polars==1.32.3]
 
 ## 📋 Contexto Adicional
+
 Qualquer outra informação relevante
 ```
 
 ## 💡 Solicitações de Funcionalidades
 
 ### **Template de Solicitação de Funcionalidade**
+
 ```markdown
 ## 🚀 Descrição da Funcionalidade
+
 Descrição clara da funcionalidade solicitada
 
 ## 🎯 Caso de Uso
+
 Por que esta funcionalidade é necessária e como será usada
 
 ## 🔧 Ideias de Implementação
+
 Qualquer pensamento sobre como implementar esta funcionalidade
 
 ## 📚 Issues Relacionadas
+
 Links para issues ou discussões relacionadas
 ```
 
 ## 🤝 Diretrizes da Comunidade
 
 ### **Código de Conduta**
+
 - **Seja respeitoso** e inclusivo
 - **Ajude novatos** a começar
 - **Forneça feedback construtivo**
@@ -331,6 +366,7 @@ Links para issues ou discussões relacionadas
 - **Celebre contribuições** e melhorias
 
 ### **Canais de Comunicação**
+
 - **GitHub Issues**: Relatórios de bugs e solicitações de funcionalidades
 - **GitHub Discussions**: Perguntas gerais e ideias
 - **Pull Requests**: Contribuições de código
@@ -339,13 +375,16 @@ Links para issues ou discussões relacionadas
 ## 🏆 Reconhecimento
 
 ### **Níveis de Contribuidor**
+
 - **🌱 Novo Contribuidor**: Primeira contribuição
 - **🌿 Contribuidor Regular**: Múltiplas contribuições
 - **🌳 Contribuidor Principal**: Contribuições significativas
 - **🏆 Mantenedor**: Liderança do projeto
 
 ### **Hall da Fama**
+
 Contribuidores serão reconhecidos em:
+
 - README do projeto
 - Notas de release
 - Documentação de contribuidores
@@ -354,12 +393,14 @@ Contribuidores serão reconhecidos em:
 ## 📞 Obtendo Ajuda
 
 ### **Recursos**
+
 - [Documentação do Projeto](docs/)
 - [Guia de Configuração](docs/setup-guide.md)
 - [Integração 3W](docs/3W_INTEGRATION.md)
 - [GitHub Issues](https://github.com/seu-repo/issues)
 
 ### **Contato**
+
 - **Líder do Projeto**: [Seu Nome]
 - **Email**: [seu.email@universidade.edu]
 - **Instituição**: [Sua Universidade]

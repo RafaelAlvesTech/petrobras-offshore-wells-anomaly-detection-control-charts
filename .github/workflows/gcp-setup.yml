@@ -3,10 +3,10 @@ name: GCP Authentication Setup
 on:
   workflow_dispatch:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
     paths:
-      - 'src/gcp/**'
-      - 'gcp-config.yaml'
+      - "src/gcp/**"
+      - "gcp-config.yaml"
 
 env:
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
@@ -17,67 +17,67 @@ jobs:
   setup-gcp:
     runs-on: ubuntu-latest
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: "read"
+      id-token: "write"
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v3
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
 
-    - name: Sync dependencies
-      run: uv sync
+      - name: Sync dependencies
+        run: uv sync
 
-    - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v2
-      with:
-        workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v2
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
 
-    - name: Verify GCP Authentication
-      run: |
-        gcloud auth list
-        gcloud config list project
+      - name: Verify GCP Authentication
+        run: |
+          gcloud auth list
+          gcloud config list project
 
-    - name: Test GCP Configuration
-      run: |
-        uv run python -c "
-        import sys
-        sys.path.append('src')
-        import os
-        os.environ['GCP_PROJECT_ID'] = '${{ secrets.GCP_PROJECT_ID || env.GCP_PROJECT_ID }}'
-        os.environ['GCP_BUCKET_NAME'] = '${{ secrets.GCP_BUCKET_NAME || env.GCP_BUCKET_NAME }}'
-        try:
-            from config.gcp_env_config import GCPEnvConfig
-            config = GCPEnvConfig()
-            print('✓ GCP configuration loaded successfully')
-            print(f'Project ID: {config.project_id}')
-            print(f'Region: {config.region}')
-            print(f'Bucket: {config.bucket_name}')
-        except Exception as e:
-            print(f'⚠ GCP configuration test: {e}')
-            print('This may be expected without proper credentials')
-        "
+      - name: Test GCP Configuration
+        run: |
+          uv run python -c "
+          import sys
+          sys.path.append('src')
+          import os
+          os.environ['GCP_PROJECT_ID'] = '${{ secrets.GCP_PROJECT_ID || env.GCP_PROJECT_ID }}'
+          os.environ['GCP_BUCKET_NAME'] = '${{ secrets.GCP_BUCKET_NAME || env.GCP_BUCKET_NAME }}'
+          try:
+              from config.gcp_env_config import GCPEnvConfig
+              config = GCPEnvConfig()
+              print('✓ GCP configuration loaded successfully')
+              print(f'Project ID: {config.project_id}')
+              print(f'Region: {config.region}')
+              print(f'Bucket: {config.bucket_name}')
+          except Exception as e:
+              print(f'⚠ GCP configuration test: {e}')
+              print('This may be expected without proper credentials')
+          "
 
-    - name: Create GCS bucket if not exists
-      run: |
-        gsutil ls gs://${{ secrets.GCP_BUCKET_NAME }} || \
-        gsutil mb -p ${{ secrets.GCP_PROJECT_ID }} -c STANDARD -l $GCP_REGION gs://${{ secrets.GCP_BUCKET_NAME }}
+      - name: Create GCS bucket if not exists
+        run: |
+          gsutil ls gs://${{ secrets.GCP_BUCKET_NAME }} || \
+          gsutil mb -p ${{ secrets.GCP_PROJECT_ID }} -c STANDARD -l $GCP_REGION gs://${{ secrets.GCP_BUCKET_NAME }}
 
-    - name: Test GCS access
-      run: |
-        echo "Testing GCS access..." > test-file.txt
-        gsutil cp test-file.txt gs://${{ secrets.GCP_BUCKET_NAME }}/test/
-        gsutil rm gs://${{ secrets.GCP_BUCKET_NAME }}/test/test-file.txt
-        rm test-file.txt
-        echo "✓ GCS access verified"
+      - name: Test GCS access
+        run: |
+          echo "Testing GCS access..." > test-file.txt
+          gsutil cp test-file.txt gs://${{ secrets.GCP_BUCKET_NAME }}/test/
+          gsutil rm gs://${{ secrets.GCP_BUCKET_NAME }}/test/test-file.txt
+          rm test-file.txt
+          echo "✓ GCS access verified"

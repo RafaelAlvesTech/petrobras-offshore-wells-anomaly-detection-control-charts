@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Obrigatório para trusted publishing PyPI
+      id-token: write # Obrigatório para trusted publishing PyPI
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
