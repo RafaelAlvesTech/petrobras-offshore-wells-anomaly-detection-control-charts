@@ -64,7 +64,7 @@ petrobras-offshore-wells-anomaly-detection/
 - **Research Center**: Risk Studies Center (CER-UFBA)
 - **Department**: Department of Statistics (DEst)
 - **Academic Year**: 2025-2026
-- **Research Area**: Statistical Anomaly Detection in Industrial Systems
+- **Research Area**: Statistical Anomaly Detection in Industrial Systems with Control Charts
 
 ### 🎯 CER-UFBA Contribution
 This project represents a significant contribution to CER-UFBA's research portfolio in:
