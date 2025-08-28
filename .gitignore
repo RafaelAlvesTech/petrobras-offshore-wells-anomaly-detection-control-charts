@@ -35,3 +35,12 @@ logs/
 
 # External repositories (avoid nested git repos)
 3W/
+
+# Google Cloud Credentials
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!*.config.json
+github-actions-key.json
+gcp-secrets.txt
