@@ -2,11 +2,21 @@ name: Test GCP Authentication (Simple)
 
 on:
   workflow_dispatch:
+    inputs:
+      workflow_type:
+        description: "Type of authentication to test"
+        required: true
+        default: "service-account"
+        type: choice
+        options:
+          - service-account
+          - workload-identity
   push:
     branches: [main, develop]
     paths:
-      - ".github/workflows/**"
+      - "src/gcp/**"
       - "gcp-config.yaml"
+      - ".github/workflows/test-gcp-auth-simple.yml"
 
 env:
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
@@ -25,18 +35,21 @@ jobs:
 
       - name: Check Required Secrets
         run: |
-          echo "Checking required secrets..."
+          echo "=== GCP Service Account Authentication Test ==="
+          echo "Checking required secrets for Service Account authentication..."
           if [ -z "${{ secrets.GCP_CREDENTIALS_JSON }}" ]; then
             echo "❌ GCP_CREDENTIALS_JSON not configured"
             echo "Please configure GCP service account credentials"
+            echo "Use: .github/workflows/test-gcp-auth.yml for Workload Identity Federation"
             exit 1
           fi
           if [ -z "${{ secrets.GCP_PROJECT_ID }}" ]; then
             echo "❌ GCP_PROJECT_ID not configured"
             echo "Please configure GCP project ID"
+            echo "Use: .github/workflows/test-gcp-auth.yml for Workload Identity Federation"
             exit 1
           fi
-          echo "✅ All required secrets are configured"
+          echo "✅ All required secrets are configured for Service Account"
 
       - name: Authenticate to Google Cloud (Simple)
         uses: google-github-actions/auth@v2
