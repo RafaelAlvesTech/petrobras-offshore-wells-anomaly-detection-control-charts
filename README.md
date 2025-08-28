@@ -9,7 +9,7 @@
 
 ## 🎯 Project Overview
 
-This is a PIBIC (Undergraduate Research) project focused on **anomaly detection in multivariate time series** from Petrobras offshore wells. The project leverages state-of-the-art machine learning and deep learning techniques to identify operational anomalies in real-time drilling and production data.
+This is a **PIBIC (Graduate Research) project 2025-2026** focused on **anomaly detection in multivariate time series** from Petrobras offshore wells. The project leverages state-of-the-art machine learning and deep learning techniques to identify operational anomalies in real-time drilling and production data.
 
 ## 🏛️ Institutional Affiliation
 
@@ -59,11 +59,11 @@ petrobras-offshore-wells-anomaly-detection/
 ## 🔬 CER-UFBA Research Project
 
 ### 📋 Project Details
-- **Research Type**: PIBIC (Undergraduate Research) Project
+- **Research Type**: PIBIC (Graduate Research) Project
 - **Institution**: Federal University of Bahia (UFBA)
 - **Research Center**: Risk Studies Center (CER-UFBA)
 - **Department**: Department of Statistics (DEst)
-- **Academic Year**: 2024-2025
+- **Academic Year**: 2025-2026
 - **Research Area**: Statistical Anomaly Detection in Industrial Systems
 
 ### 🎯 CER-UFBA Contribution
