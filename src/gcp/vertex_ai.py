@@ -299,9 +299,7 @@ class VertexAIManager:
             logger.error(f"Failed to get endpoint {endpoint_id}: {e}")
             raise
 
-    def list_training_jobs(
-        self, filter_expr: Optional[str] = None
-    ) -> List[CustomJob]:
+    def list_training_jobs(self, filter_expr: Optional[str] = None) -> List[CustomJob]:
         """
         List training jobs in the project.
 

@@ -1,4 +1,4 @@
-name: Test GCP Authentication
+name: Test GCP Authentication (Simple)
 
 on:
   workflow_dispatch:
@@ -13,41 +13,24 @@ env:
   GCP_REGION: us-central1
 
 jobs:
-  test-auth:
+  test-auth-simple:
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
-      id-token: 'write'
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Check Required Secrets
-      run: |
-        echo "Checking required secrets..."
-        if [ -z "${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}" ]; then
-          echo "❌ GCP_WORKLOAD_IDENTITY_PROVIDER not configured"
-          echo "Please configure Workload Identity Federation or use the simple workflow"
-          exit 1
-        fi
-        if [ -z "${{ secrets.GCP_SERVICE_ACCOUNT }}" ]; then
-          echo "❌ GCP_SERVICE_ACCOUNT not configured"
-          echo "Please configure Workload Identity Federation or use the simple workflow"
-          exit 1
-        fi
-        echo "✅ All required secrets are configured"
-
-    - name: Test Google Cloud Authentication
-      uses: google-github-actions/auth@v2
-      with:
-        workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-
     - name: Setup Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v2
       with:
         project_id: ${{ env.GCP_PROJECT_ID }}
+
+    - name: Authenticate to Google Cloud (Simple)
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
 
     - name: Verify Authentication
       run: |

@@ -82,4 +82,5 @@ def get_gcp_config():
     except ValueError:
         return None
 
+
 gcp_config = get_gcp_config()
