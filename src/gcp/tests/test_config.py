@@ -1,6 +1,7 @@
 """
 Tests for GCP configuration (simplified for CI)
 """
+
 import os
 import pytest
 import sys

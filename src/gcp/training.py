@@ -8,13 +8,13 @@ import os
 import subprocess
 from typing import Any, Dict, List, Optional
 
-from google.cloud.aiplatform_v1 import CreateTrainingJobRequest, JobServiceClient
+from google.cloud.aiplatform_v1 import CreateCustomJobRequest, JobServiceClient
 from google.cloud.aiplatform_v1.types import (
     ContainerSpec,
     CustomJobSpec,
     MachineSpec,
     Scheduling,
-    TrainingJob,
+    CustomJob,
     WorkerPoolSpec,
 )
 
@@ -57,7 +57,7 @@ class AIPlatformTrainer:
         accelerator_count: Optional[int] = None,
         worker_count: Optional[int] = None,
         **kwargs,
-    ) -> TrainingJob:
+    ) -> CustomJob:
         """
         Create a training job on AI Platform.
 
@@ -72,7 +72,7 @@ class AIPlatformTrainer:
             **kwargs: Additional arguments
 
         Returns:
-            TrainingJob instance
+            CustomJob instance
         """
         # Use defaults from config if not specified
         machine_type = machine_type or self.config.ai_platform.master_type
@@ -115,15 +115,15 @@ class AIPlatformTrainer:
             )
 
             # Create training job request
-            request = CreateTrainingJobRequest(
+            request = CreateCustomJobRequest(
                 parent=f"projects/{self.project_id}/locations/{self.region}",
-                training_job=TrainingJob(
+                custom_job=CustomJob(
                     display_name=display_name, custom_job=custom_job_spec
                 ),
             )
 
             # Submit job
-            operation = self.client.create_training_job(request=request)
+            operation = self.client.create_custom_job(request=request)
             training_job = operation.result()
 
             logger.info(f"Created training job: {display_name}")

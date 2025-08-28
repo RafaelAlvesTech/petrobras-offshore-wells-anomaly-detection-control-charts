@@ -1,0 +1,48 @@
+name: Test GCP Authentication
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - '.github/workflows/**'
+      - 'gcp-config.yaml'
+
+env:
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCP_REGION: us-central1
+
+jobs:
+  test-auth:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Test Google Cloud Authentication
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+    - name: Setup Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        project_id: ${{ env.GCP_PROJECT_ID }}
+
+    - name: Verify Authentication
+      run: |
+        echo "Testing GCP authentication..."
+        gcloud auth list
+        gcloud config list project
+        echo "✅ Authentication successful!"
+
+    - name: Test Basic GCP Commands
+      run: |
+        echo "Testing basic GCP commands..."
+        gcloud services list --enabled --limit=5
+        echo "✅ Basic GCP commands working!"

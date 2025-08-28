@@ -157,315 +157,143 @@ gcloud iam service-accounts add-iam-policy-binding \
     --member="serviceAccount:YOUR_PROJECT_ID.svc.id.goog[NAMESPACE/SERVICE_ACCOUNT]"
 ```
 
-## 🏗️ Setup Automático
+## 🔐 Configuração de Autenticação Google Cloud para GitHub Actions
 
-### 🚀 Script de Setup
+## 📋 Visão Geral
 
-O projeto inclui um script automatizado para configuração completa:
+Este documento explica como configurar a autenticação do Google Cloud para as GitHub Actions usando **Workload Identity Federation**, que é o método recomendado e mais seguro.
 
-```bash
-# Configurar variáveis de ambiente
-export GOOGLE_CLOUD_PROJECT="your-project-id"
-export GOOGLE_CLOUD_REGION="us-central1"
-export GCS_BUCKET_NAME="your-bucket-name"
+## 🚀 Método Recomendado: Workload Identity Federation
 
-# Executar setup automático
-chmod +x scripts/setup_gcp.sh
-./scripts/setup_gcp.sh
-```
-
-### 🔧 O que o Script Faz
-
-1. **Verifica pré-requisitos**: gcloud, docker, etc.
-2. **Habilita APIs**: Todas as APIs necessárias
-3. **Cria bucket**: Cloud Storage com estrutura de pastas
-4. **Configura IAM**: Service account com permissões adequadas
-5. **Deploy MLflow**: Servidor na Cloud Run (opcional)
-6. **Cria arquivos**: .env e configurações
-7. **Testa setup**: Validação completa
-
-### 📝 Variáveis de Ambiente
+### 1. Configurar Workload Identity no Google Cloud
 
 ```bash
-# Google Cloud Configuration
-GOOGLE_CLOUD_PROJECT=your-project-id
-GOOGLE_CLOUD_REGION=us-central1
-GOOGLE_CLOUD_ZONE=us-central1-a
+# Definir variáveis de ambiente
+export PROJECT_ID="seu-projeto-id"
+export PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")
+export WORKLOAD_IDENTITY_POOL="github-actions-pool"
+export WORKLOAD_IDENTITY_PROVIDER="github-actions-provider"
+export SERVICE_ACCOUNT_NAME="github-actions-sa"
+export SERVICE_ACCOUNT_EMAIL="$SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com"
 
-# Vertex AI Configuration
-VERTEX_AI_LOCATION=us-central1
-VERTEX_AI_EXPERIMENT_NAME=petrobras-anomaly-detection
-VERTEX_AI_MODEL_DISPLAY_NAME=anomaly-detection-model
+# Criar Workload Identity Pool
+gcloud iam workload-identity-pools create "$WORKLOAD_IDENTITY_POOL" \
+  --project="$PROJECT_ID" \
+  --location="global" \
+  --display-name="GitHub Actions Pool"
 
-# Cloud Storage
-GCS_BUCKET_NAME=your-bucket-name
-GCS_MODEL_PATH=gs://your-bucket-name/models
-GCS_DATA_PATH=gs://your-bucket-name/data
+# Criar Workload Identity Provider
+gcloud iam workload-identity-pools providers create-oidc "$WORKLOAD_IDENTITY_PROVIDER" \
+  --project="$PROJECT_ID" \
+  --location="global" \
+  --workload-identity-pool="$WORKLOAD_IDENTITY_POOL" \
+  --issuer-uri="https://token.actions.githubusercontent.com" \
+  --attribute-mapping="google.subject=assertion.sub,attribute.actor=assertion.actor,attribute.repository=assertion.repository"
 
-# AI Platform Training
-AI_PLATFORM_TRAINING_REGION=us-central1
-AI_PLATFORM_TRAINING_SCALE_TIER=BASIC_GPU
-AI_PLATFORM_TRAINING_MASTER_TYPE=n1-standard-4
-AI_PLATFORM_TRAINING_WORKER_TYPE=n1-standard-4
-AI_PLATFORM_TRAINING_WORKER_COUNT=2
+# Criar Service Account
+gcloud iam service-accounts create "$SERVICE_ACCOUNT_NAME" \
+  --project="$PROJECT_ID" \
+  --display-name="GitHub Actions Service Account"
 
-# Authentication
-GOOGLE_APPLICATION_CREDENTIALS=path/to/service-account-key.json
+# Permitir que o Service Account use Workload Identity
+gcloud iam service-accounts add-iam-policy-binding "$SERVICE_ACCOUNT_EMAIL" \
+  --project="$PROJECT_ID" \
+  --role="roles/iam.workloadIdentityUser" \
+  --member="principalSet://iam.googleapis.com/projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$WORKLOAD_IDENTITY_POOL/attribute.repository/seu-usuario/seu-repositorio"
 
-# MLflow Configuration
-MLFLOW_TRACKING_URI=http://localhost:5000
-MLFLOW_EXPERIMENT_NAME=petrobras-anomaly-detection
+# Adicionar roles necessárias ao Service Account
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:$SERVICE_ACCOUNT_EMAIL" \
+  --role="roles/storage.admin"
+
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:$SERVICE_ACCOUNT_EMAIL" \
+  --role="roles/aiplatform.admin"
+
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:$SERVICE_ACCOUNT_EMAIL" \
+  --role="roles/ml.admin"
+
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:$SERVICE_ACCOUNT_EMAIL" \
+  --role="roles/compute.admin"
+
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:$SERVICE_ACCOUNT_EMAIL" \
+  --role="roles/cloudbuild.builds.builder"
 ```
 
-## 🔧 Configuração Manual
-
-### 1. Cloud Storage Bucket
+### 2. Obter o Workload Identity Provider
 
 ```bash
-# Criar bucket
-gsutil mb -p YOUR_PROJECT_ID -c STANDARD -l us-central1 gs://YOUR_BUCKET_NAME
-
-# Criar estrutura de pastas
-gsutil cp /dev/null gs://YOUR_BUCKET_NAME/data/
-gsutil cp /dev/null gs://YOUR_BUCKET_NAME/models/
-gsutil cp /dev/null gs://YOUR_BUCKET_NAME/experiments/
-gsutil cp /dev/null gs://YOUR_BUCKET_NAME/logs/
-gsutil cp /dev/null gs://YOUR_BUCKET_NAME/checkpoints/
-gsutil cp /dev/null gs://YOUR_BUCKET_NAME/mlflow-artifacts/
-gsutil cp /dev/null gs://YOUR_BUCKET_NAME/training_scripts/
+# Obter o Workload Identity Provider
+gcloud iam workload-identity-pools providers describe "$WORKLOAD_IDENTITY_PROVIDER" \
+  --project="$PROJECT_ID" \
+  --location="global" \
+  --workload-identity-pool="$WORKLOAD_IDENTITY_POOL" \
+  --format="value(name)"
 ```
 
-### 2. Service Account e IAM
+## 🔑 Configurar Secrets no GitHub
 
-```bash
-# Criar service account
-gcloud iam service-accounts create anomaly-detection-training \
-    --display-name="Anomaly Detection Training Service Account"
+### 1. Acessar Settings do Repositório
+- Vá para `Settings` > `Secrets and variables` > `Actions`
 
-# Conceder roles
-gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
-    --member="serviceAccount:anomaly-detection-training@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
-    --role="roles/aiplatform.admin"
+### 2. Adicionar os Seguintes Secrets
 
-gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
-    --member="serviceAccount:anomaly-detection-training@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
-    --role="roles/storage.admin"
+| Secret Name | Valor | Descrição |
+|-------------|-------|-----------|
+| `GCP_PROJECT_ID` | `seu-projeto-id` | ID do projeto Google Cloud |
+| `GCP_WORKLOAD_IDENTITY_PROVIDER` | `projects/123456789/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider` | Provider do Workload Identity |
+| `GCP_SERVICE_ACCOUNT` | `github-actions-sa@seu-projeto-id.iam.gserviceaccount.com` | Email do Service Account |
+| `GCP_BUCKET_NAME` | `nome-do-bucket` | Nome do bucket do Cloud Storage |
+| `GOOGLE_CLOUD_PROJECT` | `seu-projeto-id` | ID do projeto (para compatibilidade) |
+| `GOOGLE_CLOUD_REGION` | `us-central1` | Região padrão do Google Cloud |
+| `GCS_BUCKET_NAME` | `nome-do-bucket` | Nome do bucket (para compatibilidade) |
 
-gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
-    --member="serviceAccount:anomaly-detection-training@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
-    --role="roles/logging.admin"
+## 🧪 Testar a Configuração
 
-gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
-    --member="serviceAccount:anomaly-detection-training@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
-    --role="roles/monitoring.admin"
+### 1. Executar Workflow de Teste
+- Vá para `Actions` no repositório
+- Execute o workflow `Test GCP Authentication` manualmente
+- Verifique se a autenticação foi bem-sucedida
 
-gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
-    --member="serviceAccount:anomaly-detection-training@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
-    --role="roles/compute.admin"
-```
+### 2. Verificar Logs
+- Se houver erros, verifique:
+  - Se todos os secrets estão configurados
+  - Se o Workload Identity está configurado corretamente
+  - Se o Service Account tem as permissões necessárias
 
-### 3. MLflow Server (Opcional)
+## 🔒 Segurança
 
-```bash
-# Build da imagem
-docker build -t gcr.io/YOUR_PROJECT_ID/mlflow-server:latest -f docker/mlflow.Dockerfile .
+### Vantagens do Workload Identity Federation:
+- ✅ **Sem chaves de serviço**: Não há risco de vazamento de credenciais
+- ✅ **Tempo de vida limitado**: Tokens expiram automaticamente
+- ✅ **Auditoria**: Todas as ações são registradas no Cloud Audit Logs
+- ✅ **Princípio do menor privilégio**: Permite granularidade nas permissões
 
-# Push para Container Registry
-docker push gcr.io/YOUR_PROJECT_ID/mlflow-server:latest
-
-# Deploy na Cloud Run
-gcloud run deploy mlflow-server \
-    --image=gcr.io/YOUR_PROJECT_ID/mlflow-server:latest \
-    --platform=managed \
-    --region=us-central1 \
-    --project=YOUR_PROJECT_ID \
-    --allow-unauthenticated \
-    --port=5000 \
-    --memory=2Gi \
-    --cpu=1 \
-    --set-env-vars="MLFLOW_TRACKING_URI=http://localhost:5000" \
-    --set-env-vars="GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID" \
-    --set-env-vars="GCS_BUCKET_NAME=YOUR_BUCKET_NAME"
-```
-
-## 📊 Primeiro Treinamento
-
-### 1. Preparar Dados
-
-```bash
-# Upload de dados para Cloud Storage
-gsutil cp data/your_dataset.csv gs://YOUR_BUCKET_NAME/data/
-```
-
-### 2. Executar Treinamento
-
-```bash
-# Usando script de exemplo
-python examples/train_lstm_vae_gcp.py \
-    --config gcp-config.yaml \
-    --data-path data/your_dataset.csv \
-    --model-name lstm-vae-anomaly-detection \
-    --epochs 100 \
-    --batch-size 64 \
-    --learning-rate 0.0001
-```
-
-### 3. Monitorar Progresso
-
-```bash
-# Ver jobs de treinamento
-gcloud ai custom-jobs list --region=us-central1
-
-# Ver logs de um job específico
-gcloud ai custom-jobs stream-logs JOB_ID --region=us-central1
-
-# Ver experimentos no Vertex AI
-gcloud ai experiments list --region=us-central1
-```
-
-## 📈 Monitoramento
-
-### MLflow UI
-
-```bash
-# Acessar MLflow localmente
-mlflow ui --host 0.0.0.0 --port 5000
-
-# Ou acessar na Cloud Run (se configurado)
-# URL será fornecida após deploy
-```
-
-### Cloud Logging
-
-```bash
-# Ver logs de treinamento
-gcloud logging read "resource.type=ml_job" --limit=50
-
-# Filtrar por projeto
-gcloud logging read "resource.labels.project_id=YOUR_PROJECT_ID" --limit=50
-```
-
-### Cloud Monitoring
-
-```bash
-# Ver métricas de uso
-gcloud monitoring metrics list --filter="metric.type:aiplatform.googleapis.com"
-
-# Criar alertas para falhas
-gcloud alpha monitoring policies create --policy-from-file=alert-policy.yaml
-```
-
-## 💰 Custos e Otimização
-
-### 📊 Estimativas de Custo
-
-| Cenário | Horas/Mês | Custo Estimado |
-|---------|-----------|----------------|
-| **Desenvolvimento** | 10 | $6.79 |
-| **Treinamento Leve** | 50 | $23.50 |
-| **Treinamento Intensivo** | 200 | $94.00 |
-| **Produção** | 500+ | $235.00+ |
-
-### 🎯 Dicas de Otimização
-
-1. **Usar Spot Instances**: Até 80% de desconto
-2. **Auto-scaling**: Escalar apenas quando necessário
-3. **Preemptible VMs**: Para jobs não críticos
-4. **Reserved Instances**: Para uso contínuo
-5. **Cleanup automático**: Remover recursos não utilizados
-
-### 🧹 Cleanup Automático
-
-```bash
-# Limpar jobs antigos (mais de 7 dias)
-gcloud ai custom-jobs list --region=us-central1 \
-    --filter="createTime<$(date -d '7 days ago' -u +%Y-%m-%dT%H:%M:%SZ)" \
-    --format="value(name)" | \
-while read job; do
-    gcloud ai custom-jobs delete "$job" --region=us-central1 --quiet
-done
-
-# Limpar modelos antigos
-gcloud ai models list --region=us-central1 \
-    --filter="createTime<$(date -d '30 days ago' -u +%Y-%m-%dT%H:%M:%SZ)" \
-    --format="value(name)" | \
-while read model; do
-    gcloud ai models delete "$model" --region=us-central1 --quiet
-done
-```
+### Permissões Mínimas Recomendadas:
+- `roles/storage.admin` - Para gerenciar buckets e objetos
+- `roles/aiplatform.admin` - Para treinar modelos no Vertex AI
+- `roles/ml.admin` - Para usar AI Platform (legacy)
+- `roles/compute.admin` - Para criar e gerenciar VMs
+- `roles/cloudbuild.builds.builder` - Para builds do Cloud Build
 
 ## 🚨 Troubleshooting
 
-### Problemas Comuns
+### Erro: "workload_identity_provider or credentials_json must be specified"
+- ✅ Verifique se `GCP_WORKLOAD_IDENTITY_PROVIDER` está configurado
+- ✅ Verifique se `GCP_SERVICE_ACCOUNT` está configurado
+- ❌ Não use `credentials_json` (método legado)
 
-#### 1. Erro de Autenticação
+### Erro: "Permission denied"
+- ✅ Verifique se o Service Account tem as permissões necessárias
+- ✅ Verifique se o Workload Identity está configurado corretamente
+- ✅ Verifique se o repositório está na lista de repositórios permitidos
 
-```bash
-# Verificar credenciais
-gcloud auth list
-gcloud config list
-
-# Reautenticar se necessário
-gcloud auth login
-gcloud auth application-default login
-```
-
-#### 2. API não habilitada
-
-```bash
-# Verificar APIs habilitadas
-gcloud services list --enabled
-
-# Habilitar API específica
-gcloud services enable aiplatform.googleapis.com
-```
-
-#### 3. Quota excedida
-
-```bash
-# Verificar quotas
-gcloud compute regions describe us-central1
-
-# Solicitar aumento
-# https://console.cloud.google.com/iam-admin/quotas
-```
-
-#### 4. Erro de permissão
-
-```bash
-# Verificar permissões
-gcloud projects get-iam-policy YOUR_PROJECT_ID
-
-# Adicionar permissões
-gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
-    --member="user:YOUR_EMAIL" \
-    --role="roles/aiplatform.admin"
-```
-
-### 🔍 Debugging
-
-#### Logs Detalhados
-
-```bash
-# Habilitar logs detalhados
-export GOOGLE_CLOUD_VERBOSE=1
-
-# Ver logs de uma operação específica
-gcloud logging read "resource.labels.operation_id=OPERATION_ID" --limit=100
-```
-
-#### Teste de Conectividade
-
-```bash
-# Testar acesso ao Vertex AI
-gcloud ai operations list --region=us-central1 --limit=1
-
-# Testar acesso ao Cloud Storage
-gsutil ls gs://YOUR_BUCKET_NAME/
-
-# Testar acesso ao IAM
-gcloud iam service-accounts list
-```
+### Erro: "Service account not found"
+- ✅ Verifique se o Service Account existe
+- ✅ Verifique se o email está correto no secret `GCP_SERVICE_ACCOUNT`
 
 ## 📚 Referências
 

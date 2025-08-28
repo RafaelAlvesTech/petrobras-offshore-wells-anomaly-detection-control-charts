@@ -1,6 +1,7 @@
 """
 Integration tests for GCP configuration
 """
+
 import os
 import pytest
 import sys

@@ -7,13 +7,7 @@ from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 
 from google.cloud import aiplatform
-from google.cloud.aiplatform import (
-    CustomJob,
-    Endpoint,
-    HyperparameterTuningJob,
-    Model,
-    TrainingJob,
-)
+from google.cloud.aiplatform import CustomJob, Endpoint, HyperparameterTuningJob, Model
 
 logger = logging.getLogger(__name__)
 
@@ -307,7 +301,7 @@ class VertexAIManager:
 
     def list_training_jobs(
         self, filter_expr: Optional[str] = None
-    ) -> List[TrainingJob]:
+    ) -> List[CustomJob]:
         """
         List training jobs in the project.
 
@@ -318,7 +312,7 @@ class VertexAIManager:
             List of training jobs
         """
         try:
-            jobs = TrainingJob.list(filter=filter_expr)
+            jobs = CustomJob.list(filter=filter_expr)
             logger.info(f"Found {len(jobs)} training jobs")
             return jobs
 
@@ -326,7 +320,7 @@ class VertexAIManager:
             logger.error(f"Failed to list training jobs: {e}")
             raise
 
-    def get_training_job(self, job_id: str) -> TrainingJob:
+    def get_training_job(self, job_id: str) -> CustomJob:
         """
         Get a specific training job by ID.
 
@@ -334,10 +328,10 @@ class VertexAIManager:
             job_id: Training job ID
 
         Returns:
-            TrainingJob instance
+            CustomJob instance
         """
         try:
-            job = TrainingJob(job_id)
+            job = CustomJob(job_id)
             logger.info(f"Retrieved training job: {job.display_name}")
             return job
 

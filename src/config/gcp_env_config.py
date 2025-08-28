@@ -75,4 +75,11 @@ class GCPEnvConfig:
 
 
 # Global instance
-gcp_config = GCPEnvConfig() if GCPEnvConfig().is_configured() else None
+def get_gcp_config():
+    """Get GCP config instance if properly configured."""
+    try:
+        return GCPEnvConfig()
+    except ValueError:
+        return None
+
+gcp_config = get_gcp_config()
