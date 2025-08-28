@@ -11,12 +11,6 @@ on:
         options:
           - workload-identity
           - service-account
-  push:
-    branches: [main, develop]
-    paths:
-      - "src/gcp/**"
-      - "gcp-config.yaml"
-      - ".github/workflows/test-gcp-auth.yml"
 
 env:
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}

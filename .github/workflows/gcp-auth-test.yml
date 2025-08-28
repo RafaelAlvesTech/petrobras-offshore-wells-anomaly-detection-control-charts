@@ -1,0 +1,158 @@
+name: GCP Authentication Test (Auto)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, develop]
+    paths:
+      - "src/gcp/**"
+      - "gcp-config.yaml"
+
+env:
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCP_REGION: us-central1
+
+jobs:
+  detect-auth-method:
+    runs-on: ubuntu-latest
+    outputs:
+      auth-method: ${{ steps.check-secrets.outputs.method }}
+      can-proceed: ${{ steps.check-secrets.outputs.can-proceed }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Check Available Secrets
+        id: check-secrets
+        run: |
+          echo "🔍 Checking available GCP authentication methods..."
+
+          # Check Workload Identity secrets
+          if [ -n "${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}" ] && [ -n "${{ secrets.GCP_SERVICE_ACCOUNT }}" ]; then
+            echo "✅ Workload Identity Federation secrets found"
+            echo "method=workload-identity" >> $GITHUB_OUTPUT
+            echo "can-proceed=true" >> $GITHUB_OUTPUT
+            echo "🎯 Will use Workload Identity Federation"
+            exit 0
+          fi
+
+          # Check Service Account secrets
+          if [ -n "${{ secrets.GCP_CREDENTIALS_JSON }}" ] && [ -n "${{ secrets.GCP_PROJECT_ID }}" ]; then
+            echo "✅ Service Account secrets found"
+            echo "method=service-account" >> $GITHUB_OUTPUT
+            echo "can-proceed=true" >> $GITHUB_OUTPUT
+            echo "🎯 Will use Service Account authentication"
+            exit 0
+          fi
+
+          # No secrets found
+          echo "❌ No GCP authentication secrets configured"
+          echo "method=none" >> $GITHUB_OUTPUT
+          echo "can-proceed=false" >> $GITHUB_OUTPUT
+          echo ""
+          echo "💡 To configure GCP authentication, you need either:"
+          echo ""
+          echo "🔐 Workload Identity Federation:"
+          echo "   - GCP_WORKLOAD_IDENTITY_PROVIDER"
+          echo "   - GCP_SERVICE_ACCOUNT"
+          echo ""
+          echo "🔑 Service Account:"
+          echo "   - GCP_CREDENTIALS_JSON"
+          echo "   - GCP_PROJECT_ID"
+          echo ""
+          echo "📚 See: https://github.com/google-github-actions/auth"
+          exit 0
+
+  test-workload-identity:
+    needs: detect-auth-method
+    if: needs.detect-auth-method.outputs.auth-method == 'workload-identity'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: "read"
+      id-token: "write"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Test Workload Identity Authentication
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Setup Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
+
+      - name: Verify Authentication
+        run: |
+          echo "🔐 Testing Workload Identity authentication..."
+          gcloud auth list --filter=status:ACTIVE --format="value(account)"
+          gcloud config get-value project
+          echo "✅ Workload Identity authentication successful!"
+
+      - name: Test Basic GCP Commands
+        run: |
+          echo "🧪 Testing basic GCP commands..."
+          gcloud version
+          gcloud config list
+          echo "✅ Basic GCP commands working!"
+
+  test-service-account:
+    needs: detect-auth-method
+    if: needs.detect-auth-method.outputs.auth-method == 'service-account'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: "read"
+      id-token: "write"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Test Service Account Authentication
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+
+      - name: Setup Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
+
+      - name: Verify Authentication
+        run: |
+          echo "🔑 Testing Service Account authentication..."
+          gcloud auth list --filter=status:ACTIVE --format="value(account)"
+          gcloud config get-value project
+          echo "✅ Service Account authentication successful!"
+
+      - name: Test Basic GCP Commands
+        run: |
+          echo "🧪 Testing basic GCP commands..."
+          gcloud version
+          gcloud config list
+          echo "✅ Basic GCP commands working!"
+
+  no-auth-configured:
+    needs: detect-auth-method
+    if: needs.detect-auth-method.outputs.can-proceed == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: No Authentication Configured
+        run: |
+          echo "⚠️  GCP Authentication Test Skipped"
+          echo ""
+          echo "📋 Summary:"
+          echo "   - No GCP authentication secrets found"
+          echo "   - Workflow cannot proceed with authentication tests"
+          echo ""
+          echo "🔧 To enable GCP authentication tests:"
+          echo "   1. Configure Workload Identity Federation, OR"
+          echo "   2. Configure Service Account credentials"
+          echo ""
+          echo "📚 Documentation:"
+          echo "   - Workload Identity: https://github.com/google-github-actions/auth#workload-identity-federation"
+          echo "   - Service Account: https://github.com/google-github-actions/auth#service-account-key-authentication"
+          echo ""
+          echo "✅ Workflow completed (no authentication test performed)"
