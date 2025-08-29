@@ -36,7 +36,7 @@ Este é um projeto PIBIC focado na detecção de anomalias em séries temporais 
 - Foque em séries temporais multivariadas
 - Considere interdependência entre variáveis
 - Use métricas apropriadas (AUC-PR, F1-Score para dados desbalanceados)
-- Implemente modelos SOTA: TranAD, LSTM-VAE, USAD, ECOD
+- Implemente modelos SOTA: TranAD, LSTM-VAE, USAD, ECOD, PyOD
 - Priorize interpretabilidade dos modelos
 
 ## 🚀 Performance e Escalabilidade

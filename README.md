@@ -34,7 +34,7 @@ This project is developed under the academic supervision and research infrastruc
 ## 🚀 Key Features
 
 - **Multivariate Time Series Analysis**: Handles complex interdependencies between multiple well parameters
-- **State-of-the-Art Models**: Implements TranAD, LSTM-VAE, USAD, and ECOD algorithms
+- **State-of-the-Art Models**: Implements TranAD, LSTM-VAE, USAD, ECOD, and PyOD algorithms
 - **Real-time Processing**: Optimized for high-frequency offshore well data
 - **Interpretable Results**: SHAP-based model explanations for operational decisions
 - **Cloud-Ready**: AWS and GCP deployment configurations included
