@@ -7,7 +7,7 @@ requires-python = "==3.11.13"
 # Dependências com versões seguras mínimas
 dependencies = [
     # Dependências principais do projeto
-    "marimo>=0.15.0",
+    "jupyter>=1.0.0",
     "pandas>=2.3.2",
     "polars>=1.32.3",
     "scikit-learn>=1.7.1",

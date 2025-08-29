@@ -48,7 +48,7 @@ petrobras-offshore-wells-anomaly-detection/
 │   ├── data/              # Data processing pipelines
 │   ├── features/          # Feature engineering
 │   └── utils/             # Utility functions
-├── notebooks/             # Marimo interactive notebooks
+├── notebooks/             # Jupyter interactive notebooks
 ├── data/                  # Datasets and processed data
 ├── tests/                 # Automated test suite
 ├── docs/                  # Documentation
@@ -92,7 +92,7 @@ The project aligns with CER-UFBA's mission to:
 
 - **Python 3.11+** - Modern Python with type hints
 - **Polars** - High-performance data manipulation (faster than Pandas)
-- **Marimo** - Interactive notebooks for collaborative development
+- **Jupyter** - Interactive notebooks for collaborative development
 - **uv** - Fast Python package manager and environment management
 
 ### Machine Learning & Deep Learning
@@ -153,10 +153,10 @@ The project aligns with CER-UFBA's mission to:
 
 ### Running the Project
 
-1. **Start Marimo notebook server**
+1. **Start Jupyter Lab**
 
    ```bash
-   marimo edit notebooks/
+   jupyter lab notebooks/
    ```
 
 2. **Run anomaly detection models**
@@ -190,11 +190,11 @@ model.train(data)
 anomalies = model.detect_anomalies(data)
 ```
 
-### Interactive Analysis with Marimo
+### Interactive Analysis with Jupyter
 
 ```python
-# In Marimo notebook
-import marimo as mo
+# In Jupyter notebook
+import polars as pl
 import polars as pl
 
 # Load data
@@ -414,7 +414,7 @@ CER-UFBA welcomes collaboration with:
 
 #### 3. **Notebooks and Jupyter**
 
-- Complete Marimo support
+- Complete Jupyter support
 - Python 3.11 kernel configured
 - Renderers for different data formats
 

@@ -1,7 +1,7 @@
 # 🛢️ Petrobras Offshore Wells Anomaly Detection - Cursor Rules
 
 ## 🎯 Contexto do Projeto
-Este é um projeto PIBIC focado na detecção de anomalias em séries temporais multivariadas de poços offshore da Petrobras. O projeto utiliza Python 3.11, uv para gerenciamento de dependências, Marimo para notebooks interativos, e Polars para manipulação de dados de alta performance.
+Este é um projeto PIBIC focado na detecção de anomalias em séries temporais multivariadas de poços offshore da Petrobras. O projeto utiliza Python 3.11, uv para gerenciamento de dependências, Jupyter para notebooks interativos, e Polars para manipulação de dados de alta performance.
 
 ## 🐍 Padrões de Código Python
 - Use Python 3.11+ com type hints quando apropriado
@@ -12,7 +12,7 @@ Este é um projeto PIBIC focado na detecção de anomalias em séries temporais 
 
 ## 📊 Bibliotecas e Ferramentas
 - **Polars**: Use Polars para manipulação de dados (mais rápido que Pandas)
-- **Marimo**: Use para notebooks interativos e desenvolvimento colaborativo
+- **Jupyter**: Use para notebooks interativos e desenvolvimento colaborativo
 - **uv**: Use para gerenciamento de dependências e ambiente virtual
 - **PyTorch/TensorFlow**: Para modelos de deep learning
 - **Scikit-learn**: Para machine learning tradicional
@@ -20,7 +20,7 @@ Este é um projeto PIBIC focado na detecção de anomalias em séries temporais 
 
 ## 🏗️ Arquitetura do Projeto
 - **src/**: Código fonte principal
-- **notebooks/**: Notebooks Marimo para EDA e experimentos
+- **notebooks/**: Notebooks Jupyter para EDA e experimentos
 - **data/**: Datasets e dados processados
 - **tests/**: Testes automatizados
 - **docs/**: Documentação do projeto
@@ -64,7 +64,7 @@ Este é um projeto PIBIC focado na detecção de anomalias em séries temporais 
 - Trate exceções de forma apropriada
 
 ## 🌟 Dicas Específicas
-- Para EDA, use Marimo notebooks com Polars
+- Para EDA, use Jupyter notebooks com Polars
 - Para modelos ML, comece com baselines simples
 - Use Optuna para otimização de hiperparâmetros
 - Considere containerização com Docker para deployment
