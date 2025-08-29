@@ -44,3 +44,6 @@ logs/
 !*.config.json
 github-actions-key.json
 gcp-secrets.txt
+
+.gemini/
+gha-creds-*.json
