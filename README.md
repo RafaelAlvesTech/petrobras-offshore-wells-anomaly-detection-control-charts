@@ -38,6 +38,7 @@ This project is developed under the academic supervision and research infrastruc
 - **Real-time Processing**: Optimized for high-frequency offshore well data
 - **Interpretable Results**: SHAP-based model explanations for operational decisions
 - **Cloud-Ready**: AWS and GCP deployment configurations included
+- **🔐 GPG-Signed Commits**: All commits are cryptographically signed for security and authenticity
 
 ## 🏗️ Architecture
 
@@ -555,3 +556,48 @@ GCS_BUCKET_NAME                  # Nome do bucket (compatibilidade)
 ---
 
 **Status:** ✅ **PROBLEMA RESOLVIDO** - GitHub Actions configuradas para usar Workload Identity Federation
+
+## 🔐 GPG Commit Signing
+
+### ✅ Status: Configurado e Funcionando
+
+Este projeto utiliza **assinatura GPG** para todos os commits, garantindo autenticidade e integridade do código.
+
+**Chave GPG Atual:** `3E2E96B458A47E2B`
+**Email:** rafaelpereiraalves@ufba.br
+
+### 🚀 Configuração Rápida
+
+```bash
+# Executar script automático
+./scripts/setup_gpg.sh
+
+# Ou configuração manual
+git config --global user.signingkey 3E2E96B458A47E2B
+git config --global commit.gpgsign true
+git config --global tag.gpgsign true
+```
+
+### 📖 Documentação Completa
+
+- 📚 [Guia GPG Completo](docs/GPG_SETUP.md) - Configuração detalhada
+- 🔧 [Solução de Problemas](docs/GPG_SETUP.md#-solução-de-problemas)
+- 🧪 [Testes e Verificação](docs/GPG_SETUP.md#-testando-a-configuração)
+
+### 🌐 Configuração no GitHub
+
+1. **Adicionar Chave Pública:**
+   - Acesse [GitHub Settings > SSH and GPG keys](https://github.com/settings/keys)
+   - Clique em "New GPG key"
+   - Cole a chave exportada: `gpg --armor --export 3E2E96B458A47E2B`
+
+2. **Verificar Assinaturas:**
+   - Todos os commits assinados mostrarão badge "Verified" ✅
+   - Use `git log --show-signature` para verificar localmente
+
+### 🎯 Benefícios
+
+- **🔒 Segurança:** Previne commits maliciosos
+- **✅ Autenticidade:** Confirma origem dos commits
+- **🛡️ Integridade:** Garante que o código não foi alterado
+- **🏢 Profissionalismo:** Padrão da indústria para projetos críticos
