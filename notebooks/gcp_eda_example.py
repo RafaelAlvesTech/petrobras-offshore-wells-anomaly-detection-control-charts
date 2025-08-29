@@ -13,14 +13,15 @@ Autor: Rafael Alves
 Projeto: Petrobras Offshore Wells Anomaly Detection
 """
 
-import mo
-import polars as pl
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from datetime import datetime
 import os
 import sys
+from datetime import datetime
+
+import matplotlib.pyplot as plt
+import mo
+import numpy as np
+import polars as pl
+import seaborn as sns
 
 # Adicionar src ao path para importar módulos do projeto
 sys.path.append("src")
