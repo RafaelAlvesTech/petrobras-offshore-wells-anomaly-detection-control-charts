@@ -20,6 +20,7 @@ This documentation covers all aspects of the **Petrobras Offshore Wells Anomaly 
 - **[AWS Setup](AWS_SETUP.md)** - AWS deployment and configuration
 - **[GCP Setup](GCP_SETUP.md)** - Google Cloud Platform setup
 - **[Conventional Commits](CONVENTIONAL_COMMITS.md)** - Git commit standards
+- **[Authors and Contributors](AUTHORS.md)** - Meet the project team
 
 ### 🌐 Language Versions
 
@@ -29,6 +30,7 @@ This documentation covers all aspects of the **Petrobras Offshore Wells Anomaly 
 | **Setup Guide**    | [setup-guide.md](setup-guide.md)       | [setup-guide.pt-BR.md](setup-guide.pt-BR.md)       |
 | **Contributing**   | [CONTRIBUTING.md](../CONTRIBUTING.md)  | [CONTRIBUTING.pt-BR.md](../CONTRIBUTING.pt-BR.md)  |
 | **3W Integration** | [3W_INTEGRATION.md](3W_INTEGRATION.md) | [3W_INTEGRATION.pt-BR.md](3W_INTEGRATION.pt-BR.md) |
+| **Authors**        | [AUTHORS.md](AUTHORS.md)               | [AUTHORS.pt-BR.md](AUTHORS.pt-BR.md)               |
 
 ## 🎯 Quick Navigation
 

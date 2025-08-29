@@ -214,6 +214,7 @@ mo.md(f"## Well Data Analysis\n\nDataset shape: {df.shape}")
 - **[3W Project Overview](docs/3W_OVERVIEW_EN.md)** - Complete overview of Petrobras 3W project
 - **[AWS Setup](docs/AWS_SETUP.md)** - AWS deployment and configuration
 - **[GCP Setup](docs/GCP_SETUP.md)** - Google Cloud Platform setup
+- **[Authors and Contributors](docs/AUTHORS.md)** - Meet the project team
 
 ### Development Guidelines
 
@@ -489,6 +490,40 @@ python scripts/install_claude_extensions.py
   "git.autofetch": true
 }
 ```
+
+## 👨‍💻 Authors and Contributors
+
+### 🎓 Rafael - Lead Developer
+
+<div align="center">
+  <img src="https://github.com/rafael.png" alt="Rafael" width="150" height="150" style="border-radius: 50%;">
+</div>
+
+#### 🇧🇷 Portuguese
+
+Atualmente no Bacharelado em Engenharia de Controle e Automação em Processos na UFBA, sou um entusiasta apaixonado por lógica e conhecimento, especialmente em Inteligência Artificial (IA).
+
+Ao longo da minha jornada, tenho buscado projetos que aprimoraram minhas habilidades em:
+
+- **Machine Learning** - Desenvolvimento e implementação de modelos de IA
+- **Análise de Dados** - Processamento e visualização de dados complexos
+- **Python** - Desenvolvimento de soluções robustas e escaláveis
+
+Além de aspirante à engenheiro e cientista de dados, sou gestor de marketing digital com especialidade em Google Ads e micro empresário, fortalecendo minha visão holística.
+
+#### 🇺🇸 English
+
+Currently pursuing a Bachelor's degree in Control and Process Automation Engineering at UFBA, I am an enthusiast passionate about logic and knowledge, especially in Artificial Intelligence (AI).
+
+Throughout my journey, I have sought projects that have enhanced my skills in:
+
+- **Machine Learning** - Development and implementation of AI models
+- **Data Analysis** - Processing and visualization of complex data
+- **Python** - Development of robust and scalable solutions
+
+In addition to being an aspiring engineer and data scientist, I am a digital marketing manager specializing in Google Ads and a micro-entrepreneur, strengthening my holistic vision.
+
+---
 
 ## 🚨 Correções Recentes das GitHub Actions
 

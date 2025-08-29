@@ -20,6 +20,7 @@ Esta documentação cobre todos os aspectos do projeto **Detecção de Anomalias
 - **[Configuração AWS](AWS_SETUP.md)** - Implantação e configuração AWS
 - **[Configuração GCP](GCP_SETUP.md)** - Configuração Google Cloud Platform
 - **[Commits Convencionais](CONVENTIONAL_COMMITS.md)** - Padrões de commits Git
+- **[Autores e Contribuidores](AUTHORS.pt-BR.md)** - Conheça a equipe do projeto
 
 ### 🌐 Versões em Idiomas
 
@@ -29,6 +30,7 @@ Esta documentação cobre todos os aspectos do projeto **Detecção de Anomalias
 | **Guia de Configuração** | [setup-guide.md](setup-guide.md)       | [setup-guide.pt-BR.md](setup-guide.pt-BR.md)       |
 | **Contribuição**         | [CONTRIBUTING.md](../CONTRIBUTING.md)  | [CONTRIBUTING.pt-BR.md](../CONTRIBUTING.pt-BR.md)  |
 | **Integração 3W**        | [3W_INTEGRATION.md](3W_INTEGRATION.md) | [3W_INTEGRATION.pt-BR.md](3W_INTEGRATION.pt-BR.md) |
+| **Autores**              | [AUTHORS.md](AUTHORS.md)               | [AUTHORS.pt-BR.md](AUTHORS.pt-BR.md)               |
 
 ## 🎯 Navegação Rápida
 
