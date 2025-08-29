@@ -1,0 +1,195 @@
+# 🛢️ Petrobras Offshore Wells - Project-specific ZSH Configuration
+# This file is sourced by the main .zshrc
+
+# Project root directory
+export PROJECT_ROOT="/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts"
+
+# Python environment
+export PYTHONPATH="${PROJECT_ROOT}/src:${PYTHONPATH}"
+export PYTHONUNBUFFERED=1
+export PYTHONDONTWRITEBYTECODE=1
+
+# Jupyter configuration
+export JUPYTER_ENABLE_LAB=yes
+export JUPYTER_CONFIG_DIR="${PROJECT_ROOT}/.jupyter"
+
+# Data science tools
+export POLARS_MAX_THREADS=4
+export POLARS_VERBOSE=1
+
+# Development tools
+export RUFF_CACHE_DIR="${PROJECT_ROOT}/.ruff_cache"
+export MYPY_CACHE_DIR="${PROJECT_ROOT}/.mypy_cache"
+
+# Project-specific aliases
+alias petro="cd ${PROJECT_ROOT}"
+alias src="cd ${PROJECT_ROOT}/src"
+alias notebooks="cd ${PROJECT_ROOT}/notebooks"
+alias data="cd ${PROJECT_ROOT}/data"
+alias tests="cd ${PROJECT_ROOT}/tests"
+alias docs="cd ${PROJECT_ROOT}/docs"
+alias config="cd ${PROJECT_ROOT}/config"
+alias scripts="cd ${PROJECT_ROOT}/scripts"
+
+# Python development aliases
+alias py="python3"
+alias pip="pip3"
+alias venv="source ${PROJECT_ROOT}/.venv/bin/activate"
+alias uv-sync="cd ${PROJECT_ROOT} && uv sync"
+alias uv-add="cd ${PROJECT_ROOT} && uv add"
+alias uv-run="cd ${PROJECT_ROOT} && uv run"
+alias uv-dev="cd ${PROJECT_ROOT} && uv run --dev"
+
+# Jupyter aliases
+alias jup="cd ${PROJECT_ROOT} && jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+alias jup-lab="cd ${PROJECT_ROOT} && jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+alias jup-convert="cd ${PROJECT_ROOT} && jupyter nbconvert --to python"
+
+# Testing aliases
+alias pytest="cd ${PROJECT_ROOT} && python -m pytest"
+alias pytest-cov="cd ${PROJECT_ROOT} && python -m pytest --cov=src --cov-report=html"
+alias pytest-watch="cd ${PROJECT_ROOT} && python -m pytest-watch"
+
+# Code quality aliases
+alias ruff="cd ${PROJECT_ROOT} && ruff check ."
+alias ruff-fix="cd ${PROJECT_ROOT} && ruff check --fix ."
+alias ruff-format="cd ${PROJECT_ROOT} && ruff format ."
+alias mypy="cd ${PROJECT_ROOT} && mypy src/"
+alias bandit="cd ${PROJECT_ROOT} && bandit -r src/"
+
+# Git workflow aliases
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias gl="git log --oneline --graph --decorate"
+alias gd="git diff"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gpl="git pull"
+alias gst="git stash"
+
+# Docker and container aliases
+alias dc="docker-compose"
+alias dps="docker ps"
+alias dex="docker exec -it"
+alias dlogs="docker logs"
+alias dstop="docker stop"
+alias drm="docker rm"
+
+# Data science tool aliases
+alias polars-version="python3 -c 'import polars as pl; print(f\"Polars {pl.__version__}\")'"
+alias torch-version="python3 -c 'import torch; print(f\"PyTorch {torch.__version__}\")'"
+alias tf-version="python3 -c 'import tensorflow as tf; print(f\"TensorFlow {tf.__version__}\")'"
+alias sklearn-version="python3 -c 'import sklearn; print(f\"Scikit-learn {sklearn.__version__}\")'"
+
+# Utility aliases
+alias ll="ls -la"
+alias la="ls -A"
+alias l="ls -CF"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# Project-specific functions
+petro-status() {
+    echo "🛢️ Petrobras Project Status"
+    echo "=========================="
+    echo "📁 Project Root: ${PROJECT_ROOT}"
+    echo "🐍 Python: $(python3 --version)"
+    echo "📦 Pip: $(pip3 --version)"
+    echo "🔧 Git: $(git --version)"
+    echo "🐳 Docker: $(docker --version)"
+    echo ""
+    echo "📊 Current Directory: $(pwd)"
+    echo "🌿 Git Branch: $(git branch --show-current 2>/dev/null || echo 'Not a git repo')"
+    echo "📈 Git Status: $(git status --porcelain 2>/dev/null | wc -l) changes"
+}
+
+petro-setup() {
+    echo "🚀 Setting up Petrobras development environment..."
+    cd ${PROJECT_ROOT}
+
+    # Install Python dependencies
+    if [ -f "requirements.txt" ]; then
+        echo "📦 Installing Python dependencies..."
+        pip3 install -r requirements.txt
+    fi
+
+    # Install development dependencies
+    if [ -f "pyproject.toml" ]; then
+        echo "🔧 Installing development dependencies..."
+        pip3 install -e .
+    fi
+
+    # Setup pre-commit hooks
+    if [ -f ".pre-commit-config.yaml" ]; then
+        echo "✅ Setting up pre-commit hooks..."
+        pre-commit install
+    fi
+
+    echo "✅ Setup complete!"
+}
+
+petro-clean() {
+    echo "🧹 Cleaning Petrobras project..."
+    cd ${PROJECT_ROOT}
+
+    # Remove Python cache files
+    find . -type f -name "*.pyc" -delete
+    find . -type d -name "__pycache__" -delete
+    find . -type d -name "*.egg-info" -delete
+
+    # Remove test cache
+    rm -rf .pytest_cache/
+    rm -rf .ruff_cache/
+    rm -rf .mypy_cache/
+
+    # Remove build artifacts
+    rm -rf build/
+    rm -rf dist/
+
+    echo "✅ Cleanup complete!"
+}
+
+# Welcome message function
+petro-welcome() {
+    echo ""
+    echo "🛢️  Welcome to Petrobras Offshore Wells Anomaly Detection Project!"
+    echo "=================================================================="
+    echo ""
+    echo "📊 Data Science Environment Ready"
+    echo "🐍 Python 3.11 + Jupyter + Polars + ML Tools"
+    echo ""
+    echo "💡 Quick Commands:"
+    echo "   petro-status    - Show project status"
+    echo "   petro-setup     - Setup development environment"
+    echo "   petro-clean     - Clean project cache files"
+    echo "   petro           - Go to project root"
+    echo "   src             - Go to source code"
+    echo "   notebooks       - Go to Jupyter notebooks"
+    echo "   data            - Go to data directory"
+    echo ""
+    echo "🚀 Happy coding! 🚀"
+    echo ""
+}
+
+# Auto-completion for project commands
+_petro_commands() {
+    local -a commands
+    commands=(
+        'status:Show project status'
+        'setup:Setup development environment'
+        'clean:Clean project cache files'
+        'welcome:Show welcome message'
+    )
+    _describe -t commands 'petro commands' commands
+}
+
+compdef _petro_commands petro
+
+# Show welcome message on first load
+if [ ! -f "${PROJECT_ROOT}/.welcome_shown" ]; then
+    petro-welcome
+    touch "${PROJECT_ROOT}/.welcome_shown"
+fi

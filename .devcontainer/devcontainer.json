@@ -6,20 +6,44 @@
         "ms-python.python",
         "ms-toolsai.jupyter",
         "ms-azuretools.vscode-docker",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-vscode.vscode-json",
+        "yzhang.markdown-all-in-one",
+        "eamodio.gitlens",
+        "pkief.material-icon-theme",
+        "littlefoxteam.vscode-python-test-adapter"
       ],
       "settings": {
         "python.analysis.typeCheckingMode": "basic",
         "python.defaultInterpreterPath": "/usr/local/bin/python3",
-        "terminal.integrated.defaultProfile.linux": "zsh"
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "python.linting.enabled": true,
+        "python.linting.ruffEnabled": true,
+        "python.formatting.provider": "ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": "explicit"
+        },
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true,
+          "**/.pytest_cache": true,
+          "**/.ruff_cache": true,
+          "**/.mypy_cache": true
+        }
       }
     }
   },
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    }
+      "version": "3.11",
+      "installTools": true
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "forwardPorts": [
     8888
@@ -37,7 +61,7 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "/bin/bash -lc 'python -m pip install --upgrade pip && if [ -f requirements.txt ]; then pip install -r requirements.txt; fi && python -m ipykernel install --user --name petrobras-3.11 --display-name \"Python 3.11 (petrobras)\"'",
+  "postCreateCommand": "/bin/bash -lc 'python -m pip install --upgrade pip setuptools wheel && if [ -f requirements.txt ]; then pip install -r requirements.txt; fi && python -m ipykernel install --user --name petrobras-3.11 --display-name \"Python 3.11 (petrobras)\" && echo \"✅ Environment setup complete!\"'",
   "postStartCommand": "",
   "remoteUser": "vscode",
   "runArgs": [
