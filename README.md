@@ -211,6 +211,7 @@ mo.md(f"## Well Data Analysis\n\nDataset shape: {df.shape}")
 - **[Setup Guide](docs/setup-guide.md)** - Complete project setup instructions
 - **[Claude Code Setup](docs/CLAUDE_CODE_SETUP.md)** - Claude Code configuration and optimization
 - **[3W Integration](docs/3W_INTEGRATION.md)** - Integration with 3W system
+- **[3W Project Overview](docs/3W_OVERVIEW_EN.md)** - Complete overview of Petrobras 3W project
 - **[AWS Setup](docs/AWS_SETUP.md)** - AWS deployment and configuration
 - **[GCP Setup](docs/GCP_SETUP.md)** - Google Cloud Platform setup
 

@@ -397,6 +397,7 @@ Contributors will be recognized in:
 - [Project Documentation](docs/)
 - [Setup Guide](docs/setup-guide.md)
 - [3W Integration](docs/3W_INTEGRATION.md)
+- [3W Project Overview](docs/3W_OVERVIEW_EN.md)
 - [GitHub Issues](https://github.com/your-repo/issues)
 
 ### **Contact**

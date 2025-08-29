@@ -31,7 +31,8 @@ sys.path.insert(0, str(project_root))
 def title():
     mo.md("# 🛢️ Integração com Dataset 3W da Petrobras")
     mo.md(
-        "Este notebook demonstra a integração com o dataset 3W para detecção de anomalias em poços offshore."
+        "Este notebook demonstra a integração com o dataset 3W para "
+        "detecção de anomalias em poços offshore."
     )
 
 
@@ -48,7 +49,8 @@ def check_availability():
             return True
         else:
             mo.md(
-                "❌ Dataset 3W não disponível. Verifique se o diretório 3W está presente."
+                "❌ Dataset 3W não disponível. Verifique se o diretório 3W "
+                "está presente."
             )
             mo.md("Para usar este notebook, clone o repositório 3W da Petrobras.")
             return False
@@ -279,10 +281,23 @@ def documentation():
     mo.md("## 📚 Documentação Adicional")
     mo.md(
         """
-    - [README do Projeto 3W](https://github.com/petrobras/3W)
-    - [Estrutura do Dataset](https://github.com/petrobras/3W/blob/main/3W_DATASET_STRUCTURE.md)
-    - [Estrutura do Toolkit](https://github.com/petrobras/3W/blob/main/3W_TOOLKIT_STRUCTURE.md)
-    - [Guia de Contribuição](https://github.com/petrobras/3W/blob/main/CONTRIBUTING.md)
+    ### 🔗 Recursos Oficiais 3W
+    - [**Repositório Principal 3W**](https://github.com/petrobras/3W) - Primeiro repositório público da Petrobras
+    - [**Estrutura do Dataset**](https://github.com/petrobras/3W/blob/main/3W_DATASET_STRUCTURE.md) - Organização dos dados
+    - [**Estrutura do Toolkit**](https://github.com/petrobras/3W/blob/main/3W_TOOLKIT_STRUCTURE.md) - Ferramentas disponíveis
+    - [**Guia de Contribuição**](https://github.com/petrobras/3W/blob/main/CONTRIBUTING.md) - Como contribuir
+    - [**Código de Conduta**](https://github.com/petrobras/3W/blob/main/CODE_OF_CONDUCT.md) - Padrões da comunidade
+
+    ### 🌍 Comunidade e Eventos
+    - [**Discussões no GitHub**](https://github.com/petrobras/3W/discussions) - Fórum da comunidade
+    - [**Workshop 3W 2025**](https://forms.gle/cmLa2u4VaXd1T7qp8) - 4ª edição anual
+    - [**Paper Acadêmico**](https://www.sciencedirect.com/science/article/abs/pii/S0920410522001234) - Journal of Petroleum Science and Engineering
+
+    ### 📊 Características do Dataset
+    - **Primeiro dataset público realista** com eventos raros reais em poços offshore
+    - **Licença Creative Commons 4.0** para dados
+    - **Licença Apache 2.0** para código
+    - **Compressão Brotli** para eficiência de armazenamento
     """
     )
 

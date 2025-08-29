@@ -161,6 +161,7 @@ mo.md(f"## Análise de Dados do Poço\n\nFormato do dataset: {df.shape}")
 
 - **[Guia de Configuração](docs/setup-guide.md)** - Instruções completas de configuração do projeto
 - **[Integração 3W](docs/3W_INTEGRATION.md)** - Integração com sistema 3W
+- **[Visão Geral do Projeto 3W](docs/3W_OVERVIEW.md)** - Visão completa do projeto 3W da Petrobras
 - **[Configuração AWS](docs/AWS_SETUP.md)** - Implantação e configuração AWS
 - **[Configuração GCP](docs/GCP_SETUP.md)** - Configuração Google Cloud Platform
 

@@ -8,6 +8,10 @@ This document describes the complete integration of the project with the **Petro
 
 ## 🎯 About the 3W Dataset
 
+### Project Context
+
+The **3W Project** is Petrobras' first public repository on GitHub, launched on May 30, 2022. It represents a strategic action led by Petrobras' Flow Assurance department and research center (CENPES), with governance now including the Well Integrity department since May 1st, 2024.
+
 ### Main Characteristics
 
 - **Source**: Petrobras (company's first public repository)
@@ -15,6 +19,22 @@ This document describes the complete integration of the project with the **Petro
 - **Events**: Detection of undesirable events in wells
 - **Format**: Parquet files with Brotli compression
 - **License**: Creative Commons Attribution 4.0 International
+- **Repository**: [https://github.com/petrobras/3W](https://github.com/petrobras/3W)
+
+### Motivation & Impact
+
+- **Production Losses**: Undesirable events can cause up to 5% production losses
+- **Maintenance Costs**: Maritime probe operations exceed US$500,000 per day
+- **Safety**: Prevention of environmental accidents and human casualties
+- **Innovation**: First pilot of Petrobras' "Conexões para Inovação - Módulo Open Lab" program
+
+### Strategy & Governance
+
+- **Open Project**: Publicly available resources for global collaborative development
+- **Community-Driven**: Expanding global community of researchers, startups, and companies
+- **Continuous Evolution**: Dataset and toolkit evolve with community contributions
+- **Professional Labeling**: Specialized professionals for instance labeling
+- **Digital Tools**: Investment in labeling and export tools
 
 ### Data Structure
 
@@ -22,6 +42,7 @@ This document describes the complete integration of the project with the **Petro
 - **Variables**: Pressure, temperature, flow, vibration, etc.
 - **Labels**: Binary classification (normal vs. anomalous)
 - **Timestamps**: Temporal index for each observation
+- **Compression**: Brotli compression for efficient storage
 
 ### Available Problems
 
@@ -29,6 +50,47 @@ This document describes the complete integration of the project with the **Petro
    - Type: Binary classification
    - Objective: Identify unintended valve closures
    - Application: Well safety and integrity
+   - Phase: Production phase monitoring
+
+### Versioning Strategy
+
+- **3W Toolkit Version**: Specified in `__init__.py` file
+- **3W Dataset Version**: Specified in `dataset.ini` file
+- **3W Project Version**: Git repository tags with semantic versioning
+- **Independent Evolution**: Dataset and toolkit versions are completely independent
+
+## 🌍 3W Community & Resources
+
+### Global Community
+
+The 3W Community is expanding globally, composed of:
+
+- **Independent professionals** and researchers
+- **Research institutions** from different countries
+- **Startups** and technology companies
+- **Oil operators** and industry partners
+
+### Key Resources
+
+- **Official Repository**: [https://github.com/petrobras/3W](https://github.com/petrobras/3W)
+- **Dataset Structure**: [3W_DATASET_STRUCTURE.md](https://github.com/petrobras/3W/blob/main/3W_DATASET_STRUCTURE.md)
+- **Toolkit Structure**: [3W_TOOLKIT_STRUCTURE.md](https://github.com/petrobras/3W/blob/main/3W_TOOLKIT_STRUCTURE.md)
+- **Contributing Guide**: [CONTRIBUTING.md](https://github.com/petrobras/3W/blob/main/CONTRIBUTING.md)
+- **Code of Conduct**: [CODE_OF_CONDUCT.md](https://github.com/petrobras/3W/blob/main/CODE_OF_CONDUCT.md)
+
+### Community Engagement
+
+- **GitHub Discussions**: [https://github.com/petrobras/3W/discussions](https://github.com/petrobras/3W/discussions)
+- **Annual Workshop**: 4th edition in 2025 - [Registration Form](https://forms.gle/cmLa2u4VaXd1T7qp8)
+- **Open Source**: Apache 2.0 license for code contributions
+- **Collaborative Development**: Community-driven evolution of tools and datasets
+
+### Research Impact
+
+- **Academic Papers**: Dataset described in "A realistic and public dataset with rare undesirable real events in oil wells" (Journal of Petroleum Science and Engineering)
+- **Benchmark Dataset**: First realistic public dataset with rare undesirable real events in oil wells
+- **Machine Learning**: Development of ML techniques for actual data difficulties
+- **Industry Standards**: Standardization of ML pipeline key points
 
 ## 🏗️ Arquitetura da Integração
 
