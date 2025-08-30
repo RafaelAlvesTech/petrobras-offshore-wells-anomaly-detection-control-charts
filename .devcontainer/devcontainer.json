@@ -36,7 +36,10 @@
         "python.linting.enabled": true,
         "python.linting.ruffEnabled": true,
         "python.formatting.provider": "black",
-        "python.sortImports.args": ["--profile", "black"],
+        "python.sortImports.args": [
+          "--profile",
+          "black"
+        ],
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
           "source.organizeImports": "explicit"
@@ -57,7 +60,10 @@
       }
     }
   },
-  "forwardPorts": [8888, 8000],
+  "forwardPorts": [
+    8888,
+    8000
+  ],
   "portsAttributes": {
     "8888": {
       "label": "Jupyter Lab",
@@ -68,7 +74,7 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postCreateCommand": "bash .devcontainer/post-create.sh && bash .devcontainer/setup_shell.sh",
   "remoteUser": "python",
   "workspaceFolder": "/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts"
 }

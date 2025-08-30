@@ -122,6 +122,7 @@ The project aligns with CER-UFBA's mission to:
 - Python 3.11+
 - uv package manager
 - Git
+- Zsh (recommended for enhanced development experience)
 
 ### Installation
 
@@ -144,12 +145,44 @@ The project aligns with CER-UFBA's mission to:
    uv sync
    ```
 
-4. **Activate the environment**
+4. **Configure Zsh (Recommended)**
+
+   ```bash
+   # Run the automated setup script
+   ./scripts/setup_zsh.sh
+
+   # Or manually copy configurations
+   cp .zshrc ~/.zshrc
+   cp .zshrc.project ~/.zshrc.project
+   source ~/.zshrc
+   ```
+
+5. **Activate the environment**
    ```bash
    source .venv/bin/activate  # Linux/macOS
    # or
    .venv\Scripts\activate     # Windows
    ```
+
+### 🐚 Enhanced Zsh Configuration
+
+This project includes a comprehensive Zsh configuration with:
+
+- **Custom prompt** with Petrobras branding and Git integration
+- **Project-specific aliases** for common development tasks
+- **Environment variables** for all project directories
+- **Useful functions** for data science workflows
+- **Plugin integration** (Oh My Zsh, autosuggestions, syntax highlighting)
+
+**Key features:**
+
+- `project_status` - Check project status
+- `run_pipeline` - Execute complete anomaly detection pipeline
+- `run_experiment <name>` - Run specific experiments
+- `monitor_training` - Monitor model training with TensorBoard and MLflow
+- `check_code_quality` - Verify code quality with linting and type checking
+
+See [ZSH Configuration Documentation](docs/ZSH_CONFIGURATION.md) for detailed setup instructions.
 
 ### Running the Project
 

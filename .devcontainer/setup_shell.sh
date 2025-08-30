@@ -10,11 +10,25 @@ echo "🚀 Setting up shell environment for Petrobras Offshore Wells project..."
 # Ensure we're in the right directory
 cd /workspaces/petrobras-offshore-wells-anomaly-detection-control-charts
 
+# Copy the main zsh configuration
+if [ -f ".devcontainer/zshrc" ]; then
+    echo "📝 Installing main zsh configuration..."
+    cp .devcontainer/zshrc /home/vscode/.zshrc
+    chown vscode:vscode /home/vscode/.zshrc
+fi
+
 # Copy the project-specific zsh configuration
 if [ -f ".devcontainer/zshrc.project" ]; then
     echo "📝 Installing project-specific zsh configuration..."
     cp .devcontainer/zshrc.project /home/vscode/.zshrc.project
     chown vscode:vscode /home/vscode/.zshrc.project
+fi
+
+# Copy the local zsh configuration example
+if [ -f ".devcontainer/zshrc.local.example" ]; then
+    echo "📝 Installing local zsh configuration example..."
+    cp .devcontainer/zshrc.local.example /home/vscode/.zshrc.local.example
+    chown vscode:vscode /home/vscode/.zshrc.local.example
 fi
 
 # Install additional zsh plugins if not present
@@ -29,15 +43,8 @@ if [ ! -d "/home/vscode/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; th
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting /home/vscode/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
 
-# Update the main zshrc to source our custom configuration
-echo "🔧 Updating main zshrc..."
-if ! grep -q "source.*zshrc.project" /home/vscode/.zshrc; then
-    echo "" >> /home/vscode/.zshrc
-    echo "# Source Petrobras project configuration" >> /home/vscode/.zshrc
-    echo "if [ -f ~/.zshrc.project ]; then" >> /home/vscode/.zshrc
-    echo "    source ~/.zshrc.project" >> /home/vscode/.zshrc
-    echo "fi" >> /home/vscode/.zshrc
-fi
+# The main zshrc already includes the project configuration
+echo "🔧 Main zshrc configuration is complete"
 
 # Set proper permissions
 chown -R vscode:vscode /home/vscode/.oh-my-zsh
@@ -83,5 +90,17 @@ chmod +x /home/vscode/test_setup.sh
 chown vscode:vscode /home/vscode/test_setup.sh
 
 echo "✅ Shell environment setup complete!"
-echo "🔄 Please restart your terminal or run 'source ~/.zshrc' to apply changes"
-echo "🧪 You can test the setup by running '~/.test_setup.sh'"
+echo ""
+echo "🎯 Next steps:"
+echo "   1. Restart your terminal or run 'source ~/.zshrc' to apply changes"
+echo "   2. Optional: Copy ~/.zshrc.local.example to ~/.zshrc.local and personalize"
+echo "   3. Test the setup by running '~/.test_setup.sh'"
+echo ""
+echo "🐚 Zsh Configuration Features:"
+echo "   - Custom prompt with Petrobras branding 🛢️"
+echo "   - Project-specific aliases and functions"
+echo "   - Enhanced development experience"
+echo "   - Use 'project_status' to check project status"
+echo "   - Use 'run_pipeline' to execute complete pipeline"
+echo "   - Use 'run_experiment <name>' to run specific experiments"
+echo ""

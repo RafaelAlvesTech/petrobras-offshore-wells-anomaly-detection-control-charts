@@ -1,0 +1,306 @@
+# =============================================================================
+# 🛢️ CONFIGURAÇÕES LOCAIS PERSONALIZADAS - PROJETO PETROBRAS
+# =============================================================================
+# Este arquivo contém configurações pessoais que não devem ser commitadas
+# Copie este arquivo para ~/.zshrc.local e personalize conforme necessário
+# =============================================================================
+
+# =============================================================================
+# 👤 CONFIGURAÇÕES PESSOAIS
+# =============================================================================
+
+# Configurações do usuário
+export USER_NAME="Seu Nome"
+export USER_EMAIL="seu.email@petrobras.com.br"
+export USER_DEPARTMENT="PIBIC"
+export USER_PROJECT="Anomaly Detection"
+
+# Configurações de preferências
+export PREFERRED_EDITOR="code"
+export PREFERRED_BROWSER="firefox"
+export PREFERRED_TERMINAL="gnome-terminal"
+
+# =============================================================================
+# 🔧 CONFIGURAÇÕES DE DESENVOLVIMENTO
+# =============================================================================
+
+# Configurações específicas do seu ambiente
+export DEV_MODE=true
+export DEBUG_MODE=false
+export VERBOSE_LOGGING=false
+
+# Configurações de performance personalizadas
+export OMP_NUM_THREADS=8
+export MKL_NUM_THREADS=8
+export NUMEXPR_NUM_THREADS=8
+
+# Configurações de GPU personalizadas
+export CUDA_VISIBLE_DEVICES=0,1
+export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:1024
+
+# =============================================================================
+# 🌐 CONFIGURAÇÕES DE REDE E PROXY
+# =============================================================================
+
+# Configurações de proxy (se necessário)
+# export HTTP_PROXY=http://proxy.petrobras.com.br:8080
+# export HTTPS_PROXY=http://proxy.petrobras.com.br:8080
+# export NO_PROXY=localhost,127.0.0.1,.petrobras.com.br
+
+# Configurações de rede
+export NETWORK_TIMEOUT=30
+export DOWNLOAD_TIMEOUT=300
+
+# =============================================================================
+# 🔐 CONFIGURAÇÕES DE SEGURANÇA
+# =============================================================================
+
+# Configurações de autenticação
+export GITHUB_TOKEN="seu_token_github"
+export GITLAB_TOKEN="seu_token_gitlab"
+
+# Configurações de chaves SSH
+export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
+export SSH_CONFIG_PATH="$HOME/.ssh/config"
+
+# =============================================================================
+# 📊 CONFIGURAÇÕES DE DADOS PESSOAIS
+# =============================================================================
+
+# Configurações específicas dos seus dados
+export PERSONAL_DATA_DIR="$HOME/data/petrobras"
+export PERSONAL_MODELS_DIR="$HOME/models/petrobras"
+export PERSONAL_EXPERIMENTS_DIR="$HOME/experiments/petrobras"
+
+# Configurações de backup pessoal
+export BACKUP_DIR="$HOME/backups/petrobras"
+export BACKUP_RETENTION_DAYS=30
+
+# =============================================================================
+# 🤖 CONFIGURAÇÕES DE MODELOS PESSOAIS
+# =============================================================================
+
+# Configurações específicas dos seus modelos
+export PERSONAL_MODEL_TYPE="TranAD"
+export PERSONAL_BATCH_SIZE=64
+export PERSONAL_LEARNING_RATE=0.0001
+export PERSONAL_EPOCHS=200
+
+# Configurações de experimentos pessoais
+export PERSONAL_EXPERIMENT_PREFIX="meu_experimento"
+export PERSONAL_VALIDATION_SPLIT=0.15
+
+# =============================================================================
+# 📈 CONFIGURAÇÕES DE MONITORAMENTO PESSOAIS
+# =============================================================================
+
+# Configurações de logging pessoais
+export PERSONAL_LOG_LEVEL="DEBUG"
+export PERSONAL_LOG_FILE="$HOME/logs/petrobras_personal.log"
+
+# Configurações de métricas pessoais
+export PERSONAL_METRICS_UPDATE_INTERVAL=50
+export PERSONAL_METRICS_LOG_INTERVAL=500
+
+# =============================================================================
+# 🎯 ALIASES PESSOAIS
+# =============================================================================
+
+# Aliases específicos do seu workflow
+alias mydata='cd $PERSONAL_DATA_DIR'
+alias mymodels='cd $PERSONAL_MODELS_DIR'
+alias myexperiments='cd $PERSONAL_EXPERIMENTS_DIR'
+alias mybackup='cd $BACKUP_DIR'
+
+# Aliases para seus comandos favoritos
+alias mytrain='python src/train.py --model_name $PERSONAL_MODEL_TYPE --batch_size $PERSONAL_BATCH_SIZE'
+alias myeval='python src/evaluate.py --model_name $PERSONAL_MODEL_TYPE'
+alias myreport='python src/report.py --output_dir $PERSONAL_EXPERIMENTS_DIR'
+
+# Aliases para seus scripts pessoais
+alias mysetup='./scripts/my_setup.sh'
+alias myclean='./scripts/my_cleanup.sh'
+alias mybackup='./scripts/my_backup.sh'
+
+# =============================================================================
+# 🚀 FUNÇÕES PESSOAIS
+# =============================================================================
+
+# Função para seus experimentos pessoais
+my_experiment() {
+    local experiment_name="${PERSONAL_EXPERIMENT_PREFIX}_$(date +%Y%m%d_%H%M%S)"
+    echo "🧪 Executando meu experimento: $experiment_name"
+
+    # Criar diretório do experimento
+    local exp_dir="${PERSONAL_EXPERIMENTS_DIR}/${experiment_name}"
+    mkdir -p "$exp_dir"
+
+    # Executar treinamento com minhas configurações
+    python src/train.py \
+        --experiment_name "$experiment_name" \
+        --output_dir "$exp_dir" \
+        --model_name "$PERSONAL_MODEL_TYPE" \
+        --batch_size "$PERSONAL_BATCH_SIZE" \
+        --learning_rate "$PERSONAL_LEARNING_RATE" \
+        --epochs "$PERSONAL_EPOCHS" \
+        --validation_split "$PERSONAL_VALIDATION_SPLIT"
+
+    echo "✅ Meu experimento $experiment_name concluído!"
+}
+
+# Função para backup pessoal
+my_backup() {
+    local backup_name="meu_backup_$(date +%Y%m%d_%H%M%S)"
+    echo "💾 Criando meu backup: $backup_name"
+
+    # Criar diretório de backup
+    mkdir -p "$BACKUP_DIR"
+
+    # Fazer backup dos meus dados
+    tar -czf "${BACKUP_DIR}/${backup_name}.tar.gz" \
+        "$PERSONAL_DATA_DIR" \
+        "$PERSONAL_MODELS_DIR" \
+        "$PERSONAL_EXPERIMENTS_DIR"
+
+    echo "✅ Meu backup criado: ${BACKUP_DIR}/${backup_name}.tar.gz"
+}
+
+# Função para limpeza pessoal
+my_cleanup() {
+    echo "🧹 Fazendo minha limpeza pessoal..."
+
+    # Limpar experimentos antigos
+    find "$PERSONAL_EXPERIMENTS_DIR" -type d -mtime +$BACKUP_RETENTION_DAYS -exec rm -rf {} + 2>/dev/null
+
+    # Limpar backups antigos
+    find "$BACKUP_DIR" -type f -mtime +$BACKUP_RETENTION_DAYS -delete 2>/dev/null
+
+    # Limpar logs antigos
+    find "$HOME/logs" -type f -mtime +7 -delete 2>/dev/null
+
+    echo "✅ Minha limpeza concluída!"
+}
+
+# Função para status pessoal
+my_status() {
+    echo "👤 MEU STATUS PESSOAL"
+    echo "===================="
+    echo "👤 Nome: $USER_NAME"
+    echo "📧 Email: $USER_EMAIL"
+    echo "🏢 Departamento: $USER_DEPARTMENT"
+    echo "📊 Projeto: $USER_PROJECT"
+    echo ""
+    echo "📁 Meus diretórios:"
+    echo "  📊 Dados: $PERSONAL_DATA_DIR"
+    echo "  🤖 Modelos: $PERSONAL_MODELS_DIR"
+    echo "  🧪 Experimentos: $PERSONAL_EXPERIMENTS_DIR"
+    echo "  💾 Backups: $BACKUP_DIR"
+    echo ""
+    echo "⚙️ Minhas configurações:"
+    echo "  🤖 Modelo: $PERSONAL_MODEL_TYPE"
+    echo "  📦 Batch Size: $PERSONAL_BATCH_SIZE"
+    echo "  📈 Learning Rate: $PERSONAL_LEARNING_RATE"
+    echo "  🔄 Epochs: $PERSONAL_EPOCHS"
+    echo ""
+    echo "🎯 Meus comandos:"
+    echo "  • my_experiment - Executar meu experimento"
+    echo "  • my_backup - Fazer meu backup"
+    echo "  • my_cleanup - Minha limpeza"
+    echo "  • my_status - Meu status"
+}
+
+# =============================================================================
+# 🔧 CONFIGURAÇÕES DE FERRAMENTAS PESSOAIS
+# =============================================================================
+
+# Configurações do seu editor favorito
+export EDITOR="$PREFERRED_EDITOR"
+export VISUAL="$PREFERRED_EDITOR"
+
+# Configurações do seu browser favorito
+export BROWSER="$PREFERRED_BROWSER"
+
+# Configurações do seu terminal favorito
+export TERMINAL="$PREFERRED_TERMINAL"
+
+# =============================================================================
+# 📚 CONFIGURAÇÕES DE DOCUMENTAÇÃO PESSOAIS
+# =============================================================================
+
+# Configurações de documentação pessoal
+export PERSONAL_DOCS_DIR="$HOME/docs/petrobras"
+export PERSONAL_NOTES_DIR="$HOME/notes/petrobras"
+
+# Aliases para documentação
+alias mydocs='cd $PERSONAL_DOCS_DIR'
+alias mynotes='cd $PERSONAL_NOTES_DIR'
+
+# =============================================================================
+# 🎨 CONFIGURAÇÕES DE APARÊNCIA PESSOAIS
+# =============================================================================
+
+# Configurações de tema pessoal
+export PERSONAL_THEME="dark"
+export PERSONAL_COLOR_SCHEME="petrobras"
+
+# Configurações de prompt pessoal
+export PERSONAL_PROMPT_STYLE="minimal"
+export PERSONAL_PROMPT_COLOR="cyan"
+
+# =============================================================================
+# 🔔 CONFIGURAÇÕES DE NOTIFICAÇÕES PESSOAIS
+# =============================================================================
+
+# Configurações de notificações
+export ENABLE_NOTIFICATIONS=true
+export NOTIFICATION_SOUND=true
+export NOTIFICATION_EMAIL=true
+
+# Configurações de alertas
+export ALERT_ON_TRAINING_COMPLETE=true
+export ALERT_ON_ERROR=true
+export ALERT_ON_WARNING=false
+
+# =============================================================================
+# 📱 CONFIGURAÇÕES DE INTEGRAÇÃO PESSOAIS
+# =============================================================================
+
+# Configurações de integração com ferramentas externas
+export SLACK_WEBHOOK_URL=""
+export TEAMS_WEBHOOK_URL=""
+export EMAIL_SMTP_SERVER=""
+export EMAIL_SMTP_PORT=""
+
+# =============================================================================
+# 🎯 CONFIGURAÇÕES FINAIS
+# =============================================================================
+
+# Mensagem de carregamento pessoal
+echo "👤 Configurações pessoais carregadas para $USER_NAME"
+
+# Verificar se os diretórios pessoais existem
+mkdir -p "$PERSONAL_DATA_DIR"
+mkdir -p "$PERSONAL_MODELS_DIR"
+mkdir -p "$PERSONAL_EXPERIMENTS_DIR"
+mkdir -p "$BACKUP_DIR"
+mkdir -p "$PERSONAL_DOCS_DIR"
+mkdir -p "$PERSONAL_NOTES_DIR"
+mkdir -p "$HOME/logs"
+
+echo "✅ Diretórios pessoais criados/verificados"
+
+# =============================================================================
+# 📝 INSTRUÇÕES DE USO
+# =============================================================================
+
+# Para usar este arquivo:
+# 1. Copie este arquivo para ~/.zshrc.local
+# 2. Personalize as configurações conforme necessário
+# 3. Recarregue o Zsh: source ~/.zshrc
+# 4. Execute: my_status para verificar suas configurações
+
+# Exemplo de uso:
+# cp .zshrc.local.example ~/.zshrc.local
+# nano ~/.zshrc.local  # Editar configurações
+# source ~/.zshrc      # Recarregar configurações
+# my_status            # Verificar status
