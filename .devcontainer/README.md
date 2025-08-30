@@ -1,190 +1,197 @@
-# 🐳 Petrobras DevContainer
+# 🛢️ Petrobras Offshore Wells Anomaly Detection - Dev Container
 
-Este diretório contém a configuração do DevContainer para o projeto **Petrobras Offshore Wells Anomaly Detection**.
+Este dev container está configurado para desenvolvimento de detecção de anomalias em séries temporais multivariadas de poços offshore da Petrobras.
 
-## 🚀 O que é o DevContainer?
+## 🚀 Início Rápido
 
-O DevContainer é uma funcionalidade do VS Code/Cursor que permite desenvolver dentro de um container Docker, garantindo um ambiente consistente e isolado para todos os desenvolvedores.
+### Opção 1: VS Code Dev Containers (Recomendado)
 
-## 📋 Pré-requisitos
+1. **Instale a extensão Dev Containers** no VS Code
+2. **Abra o projeto** no VS Code
+3. **Pressione `Ctrl+Shift+P`** e selecione "Dev Containers: Reopen in Container"
+4. **Aguarde** a construção do container (primeira vez pode demorar alguns minutos)
 
-- Docker Desktop instalado e rodando
-- VS Code ou Cursor com extensão "Dev Containers"
-- Git configurado
-
-## 🔧 Configuração
-
-### Arquivos Principais
-
-- **`devcontainer.json`**: Configuração principal do container
-- **`setup_shell.sh`**: Script de configuração do ambiente shell
-- **`zshrc.project`**: Configurações específicas do projeto para zsh
-- **`test_environment.sh`**: Script de teste do ambiente
-
-### Extensões Instaladas Automaticamente
-
-- Python e Pylance
-- Jupyter
-- Docker
-- GitHub Copilot
-- Ruff (linter e formatter)
-- GitLens
-- Material Icon Theme
-- Python Test Adapter
-
-## 🚀 Como Usar
-
-### 1. Abrir no DevContainer
-
-1. Abra o projeto no VS Code/Cursor
-2. Pressione `Ctrl+Shift+P` (ou `Cmd+Shift+P` no Mac)
-3. Digite "Dev Containers: Reopen in Container"
-4. Aguarde o build do container
-
-### 2. Primeira Execução
-
-Na primeira execução, o container irá:
-
-- Instalar Python 3.11
-- Configurar Oh My Zsh com plugins
-- Instalar dependências Python
-- Configurar Jupyter
-- Criar aliases e funções personalizadas
-
-### 3. Verificar Configuração
-
-Após o build, execute:
+### Opção 2: Docker Compose
 
 ```bash
-source ~/.zshrc
-.devcontainer/test_environment.sh
+# Construir e executar o container
+docker-compose up --build
+
+# Ou usar o Dockerfile diretamente
+docker build -t petrobras-anomaly .
+docker run -it --rm -p 8888:8888 -p 8000:8000 petrobras-anomaly
 ```
+
+## 🛠️ Ferramentas Incluídas
+
+### 🐍 Python & Data Science
+
+- **Python 3.11.13** - Versão estável e otimizada
+- **uv** - Gerenciador de dependências ultra-rápido
+- **Jupyter Lab** - Ambiente interativo para notebooks
+- **Polars** - Manipulação de dados de alta performance
+- **PyTorch** - Deep learning com suporte a GPU
+- **Scikit-learn** - Machine learning tradicional
+- **MLflow** - Experiment tracking e model registry
+
+### 🔧 Ferramentas de Desenvolvimento
+
+- **Pre-commit** - Hooks para qualidade de código
+- **Ruff** - Linting e formatação rápida
+- **Black** - Formatação de código Python
+- **MyPy** - Verificação de tipos
+- **Bandit** - Análise de segurança
+- **Pytest** - Framework de testes
+
+### 🎨 Interface e Produtividade
+
+- **Oh My Zsh** - Shell interativo com plugins
+- **Powerlevel10k** - Tema de prompt avançado
+- **VS Code Extensions** - Extensões essenciais pré-instaladas
+- **Git** - Controle de versão com configurações otimizadas
+
+## 📊 Portas Disponíveis
+
+- **8888** - Jupyter Lab
+- **8000** - MLflow UI
 
 ## 🎯 Comandos Úteis
 
-### Aliases do Projeto
-
-- `petro` - Ir para o diretório raiz do projeto
-- `src` - Ir para o código fonte
-- `notebooks` - Ir para os notebooks Jupyter
-- `data` - Ir para os dados
-- `tests` - Ir para os testes
-
-### Funções do Projeto
-
-- `petro-status` - Mostrar status do projeto
-- `petro-setup` - Configurar ambiente de desenvolvimento
-- `petro-clean` - Limpar arquivos de cache
-- `petro-welcome` - Mostrar mensagem de boas-vindas
-
-### Jupyter
-
-- `jup` - Iniciar Jupyter Notebook
-- `jup-lab` - Iniciar Jupyter Lab
-- `jup-convert` - Converter notebooks para Python
-
 ### Desenvolvimento
 
-- `ruff` - Executar linter
-- `ruff-fix` - Corrigir problemas automaticamente
-- `pytest` - Executar testes
-- `mypy` - Verificação de tipos
-
-## 🔍 Troubleshooting
-
-### Problemas Comuns
-
-#### 1. Container não inicia
-
 ```bash
-# Verificar logs do Docker
-docker logs <container_id>
+# Ativar ambiente virtual
+source .venv/bin/activate
 
-# Reconstruir container
-# VS Code: Dev Containers > Rebuild Container
+# Instalar dependências
+uv sync
+
+# Executar testes
+pytest
+
+# Formatar código
+black .
+ruff check --fix .
+
+# Executar pre-commit em todos os arquivos
+pre-commit run --all-files
 ```
 
-#### 2. Script setup_shell.sh não executa
+### Jupyter e Análise
 
 ```bash
-# Verificar permissões
-chmod +x .devcontainer/setup_shell.sh
+# Iniciar Jupyter Lab
+jupyter lab --ip=0.0.0.0 --port=8888 --no-browser
 
-# Executar manualmente
-bash .devcontainer/setup_shell.sh
+# Iniciar MLflow UI
+mlflow ui --host 0.0.0.0 --port 8000
+
+# Criar novo kernel Jupyter
+python -m ipykernel install --user --name=petrobras-anomaly
 ```
 
-#### 3. Zsh não carrega configuração
+### Git e Versionamento
 
 ```bash
-# Recarregar configuração
-source ~/.zshrc
+# Commit com pre-commit
+git add .
+git commit -m "feat: nova funcionalidade"
 
-# Verificar se arquivo existe
-ls -la ~/.zshrc.project
+# Verificar status
+git status
+
+# Sincronizar com repositório remoto
+git push origin main
 ```
 
-#### 4. Jupyter não inicia
+## 📁 Estrutura do Projeto
+
+```
+petrobras-offshore-wells-anomaly-detection-control-charts/
+├── .devcontainer/          # Configuração do dev container
+├── .vscode/               # Configurações do VS Code
+├── data/                  # Dados do projeto
+│   ├── raw/              # Dados brutos
+│   ├── processed/        # Dados processados
+│   └── external/         # Dados externos
+├── notebooks/            # Notebooks Jupyter
+│   └── experiments/      # Experimentos
+├── src/                  # Código fonte
+├── tests/                # Testes automatizados
+├── models/               # Modelos treinados
+├── logs/                 # Logs de execução
+├── docs/                 # Documentação
+└── scripts/              # Scripts utilitários
+```
+
+## 🔧 Configurações Personalizadas
+
+### VS Code
+
+- **Python interpreter** configurado para `.venv`
+- **Formatação automática** com Black
+- **Linting** com Ruff
+- **Extensões essenciais** pré-instaladas
+
+### Git
+
+- **Pre-commit hooks** configurados
+- **GPG signing** desabilitado por padrão
+- **Configurações otimizadas** para desenvolvimento
+
+### Terminal
+
+- **Zsh** como shell padrão
+- **Oh My Zsh** com plugins úteis
+- **Powerlevel10k** para prompt avançado
+
+## 🐛 Solução de Problemas
+
+### Problema: Pre-commit não encontrado
 
 ```bash
-# Verificar configuração
-cat ~/.jupyter/jupyter_notebook_config.py
-
-# Iniciar manualmente
-jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+# Solução: Instalar pre-commit
+pip install pre-commit
+pre-commit install
 ```
 
-### Logs e Debug
-
-Para ver logs detalhados:
+### Problema: Virtual environment não ativado
 
 ```bash
-# Logs do container
-docker logs <container_id>
-
-# Logs do VS Code
-# Help > Toggle Developer Tools > Console
+# Solução: Ativar manualmente
+source .venv/bin/activate
 ```
 
-## 📊 Ambiente
+### Problema: Portas não acessíveis
 
-### Python
+```bash
+# Verificar se as portas estão abertas
+netstat -tlnp | grep -E "(8888|8000)"
+```
 
-- **Versão**: 3.11
-- **Gerenciador**: pip
-- **Ambiente**: Container isolado
+### Problema: Dependências desatualizadas
 
-### Ferramentas
-
-- **Shell**: Zsh com Oh My Zsh
-- **Editor**: VS Code/Cursor
-- **Container**: Docker
-- **Porta**: 8888 (Jupyter)
-
-### Dependências
-
-As dependências são instaladas automaticamente do `requirements.txt` durante o build do container.
-
-## 🔄 Atualizações
-
-Para atualizar o ambiente:
-
-1. Modifique os arquivos de configuração
-2. Reconstrua o container: `Dev Containers > Rebuild Container`
-3. Execute o script de teste: `.devcontainer/test_environment.sh`
+```bash
+# Atualizar dependências
+uv sync --upgrade
+```
 
 ## 📚 Recursos Adicionais
 
-- [Dev Containers Documentation](https://containers.dev/)
-- [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers)
-- [Oh My Zsh](https://ohmyz.sh/)
-- [Jupyter Configuration](https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html)
+- [Documentação do Projeto](../README.md)
+- [Guia de Contribuição](../CONTRIBUTING.md)
+- [Configuração AWS](../AWS_SETUP_SUMMARY.md)
+- [Solução WSL2](../WSL2_SOLUTION_SUMMARY.md)
 
-## 🆘 Suporte
+## 🤝 Suporte
 
-Se encontrar problemas:
+Para dúvidas ou problemas:
 
-1. Execute `.devcontainer/test_environment.sh`
-2. Verifique os logs do container
-3. Consulte a documentação do VS Code Dev Containers
-4. Abra uma issue no repositório do projeto
+1. Verifique a documentação do projeto
+2. Consulte os logs em `logs/`
+3. Abra uma issue no repositório
+4. Entre em contato com a equipe de desenvolvimento
+
+---
+
+**Desenvolvido com ❤️ para a Petrobras**

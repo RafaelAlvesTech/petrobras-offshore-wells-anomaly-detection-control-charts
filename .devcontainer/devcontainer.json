@@ -1,27 +1,42 @@
 {
-  "containerUser": "vscode",
+  "name": "Petrobras Offshore Wells Anomaly Detection",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "ms-toolsai.jupyter",
-        "ms-azuretools.vscode-docker",
-        "GitHub.copilot",
         "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
         "charliermarsh.ruff",
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        "ms-python.mypy-type-checker",
         "ms-vscode.vscode-json",
         "yzhang.markdown-all-in-one",
+        "ms-azuretools.vscode-docker",
         "eamodio.gitlens",
         "pkief.material-icon-theme",
-        "littlefoxteam.vscode-python-test-adapter"
+        "littlefoxteam.vscode-python-test-adapter",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
       ],
       "settings": {
-        "python.analysis.typeCheckingMode": "basic",
-        "python.defaultInterpreterPath": "/usr/local/bin/python3",
-        "terminal.integrated.defaultProfile.linux": "zsh",
+        "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "python.terminal.activateEnvInCurrentTerminal": true,
         "python.linting.enabled": true,
         "python.linting.ruffEnabled": true,
-        "python.formatting.provider": "ruff",
+        "python.formatting.provider": "black",
+        "python.sortImports.args": ["--profile", "black"],
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
           "source.organizeImports": "explicit"
@@ -30,44 +45,30 @@
           "**/__pycache__": true,
           "**/*.pyc": true,
           "**/.pytest_cache": true,
-          "**/.ruff_cache": true,
-          "**/.mypy_cache": true
+          "**/.mypy_cache": true,
+          "**/.ruff_cache": true
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh"
+          }
         }
       }
     }
   },
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11",
-      "installTools": true
-    },
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
-  },
-  "forwardPorts": [
-    8888
-  ],
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "initializeCommand": "",
-  "mounts": [
-    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
-  ],
-  "name": "Petrobras Offshore Wells Anomaly Detection",
-  "onCreateCommand": "/bin/bash -lc 'bash .devcontainer/setup_shell.sh'",
+  "forwardPorts": [8888, 8000],
   "portsAttributes": {
     "8888": {
-      "label": "Jupyter",
+      "label": "Jupyter Lab",
+      "onAutoForward": "notify"
+    },
+    "8000": {
+      "label": "MLflow UI",
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "/bin/bash -lc 'python -m pip install --upgrade pip setuptools wheel && if [ -f requirements.txt ]; then pip install -r requirements.txt; fi && python -m ipykernel install --user --name petrobras-3.11 --display-name \"Python 3.11 (petrobras)\" && echo \"✅ Environment setup complete!\"'",
-  "postStartCommand": "",
-  "remoteUser": "vscode",
-  "runArgs": [
-    "--cap-add=SYS_ADMIN",
-    "--security-opt=apparmor:unconfined"
-  ],
-  "updateRemoteUserUID": true,
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "remoteUser": "python",
   "workspaceFolder": "/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts"
 }
