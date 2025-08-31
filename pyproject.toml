@@ -1,9 +1,9 @@
 
 
 [project]
-name = "jupyter"
+name = "petrobras-offshore-wells-anomaly-detection"
 version = "0.1.0"
-description = "Jupyter Notebook Template"
+description = "Petrobras Offshore Wells Anomaly Detection using Control Charts"
 readme = "README.md"
 requires-python = "==3.11.13"
 dependencies = [
@@ -41,6 +41,12 @@ dependencies = [
     # Dependências de segurança serão resolvidas automaticamente
     "pre-commit>=4.3.0",
     "mypy>=1.17.1",
+    "ruff>=0.12.11",
+    "pytest>=8.4.1",
+    "google-cloud-aiplatform>=1.111.0",
+    "google-cloud-logging>=3.12.1",
+    "google-cloud-monitoring>=2.27.2",
+    "google-cloud-storage>=2.19.0",
 ]
 
 [project.optional-dependencies]

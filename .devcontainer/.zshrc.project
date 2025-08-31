@@ -1,0 +1,309 @@
+# 🛢️ Petrobras Offshore Wells Anomaly Detection - Project Specific Configuration
+# =============================================================================
+
+# =================================================================
+# 🎯 PROJECT-SPECIFIC ALIASES
+# =================================================================
+
+# Anomaly Detection Models
+alias train-isolation='python src/models/isolation_forest.py'
+alias train-lstm='python src/models/lstm_anomaly.py'
+alias train-vae='python src/models/vae_anomaly.py'
+alias train-usad='python src/models/usad.py'
+
+# Data Processing
+alias process-raw='python src/data/process_raw_data.py'
+alias feature-eng='python src/features/feature_engineering.py'
+alias validate-data='python src/data/validate_data.py'
+
+# Evaluation
+alias eval-model='python src/evaluation/evaluate_model.py'
+alias plot-results='python src/visualization/plot_results.py'
+alias generate-report='python src/reporting/generate_report.py'
+
+# =================================================================
+# 🧪 EXPERIMENT FUNCTIONS
+# =================================================================
+
+# Quick experiment setup
+quick_experiment() {
+    local model_type=$1
+    local data_file=$2
+
+    if [ -z "$model_type" ] || [ -z "$data_file" ]; then
+        echo "Usage: quick_experiment <model_type> <data_file>"
+        echo "Model types: isolation, lstm, vae, usad"
+        return 1
+    fi
+
+    local exp_name="quick_${model_type}_$(date +%Y%m%d_%H%M%S)"
+    run_experiment "$exp_name"
+
+    echo "🧪 Starting quick experiment with $model_type on $data_file"
+    echo "📊 Experiment: $exp_name"
+    echo "📁 Data: $data_file"
+}
+
+# Batch experiment runner
+batch_experiments() {
+    local config_file=$1
+
+    if [ -z "$config_file" ]; then
+        echo "Usage: batch_experiments <config_file>"
+        return 1
+    fi
+
+    echo "🔄 Running batch experiments from $config_file"
+    python src/experiments/batch_runner.py --config "$config_file"
+}
+
+# =================================================================
+# 📊 DATA FUNCTIONS
+# =================================================================
+
+# Data quality check
+check_data_quality() {
+    local data_path=$1
+
+    if [ -z "$data_path" ]; then
+        data_path="$DATA_DIR/raw"
+    fi
+
+    echo "🔍 Checking data quality in $data_path"
+    python src/data/quality_check.py --data_path "$data_path"
+}
+
+# Data summary
+data_summary() {
+    local data_file=$1
+
+    if [ -z "$data_file" ]; then
+        echo "Usage: data_summary <data_file>"
+        return 1
+    fi
+
+    echo "📊 Generating data summary for $data_file"
+    python src/analysis/data_summary.py --file "$data_file"
+}
+
+# =================================================================
+# 🤖 MODEL FUNCTIONS
+# =================================================================
+
+# Model comparison
+compare_models() {
+    local results_dir=$1
+
+    if [ -z "$results_dir" ]; then
+        results_dir="$LOGS_DIR/results"
+    fi
+
+    echo "⚖️  Comparing models in $results_dir"
+    python src/evaluation/compare_models.py --results_dir "$results_dir"
+}
+
+# Model deployment
+deploy_model() {
+    local model_path=$1
+    local version=$2
+
+    if [ -z "$model_path" ] || [ -z "$version" ]; then
+        echo "Usage: deploy_model <model_path> <version>"
+        return 1
+    fi
+
+    echo "🚀 Deploying model $model_path version $version"
+    python src/deployment/deploy_model.py --model_path "$model_path" --version "$version"
+}
+
+# =================================================================
+# 📈 MONITORING FUNCTIONS
+# =================================================================
+
+# Start monitoring dashboard
+start_monitoring() {
+    echo "📊 Starting monitoring dashboard..."
+
+    # Start MLflow UI
+    mlflow-ui &
+    echo "📈 MLflow UI: http://localhost:8000"
+
+    # Start TensorBoard
+    tensorboard &
+    echo "🔬 TensorBoard: http://localhost:6006"
+
+    # Start Jupyter Lab
+    jlab &
+    echo "📓 Jupyter Lab: http://localhost:8888"
+
+    echo "✅ All monitoring tools started!"
+}
+
+# Stop monitoring
+stop_monitoring() {
+    echo "🛑 Stopping monitoring tools..."
+    pkill -f "mlflow ui"
+    pkill -f "tensorboard"
+    pkill -f "jupyter"
+    echo "✅ Monitoring tools stopped"
+}
+
+# =================================================================
+# 🔧 UTILITY FUNCTIONS
+# =================================================================
+
+# Backup data
+backup_data() {
+    local backup_name="backup_$(date +%Y%m%d_%H%M%S)"
+    local backup_dir="$PROJECT_ROOT/backups/$backup_name"
+
+    echo "💾 Creating backup: $backup_name"
+    mkdir -p "$backup_dir"
+
+    # Backup data
+    cp -r "$DATA_DIR" "$backup_dir/"
+
+    # Backup models
+    cp -r "$MODELS_DIR" "$backup_dir/"
+
+    # Backup configs
+    cp -r "$CONFIG_DIR" "$backup_dir/"
+
+    echo "✅ Backup created at $backup_dir"
+}
+
+# Clean all temporary files
+clean_all() {
+    echo "🧹 Cleaning all temporary files..."
+
+    # Clean Python cache
+    clean-pyc
+    clean-cache
+
+    # Clean logs
+    clean-logs
+
+    # Clean Jupyter checkpoints
+    find . -name ".ipynb_checkpoints" -type d -exec rm -rf {} + 2>/dev/null || true
+
+    # Clean temporary files
+    find . -name "*.tmp" -delete 2>/dev/null || true
+    find . -name "*.temp" -delete 2>/dev/null || true
+
+    echo "✅ All temporary files cleaned"
+}
+
+# =================================================================
+# 🎨 ENHANCED PROMPT FOR PROJECT
+# =================================================================
+
+# Enhanced prompt with project info
+project_prompt() {
+    local git_branch=$(git branch --show-current 2>/dev/null)
+    local venv_status=$([ -n "$VIRTUAL_ENV" ] && echo "venv" || echo "")
+    local mlflow_exp=$([ -n "$MLFLOW_EXPERIMENT_NAME" ] && echo "exp:$MLFLOW_EXPERIMENT_NAME" || echo "")
+
+    echo "🛢️  Petrobras Anomaly Detection"
+    echo "📁 $(pwd | sed "s|$PROJECT_ROOT|~|")"
+    [ -n "$git_branch" ] && echo "🌿 Branch: $git_branch"
+    [ -n "$venv_status" ] && echo "🐍 $venv_status"
+    [ -n "$mlflow_exp" ] && echo "🧪 $mlflow_exp"
+    echo ""
+}
+
+# =================================================================
+# 🚀 QUICK START FUNCTIONS
+# =================================================================
+
+# Quick start development environment
+dev_start() {
+    echo "🚀 Starting development environment..."
+
+    # Activate virtual environment
+    activate_venv
+
+    # Start monitoring
+    start_monitoring
+
+    # Show project status
+    project_status
+
+    echo "✅ Development environment ready!"
+}
+
+# Quick stop development environment
+dev_stop() {
+    echo "🛑 Stopping development environment..."
+
+    # Stop monitoring
+    stop_monitoring
+
+    echo "✅ Development environment stopped"
+}
+
+# =================================================================
+# 📚 HELP FUNCTIONS
+# =================================================================
+
+# Show project help
+project_help() {
+    echo "🛢️  Petrobras Offshore Wells Anomaly Detection - Help"
+    echo "=================================================="
+    echo ""
+    echo "🚀 Quick Start:"
+    echo "  dev_start          - Start development environment"
+    echo "  dev_stop           - Stop development environment"
+    echo "  project_status     - Show project status"
+    echo ""
+    echo "🧪 Experiments:"
+    echo "  quick_experiment   - Run quick experiment"
+    echo "  batch_experiments  - Run batch experiments"
+    echo "  run_experiment     - Start new experiment"
+    echo ""
+    echo "📊 Data:"
+    echo "  check_data_quality - Check data quality"
+    echo "  data_summary       - Generate data summary"
+    echo "  backup_data        - Backup project data"
+    echo ""
+    echo "🤖 Models:"
+    echo "  compare_models     - Compare model performance"
+    echo "  deploy_model       - Deploy model"
+    echo ""
+    echo "📈 Monitoring:"
+    echo "  start_monitoring   - Start monitoring tools"
+    echo "  stop_monitoring    - Stop monitoring tools"
+    echo "  monitor_training   - Show monitoring URLs"
+    echo ""
+    echo "🔧 Utilities:"
+    echo "  clean_all          - Clean temporary files"
+    echo "  project_help       - Show this help"
+    echo ""
+}
+
+# =================================================================
+# 🎯 AUTO-COMPLETION
+# =================================================================
+
+# Auto-completion for project functions
+_quick_experiment() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=($(compgen -W "isolation lstm vae usad" -- "$cur"))
+}
+
+_batch_experiments() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=($(compgen -f -X "!*.yaml" -- "$cur"))
+}
+
+# Register auto-completion
+complete -F _quick_experiment quick_experiment
+complete -F _batch_experiments batch_experiments
+
+# =================================================================
+# 🎉 PROJECT WELCOME
+# =================================================================
+
+echo "🛢️  Petrobras Project Configuration Loaded!"
+echo "💡 Use 'project_help' for available commands"
+echo "🚀 Use 'dev_start' to begin development"
+echo ""

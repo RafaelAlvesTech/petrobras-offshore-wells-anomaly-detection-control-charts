@@ -1,0 +1,255 @@
+# 🛢️ Petrobras Offshore Wells Anomaly Detection - Personal Configuration Template
+# =============================================================================
+# Copy this file to ~/.zshrc.local and customize it for your personal preferences
+
+# =================================================================
+# 👤 PERSONAL INFORMATION
+# =================================================================
+
+# Your personal information
+export USER_NAME="Your Name"
+export USER_EMAIL="your.email@petrobras.com.br"
+export USER_DEPARTMENT="Data Science"
+export USER_ROLE="ML Engineer"
+
+# =================================================================
+# 🎨 PERSONAL PREFERENCES
+# =================================================================
+
+# Preferred editor
+export EDITOR="code"
+export BROWSER="firefox"
+
+# Terminal preferences
+export TERM="xterm-256color"
+
+# =================================================================
+# 🚀 PERFORMANCE SETTINGS
+# =================================================================
+
+# Python performance
+export PYTHONOPTIMIZE=1
+export OMP_NUM_THREADS=4
+
+# Memory settings
+export MALLOC_TRIM_THRESHOLD_=131072
+export MALLOC_MMAP_THRESHOLD_=131072
+
+# =================================================================
+# 📁 PERSONAL DIRECTORIES
+# =================================================================
+
+# Personal data directories
+export PERSONAL_DATA_DIR="$HOME/personal_data"
+export PERSONAL_MODELS_DIR="$HOME/personal_models"
+export PERSONAL_EXPERIMENTS_DIR="$HOME/personal_experiments"
+
+# Create directories if they don't exist
+mkdir -p "$PERSONAL_DATA_DIR"
+mkdir -p "$PERSONAL_MODELS_DIR"
+mkdir -p "$PERSONAL_EXPERIMENTS_DIR"
+
+# =================================================================
+# 🎯 PERSONAL ALIASES
+# =================================================================
+
+# Personal shortcuts
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Personal project aliases
+alias mydata='cd $PERSONAL_DATA_DIR'
+alias mymodels='cd $PERSONAL_MODELS_DIR'
+alias myexp='cd $PERSONAL_EXPERIMENTS_DIR'
+
+# =================================================================
+# 🧪 PERSONAL EXPERIMENT SETTINGS
+# =================================================================
+
+# Default experiment settings
+export DEFAULT_MODEL_TYPE="isolation"
+export DEFAULT_DATA_SIZE="10000"
+export DEFAULT_BATCH_SIZE="32"
+export DEFAULT_EPOCHS="100"
+
+# Personal MLflow settings
+export PERSONAL_MLFLOW_EXPERIMENT="personal-experiments"
+export MLFLOW_EXPERIMENT_NAME="$PERSONAL_MLFLOW_EXPERIMENT"
+
+# =================================================================
+# 📊 PERSONAL MONITORING
+# =================================================================
+
+# Personal monitoring ports (avoid conflicts)
+export PERSONAL_MLFLOW_PORT="8001"
+export PERSONAL_TENSORBOARD_PORT="6007"
+export PERSONAL_JUPYTER_PORT="8889"
+
+# Personal monitoring aliases
+alias my-mlflow='mlflow ui --host 0.0.0.0 --port $PERSONAL_MLFLOW_PORT'
+alias my-tensorboard='tensorboard --logdir=$TENSORBOARD_LOG_DIR --host=0.0.0.0 --port=$PERSONAL_TENSORBOARD_PORT'
+alias my-jupyter='jupyter lab --ip=0.0.0.0 --port=$PERSONAL_JUPYTER_PORT --no-browser'
+
+# =================================================================
+# 🔧 PERSONAL FUNCTIONS
+# =================================================================
+
+# Personal experiment runner
+my_experiment() {
+    local exp_name="personal_${USER_NAME}_$(date +%Y%m%d_%H%M%S)"
+    local model_type=${1:-$DEFAULT_MODEL_TYPE}
+
+    echo "🧪 Starting personal experiment: $exp_name"
+    echo "👤 User: $USER_NAME ($USER_DEPARTMENT)"
+    echo "🤖 Model: $model_type"
+
+    # Set personal experiment
+    export MLFLOW_EXPERIMENT_NAME="$exp_name"
+
+    # Create experiment directory
+    local exp_dir="$PERSONAL_EXPERIMENTS_DIR/$exp_name"
+    mkdir -p "$exp_dir"
+
+    echo "📁 Experiment directory: $exp_dir"
+    echo "✅ Personal experiment ready!"
+}
+
+# Personal data backup
+my_backup() {
+    local backup_name="personal_backup_$(date +%Y%m%d_%H%M%S)"
+    local backup_dir="$HOME/backups/$backup_name"
+
+    echo "💾 Creating personal backup: $backup_name"
+    mkdir -p "$backup_dir"
+
+    # Backup personal data
+    cp -r "$PERSONAL_DATA_DIR" "$backup_dir/" 2>/dev/null || true
+    cp -r "$PERSONAL_MODELS_DIR" "$backup_dir/" 2>/dev/null || true
+    cp -r "$PERSONAL_EXPERIMENTS_DIR" "$backup_dir/" 2>/dev/null || true
+
+    echo "✅ Personal backup created at $backup_dir"
+}
+
+# Personal status
+my_status() {
+    echo "👤 Personal Information:"
+    echo "   Name: $USER_NAME"
+    echo "   Email: $USER_EMAIL"
+    echo "   Department: $USER_DEPARTMENT"
+    echo "   Role: $USER_ROLE"
+    echo ""
+    echo "📁 Personal Directories:"
+    echo "   Data: $PERSONAL_DATA_DIR"
+    echo "   Models: $PERSONAL_MODELS_DIR"
+    echo "   Experiments: $PERSONAL_EXPERIMENTS_DIR"
+    echo ""
+    echo "🧪 Current Experiment: $MLFLOW_EXPERIMENT_NAME"
+    echo "📊 Monitoring Ports:"
+    echo "   MLflow: $PERSONAL_MLFLOW_PORT"
+    echo "   TensorBoard: $PERSONAL_TENSORBOARD_PORT"
+    echo "   Jupyter: $PERSONAL_JUPYTER_PORT"
+}
+
+# =================================================================
+# 🎨 PERSONAL PROMPT CUSTOMIZATION
+# =================================================================
+
+# Personal prompt with user info
+personal_prompt() {
+    local git_branch=$(git branch --show-current 2>/dev/null)
+    local venv_status=$([ -n "$VIRTUAL_ENV" ] && echo "venv" || echo "")
+    local exp_status=$([ -n "$MLFLOW_EXPERIMENT_NAME" ] && echo "exp" || echo "")
+
+    echo "👤 $USER_NAME ($USER_DEPARTMENT)"
+    echo "🛢️  Petrobras Anomaly Detection"
+    echo "📁 $(pwd | sed "s|$PROJECT_ROOT|~|")"
+    [ -n "$git_branch" ] && echo "🌿 Branch: $git_branch"
+    [ -n "$venv_status" ] && echo "🐍 $venv_status"
+    [ -n "$exp_status" ] && echo "🧪 $exp_status"
+    echo ""
+}
+
+# =================================================================
+# 🚀 PERSONAL QUICK START
+# =================================================================
+
+# Personal development start
+my_dev_start() {
+    echo "🚀 Starting personal development environment..."
+    echo "👤 User: $USER_NAME"
+
+    # Activate virtual environment
+    activate_venv
+
+    # Start personal monitoring
+    my-mlflow &
+    my-tensorboard &
+    my-jupyter &
+
+    # Show personal status
+    my_status
+
+    echo "✅ Personal development environment ready!"
+    echo "📊 Personal monitoring:"
+    echo "   MLflow: http://localhost:$PERSONAL_MLFLOW_PORT"
+    echo "   TensorBoard: http://localhost:$PERSONAL_TENSORBOARD_PORT"
+    echo "   Jupyter: http://localhost:$PERSONAL_JUPYTER_PORT"
+}
+
+# =================================================================
+# 📚 PERSONAL HELP
+# =================================================================
+
+# Personal help
+my_help() {
+    echo "👤 Personal Commands - $USER_NAME"
+    echo "================================="
+    echo ""
+    echo "🧪 Experiments:"
+    echo "  my_experiment [model_type] - Start personal experiment"
+    echo "  my_status                  - Show personal status"
+    echo ""
+    echo "📊 Monitoring:"
+    echo "  my-mlflow                  - Start personal MLflow UI"
+    echo "  my-tensorboard             - Start personal TensorBoard"
+    echo "  my-jupyter                 - Start personal Jupyter Lab"
+    echo "  my_dev_start               - Start personal dev environment"
+    echo ""
+    echo "📁 Navigation:"
+    echo "  mydata                     - Go to personal data directory"
+    echo "  mymodels                   - Go to personal models directory"
+    echo "  myexp                      - Go to personal experiments directory"
+    echo ""
+    echo "💾 Backup:"
+    echo "  my_backup                  - Create personal backup"
+    echo ""
+    echo "❓ Help:"
+    echo "  my_help                    - Show this help"
+    echo "  project_help               - Show project help"
+    echo ""
+}
+
+# =================================================================
+# 🎯 PERSONAL AUTO-COMPLETION
+# =================================================================
+
+# Auto-completion for personal functions
+_my_experiment() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=($(compgen -W "isolation lstm vae usad transformer" -- "$cur"))
+}
+
+complete -F _my_experiment my_experiment
+
+# =================================================================
+# 🎉 PERSONAL WELCOME
+# =================================================================
+
+echo "👤 Personal configuration loaded for $USER_NAME"
+echo "💡 Use 'my_help' for personal commands"
+echo "🚀 Use 'my_dev_start' to begin personal development"
+echo ""

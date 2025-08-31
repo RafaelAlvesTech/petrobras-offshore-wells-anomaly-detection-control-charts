@@ -1,106 +1,219 @@
 #!/bin/bash
-
-# Setup script for devcontainer shell environment
-# This script runs during container creation to configure the shell
+# 🛢️ Petrobras Offshore Wells Anomaly Detection - Shell Setup Script
+# =================================================================
 
 set -e
 
-echo "🚀 Setting up shell environment for Petrobras Offshore Wells project..."
+echo "🐚 Setting up Zsh configuration for Petrobras project..."
 
-# Ensure we're in the right directory
-cd /workspaces/petrobras-offshore-wells-anomaly-detection-control-charts
+# =================================================================
+# 📁 CREATE NECESSARY DIRECTORIES
+# =================================================================
 
-# Copy the main zsh configuration
-if [ -f ".devcontainer/zshrc" ]; then
-    echo "📝 Installing main zsh configuration..."
-    cp .devcontainer/zshrc /home/vscode/.zshrc
-    chown vscode:vscode /home/vscode/.zshrc
+echo "📁 Creating configuration directories..."
+mkdir -p ~/.oh-my-zsh/custom/plugins
+mkdir -p ~/.config
+mkdir -p ~/backups
+
+# =================================================================
+# 🔧 INSTALL OH MY ZSH (if not already installed)
+# =================================================================
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "📦 Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+    echo "✅ Oh My Zsh already installed"
 fi
 
-# Copy the project-specific zsh configuration
-if [ -f ".devcontainer/zshrc.project" ]; then
-    echo "📝 Installing project-specific zsh configuration..."
-    cp .devcontainer/zshrc.project /home/vscode/.zshrc.project
-    chown vscode:vscode /home/vscode/.zshrc.project
+# =================================================================
+# 🔌 INSTALL ZSH PLUGINS
+# =================================================================
+
+echo "🔌 Installing Zsh plugins..."
+
+# zsh-autosuggestions
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+    echo "📥 Installing zsh-autosuggestions..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+else
+    echo "✅ zsh-autosuggestions already installed"
 fi
 
-# Copy the local zsh configuration example
-if [ -f ".devcontainer/zshrc.local.example" ]; then
-    echo "📝 Installing local zsh configuration example..."
-    cp .devcontainer/zshrc.local.example /home/vscode/.zshrc.local.example
-    chown vscode:vscode /home/vscode/.zshrc.local.example
+# zsh-syntax-highlighting
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+    echo "📥 Installing zsh-syntax-highlighting..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+else
+    echo "✅ zsh-syntax-highlighting already installed"
 fi
 
-# Install additional zsh plugins if not present
-echo "📦 Installing zsh plugins..."
-if [ ! -d "/home/vscode/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
-    echo "  - Installing zsh-autosuggestions plugin..."
-    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions /home/vscode/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+# =================================================================
+# 📝 COPY CONFIGURATION FILES
+# =================================================================
+
+echo "📝 Setting up configuration files..."
+
+# Copy main .zshrc
+if [ -f ".devcontainer/.zshrc" ]; then
+    cp .devcontainer/.zshrc ~/.zshrc
+    echo "✅ Main .zshrc configured"
+else
+    echo "❌ Main .zshrc not found"
 fi
 
-if [ ! -d "/home/vscode/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-    echo "  - Installing zsh-syntax-highlighting plugin..."
-    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting /home/vscode/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+# Copy project-specific configuration
+if [ -f ".devcontainer/.zshrc.project" ]; then
+    cp .devcontainer/.zshrc.project ~/.zshrc.project
+    echo "✅ Project configuration loaded"
+else
+    echo "❌ Project configuration not found"
 fi
 
-# The main zshrc already includes the project configuration
-echo "🔧 Main zshrc configuration is complete"
+# Copy personal configuration template
+if [ -f ".devcontainer/.zshrc.local.example" ]; then
+    if [ ! -f ~/.zshrc.local ]; then
+        cp .devcontainer/.zshrc.local.example ~/.zshrc.local.example
+        echo "✅ Personal configuration template created"
+        echo "💡 Edit ~/.zshrc.local.example and rename to ~/.zshrc.local to customize"
+    else
+        echo "✅ Personal configuration already exists"
+    fi
+else
+    echo "❌ Personal configuration template not found"
+fi
 
-# Set proper permissions
-chown -R vscode:vscode /home/vscode/.oh-my-zsh
-chown -R vscode:vscode /home/vscode/.zshrc
+# =================================================================
+# 🔐 SET PERMISSIONS
+# =================================================================
 
-# Create Jupyter configuration directory
-mkdir -p /home/vscode/.jupyter
-cat > /home/vscode/.jupyter/jupyter_notebook_config.py << 'EOF'
-# Jupyter Notebook Configuration
-c = get_config()
+echo "🔐 Setting file permissions..."
+chmod 644 ~/.zshrc
+chmod 644 ~/.zshrc.project
+chmod 644 ~/.zshrc.local.example 2>/dev/null || true
+chmod 644 ~/.zshrc.local 2>/dev/null || true
 
-# Allow connections from any IP
-c.NotebookApp.ip = '0.0.0.0'
-c.NotebookApp.port = 8888
-c.NotebookApp.open_browser = False
-c.NotebookApp.allow_root = True
+# =================================================================
+# 🎨 CONFIGURE JUPYTER
+# =================================================================
 
-# Security settings
-c.NotebookApp.token = ''
-c.NotebookApp.password = ''
+echo "🎨 Configuring Jupyter..."
 
-# Working directory
-c.NotebookApp.notebook_dir = '/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/notebooks'
+# Create Jupyter config directory
+mkdir -p ~/.jupyter
+
+# Create Jupyter config
+cat > ~/.jupyter/jupyter_lab_config.py << 'EOF'
+# Jupyter Lab Configuration for Petrobras Project
+c.ServerApp.ip = '0.0.0.0'
+c.ServerApp.port = 8888
+c.ServerApp.open_browser = False
+c.ServerApp.allow_root = True
+c.ServerApp.token = ''
+c.ServerApp.password = ''
+c.ServerApp.disable_check_xsrf = True
+c.ServerApp.allow_origin = '*'
+c.ServerApp.allow_credentials = True
+c.ServerApp.tornado_settings = {
+    'headers': {
+        'Content-Security-Policy': "frame-ancestors * 'self'"
+    }
+}
 EOF
 
-chown -R vscode:vscode /home/vscode/.jupyter
+echo "✅ Jupyter configuration created"
 
-# Create a simple test script to verify the setup
-cat > /home/vscode/test_setup.sh << 'EOF'
-#!/bin/bash
-echo "🧪 Testing Petrobras environment setup..."
-echo "Python version: $(python3 --version)"
-echo "Pip version: $(pip3 --version)"
-echo "Git version: $(git --version)"
-echo "Docker version: $(docker --version)"
-echo "Current user: $(whoami)"
-echo "Home directory: $HOME"
-echo "Project directory: /workspaces/petrobras-offshore-wells-anomaly-detection-control-charts"
-echo "✅ Basic environment test complete!"
-EOF
+# =================================================================
+# 🐍 SET UP PYTHON ENVIRONMENT
+# =================================================================
 
-chmod +x /home/vscode/test_setup.sh
-chown vscode:vscode /home/vscode/test_setup.sh
+echo "🐍 Setting up Python environment..."
 
-echo "✅ Shell environment setup complete!"
+# Create project directories
+mkdir -p data/raw data/processed data/external
+mkdir -p models
+mkdir -p notebooks/experiments
+mkdir -p src
+mkdir -p tests
+mkdir -p logs
+mkdir -p config
+
+echo "✅ Project directories created"
+
+# =================================================================
+# 🔧 CONFIGURE GIT
+# =================================================================
+
+echo "🔧 Configuring Git..."
+
+# Set up git aliases
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.visual '!gitk'
+
+# Disable GPG signing by default
+git config --global commit.gpgsign false
+
+echo "✅ Git configuration updated"
+
+# =================================================================
+# 🎯 SET SHELL TO ZSH
+# =================================================================
+
+echo "🎯 Setting Zsh as default shell..."
+
+# Check if zsh is available
+if command -v zsh >/dev/null 2>&1; then
+    # Set zsh as default shell (only if not already set)
+    if [ "$SHELL" != "$(which zsh)" ]; then
+        echo "⚠️  To set Zsh as default shell, run: chsh -s $(which zsh)"
+        echo "   Then restart your terminal or run: exec zsh"
+    else
+        echo "✅ Zsh is already the default shell"
+    fi
+else
+    echo "❌ Zsh not found, please install it first"
+fi
+
+# =================================================================
+# 🎉 COMPLETION MESSAGE
+# =================================================================
+
 echo ""
-echo "🎯 Next steps:"
-echo "   1. Restart your terminal or run 'source ~/.zshrc' to apply changes"
-echo "   2. Optional: Copy ~/.zshrc.local.example to ~/.zshrc.local and personalize"
-echo "   3. Test the setup by running '~/.test_setup.sh'"
+echo "🎉 Zsh configuration completed!"
 echo ""
-echo "🐚 Zsh Configuration Features:"
-echo "   - Custom prompt with Petrobras branding 🛢️"
-echo "   - Project-specific aliases and functions"
-echo "   - Enhanced development experience"
-echo "   - Use 'project_status' to check project status"
-echo "   - Use 'run_pipeline' to execute complete pipeline"
-echo "   - Use 'run_experiment <name>' to run specific experiments"
+echo "📋 Next steps:"
+echo "   1. Restart your terminal or run: exec zsh"
+echo "   2. Customize personal settings: nano ~/.zshrc.local.example"
+echo "   3. Rename personal config: mv ~/.zshrc.local.example ~/.zshrc.local"
+echo "   4. Test configuration: source ~/.zshrc"
 echo ""
+echo "🎯 Available commands:"
+echo "   - project_status    : Show project status"
+echo "   - project_help      : Show project help"
+echo "   - dev_start         : Start development environment"
+echo "   - my_help           : Show personal commands (after setup)"
+echo ""
+echo "🛢️  Welcome to Petrobras Offshore Wells Anomaly Detection!"
+echo ""
+
+# =================================================================
+# 🧪 TEST CONFIGURATION
+# =================================================================
+
+echo "🧪 Testing configuration..."
+
+# Test if zsh can load the configuration
+if zsh -c "source ~/.zshrc && echo '✅ Zsh configuration test passed'" 2>/dev/null; then
+    echo "✅ Configuration test successful"
+else
+    echo "⚠️  Configuration test failed, but setup completed"
+    echo "   Try running: source ~/.zshrc"
+fi
+
+echo ""
+echo "🚀 Setup complete! Enjoy your enhanced development environment!"

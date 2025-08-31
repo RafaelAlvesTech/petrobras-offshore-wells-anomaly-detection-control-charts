@@ -1,42 +1,45 @@
 {
-  "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+  "python.defaultInterpreterPath": "/home/python/.local/bin/python",
   "python.terminal.activateEnvironment": true,
-  "python.terminal.activateEnvInCurrentTerminal": true,
   "python.linting.enabled": true,
-  "python.linting.ruffEnabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
   "python.formatting.provider": "black",
-  "python.sortImports.args": ["--profile", "black"],
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.profiles.linux": {
+    "zsh": {
+      "path": "/bin/zsh",
+      "args": ["-l"]
+    }
   },
   "files.exclude": {
     "**/__pycache__": true,
     "**/*.pyc": true,
     "**/.pytest_cache": true,
-    "**/.mypy_cache": true,
-    "**/.ruff_cache": true,
     "**/node_modules": true,
-    "**/.git": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true
+    "**/.git": false,
+    "**/.docker/zsh/history": true,
+    "**/.docker/zsh/.zsh_history": true
   },
-  "terminal.integrated.defaultProfile.linux": "zsh",
-  "terminal.integrated.profiles.linux": {
-    "zsh": {
-      "path": "/bin/zsh"
-    }
-  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+},
   "jupyter.askForKernelRestart": false,
   "jupyter.interactiveWindow.creationMode": "perFile",
-  "jupyter.allowUnauthorizedRemoteConnection": true,
-  "jupyter.allowImportFromNotebook": true,
   "files.associations": {
-    "*.ipynb": "jupyter-notebook"
+    "*.zsh": "shellscript",
+    "Dockerfile*": "dockerfile",
+    "docker-compose*.yml": "dockercompose",
+    "docker-compose*.yaml": "dockercompose"
   },
-  "notebook.cellToolbarLocation": {
-    "default": "right",
-    "jupyter-notebook": "left"
+  "emmet.includeLanguages": {
+    "jupyter": "html"
   },
   "workbench.colorTheme": "Default Dark+",
   "workbench.iconTheme": "material-icon-theme",
@@ -44,5 +47,16 @@
   "git.confirmSync": false,
   "git.autofetch": true,
   "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false
+  "explorer.confirmDragAndDrop": false,
+  "editor.minimap.enabled": true,
+  "editor.wordWrap": "on",
+  "editor.rulers": [88, 120],
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "ruff.enable": true,
+  "ruff.organizeImports": true,
+  "ruff.fixAll": true
 }

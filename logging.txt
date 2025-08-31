@@ -1,0 +1,602 @@
+2025-08-31 14:34:21.808 [info] Checking for exec server for remote authority: wsl+Ubuntu
+2025-08-31 14:34:21.808 [info] Using remote exec server for authority: wsl+Ubuntu
+2025-08-31 14:34:21.981 [info] Found 1 devcontainer.json file(s), showing prompt
+2025-08-31 14:34:23.056 [info] Getting remote exec server for authority: wsl+Ubuntu
+2025-08-31 14:34:23.057 [info] [docker info]: Running command: docker
+2025-08-31 14:34:23.254 [info] Copying devcontainer CLI from c:\Users\RafaeAlvesTEch\.cursor\extensions\anysphere.remote-containers-1.0.23\dist\@devcontainers to /tmp/devcontainer-cli-890dcbf4-497a-443a-8b0c-71d92c839739
+2025-08-31 14:34:24.394 [info] Devcontainer CLI written to /tmp/devcontainer-cli-890dcbf4-497a-443a-8b0c-71d92c839739
+2025-08-31 14:34:24.585 [info] Copying forwarder.js to /tmp/devcontainer-cli-890dcbf4-497a-443a-8b0c-71d92c839739
+2025-08-31 14:34:25.010 [info] [docker info][stderr]: WARNING: No blkio throttle.read_bps_device support
+2025-08-31 14:34:25.010 [info] [docker info][stderr]: WARNING: No blkio throttle.write_bps_device support
+2025-08-31 14:34:25.010 [info] [docker info][stderr]: WARNING: No blkio throttle.read_iops_device support
+2025-08-31 14:34:25.010 [info] [docker info][stderr]: WARNING: No blkio throttle.write_iops_device support
+2025-08-31 14:34:25.010 [info] [docker info][stderr]: WARNING: daemon is not using the default seccomp profile
+2025-08-31 14:34:25.027 [info] [docker info]: Command completed with exit code 0
+2025-08-31 14:34:25.028 [info] docker version: Client:
+ Version:    27.5.1
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  ai: Ask Gordon - Docker Agent (Docker Inc.)
+    Version:  v0.7.3
+    Path:     /usr/local/lib/docker/cli-plugins/docker-ai
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.20.1-desktop.2
+    Path:     /usr/local/lib/docker/cli-plugins/docker-buildx
+  compose: Docker Compose (Docker Inc.)
+    Version:  v2.32.4-desktop.1
+    Path:     /usr/local/lib/docker/cli-plugins/docker-compose
+  debug: Get a shell into any image or container (Docker Inc.)
+    Version:  0.0.38
+    Path:     /usr/local/lib/docker/cli-plugins/docker-debug
+  desktop: Docker Desktop commands (Beta) (Docker Inc.)
+    Version:  v0.1.4
+    Path:     /usr/local/lib/docker/cli-plugins/docker-desktop
+  dev: Docker Dev Environments (Docker Inc.)
+    Version:  v0.1.2
+    Path:     /usr/local/lib/docker/cli-plugins/docker-dev
+  extension: Manages Docker extensions (Docker Inc.)
+    Version:  v0.2.27
+    Path:     /usr/local/lib/docker/cli-plugins/docker-extension
+  feedback: Provide feedback, right in your terminal! (Docker Inc.)
+    Version:  v1.0.5
+    Path:     /usr/local/lib/docker/cli-plugins/docker-feedback
+  init: Creates Docker-related starter files for your project (Docker Inc.)
+    Version:  v1.4.0
+    Path:     /usr/local/lib/docker/cli-plugins/docker-init
+  sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+    Version:  0.6.0
+    Path:     /usr/local/lib/docker/cli-plugins/docker-sbom
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.16.1
+    Path:     /usr/local/lib/docker/cli-plugins/docker-scout
+
+Server:
+ Containers: 1
+  Running: 0
+  Paused: 0
+  Stopped: 1
+ Images: 2
+ Server Version: 27.5.1
+ Storage Driver: overlayfs
+  driver-type: io.containerd.snapshotter.v1
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ CDI spec directories:
+  /etc/cdi
+  /var/run/cdi
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 nvidia runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+ runc version: v1.1.12-0-g51d5e946
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: unconfined
+ Kernel Version: 5.15.167.4-microsoft-standard-WSL2
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 16
+ Total Memory: 16.51GiB
+ Name: docker-desktop
+ ID: f702645a-3d53-4cb5-96c9-e36c091093ec
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ HTTP Proxy: http.docker.internal:3128
+ HTTPS Proxy: http.docker.internal:3128
+ No Proxy: hubproxy.docker.internal
+ Labels:
+  com.docker.desktop.address=unix:///var/run/docker-cli.sock
+ Experimental: false
+ Insecure Registries:
+  hubproxy.docker.internal:5555
+  127.0.0.0/8
+ Live Restore Enabled: false
+2025-08-31 14:34:25.029 [info] Searching for devcontainer.json files
+2025-08-31 14:34:25.160 [info] Copying devcontainerShutdownMonitor.js to /tmp/devcontainer-cli-890dcbf4-497a-443a-8b0c-71d92c839739
+2025-08-31 14:34:25.288 [info] Found 1 devcontainer.json files: \home\rafael\petrobras-offshore-wells-anomaly-detection-control-charts\.devcontainer\devcontainer.json
+2025-08-31 14:34:25.288 [info] Reading devcontainer config with command: read-configuration --workspace-folder /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts --config /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.devcontainer/devcontainer.json
+2025-08-31 14:34:25.583 [info] Running devcontainer CLI command: /tmp/devcontainer-cli-890dcbf4-497a-443a-8b0c-71d92c839739/cli/dist/spec-node/devContainersSpecCLI.js read-configuration --workspace-folder /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts --config /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.devcontainer/devcontainer.json --docker-path docker
+2025-08-31 14:34:25.583 [info] [read-configuration]: Running command: node
+2025-08-31 14:34:26.709 [info] [read-configuration][stderr]: [2025-08-31T17:34:26.804Z] @devcontainers/cli 0.75.0. Node.js v20.18.2. linux 5.15.167.4-microsoft-standard-WSL2 x64.
+2025-08-31 14:34:26.890 [info] [read-configuration]: Command completed with exit code 0
+2025-08-31 14:34:26.890 [info] Dev container config: {
+  "configuration": {
+    "name": "Petrobras Offshore Wells Anomaly Detection",
+    "dockerComposeFile": "../.docker/docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/home/python/app",
+    "shutdownAction": "stopCompose",
+    "features": {
+      "ghcr.io/devcontainers/features/git:1": {},
+      "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "zsh",
+          "terminal.integrated.profiles.linux": {
+            "zsh": {
+              "path": "/bin/zsh",
+              "args": [
+                "-l"
+              ]
+            }
+          },
+          "python.defaultInterpreterPath": "/home/python/.local/bin/python",
+          "python.terminal.activateEnvironment": true,
+          "python.linting.enabled": true,
+          "python.linting.pylintEnabled": false,
+          "python.linting.flake8Enabled": true,
+          "python.formatting.provider": "black",
+          "python.testing.pytestEnabled": true,
+          "python.testing.unittestEnabled": false,
+          "python.testing.pytestArgs": [
+            "tests"
+          ],
+          "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.pytest_cache": true,
+            "**/node_modules": true,
+            "**/.git": false
+          },
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          },
+          "jupyter.askForKernelRestart": false,
+          "jupyter.interactiveWindow.creationMode": "perFile"
+        },
+        "extensions": [
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "ms-toolsai.jupyter",
+          "ms-toolsai.jupyter-keymap",
+          "ms-toolsai.jupyter-renderers",
+          "ms-toolsai.vscode-jupyter-cell-tags",
+          "ms-toolsai.vscode-jupyter-slideshow",
+          "charliermarsh.ruff",
+          "ms-vscode.vscode-json",
+          "yzhang.markdown-all-in-one",
+          "ms-azuretools.vscode-docker",
+          "eamodio.gitlens",
+          "pkief.material-icon-theme",
+          "littlefoxteam.vscode-python-test-adapter",
+          "GitHub.copilot",
+          "GitHub.copilot-chat"
+        ]
+      }
+    },
+    "forwardPorts": [
+      8000,
+      8888,
+      5000
+    ],
+    "portsAttributes": {
+      "5000": {
+        "label": "MLflow Server",
+        "onAutoForward": "notify"
+      },
+      "8000": {
+        "label": "API Server",
+        "onAutoForward": "notify"
+      },
+      "8888": {
+        "label": "Jupyter Lab",
+        "onAutoForward": "openBrowser"
+      }
+    },
+    "postCreateCommand": "echo '🛢️ Petrobras Environment Ready!' && echo 'Available services:' && echo '  - API: http://localhost:8000' && echo '  - Jupyter: http://localhost:8888' && echo '  - MLflow: http://localhost:5000'",
+    "postStartCommand": "echo '🚀 Container started successfully!'",
+    "remoteUser": "python",
+    "containerEnv": {
+      "TERM": "xterm-256color",
+      "SHELL": "/bin/zsh",
+      "PYTHONPATH": "/home/python/app/src"
+    },
+    "mounts": [
+      "source=/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/powerlevel10k/.p10k.zsh,target=/home/python/.p10k.zsh,type=bind,consistency=cached",
+      "source=/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/history,target=/home/python/zsh,type=bind,consistency=cached"
+    ],
+    "configFilePath": {
+      "$mid": 1,
+      "fsPath": "/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.devcontainer/devcontainer.json",
+      "path": "/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.devcontainer/devcontainer.json",
+      "scheme": "file"
+    }
+  },
+  "workspace": {
+    "workspaceFolder": "/home/python/app"
+  }
+}
+2025-08-31 14:34:26.910 [info] Switching to new container with uri: vscode-remote://dev-container%2B7b2273657474696e6754797065223a22636f6e666967222c22776f726b737061636550617468223a222f686f6d652f72616661656c2f706574726f627261732d6f666673686f72652d77656c6c732d616e6f6d616c792d646574656374696f6e2d636f6e74726f6c2d636861727473222c22646576636f6e7461696e657250617468223a222f686f6d652f72616661656c2f706574726f627261732d6f666673686f72652d77656c6c732d616e6f6d616c792d646574656374696f6e2d636f6e74726f6c2d6368617274732f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e227d@wsl%2Bubuntu/home/python/app
+2025-08-31 14:34:34.024 [info] No remote exec server found for authority: dev-container+7b2273657474696e6754797065223a22636f6e666967222c22776f726b737061636550617468223a222f686f6d652f72616661656c2f706574726f627261732d6f666673686f72652d77656c6c732d616e6f6d616c792d646574656374696f6e2d636f6e74726f6c2d636861727473222c22646576636f6e7461696e657250617468223a222f686f6d652f72616661656c2f706574726f627261732d6f666673686f72652d77656c6c732d616e6f6d616c792d646574656374696f6e2d636f6e74726f6c2d6368617274732f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e227d@wsl+Ubuntu; using local
+2025-08-31 14:34:35.310 [info] Resolving dev container authority 'dev-container+7b2273657474696e6754797065223a22636f6e666967222c22776f726b737061636550617468223a222f686f6d652f72616661656c2f706574726f627261732d6f666673686f72652d77656c6c732d616e6f6d616c792d646574656374696f6e2d636f6e74726f6c2d636861727473222c22646576636f6e7461696e657250617468223a222f686f6d652f72616661656c2f706574726f627261732d6f666673686f72652d77656c6c732d616e6f6d616c792d646574656374696f6e2d636f6e74726f6c2d6368617274732f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e227d' (attempt #1) container '{"settingType":"config","workspacePath":"/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts","devcontainerPath":"/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.devcontainer/devcontainer.json"}'
+2025-08-31 14:34:35.310 [info] Using exec server from resolve options. execServerRemoteAuthority: wsl+Ubuntu
+2025-08-31 14:34:36.555 [info] Starting Dev Containers dev-container+7b2273657474696e6754797065223a22636f6e666967222c22776f726b737061636550617468223a222f686f6d652f72616661656c2f706574726f627261732d6f666673686f72652d77656c6c732d616e6f6d616c792d646574656374696f6e2d636f6e74726f6c2d636861727473222c22646576636f6e7461696e657250617468223a222f686f6d652f72616661656c2f706574726f627261732d6f666673686f72652d77656c6c732d616e6f6d616c792d646574656374696f6e2d636f6e74726f6c2d6368617274732f2e646576636f6e7461696e65722f646576636f6e7461696e65722e6a736f6e227d
+2025-08-31 14:34:36.557 [info] [docker info]: Running command: docker
+2025-08-31 14:34:36.898 [info] Copying devcontainer CLI from c:\Users\RafaeAlvesTEch\.cursor\extensions\anysphere.remote-containers-1.0.23\dist\@devcontainers to /tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6
+2025-08-31 14:34:37.972 [info] Devcontainer CLI written to /tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6
+2025-08-31 14:34:38.209 [info] Copying forwarder.js to /tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6
+2025-08-31 14:34:38.406 [info] [docker info][stderr]: WARNING: No blkio throttle.read_bps_device support
+2025-08-31 14:34:38.406 [info] [docker info][stderr]: WARNING: No blkio throttle.write_bps_device support
+2025-08-31 14:34:38.406 [info] [docker info][stderr]: WARNING: No blkio throttle.read_iops_device support
+2025-08-31 14:34:38.407 [info] [docker info][stderr]: WARNING: No blkio throttle.write_iops_device support
+2025-08-31 14:34:38.407 [info] [docker info][stderr]: WARNING: daemon is not using the default seccomp profile
+2025-08-31 14:34:38.429 [info] [docker info]: Command completed with exit code 0
+2025-08-31 14:34:38.429 [info] docker version: Client:
+ Version:    27.5.1
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  ai: Ask Gordon - Docker Agent (Docker Inc.)
+    Version:  v0.7.3
+    Path:     /usr/local/lib/docker/cli-plugins/docker-ai
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.20.1-desktop.2
+    Path:     /usr/local/lib/docker/cli-plugins/docker-buildx
+  compose: Docker Compose (Docker Inc.)
+    Version:  v2.32.4-desktop.1
+    Path:     /usr/local/lib/docker/cli-plugins/docker-compose
+  debug: Get a shell into any image or container (Docker Inc.)
+    Version:  0.0.38
+    Path:     /usr/local/lib/docker/cli-plugins/docker-debug
+  desktop: Docker Desktop commands (Beta) (Docker Inc.)
+    Version:  v0.1.4
+    Path:     /usr/local/lib/docker/cli-plugins/docker-desktop
+  dev: Docker Dev Environments (Docker Inc.)
+    Version:  v0.1.2
+    Path:     /usr/local/lib/docker/cli-plugins/docker-dev
+  extension: Manages Docker extensions (Docker Inc.)
+    Version:  v0.2.27
+    Path:     /usr/local/lib/docker/cli-plugins/docker-extension
+  feedback: Provide feedback, right in your terminal! (Docker Inc.)
+    Version:  v1.0.5
+    Path:     /usr/local/lib/docker/cli-plugins/docker-feedback
+  init: Creates Docker-related starter files for your project (Docker Inc.)
+    Version:  v1.4.0
+    Path:     /usr/local/lib/docker/cli-plugins/docker-init
+  sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+    Version:  0.6.0
+    Path:     /usr/local/lib/docker/cli-plugins/docker-sbom
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.16.1
+    Path:     /usr/local/lib/docker/cli-plugins/docker-scout
+
+Server:
+ Containers: 1
+  Running: 0
+  Paused: 0
+  Stopped: 1
+ Images: 2
+ Server Version: 27.5.1
+ Storage Driver: overlayfs
+  driver-type: io.containerd.snapshotter.v1
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ CDI spec directories:
+  /etc/cdi
+  /var/run/cdi
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 nvidia runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+ runc version: v1.1.12-0-g51d5e946
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: unconfined
+ Kernel Version: 5.15.167.4-microsoft-standard-WSL2
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 16
+ Total Memory: 16.51GiB
+ Name: docker-desktop
+ ID: f702645a-3d53-4cb5-96c9-e36c091093ec
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ HTTP Proxy: http.docker.internal:3128
+ HTTPS Proxy: http.docker.internal:3128
+ No Proxy: hubproxy.docker.internal
+ Labels:
+  com.docker.desktop.address=unix:///var/run/docker-cli.sock
+ Experimental: false
+ Insecure Registries:
+  hubproxy.docker.internal:5555
+  127.0.0.0/8
+ Live Restore Enabled: false
+2025-08-31 14:34:38.438 [info] Starting dev container
+2025-08-31 14:34:38.439 [info] Rebuild mode: cache
+2025-08-31 14:34:38.439 [info] Container is new: true
+2025-08-31 14:34:38.440 [info] [get node path]: Running command: node
+2025-08-31 14:34:38.716 [info] Copying devcontainerShutdownMonitor.js to /tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6
+2025-08-31 14:34:39.694 [info] [get node path]: Command completed with exit code 0
+2025-08-31 14:34:39.695 [info] Using remote exec server
+2025-08-31 14:34:39.695 [info] Start devcontainer up ...
+2025-08-31 14:34:39.704 [info] [devcontainer run-user-commands]: Spawning command in terminal. Node module path: /home/rafael/.cursor-server/bin/de327274300c6f38ec9f4240d11e82c3b0660b20/node_modules
+2025-08-31 14:34:40.871 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661680808,"text":"@devcontainers/cli 0.75.0. Node.js v20.18.2. linux 5.15.167.4-microsoft-standard-WSL2 x64."}
+2025-08-31 14:34:40.871 [info] [devcontainer run-user-commands]: {"type":"start","level":2,"timestamp":1756661680808,"text":"Run: docker buildx version"}
+2025-08-31 14:34:40.955 [info] [devcontainer run-user-commands]: {"type":"stop","level":2,"timestamp":1756661680891,"text":"Run: docker buildx version","startTimestamp":1756661680808}
+2025-08-31 14:34:40.955 [info] [devcontainer run-user-commands]: {"type":"text","level":2,"timestamp":1756661680892,"text":"github.com/docker/buildx v0.20.1-desktop.2 aaf7c2bc7f9ec3afee1cec77d671845a4b57a0c8\r\n"}
+2025-08-31 14:34:40.955 [info] [devcontainer run-user-commands]: {"type":"text","level":2,"timestamp":1756661680892,"text":"\u001b[1m\u001b[31m\u001b[39m\u001b[22m\r\n"}
+2025-08-31 14:34:40.955 [info] [devcontainer run-user-commands]: {"type":"start","level":2,"timestamp":1756661680892,"text":"Run: docker -v"}
+2025-08-31 14:34:40.973 [info] [devcontainer run-user-commands]: {"type":"stop","level":2,"timestamp":1756661680911,"text":"Run: docker -v","startTimestamp":1756661680892}
+2025-08-31 14:34:40.974 [info] [devcontainer run-user-commands]: {"type":"start","level":2,"timestamp":1756661680911,"text":"Resolving Remote"}
+2025-08-31 14:34:40.980 [info] [devcontainer run-user-commands]: {"type":"start","level":2,"timestamp":1756661680917,"text":"Run: docker ps -q -a --filter label=devcontainer.local_folder=/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts --filter label=devcontainer.config_file=/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.devcontainer/devcontainer.json"}
+2025-08-31 14:34:41.059 [info] [devcontainer run-user-commands]: {"type":"stop","level":2,"timestamp":1756661680997,"text":"Run: docker ps -q -a --filter label=devcontainer.local_folder=/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts --filter label=devcontainer.config_file=/home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.devcontainer/devcontainer.json","startTimestamp":1756661680917}
+2025-08-31 14:34:41.060 [info] [devcontainer run-user-commands]: {"type":"start","level":2,"timestamp":1756661680997,"text":"Run: docker inspect --type container e3501781a60f"}
+2025-08-31 14:34:41.101 [info] [devcontainer run-user-commands]: {"type":"stop","level":2,"timestamp":1756661681039,"text":"Run: docker inspect --type container e3501781a60f","startTimestamp":1756661680997}
+2025-08-31 14:34:41.397 [info] [devcontainer run-user-commands]: {"type":"start","level":2,"timestamp":1756661681335,"text":"Run: docker compose version --short"}
+2025-08-31 14:34:41.466 [info] [devcontainer run-user-commands]: {"type":"stop","level":2,"timestamp":1756661681404,"text":"Run: docker compose version --short","startTimestamp":1756661681335}
+2025-08-31 14:34:41.466 [info] [devcontainer run-user-commands]: {"type":"text","level":2,"timestamp":1756661681404,"text":"Docker Compose version: 2.32.4-desktop.1"}
+2025-08-31 14:34:41.466 [info] [devcontainer run-user-commands]: {"type":"start","level":3,"timestamp":1756661681405,"text":"Run: docker compose -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml --profile * config"}
+2025-08-31 14:34:41.580 [info] [devcontainer run-user-commands]: {"type":"stop","level":3,"timestamp":1756661681518,"text":"Run: docker compose -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml --profile * config","startTimestamp":1756661681405}
+2025-08-31 14:34:41.580 [info] [devcontainer run-user-commands]: {"type":"text","level":2,"timestamp":1756661681518,"text":"name: docker\nservices:\n  app:\n    build:\n      context: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts\n      dockerfile: .docker/Dockerfile\n    command:\n      - ./.docker/start-app.sh\n    container_name: petrobras-anomaly-detection\n    environment:\n      PYTHONPATH: /home/python/app/src\n      SHELL: /bin/zsh\n      TERM: xterm-256color\n    networks:\n      petrobras-network: null\n    ports:\n      - mode: ingress\n        target: 8000\n        published: \"8000\"\n        protocol: tcp\n      - mode: ingress\n        target: 8888\n        published: \"8888\"\n        protocol: tcp\n      - mode: ingress\n        target: 5000\n        published: \"5000\"\n        protocol: tcp\n    stdin_open: true\n    tty: true\n    volumes:\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts\n        target: /home/python/app\n        bind:\n          create_host_path: true\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/powerlevel10k/.p10k.zsh\n        target: /home/python/.p10k.zsh\n        bind:\n          create_host_path: true\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/history\n        target: /home/python/zsh\n        bind:\n          create_host_path: true\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/.zshrc\n        target: /home/python/.zshrc\n        bind:\n          create_host_path: true\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/.zsh_history\n        target: /home/python/.zsh_history\n        bind:\n          create_host_path: true\nnetworks:\n  petrobras-network:\n    name: docker_petrobras-network\n    driver: bridge\n"}
+2025-08-31 14:34:41.585 [info] [devcontainer run-user-commands]: {"type":"start","level":2,"timestamp":1756661681523,"text":"Run: docker ps -q -a --filter label=com.docker.compose.project=docker --filter label=com.docker.compose.service=app"}
+2025-08-31 14:34:41.629 [info] [devcontainer run-user-commands]: {"type":"stop","level":2,"timestamp":1756661681568,"text":"Run: docker ps -q -a --filter label=com.docker.compose.project=docker --filter label=com.docker.compose.service=app","startTimestamp":1756661681523}
+2025-08-31 14:34:41.630 [info] [devcontainer run-user-commands]: {"type":"start","level":2,"timestamp":1756661681569,"text":"Run: docker events --format {{json .}} --filter event=start"}
+2025-08-31 14:34:41.635 [info] [devcontainer run-user-commands]: {"type":"text","level":2,"timestamp":1756661681573,"text":"PersistedPath=/tmp/devcontainercli-rafael, ContainerHasLabels=false"}
+2025-08-31 14:34:41.638 [info] [devcontainer run-user-commands]: {"type":"start","level":3,"timestamp":1756661681576,"text":"Run: docker compose -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml --profile * config"}
+2025-08-31 14:34:41.763 [info] [devcontainer run-user-commands]: {"type":"stop","level":3,"timestamp":1756661681702,"text":"Run: docker compose -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml --profile * config","startTimestamp":1756661681576}
+2025-08-31 14:34:41.763 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661681702,"text":"name: docker\nservices:\n  app:\n    build:\n      context: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts\n      dockerfile: .docker/Dockerfile\n    command:\n      - ./.docker/start-app.sh\n    container_name: petrobras-anomaly-detection\n    environment:\n      PYTHONPATH: /home/python/app/src\n      SHELL: /bin/zsh\n      TERM: xterm-256color\n    networks:\n      petrobras-network: null\n    ports:\n      - mode: ingress\n        target: 8000\n        published: \"8000\"\n        protocol: tcp\n      - mode: ingress\n        target: 8888\n        published: \"8888\"\n        protocol: tcp\n      - mode: ingress\n        target: 5000\n        published: \"5000\"\n        protocol: tcp\n    stdin_open: true\n    tty: true\n    volumes:\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts\n        target: /home/python/app\n        bind:\n          create_host_path: true\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/powerlevel10k/.p10k.zsh\n        target: /home/python/.p10k.zsh\n        bind:\n          create_host_path: true\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/history\n        target: /home/python/zsh\n        bind:\n          create_host_path: true\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/.zshrc\n        target: /home/python/.zshrc\n        bind:\n          create_host_path: true\n      - type: bind\n        source: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/zsh/.zsh_history\n        target: /home/python/.zsh_history\n        bind:\n          create_host_path: true\nnetworks:\n  petrobras-network:\n    name: docker_petrobras-network\n    driver: bridge\n"}
+2025-08-31 14:34:41.766 [info] [devcontainer run-user-commands]: {"type":"start","level":3,"timestamp":1756661681705,"text":"Run: docker inspect --type image python:3.11.7-slim-bookworm"}
+2025-08-31 14:34:41.807 [info] [devcontainer run-user-commands]: {"type":"stop","level":3,"timestamp":1756661681746,"text":"Run: docker inspect --type image python:3.11.7-slim-bookworm","startTimestamp":1756661681705}
+2025-08-31 14:34:41.808 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> input: docker.io/library/python:3.11.7-slim-bookworm"}
+2025-08-31 14:34:41.808 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":">"}
+2025-08-31 14:34:41.808 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> resource: docker.io/library/python"}
+2025-08-31 14:34:41.808 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> id: python"}
+2025-08-31 14:34:41.808 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> owner: library"}
+2025-08-31 14:34:41.808 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> namespace: library"}
+2025-08-31 14:34:41.809 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> registry: docker.io"}
+2025-08-31 14:34:41.809 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> path: library/python"}
+2025-08-31 14:34:41.809 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":">"}
+2025-08-31 14:34:41.809 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> version: 3.11.7-slim-bookworm"}
+2025-08-31 14:34:41.809 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> tag?: 3.11.7-slim-bookworm"}
+2025-08-31 14:34:41.809 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"> digest?: undefined"}
+2025-08-31 14:34:41.809 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661681747,"text":"manifest url: https://registry-1.docker.io/v2/library/python/manifests/3.11.7-slim-bookworm"}
+2025-08-31 14:34:42.282 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661682222,"text":"[httpOci] Attempting to authenticate via 'Bearer' auth."}
+2025-08-31 14:34:42.284 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661682225,"text":"[httpOci] Invoking credsStore credential helper 'desktop.exe'"}
+2025-08-31 14:34:42.285 [info] [devcontainer run-user-commands]: {"type":"start","level":3,"timestamp":1756661682225,"text":"Run: docker-credential-desktop.exe get"}
+2025-08-31 14:34:42.386 [info] [devcontainer run-user-commands]: {"type":"stop","level":3,"timestamp":1756661682327,"text":"Run: docker-credential-desktop.exe get","startTimestamp":1756661682225}
+2025-08-31 14:34:42.387 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661682327,"text":"[httpOci] Failed to query for 'docker.io' credential from 'docker-credential-desktop.exe': [object Object]"}
+2025-08-31 14:34:42.387 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661682327,"text":"[httpOci] No authentication credentials found for registry 'docker.io' via docker config or credential helper."}
+2025-08-31 14:34:42.388 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661682327,"text":"[httpOci] No authentication credentials found for registry 'docker.io'. Accessing anonymously."}
+2025-08-31 14:34:42.388 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661682327,"text":"[httpOci] Attempting to fetch bearer token from:  https://auth.docker.io/token?service=registry.docker.io&scope=repository:library/python:pull"}
+2025-08-31 14:34:43.204 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661683148,"text":"[httpOci] 200 on reattempt after auth: https://registry-1.docker.io/v2/library/python/manifests/3.11.7-slim-bookworm"}
+2025-08-31 14:34:43.204 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661683148,"text":"[httpOci] Applying cachedAuthHeader for registry docker.io..."}
+2025-08-31 14:34:43.622 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661683568,"text":"[httpOci] 200 (Cached): https://registry-1.docker.io/v2/library/python/manifests/3.11.7-slim-bookworm"}
+2025-08-31 14:34:43.622 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661683568,"text":"Fetched: {\n    \"manifests\": [\n        {\n            \"digest\": \"sha256:1321a0be9c13828a9b489310f1b1c265f07c5be0e67302e1759ad78da19103a7\",\n            \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n            \"platform\": {\n                \"architecture\": \"amd64\",\n                \"os\": \"linux\"\n            },\n            \"size\": 1370\n        },\n        {\n            \"digest\": \"sha256:baedc1881d0c7f5967b047df99d732762a298c97e092e37e403275fa75c00bcb\",\n            \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n            \"platform\": {\n                \"architecture\": \"arm\",\n                \"os\": \"linux\",\n                \"variant\": \"v5\"\n            },\n            \"size\": 1370\n        },\n        {\n            \"digest\": \"sha256:7a5645907f071517a6001ddc7c9dec76886fa6848d80f0ebf7cd1914b96283c6\",\n            \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n            \"platform\": {\n                \"architecture\": \"arm\",\n                \"os\": \"linux\",\n                \"variant\": \"v7\"\n            },\n            \"size\": 1370\n        },\n        {\n            \"digest\": \"sha256:aa30472734c5c1ac3ba4e87755e1fc65b86f445980af6d172f340e7573a53597\",\n            \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n            \"platform\": {\n                \"architecture\": \"arm64\",\n                \"os\": \"linux\",\n                \"variant\": \"v8\"\n            },\n            \"size\": 1370\n        },\n        {\n            \"digest\": \"sha256:2c97c8aed4f290009ef36f85a0b6576d8e0f7b87c7b25eb9805e465794f09f1c\",\n            \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n            \"platform\": {\n                \"architecture\": \"386\",\n                \"os\": \"linux\"\n            },\n            \"size\": 1370\n        },\n        {\n            \"digest\": \"sha256:1f54158f6113f508ca3aa01691a2baebe0247359cac9a8c7d971e684342f84b1\",\n            \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n            \"platform\": {\n                \"architecture\": \"ppc64le\",\n                \"os\": \"linux\"\n            },\n            \"size\": 1370\n        },\n        {\n            \"digest\": \"sha256:b04cc2e8e14684a035e8364c8bdd4a85da5f2007409b2752b57292e88f7bdb6c\",\n            \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n            \"platform\": {\n                \"architecture\": \"s390x\",\n                \"os\": \"linux\"\n            },\n            \"size\": 1370\n        }\n    ],\n    \"mediaType\": \"application/vnd.docker.distribution.manifest.list.v2+json\",\n    \"schemaVersion\": 2\n}"}
+2025-08-31 14:34:43.622 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661683568,"text":"[httpOci] Applying cachedAuthHeader for registry docker.io..."}
+2025-08-31 14:34:44.016 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661683964,"text":"[httpOci] 200 (Cached): https://registry-1.docker.io/v2/library/python/manifests/sha256:1321a0be9c13828a9b489310f1b1c265f07c5be0e67302e1759ad78da19103a7"}
+2025-08-31 14:34:44.017 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661683964,"text":"blob url: https://registry-1.docker.io/v2/library/python/blobs/sha256:4a99f0e5029f5eb7299a246dfcc627bc222a0f32929a2b1821f9151eefcde5e9"}
+2025-08-31 14:34:44.017 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661683964,"text":"[httpOci] Applying cachedAuthHeader for registry docker.io..."}
+2025-08-31 14:34:44.821 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684774,"text":"[httpOci] 200 (Cached): https://registry-1.docker.io/v2/library/python/blobs/sha256:4a99f0e5029f5eb7299a246dfcc627bc222a0f32929a2b1821f9151eefcde5e9"}
+2025-08-31 14:34:44.825 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684779,"text":"workspace root: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts"}
+2025-08-31 14:34:44.825 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684779,"text":"configPath: /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.devcontainer/devcontainer.json"}
+2025-08-31 14:34:44.826 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684780,"text":"--- Processing User Features ----"}
+2025-08-31 14:34:44.827 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684781,"text":"[* user-provided] ghcr.io/devcontainers/features/git:1, ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:44.827 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661684781,"text":"Resolving Feature dependencies for 'ghcr.io/devcontainers/features/git:1'..."}
+2025-08-31 14:34:44.827 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661684781,"text":"* Processing feature: ghcr.io/devcontainers/features/git:1"}
+2025-08-31 14:34:44.827 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> input: ghcr.io/devcontainers/features/git:1"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":">"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> resource: ghcr.io/devcontainers/features/git"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> id: git"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> owner: devcontainers"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> path: devcontainers/features/git"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":">"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> version: 1"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> tag?: 1"}
+2025-08-31 14:34:44.828 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"> digest?: undefined"}
+2025-08-31 14:34:44.829 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661684782,"text":"manifest url: https://ghcr.io/v2/devcontainers/features/git/manifests/1"}
+2025-08-31 14:34:45.196 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685153,"text":"[httpOci] Attempting to authenticate via 'Bearer' auth."}
+2025-08-31 14:34:45.198 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685155,"text":"[httpOci] Invoking credsStore credential helper 'desktop.exe'"}
+2025-08-31 14:34:45.198 [info] [devcontainer run-user-commands]: {"type":"start","level":3,"timestamp":1756661685155,"text":"Run: docker-credential-desktop.exe get"}
+2025-08-31 14:34:45.293 [info] [devcontainer run-user-commands]: {"type":"stop","level":3,"timestamp":1756661685251,"text":"Run: docker-credential-desktop.exe get","startTimestamp":1756661685155}
+2025-08-31 14:34:45.294 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685251,"text":"[httpOci] Failed to query for 'ghcr.io' credential from 'docker-credential-desktop.exe': [object Object]"}
+2025-08-31 14:34:45.294 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685251,"text":"[httpOci] No authentication credentials found for registry 'ghcr.io' via docker config or credential helper."}
+2025-08-31 14:34:45.294 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685251,"text":"[httpOci] No authentication credentials found for registry 'ghcr.io'. Accessing anonymously."}
+2025-08-31 14:34:45.294 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685251,"text":"[httpOci] Attempting to fetch bearer token from:  https://ghcr.io/token?service=ghcr.io&scope=repository:devcontainers/features/git:pull"}
+2025-08-31 14:34:45.790 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685751,"text":"[httpOci] 200 on reattempt after auth: https://ghcr.io/v2/devcontainers/features/git/manifests/1"}
+2025-08-31 14:34:45.790 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> input: ghcr.io/devcontainers/features/git:1"}
+2025-08-31 14:34:45.790 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":">"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> resource: ghcr.io/devcontainers/features/git"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> id: git"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> owner: devcontainers"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> path: devcontainers/features/git"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":">"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> version: 1"}
+2025-08-31 14:34:45.791 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> tag?: 1"}
+2025-08-31 14:34:45.792 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685752,"text":"> digest?: undefined"}
+2025-08-31 14:34:45.792 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661685752,"text":"* Processing feature: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:45.792 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> input: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:45.792 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":">"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> resource: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> id: common-utils"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> owner: devcontainers"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> path: devcontainers/features/common-utils"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":">"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> version: latest"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> tag?: latest"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"> digest?: undefined"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"manifest url: https://ghcr.io/v2/devcontainers/features/common-utils/manifests/latest"}
+2025-08-31 14:34:45.793 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661685753,"text":"[httpOci] Applying cachedAuthHeader for registry ghcr.io..."}
+2025-08-31 14:34:46.133 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"[httpOci] 200 (Cached): https://ghcr.io/v2/devcontainers/features/common-utils/manifests/latest"}
+2025-08-31 14:34:46.134 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> input: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:46.134 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":">"}
+2025-08-31 14:34:46.134 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> resource: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:46.134 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> id: common-utils"}
+2025-08-31 14:34:46.135 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> owner: devcontainers"}
+2025-08-31 14:34:46.135 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:46.135 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:46.135 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> path: devcontainers/features/common-utils"}
+2025-08-31 14:34:46.135 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":">"}
+2025-08-31 14:34:46.135 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> version: latest"}
+2025-08-31 14:34:46.135 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> tag?: latest"}
+2025-08-31 14:34:46.135 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686097,"text":"> digest?: undefined"}
+2025-08-31 14:34:46.136 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661686098,"text":"Resolving Feature dependencies for 'ghcr.io/devcontainers/features/github-cli:1'..."}
+2025-08-31 14:34:46.136 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661686099,"text":"* Processing feature: ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:46.136 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> input: ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:46.136 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":">"}
+2025-08-31 14:34:46.137 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> resource: ghcr.io/devcontainers/features/github-cli"}
+2025-08-31 14:34:46.137 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> id: github-cli"}
+2025-08-31 14:34:46.138 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> owner: devcontainers"}
+2025-08-31 14:34:46.138 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:46.138 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:46.138 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> path: devcontainers/features/github-cli"}
+2025-08-31 14:34:46.138 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":">"}
+2025-08-31 14:34:46.138 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> version: 1"}
+2025-08-31 14:34:46.138 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> tag?: 1"}
+2025-08-31 14:34:46.139 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"> digest?: undefined"}
+2025-08-31 14:34:46.139 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"manifest url: https://ghcr.io/v2/devcontainers/features/github-cli/manifests/1"}
+2025-08-31 14:34:46.139 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686099,"text":"[httpOci] Applying cachedAuthHeader for registry ghcr.io..."}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"[httpOci] 200 (Cached): https://ghcr.io/v2/devcontainers/features/github-cli/manifests/1"}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> input: ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":">"}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> resource: ghcr.io/devcontainers/features/github-cli"}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> id: github-cli"}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> owner: devcontainers"}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:46.465 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> path: devcontainers/features/github-cli"}
+2025-08-31 14:34:46.466 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":">"}
+2025-08-31 14:34:46.466 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> version: 1"}
+2025-08-31 14:34:46.466 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> tag?: 1"}
+2025-08-31 14:34:46.466 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686432,"text":"> digest?: undefined"}
+2025-08-31 14:34:46.475 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661686442,"text":"* Processing feature: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:46.475 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> input: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:46.476 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":">"}
+2025-08-31 14:34:46.476 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> resource: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:46.476 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> id: common-utils"}
+2025-08-31 14:34:46.476 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> owner: devcontainers"}
+2025-08-31 14:34:46.476 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:46.476 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:46.476 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> path: devcontainers/features/common-utils"}
+2025-08-31 14:34:46.476 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":">"}
+2025-08-31 14:34:46.477 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> version: latest"}
+2025-08-31 14:34:46.477 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> tag?: latest"}
+2025-08-31 14:34:46.477 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686442,"text":"> digest?: undefined"}
+2025-08-31 14:34:46.477 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686443,"text":"manifest url: https://ghcr.io/v2/devcontainers/features/common-utils/manifests/latest"}
+2025-08-31 14:34:46.477 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686443,"text":"[httpOci] Applying cachedAuthHeader for registry ghcr.io..."}
+2025-08-31 14:34:46.735 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"[httpOci] 200 (Cached): https://ghcr.io/v2/devcontainers/features/common-utils/manifests/latest"}
+2025-08-31 14:34:46.736 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> input: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:46.736 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":">"}
+2025-08-31 14:34:46.736 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> resource: ghcr.io/devcontainers/features/common-utils"}
+2025-08-31 14:34:46.736 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> id: common-utils"}
+2025-08-31 14:34:46.736 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> owner: devcontainers"}
+2025-08-31 14:34:46.737 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:46.737 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:46.738 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> path: devcontainers/features/common-utils"}
+2025-08-31 14:34:46.738 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":">"}
+2025-08-31 14:34:46.739 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> version: latest"}
+2025-08-31 14:34:46.739 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> tag?: latest"}
+2025-08-31 14:34:46.739 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686705,"text":"> digest?: undefined"}
+2025-08-31 14:34:46.740 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661686706,"text":"* Processing feature: ghcr.io/devcontainers/features/git"}
+2025-08-31 14:34:46.740 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> input: ghcr.io/devcontainers/features/git"}
+2025-08-31 14:34:46.740 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":">"}
+2025-08-31 14:34:46.740 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> resource: ghcr.io/devcontainers/features/git"}
+2025-08-31 14:34:46.740 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> id: git"}
+2025-08-31 14:34:46.740 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> owner: devcontainers"}
+2025-08-31 14:34:46.741 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:46.741 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:46.741 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> path: devcontainers/features/git"}
+2025-08-31 14:34:46.741 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":">"}
+2025-08-31 14:34:46.741 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> version: latest"}
+2025-08-31 14:34:46.741 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> tag?: latest"}
+2025-08-31 14:34:46.741 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686706,"text":"> digest?: undefined"}
+2025-08-31 14:34:46.741 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686707,"text":"manifest url: https://ghcr.io/v2/devcontainers/features/git/manifests/latest"}
+2025-08-31 14:34:46.742 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686707,"text":"[httpOci] Applying cachedAuthHeader for registry ghcr.io..."}
+2025-08-31 14:34:47.014 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"[httpOci] 200 (Cached): https://ghcr.io/v2/devcontainers/features/git/manifests/latest"}
+2025-08-31 14:34:47.014 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> input: ghcr.io/devcontainers/features/git"}
+2025-08-31 14:34:47.014 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":">"}
+2025-08-31 14:34:47.014 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> resource: ghcr.io/devcontainers/features/git"}
+2025-08-31 14:34:47.014 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> id: git"}
+2025-08-31 14:34:47.014 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> owner: devcontainers"}
+2025-08-31 14:34:47.015 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> namespace: devcontainers/features"}
+2025-08-31 14:34:47.015 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> registry: ghcr.io"}
+2025-08-31 14:34:47.015 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> path: devcontainers/features/git"}
+2025-08-31 14:34:47.015 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":">"}
+2025-08-31 14:34:47.015 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> version: latest"}
+2025-08-31 14:34:47.015 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> tag?: latest"}
+2025-08-31 14:34:47.015 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686986,"text":"> digest?: undefined"}
+2025-08-31 14:34:47.016 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686987,"text":"[* resolved worklist] ghcr.io/devcontainers/features/git:1, ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:47.016 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686987,"text":"[\n  {\n    \"type\": \"user-provided\",\n    \"userFeatureId\": \"ghcr.io/devcontainers/features/git:1\",\n    \"options\": {},\n    \"dependsOn\": [],\n    \"installsAfter\": [\n      {\n        \"type\": \"resolved\",\n        \"userFeatureId\": \"ghcr.io/devcontainers/features/common-utils\",\n        \"options\": {},\n        \"featureSet\": {\n          \"sourceInformation\": {\n            \"type\": \"oci\",\n            \"manifest\": {\n              \"schemaVersion\": 2,\n              \"mediaType\": \"application/vnd.oci.image.manifest.v1+json\",\n              \"config\": {\n                \"mediaType\": \"application/vnd.devcontainers\",\n                \"digest\": \"sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\",\n                \"size\": 2\n              },\n              \"layers\": [\n                {\n                  \"mediaType\": \"application/vnd.devcontainers.layer.v1+tar\",\n                  \"digest\": \"sha256:8a185053aebaac228d60d3d5ac51b113043cbb98616c47cfec4da51cf1b39d63\",\n                  \"size\": 50176,\n                  \"annotations\": {\n                    \"org.opencontainers.image.title\": \"devcontainer-feature-common-utils.tgz\"\n                  }\n                }\n              ],\n              \"annotations\": {\n                \"dev.containers.metadata\": \"{\\\"id\\\":\\\"common-utils\\\",\\\"version\\\":\\\"2.5.4\\\",\\\"name\\\":\\\"Common Utilities\\\",\\\"documentationURL\\\":\\\"https://github.com/devcontainers/features/tree/main/src/common-utils\\\",\\\"description\\\":\\\"Installs a set of common command line utilities, Oh My Zsh!, and sets up a non-root user.\\\",\\\"options\\\":{\\\"installZsh\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Install ZSH?\\\"},\\\"configureZshAsDefaultShell\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":false,\\\"description\\\":\\\"Change default shell to ZSH?\\\"},\\\"installOhMyZsh\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Install Oh My Zsh!?\\\"},\\\"installOhMyZshConfig\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Allow installing the default dev container .zshrc templates?\\\"},\\\"upgradePackages\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Upgrade OS packages?\\\"},\\\"username\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"devcontainer\\\",\\\"vscode\\\",\\\"codespace\\\",\\\"none\\\",\\\"automatic\\\"],\\\"default\\\":\\\"automatic\\\",\\\"description\\\":\\\"Enter name of a non-root user to configure or none to skip\\\"},\\\"userUid\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"1001\\\",\\\"automatic\\\"],\\\"default\\\":\\\"automatic\\\",\\\"description\\\":\\\"Enter UID for non-root user\\\"},\\\"userGid\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"1001\\\",\\\"automatic\\\"],\\\"default\\\":\\\"automatic\\\",\\\"description\\\":\\\"Enter GID for non-root user\\\"},\\\"nonFreePackages\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":false,\\\"description\\\":\\\"Add packages from non-free Debian repository? (Debian only)\\\"}}}\",\n                \"com.github.package.type\": \"devcontainer_feature\"\n              }\n            },\n            \"manifestDigest\": \"sha256:00fd45550f578d9d515044d9e2226e908dbc3d7aa6fcb9dee4d8bdb60be114cf\",\n            \"featureRef\": {\n              \"id\": \"common-utils\",\n              \"owner\": \"devcontainers\",\n              \"namespace\": \"devcontainers/features\",\n              \"registry\": \"ghcr.io\",\n              \"resource\": \"ghcr.io/devcontainers/features/common-utils\",\n              \"path\": \"devcontainers/features/common-utils\",\n              \"version\": \"latest\",\n              \"tag\": \"latest\"\n            },\n            \"userFeatureId\": \"ghcr.io/devcontainers/features/common-utils\",\n            \"userFeatureIdWithoutVersion\": \"ghcr.io/devcontainers/features/common-utils\"\n          },\n          \"features\": [\n            {\n              \"id\": \"common-utils\",\n              \"included\": true,\n              \"value\": {}\n            }\n          ]\n        },\n        \"dependsOn\": [],\n        \"installsAfter\": [],\n        \"roundPriority\": 0,\n        \"featureIdAliases\": [\n          \"common-utils\"\n        ]\n      }\n    ],\n    \"roundPriority\": 0,\n    \"featureSet\": {\n      \"sourceInformation\": {\n        \"type\": \"oci\",\n        \"manifest\": {\n          \"schemaVersion\": 2,\n          \"mediaType\": \"application/vnd.oci.image.manifest.v1+json\",\n          \"config\": {\n            \"mediaType\": \"application/vnd.devcontainers\",\n            \"digest\": \"sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\",\n            \"size\": 2\n          },\n          \"layers\": [\n            {\n              \"mediaType\": \"application/vnd.devcontainers.layer.v1+tar\",\n              \"digest\": \"sha256:fd557a670d0bca81c4a6f28dd94d36cc3dc6260234b1246ce21b256511bd9ed0\",\n              \"size\": 18944,\n              \"annotations\": {\n                \"org.opencontainers.image.title\": \"devcontainer-feature-git.tgz\"\n              }\n            }\n          ],\n          \"annotations\": {\n            \"dev.containers.metadata\": \"{\\\"id\\\":\\\"git\\\",\\\"version\\\":\\\"1.3.4\\\",\\\"name\\\":\\\"Git (from source)\\\",\\\"documentationURL\\\":\\\"https://github.com/devcontainers/features/tree/main/src/git\\\",\\\"description\\\":\\\"Install an up-to-date version of Git, built from source as needed. Useful for when you want the latest and greatest features. Auto-detects latest stable version and installs needed dependencies.\\\",\\\"options\\\":{\\\"version\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"latest\\\",\\\"system\\\",\\\"os-provided\\\"],\\\"default\\\":\\\"os-provided\\\",\\\"description\\\":\\\"Select or enter a Git version.\\\"},\\\"ppa\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Install from PPA if available (only supported for Ubuntu distributions)\\\"}},\\\"customizations\\\":{\\\"vscode\\\":{\\\"settings\\\":{\\\"github.copilot.chat.codeGeneration.instructions\\\":[{\\\"text\\\":\\\"This dev container includes an up-to-date version of Git, built from source as needed, pre-installed and available on the `PATH`.\\\"}]}}},\\\"installsAfter\\\":[\\\"ghcr.io/devcontainers/features/common-utils\\\"]}\",\n            \"com.github.package.type\": \"devcontainer_feature\"\n          }\n        },\n        \"manifestDigest\": \"sha256:f24645e64ad39a596131a50ec96f7d5cf7a2a87544cce772dd4b7182a233e98a\",\n        \"featureRef\": {\n          \"id\": \"git\",\n          \"owner\": \"devcontainers\",\n          \"namespace\": \"devcontainers/features\",\n          \"registry\": \"ghcr.io\",\n          \"resource\": \"ghcr.io/devcontainers/features/git\",\n          \"path\": \"devcontainers/features/git\",\n          \"version\": \"1\",\n          \"tag\": \"1\"\n        },\n        \"userFeatureId\": \"ghcr.io/devcontainers/features/git:1\",\n        \"userFeatureIdWithoutVersion\": \"ghcr.io/devcontainers/features/git\"\n      },\n      \"features\": [\n        {\n          \"id\": \"git\",\n          \"included\": true,\n          \"value\": {},\n          \"version\": \"1.3.4\",\n          \"name\": \"Git (from source)\",\n          \"documentationURL\": \"https://github.com/devcontainers/features/tree/main/src/git\",\n          \"description\": \"Install an up-to-date version of Git, built from source as needed. Useful for when you want the latest and greatest features. Auto-detects latest stable version and installs needed dependencies.\",\n          \"options\": {\n            \"version\": {\n              \"type\": \"string\",\n              \"proposals\": [\n                \"latest\",\n                \"system\",\n                \"os-provided\"\n              ],\n              \"default\": \"os-provided\",\n              \"description\": \"Select or enter a Git version.\"\n            },\n            \"ppa\": {\n              \"type\": \"boolean\",\n              \"default\": true,\n              \"description\": \"Install from PPA if available (only supported for Ubuntu distributions)\"\n            }\n          },\n          \"customizations\": {\n            \"vscode\": {\n              \"settings\": {\n                \"github.copilot.chat.codeGeneration.instructions\": [\n                  {\n                    \"text\": \"This dev container includes an up-to-date version of Git, built from source as needed, pre-installed and available on the `PATH`.\"\n                  }\n                ]\n              }\n            }\n          },\n          \"installsAfter\": [\n            \"ghcr.io/devcontainers/features/common-utils\"\n          ]\n        }\n      ]\n    },\n    \"featureIdAliases\": [\n      \"git\"\n    ]\n  },\n  {\n    \"type\": \"user-provided\",\n    \"userFeatureId\": \"ghcr.io/devcontainers/features/github-cli:1\",\n    \"options\": {},\n    \"dependsOn\": [],\n    \"installsAfter\": [\n      {\n        \"type\": \"resolved\",\n        \"userFeatureId\": \"ghcr.io/devcontainers/features/common-utils\",\n        \"options\": {},\n        \"featureSet\": {\n          \"sourceInformation\": {\n            \"type\": \"oci\",\n            \"manifest\": {\n              \"schemaVersion\": 2,\n              \"mediaType\": \"application/vnd.oci.image.manifest.v1+json\",\n              \"config\": {\n                \"mediaType\": \"application/vnd.devcontainers\",\n                \"digest\": \"sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\",\n                \"size\": 2\n              },\n              \"layers\": [\n                {\n                  \"mediaType\": \"application/vnd.devcontainers.layer.v1+tar\",\n                  \"digest\": \"sha256:8a185053aebaac228d60d3d5ac51b113043cbb98616c47cfec4da51cf1b39d63\",\n                  \"size\": 50176,\n                  \"annotations\": {\n                    \"org.opencontainers.image.title\": \"devcontainer-feature-common-utils.tgz\"\n                  }\n                }\n              ],\n              \"annotations\": {\n                \"dev.containers.metadata\": \"{\\\"id\\\":\\\"common-utils\\\",\\\"version\\\":\\\"2.5.4\\\",\\\"name\\\":\\\"Common Utilities\\\",\\\"documentationURL\\\":\\\"https://github.com/devcontainers/features/tree/main/src/common-utils\\\",\\\"description\\\":\\\"Installs a set of common command line utilities, Oh My Zsh!, and sets up a non-root user.\\\",\\\"options\\\":{\\\"installZsh\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Install ZSH?\\\"},\\\"configureZshAsDefaultShell\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":false,\\\"description\\\":\\\"Change default shell to ZSH?\\\"},\\\"installOhMyZsh\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Install Oh My Zsh!?\\\"},\\\"installOhMyZshConfig\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Allow installing the default dev container .zshrc templates?\\\"},\\\"upgradePackages\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Upgrade OS packages?\\\"},\\\"username\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"devcontainer\\\",\\\"vscode\\\",\\\"codespace\\\",\\\"none\\\",\\\"automatic\\\"],\\\"default\\\":\\\"automatic\\\",\\\"description\\\":\\\"Enter name of a non-root user to configure or none to skip\\\"},\\\"userUid\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"1001\\\",\\\"automatic\\\"],\\\"default\\\":\\\"automatic\\\",\\\"description\\\":\\\"Enter UID for non-root user\\\"},\\\"userGid\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"1001\\\",\\\"automatic\\\"],\\\"default\\\":\\\"automatic\\\",\\\"description\\\":\\\"Enter GID for non-root user\\\"},\\\"nonFreePackages\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":false,\\\"description\\\":\\\"Add packages from non-free Debian repository? (Debian only)\\\"}}}\",\n                \"com.github.package.type\": \"devcontainer_feature\"\n              }\n            },\n            \"manifestDigest\": \"sha256:00fd45550f578d9d515044d9e2226e908dbc3d7aa6fcb9dee4d8bdb60be114cf\",\n            \"featureRef\": {\n              \"id\": \"common-utils\",\n              \"owner\": \"devcontainers\",\n              \"namespace\": \"devcontainers/features\",\n              \"registry\": \"ghcr.io\",\n              \"resource\": \"ghcr.io/devcontainers/features/common-utils\",\n              \"path\": \"devcontainers/features/common-utils\",\n              \"version\": \"latest\",\n              \"tag\": \"latest\"\n            },\n            \"userFeatureId\": \"ghcr.io/devcontainers/features/common-utils\",\n            \"userFeatureIdWithoutVersion\": \"ghcr.io/devcontainers/features/common-utils\"\n          },\n          \"features\": [\n            {\n              \"id\": \"common-utils\",\n              \"included\": true,\n              \"value\": {}\n            }\n          ]\n        },\n        \"dependsOn\": [],\n        \"installsAfter\": [],\n        \"roundPriority\": 0,\n        \"featureIdAliases\": [\n          \"common-utils\"\n        ]\n      },\n      {\n        \"type\": \"resolved\",\n        \"userFeatureId\": \"ghcr.io/devcontainers/features/git\",\n        \"options\": {},\n        \"featureSet\": {\n          \"sourceInformation\": {\n            \"type\": \"oci\",\n            \"manifest\": {\n              \"schemaVersion\": 2,\n              \"mediaType\": \"application/vnd.oci.image.manifest.v1+json\",\n              \"config\": {\n                \"mediaType\": \"application/vnd.devcontainers\",\n                \"digest\": \"sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\",\n                \"size\": 2\n              },\n              \"layers\": [\n                {\n                  \"mediaType\": \"application/vnd.devcontainers.layer.v1+tar\",\n                  \"digest\": \"sha256:fd557a670d0bca81c4a6f28dd94d36cc3dc6260234b1246ce21b256511bd9ed0\",\n                  \"size\": 18944,\n                  \"annotations\": {\n                    \"org.opencontainers.image.title\": \"devcontainer-feature-git.tgz\"\n                  }\n                }\n              ],\n              \"annotations\": {\n                \"dev.containers.metadata\": \"{\\\"id\\\":\\\"git\\\",\\\"version\\\":\\\"1.3.4\\\",\\\"name\\\":\\\"Git (from source)\\\",\\\"documentationURL\\\":\\\"https://github.com/devcontainers/features/tree/main/src/git\\\",\\\"description\\\":\\\"Install an up-to-date version of Git, built from source as needed. Useful for when you want the latest and greatest features. Auto-detects latest stable version and installs needed dependencies.\\\",\\\"options\\\":{\\\"version\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"latest\\\",\\\"system\\\",\\\"os-provided\\\"],\\\"default\\\":\\\"os-provided\\\",\\\"description\\\":\\\"Select or enter a Git version.\\\"},\\\"ppa\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true,\\\"description\\\":\\\"Install from PPA if available (only supported for Ubuntu distributions)\\\"}},\\\"customizations\\\":{\\\"vscode\\\":{\\\"settings\\\":{\\\"github.copilot.chat.codeGeneration.instructions\\\":[{\\\"text\\\":\\\"This dev container includes an up-to-date version of Git, built from source as needed, pre-installed and available on the `PATH`.\\\"}]}}},\\\"installsAfter\\\":[\\\"ghcr.io/devcontainers/features/common-utils\\\"]}\",\n                \"com.github.package.type\": \"devcontainer_feature\"\n              }\n            },\n            \"manifestDigest\": \"sha256:f24645e64ad39a596131a50ec96f7d5cf7a2a87544cce772dd4b7182a233e98a\",\n            \"featureRef\": {\n              \"id\": \"git\",\n              \"owner\": \"devcontainers\",\n              \"namespace\": \"devcontainers/features\",\n              \"registry\": \"ghcr.io\",\n              \"resource\": \"ghcr.io/devcontainers/features/git\",\n              \"path\": \"devcontainers/features/git\",\n              \"version\": \"latest\",\n              \"tag\": \"latest\"\n            },\n            \"userFeatureId\": \"ghcr.io/devcontainers/features/git\",\n            \"userFeatureIdWithoutVersion\": \"ghcr.io/devcontainers/features/git\"\n          },\n          \"features\": [\n            {\n              \"id\": \"git\",\n              \"included\": true,\n              \"value\": {}\n            }\n          ]\n        },\n        \"dependsOn\": [],\n        \"installsAfter\": [],\n        \"roundPriority\": 0,\n        \"featureIdAliases\": [\n          \"git\"\n        ]\n      }\n    ],\n    \"roundPriority\": 0,\n    \"featureSet\": {\n      \"sourceInformation\": {\n        \"type\": \"oci\",\n        \"manifest\": {\n          \"schemaVersion\": 2,\n          \"mediaType\": \"application/vnd.oci.image.manifest.v1+json\",\n          \"config\": {\n            \"mediaType\": \"application/vnd.devcontainers\",\n            \"digest\": \"sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\",\n            \"size\": 2\n          },\n          \"layers\": [\n            {\n              \"mediaType\": \"application/vnd.devcontainers.layer.v1+tar\",\n              \"digest\": \"sha256:421372eae410993593778131ae2702b8c2cea464a3ee7a7da5d1fe4d15656019\",\n              \"size\": 16384,\n              \"annotations\": {\n                \"org.opencontainers.image.title\": \"devcontainer-feature-github-cli.tgz\"\n              }\n            }\n          ],\n          \"annotations\": {\n            \"dev.containers.metadata\": \"{\\\"id\\\":\\\"github-cli\\\",\\\"version\\\":\\\"1.0.14\\\",\\\"name\\\":\\\"GitHub CLI\\\",\\\"documentationURL\\\":\\\"https://github.com/devcontainers/features/tree/main/src/github-cli\\\",\\\"description\\\":\\\"Installs the GitHub CLI. Auto-detects latest version and installs needed dependencies.\\\",\\\"options\\\":{\\\"version\\\":{\\\"type\\\":\\\"string\\\",\\\"proposals\\\":[\\\"latest\\\",\\\"none\\\"],\\\"default\\\":\\\"latest\\\",\\\"description\\\":\\\"Select version of the GitHub CLI, if not latest.\\\"},\\\"installDirectlyFromGitHubRelease\\\":{\\\"type\\\":\\\"boolean\\\",\\\"default\\\":true}},\\\"customizations\\\":{\\\"vscode\\\":{\\\"settings\\\":{\\\"github.copilot.chat.codeGeneration.instructions\\\":[{\\\"text\\\":\\\"This dev container includes the GitHub CLI (`gh`), which is pre-installed and available on the `PATH`. IMPORTANT: `gh api -f` does not support object values, use multiple `-f` flags with hierarchical keys and string values instead. When using GitHub actions `actions/upload-artifact` or `actions/download-artifact` use v4 or later.\\\"}]}}},\\\"installsAfter\\\":[\\\"ghcr.io/devcontainers/features/common-utils\\\",\\\"ghcr.io/devcontainers/features/git\\\"]}\",\n            \"com.github.package.type\": \"devcontainer_feature\"\n          }\n        },\n        \"manifestDigest\": \"sha256:ca677566507c4118e4368cd76a4800807e911e5e350cc3525fb67ebc9132dfa1\",\n        \"featureRef\": {\n          \"id\": \"github-cli\",\n          \"owner\": \"devcontainers\",\n          \"namespace\": \"devcontainers/features\",\n          \"registry\": \"ghcr.io\",\n          \"resource\": \"ghcr.io/devcontainers/features/github-cli\",\n          \"path\": \"devcontainers/features/github-cli\",\n          \"version\": \"1\",\n          \"tag\": \"1\"\n        },\n        \"userFeatureId\": \"ghcr.io/devcontainers/features/github-cli:1\",\n        \"userFeatureIdWithoutVersion\": \"ghcr.io/devcontainers/features/github-cli\"\n      },\n      \"features\": [\n        {\n          \"id\": \"github-cli\",\n          \"included\": true,\n          \"value\": {},\n          \"version\": \"1.0.14\",\n          \"name\": \"GitHub CLI\",\n          \"documentationURL\": \"https://github.com/devcontainers/features/tree/main/src/github-cli\",\n          \"description\": \"Installs the GitHub CLI. Auto-detects latest version and installs needed dependencies.\",\n          \"options\": {\n            \"version\": {\n              \"type\": \"string\",\n              \"proposals\": [\n                \"latest\",\n                \"none\"\n              ],\n              \"default\": \"latest\",\n              \"description\": \"Select version of the GitHub CLI, if not latest.\"\n            },\n            \"installDirectlyFromGitHubRelease\": {\n              \"type\": \"boolean\",\n              \"default\": true\n            }\n          },\n          \"customizations\": {\n            \"vscode\": {\n              \"settings\": {\n                \"github.copilot.chat.codeGeneration.instructions\": [\n                  {\n                    \"text\": \"This dev container includes the GitHub CLI (`gh`), which is pre-installed and available on the `PATH`. IMPORTANT: `gh api -f` does not support object values, use multiple `-f` flags with hierarchical keys and string values instead. When using GitHub actions `actions/upload-artifact` or `actions/download-artifact` use v4 or later.\"\n                  }\n                ]\n              }\n            }\n          },\n          \"installsAfter\": [\n            \"ghcr.io/devcontainers/features/common-utils\",\n            \"ghcr.io/devcontainers/features/git\"\n          ]\n        }\n      ]\n    },\n    \"featureIdAliases\": [\n      \"github-cli\"\n    ]\n  }\n]"}
+2025-08-31 14:34:47.016 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686987,"text":"[raw worklist]: ghcr.io/devcontainers/features/git:1, ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:47.016 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661686988,"text":"Soft-dependency 'ghcr.io/devcontainers/features/common-utils' is not required.  Removing from installation order..."}
+2025-08-31 14:34:47.016 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661686988,"text":"Soft-dependency 'ghcr.io/devcontainers/features/common-utils' is not required.  Removing from installation order..."}
+2025-08-31 14:34:47.016 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686988,"text":"[worklist-without-dangling-soft-deps]: ghcr.io/devcontainers/features/git:1, ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:47.016 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686988,"text":"Starting round-based Feature install order calculation from worklist..."}
+2025-08-31 14:34:47.017 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686988,"text":"\n[round] ghcr.io/devcontainers/features/git:1"}
+2025-08-31 14:34:47.017 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686988,"text":"[round-candidates] ghcr.io/devcontainers/features/git:1 (0)"}
+2025-08-31 14:34:47.018 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686988,"text":"[round-after-filter-priority] (maxPriority=0) ghcr.io/devcontainers/features/git:1 (0)"}
+2025-08-31 14:34:47.018 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686989,"text":"[round-after-comparesTo] ghcr.io/devcontainers/features/git:1"}
+2025-08-31 14:34:47.019 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686989,"text":"\n[round] ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:47.019 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686989,"text":"[round-candidates] ghcr.io/devcontainers/features/github-cli:1 (0)"}
+2025-08-31 14:34:47.019 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686989,"text":"[round-after-filter-priority] (maxPriority=0) ghcr.io/devcontainers/features/github-cli:1 (0)"}
+2025-08-31 14:34:47.019 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686989,"text":"[round-after-comparesTo] ghcr.io/devcontainers/features/github-cli:1"}
+2025-08-31 14:34:47.019 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686989,"text":"--- Fetching User Features ----"}
+2025-08-31 14:34:47.020 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661686990,"text":"* Fetching feature: git_0_oci"}
+2025-08-31 14:34:47.021 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686990,"text":"Fetching from OCI"}
+2025-08-31 14:34:47.021 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686994,"text":"blob url: https://ghcr.io/v2/devcontainers/features/git/blobs/sha256:fd557a670d0bca81c4a6f28dd94d36cc3dc6260234b1246ce21b256511bd9ed0"}
+2025-08-31 14:34:47.023 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661686995,"text":"[httpOci] Applying cachedAuthHeader for registry ghcr.io..."}
+2025-08-31 14:34:47.546 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687524,"text":"[httpOci] 200 (Cached): https://ghcr.io/v2/devcontainers/features/git/blobs/sha256:fd557a670d0bca81c4a6f28dd94d36cc3dc6260234b1246ce21b256511bd9ed0"}
+2025-08-31 14:34:47.549 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687527,"text":"omitDuringExtraction: '"}
+2025-08-31 14:34:47.549 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661687527,"text":"Files to omit: ''"}
+2025-08-31 14:34:47.554 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687532,"text":"Testing './'(Directory)"}
+2025-08-31 14:34:47.555 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687533,"text":"Testing './NOTES.md'(File)"}
+2025-08-31 14:34:47.556 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687534,"text":"Testing './README.md'(File)"}
+2025-08-31 14:34:47.557 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687534,"text":"Testing './devcontainer-feature.json'(File)"}
+2025-08-31 14:34:47.557 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687535,"text":"Testing './install.sh'(File)"}
+2025-08-31 14:34:47.562 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687540,"text":"Files extracted from blob: ./NOTES.md, ./README.md, ./devcontainer-feature.json, ./install.sh"}
+2025-08-31 14:34:47.564 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661687542,"text":"* Fetched feature: git_0_oci version 1.3.4"}
+2025-08-31 14:34:47.564 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661687542,"text":"* Fetching feature: github-cli_1_oci"}
+2025-08-31 14:34:47.564 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687542,"text":"Fetching from OCI"}
+2025-08-31 14:34:47.565 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687543,"text":"blob url: https://ghcr.io/v2/devcontainers/features/github-cli/blobs/sha256:421372eae410993593778131ae2702b8c2cea464a3ee7a7da5d1fe4d15656019"}
+2025-08-31 14:34:47.565 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661687543,"text":"[httpOci] Applying cachedAuthHeader for registry ghcr.io..."}
+2025-08-31 14:34:48.184 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661688168,"text":"[httpOci] 200 (Cached): https://ghcr.io/v2/devcontainers/features/github-cli/blobs/sha256:421372eae410993593778131ae2702b8c2cea464a3ee7a7da5d1fe4d15656019"}
+2025-08-31 14:34:48.186 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661688171,"text":"omitDuringExtraction: '"}
+2025-08-31 14:34:48.187 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661688171,"text":"Files to omit: ''"}
+2025-08-31 14:34:48.189 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661688174,"text":"Testing './'(Directory)"}
+2025-08-31 14:34:48.190 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661688175,"text":"Testing './NOTES.md'(File)"}
+2025-08-31 14:34:48.191 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661688176,"text":"Testing './README.md'(File)"}
+2025-08-31 14:34:48.191 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661688176,"text":"Testing './devcontainer-feature.json'(File)"}
+2025-08-31 14:34:48.192 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661688177,"text":"Testing './install.sh'(File)"}
+2025-08-31 14:34:48.196 [info] [devcontainer run-user-commands]: {"type":"text","level":1,"timestamp":1756661688180,"text":"Files extracted from blob: ./NOTES.md, ./README.md, ./devcontainer-feature.json, ./install.sh"}
+2025-08-31 14:34:48.197 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661688181,"text":"* Fetched feature: github-cli_1_oci version 1.0.14"}
+2025-08-31 14:34:48.207 [info] [devcontainer run-user-commands]: {"type":"text","level":3,"timestamp":1756661688192,"text":"Docker Compose override file for building image:\nversion: \"3.8\"\n\nservices:\n  app:\n    build:\n      dockerfile: /tmp/devcontainercli-rafael/container-features/0.75.0-1756661684776/Dockerfile-with-features\n      args:\n        - BUILDKIT_INLINE_CACHE=1\n        - _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label\n        - _DEV_CONTAINERS_IMAGE_USER=python\n        - _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE=dev_container_feature_content_temp\n      additional_contexts:\n        - dev_containers_feature_content_source=/tmp/devcontainercli-rafael/container-features/0.75.0-1756661684776\n\n"}
+2025-08-31 14:34:48.208 [info] [devcontainer run-user-commands]: {"type":"start","level":3,"timestamp":1756661688193,"text":"Run: docker compose --project-name docker -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml -f /tmp/devcontainercli-rafael/docker-compose/docker-compose.devcontainer.build-1756661688192.yml build"}
+2025-08-31 14:34:52.938 [info] [devcontainer run-user-commands]: {"type":"stop","level":3,"timestamp":1756661692982,"text":"Run: docker compose --project-name docker -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml -f /tmp/devcontainercli-rafael/docker-compose/docker-compose.devcontainer.build-1756661688192.yml build","startTimestamp":1756661688193}
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]: Error: Command failed: docker compose --project-name docker -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml -f /tmp/devcontainercli-rafael/docker-compose/docker-compose.devcontainer.build-1756661688192.yml build
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]:     at cw (/tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6/cli/dist/spec-node/devContainersSpecCLI.js:2:1574644)
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]:     at async c6 (/tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6/cli/dist/spec-node/devContainersSpecCLI.js:2:1576599)
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]:     at async u6 (/tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6/cli/dist/spec-node/devContainersSpecCLI.js:2:1570987)
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]:     at async H6 (/tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6/cli/dist/spec-node/devContainersSpecCLI.js:2:1600450)
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]:     at async BC (/tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6/cli/dist/spec-node/devContainersSpecCLI.js:2:1601238)
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]:     at async d7 (/tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6/cli/dist/spec-node/devContainersSpecCLI.js:2:1674755)
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]:     at async f7 (/tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6/cli/dist/spec-node/devContainersSpecCLI.js:2:1674413)
+2025-08-31 14:34:52.940 [error] [devcontainer run-user-commands][stderr JSON parse error]:     at async /tmp/devcontainer-cli-1b9abee7-275a-474c-88bd-2879be1de8c6/cli/dist/spec-node/devContainersSpecCLI.js:2:1597484
+2025-08-31 14:34:52.940 [info] [devcontainer run-user-commands][stdout]: {"outcome":"error","message":"Command failed: docker compose --project-name docker -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml -f /tmp/devcontainercli-rafael/docker-compose/docker-compose.devcontainer.build-1756661688192.yml build","description":"An error occurred building the Docker Compose images."}
+
+2025-08-31 14:34:52.963 [info] [devcontainer run-user-commands][exit]: {"status":1}
+2025-08-31 14:34:52.965 [error] Error resolving dev container authority Failed to run devcontainer command: 1. {"outcome":"error","message":"Command failed: docker compose --project-name docker -f /home/rafael/petrobras-offshore-wells-anomaly-detection-control-charts/.docker/docker-compose.yml -f /tmp/devcontainercli-rafael/docker-compose/docker-compose.devcontainer.build-1756661688192.yml build","description":"An error occurred building the Docker Compose images."}

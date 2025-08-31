@@ -1,272 +1,235 @@
-# 🐚 Configuração do Zsh no DevContainer
+# 🛢️ Petrobras Offshore Wells Anomaly Detection - DevContainer
 
-Este diretório contém as configurações do Zsh otimizadas para o ambiente de desenvolvimento containerizado do projeto Petrobras Offshore Wells Anomaly Detection.
+Este diretório contém a configuração completa do DevContainer para o projeto de detecção de anomalias em séries temporais multivariadas de poços offshore da Petrobras.
 
-## 📁 Arquivos de Configuração
+## 📋 Visão Geral
 
-### `.zshrc`
+O DevContainer está configurado para fornecer um ambiente de desenvolvimento completo e otimizado para o projeto, incluindo:
 
-Configuração principal do Zsh com:
+- **Python 3.11** com todas as dependências necessárias
+- **Zsh** com Oh My Zsh e plugins personalizados
+- **Jupyter Lab** para notebooks interativos
+- **MLflow** para experimentos e tracking
+- **TensorBoard** para visualização de métricas
+- **Docker-in-Docker** para containerização
+- **Ferramentas de Cloud** (AWS, Azure, GCP)
+- **Kubernetes** e Helm para orquestração
 
-- Prompt personalizado com branding Petrobras 🛢️
-- Variáveis de ambiente do projeto
-- Aliases para desenvolvimento
-- Funções úteis para data science
-- Integração com plugins
+## 🚀 Como Usar
 
-### `.zshrc.project`
+### 1. Abrir no DevContainer
 
-Configurações específicas do projeto de detecção de anomalias:
+1. Abra o projeto no VS Code
+2. Pressione `Ctrl+Shift+P` (ou `Cmd+Shift+P` no Mac)
+3. Digite "Dev Containers: Reopen in Container"
+4. Aguarde a construção e configuração do container
 
-- Variáveis de ML/DL
-- Aliases para modelos de anomalia
-- Funções para pipeline completo
-- Configurações de experimentos
+### 2. Primeira Execução
 
-### `.zshrc.local.example`
+Na primeira execução, o script `post-create.sh` será executado automaticamente e irá:
 
-Template para configurações pessoais:
+- Instalar todas as dependências Python
+- Configurar o ambiente Zsh
+- Criar a estrutura de diretórios
+- Configurar Jupyter Lab
+- Instalar plugins do Zsh
+- Configurar pre-commit hooks
 
-- Configurações de usuário
-- Preferências pessoais
-- Diretórios pessoais
-- Funções personalizadas
+### 3. Comandos Úteis
 
-## 🚀 Instalação Automática
+Após a configuração, você terá acesso aos seguintes comandos:
 
-As configurações são instaladas automaticamente quando o container é criado através do script `setup_shell.sh`.
+```bash
+# Navegação do projeto
+pj          # Ir para o diretório raiz do projeto
+data        # Ir para o diretório de dados
+models      # Ir para o diretório de modelos
+notebooks   # Ir para o diretório de notebooks
+src         # Ir para o diretório de código fonte
+logs        # Ir para o diretório de logs
 
-### Processo de Instalação
+# Desenvolvimento
+jlab        # Iniciar Jupyter Lab
+mlflow-ui   # Iniciar MLflow UI
+tensorboard # Iniciar TensorBoard
 
-1. **Cópia dos arquivos de configuração**
-   - `.zshrc` → `~/.zshrc`
-   - `.zshrc.project` → `~/.zshrc.project`
-   - `.zshrc.local.example` → `~/.zshrc.local.example`
+# Status e informações
+project_status  # Ver status completo do projeto
+status          # Alias para project_status
 
-2. **Instalação de plugins**
-   - zsh-autosuggestions
-   - zsh-syntax-highlighting
+# Limpeza
+clean-pyc       # Limpar arquivos .pyc
+clean-cache     # Limpar cache Python
+clean-logs      # Limpar logs
+clean-all       # Limpeza completa
+```
 
-3. **Configuração do Jupyter**
-   - Configuração personalizada para o projeto
+## 🔧 Configuração
 
-4. **Configuração de permissões**
-   - Propriedade correta dos arquivos
+### Estrutura de Arquivos
 
-## 🎯 Funcionalidades Principais
+```
+.devcontainer/
+├── devcontainer.json      # Configuração principal do DevContainer
+├── Dockerfile            # Imagem Docker customizada
+├── post-create.sh        # Script de pós-criação
+├── zshrc.custom          # Configuração personalizada do Zsh
+├── README.md             # Este arquivo
+└── ...
+```
+
+### Variáveis de Ambiente
+
+O DevContainer define as seguintes variáveis de ambiente:
+
+```bash
+PROJECT_NAME=petrobras-offshore-wells-anomaly-detection
+PROJECT_ROOT=/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts
+DATA_DIR=/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/data
+MODELS_DIR=/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/models
+NOTEBOOKS_DIR=/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/notebooks
+SRC_DIR=/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/src
+LOGS_DIR=/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/logs
+MLFLOW_TRACKING_URI=http://localhost:5000
+MLFLOW_EXPERIMENT_NAME=petrobras-anomaly-detection
+TENSORBOARD_LOG_DIR=/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/logs/tensorboard
+```
+
+### Portas Expostas
+
+O DevContainer expõe as seguintes portas:
+
+- **8888**: Jupyter Lab
+- **8000**: MLflow UI
+- **5000**: MLflow Tracking
+- **6006**: TensorBoard
+- **8080**: Web App
+- **3000**: React Dev Server
+
+## 🐚 Configuração do Zsh
+
+### Oh My Zsh
+
+O ambiente inclui Oh My Zsh com os seguintes plugins:
+
+- `git`: Comandos Git úteis
+- `python`: Comandos Python
+- `pip`: Comandos pip
+- `docker`: Comandos Docker
+- `docker-compose`: Comandos Docker Compose
+- `jupyter`: Comandos Jupyter
+- `conda-zsh-completion`: Completions para Conda
+
+### Plugins Adicionais
+
+- **zsh-autosuggestions**: Sugestões automáticas baseadas no histórico
+- **zsh-syntax-highlighting**: Destaque de sintaxe para comandos
 
 ### Prompt Personalizado
 
-```
-🛢️ usuario@hostname ~/projeto (branch) [venv]
-❯
-```
+O prompt inclui:
 
-### Aliases Úteis
+- 🛢️ Ícone da Petrobras
+- Nome do usuário e host
+- Diretório atual
+- Status do Git (branch e modificações)
+- Status do ambiente virtual
 
-- **Navegação**: `pj`, `data`, `models`, `notebooks`, `src`, `logs`, `config`
-- **Python**: `py`, `pip`, `uv-add`, `uv-sync`, `uv-run`
-- **Jupyter**: `jlab`, `jnotebook`, `jstop`
-- **MLflow**: `mlflow-ui`, `mlflow-server`
-- **TensorBoard**: `tensorboard`
-- **Testes**: `test`, `test-cov`, `test-fast`, `test-verbose`
-- **Qualidade**: `lint`, `format`, `type-check`, `security`
-- **Git**: `gs`, `ga`, `gc`, `gp`, `gl`, `gd`, `gb`, `gco`
-- **Docker**: `dbuild`, `drun`, `dstop`, `dclean`
-- **Limpeza**: `clean-pyc`, `clean-cache`, `clean-logs`, `clean-models`
+## 📊 Ferramentas Incluídas
 
-### Funções Personalizadas
+### Desenvolvimento Python
 
-- **Gerenciamento**: `activate_venv()`, `create_venv()`
-- **Desenvolvimento**: `run_notebook()`, `train_model()`, `evaluate_model()`
-- **Projeto**: `project_status()`, `backup_data()`, `clean_all()`
-- **Específicas**: `run_pipeline()`, `run_experiment()`, `monitor_training()`
+- **Python 3.11**: Versão mais recente do Python
+- **uv**: Gerenciador de dependências rápido
+- **pip**: Gerenciador de pacotes Python
+- **pre-commit**: Hooks de pré-commit
 
-## 🔧 Configurações de Ambiente
+### Data Science
 
-### Variáveis do Projeto
+- **Jupyter Lab**: Ambiente interativo
+- **Pandas**: Manipulação de dados
+- **Polars**: Manipulação de dados de alta performance
+- **NumPy**: Computação numérica
+- **Scikit-learn**: Machine learning
+- **PyTorch**: Deep learning
+- **TensorFlow**: Deep learning
 
-```bash
-PROJECT_ROOT="/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts"
-DATA_DIR="${PROJECT_ROOT}/data"
-MODELS_DIR="${PROJECT_ROOT}/models"
-NOTEBOOKS_DIR="${PROJECT_ROOT}/notebooks"
-SRC_DIR="${PROJECT_ROOT}/src"
-LOGS_DIR="${PROJECT_ROOT}/logs"
-CONFIG_DIR="${PROJECT_ROOT}/config"
-```
+### Experimentos e Tracking
 
-### Variáveis Python
+- **MLflow**: Tracking de experimentos
+- **TensorBoard**: Visualização de métricas
+- **Optuna**: Otimização de hiperparâmetros
+- **Weights & Biases**: Tracking de experimentos
 
-```bash
-PYTHONPATH="${PYTHONPATH}:$(pwd)/src:$(pwd)/notebooks"
-PYTHONUNBUFFERED=1
-PYTHONDONTWRITEBYTECODE=1
-```
+### Cloud e DevOps
 
-### Variáveis de ML
+- **Docker**: Containerização
+- **Kubernetes**: Orquestração
+- **Helm**: Gerenciamento de pacotes Kubernetes
+- **AWS CLI**: Amazon Web Services
+- **Azure CLI**: Microsoft Azure
+- **Google Cloud CLI**: Google Cloud Platform
 
-```bash
-MLFLOW_TRACKING_URI="http://localhost:5000"
-MLFLOW_EXPERIMENT_NAME="petrobras-anomaly-detection"
-TENSORBOARD_LOG_DIR="./logs/tensorboard"
-```
+## 🔍 Solução de Problemas
 
-## 🎨 Personalização
+### Problemas Comuns
 
-### Configurações Pessoais
+1. **Container não inicia**
+   - Verifique se o Docker está rodando
+   - Tente reconstruir o container
 
-Para personalizar suas configurações:
+2. **Dependências não instaladas**
+   - Execute `uv sync` manualmente
+   - Verifique o arquivo `pyproject.toml`
 
-1. **Copie o template**
+3. **Zsh não carrega**
+   - Execute `source ~/.zshrc`
+   - Verifique se o arquivo `.zshrc.custom` existe
 
-   ```bash
-   cp ~/.zshrc.local.example ~/.zshrc.local
-   ```
+4. **Jupyter não inicia**
+   - Verifique se a porta 8888 está disponível
+   - Execute `jlab` para iniciar manualmente
 
-2. **Edite suas configurações**
+### Logs e Debug
 
-   ```bash
-   nano ~/.zshrc.local
-   ```
-
-3. **Recarregue o Zsh**
-   ```bash
-   source ~/.zshrc
-   ```
-
-### Configurações Disponíveis
-
-- **Usuário**: Nome, email, departamento
-- **Preferências**: Editor, browser, terminal
-- **Performance**: Threads, memória, GPU
-- **Dados**: Diretórios pessoais, formatos
-- **Modelos**: Tipos, parâmetros, experimentos
-- **Monitoramento**: Logging, métricas, alertas
-
-## 🧪 Testando a Configuração
-
-### Verificar Instalação
-
-```bash
-# Verificar se Zsh está funcionando
-zsh --version
-
-# Verificar plugins
-ls ~/.oh-my-zsh/custom/plugins/
-
-# Verificar configurações
-echo $PROJECT_NAME
-echo $DATA_DIR
-```
-
-### Testar Funções
-
-```bash
-# Testar status do projeto
-project_status
-
-# Testar aliases
-pj
-data
-models
-
-# Testar funções
-create_venv
-```
-
-## 🔧 Solução de Problemas
-
-### Problema: Zsh não está sendo usado
-
-```bash
-# Verificar shell atual
-echo $SHELL
-
-# Alterar para Zsh
-chsh -s $(which zsh)
-
-# Reiniciar terminal
-```
-
-### Problema: Plugins não carregam
-
-```bash
-# Verificar se os diretórios existem
-ls ~/.oh-my-zsh/custom/plugins/
-
-# Recarregar configurações
-source ~/.zshrc
-```
-
-### Problema: Variáveis não definidas
-
-```bash
-# Verificar se os arquivos existem
-ls ~/.zshrc
-ls ~/.zshrc.project
-
-# Recarregar configurações
-source ~/.zshrc
-```
-
-### Problema: Comandos não encontrados
-
-```bash
-# Verificar PATH
-echo $PATH
-
-# Verificar se o ambiente virtual está ativo
-which python
-which pip
-```
+- Logs do container: `docker logs <container_id>`
+- Logs do Jupyter: `~/.jupyter/logs/`
+- Logs do projeto: `./logs/`
 
 ## 📚 Recursos Adicionais
 
 ### Documentação
 
-- [ZSH Configuration Documentation](../docs/ZSH_CONFIGURATION.md)
+- [Dev Containers](https://code.visualstudio.com/docs/remote/containers)
 - [Oh My Zsh](https://ohmyz.sh/)
-- [Zsh Documentation](https://zsh.sourceforge.io/Doc/)
+- [Jupyter Lab](https://jupyterlab.readthedocs.io/)
+- [MLflow](https://mlflow.org/)
 
 ### Comandos Úteis
 
 ```bash
-# Ver histórico de comandos
-history
+# Reconstruir o container
+Ctrl+Shift+P -> "Dev Containers: Rebuild Container"
 
-# Buscar no histórico
-Ctrl+R
+# Abrir terminal integrado
+Ctrl+` (backtick)
 
-# Autocompletar
-Tab
+# Ver status do projeto
+project_status
 
-# Buscar arquivos
-fzf
+# Iniciar todos os serviços
+jlab & mlflow-ui & tensorboard
 ```
 
-## 🤝 Contribuindo
+## 🤝 Contribuição
 
-Para contribuir com melhorias nas configurações do Zsh:
+Para contribuir com melhorias no DevContainer:
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature
-3. Modifique os arquivos de configuração
-4. Teste as mudanças
-5. Faça um pull request
-
-### Estrutura de Contribuição
-
-- `.zshrc`: Configurações gerais
-- `.zshrc.project`: Configurações específicas do projeto
-- `.zshrc.local.example`: Template de configurações pessoais
-- `setup_shell.sh`: Script de instalação
+1. Faça suas alterações nos arquivos de configuração
+2. Teste localmente
+3. Documente as mudanças
+4. Submeta um pull request
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](../LICENSE) para mais detalhes.
-
----
-
-**🛢️ Projeto Petrobras Offshore Wells Anomaly Detection**
-_Configurações otimizadas para desenvolvimento em Python e Machine Learning_
+Este projeto está sob a licença do projeto principal.

@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+    container_name: petrobras-anomaly-detection
+    command: ./.docker/start-app.sh
+    volumes:
+      # Mount application code
+      - ..:/home/python/app:delegated
+      # Mount zsh configuration files for persistence
+      - ../.docker/zsh/powerlevel10k/.p10k.zsh:/home/python/.p10k.zsh:delegated
+      - ../.docker/zsh/history:/home/python/zsh:delegated
+      # Mount additional zsh configs
+      - ../.docker/zsh/.zshrc:/home/python/.zshrc:delegated
+      - ../.docker/zsh/.zsh_history:/home/python/.zsh_history:delegated
+    ports:
+      - "8000:8000"
+      - "8888:8888" # Jupyter
+      - "5000:5000" # MLflow
+    environment:
+      - TERM=xterm-256color
+      - SHELL=/bin/zsh
+      - PYTHONPATH=/home/python/app/src
+    stdin_open: true
+    tty: true
+    networks:
+      - petrobras-network
+
+networks:
+  petrobras-network:
+    driver: bridge

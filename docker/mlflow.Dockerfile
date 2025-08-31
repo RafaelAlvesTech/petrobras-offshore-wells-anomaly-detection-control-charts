@@ -9,25 +9,27 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc \
-    g++ \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# Install uv for package management
+RUN pip install uv
+
+# Create a non-root user
+RUN useradd --create-home --shell /bin/bash mlflow_user
 
 # Set work directory
 WORKDIR /app
 
-# Install Python dependencies
+# Copy requirements and install dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv pip install --no-cache --system -r requirements.txt
 
 # Copy MLflow server configuration
 COPY mlflow_server.py .
 
-# Create MLflow data directory
-RUN mkdir -p /mlflow
+# Create MLflow data directory and set permissions
+RUN mkdir -p /mlflow && chown -R mlflow_user:mlflow_user /mlflow
+
+# Switch to non-root user
+USER mlflow_user
 
 # Expose port
 EXPOSE 5000

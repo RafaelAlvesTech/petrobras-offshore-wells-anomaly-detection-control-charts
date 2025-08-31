@@ -1,25 +1,59 @@
 {
   "name": "Petrobras Offshore Wells Anomaly Detection",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
+  "dockerComposeFile": "../.docker/docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/home/python/app",
+  "shutdownAction": "stopCompose",
+
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
+
   "customizations": {
     "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh",
+            "args": ["-l"]
+          }
+        },
+        "python.defaultInterpreterPath": "/home/python/.local/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled": true,
+        "python.formatting.provider": "black",
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        "python.testing.pytestArgs": [
+          "tests"
+        ],
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true,
+          "**/.pytest_cache": true,
+          "**/node_modules": true,
+          "**/.git": false
+        },
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": true
+        },
+        "jupyter.askForKernelRestart": false,
+        "jupyter.interactiveWindow.creationMode": "perFile"
+      },
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
         "ms-toolsai.jupyter-keymap",
         "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-toolsai.vscode-jupyter-slideshow",
         "charliermarsh.ruff",
-        "ms-python.black-formatter",
-        "ms-python.isort",
-        "ms-python.mypy-type-checker",
         "ms-vscode.vscode-json",
         "yzhang.markdown-all-in-one",
         "ms-azuretools.vscode-docker",
@@ -28,53 +62,40 @@
         "littlefoxteam.vscode-python-test-adapter",
         "GitHub.copilot",
         "GitHub.copilot-chat"
-      ],
-      "settings": {
-        "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
-        "python.terminal.activateEnvironment": true,
-        "python.terminal.activateEnvInCurrentTerminal": true,
-        "python.linting.enabled": true,
-        "python.linting.ruffEnabled": true,
-        "python.formatting.provider": "black",
-        "python.sortImports.args": [
-          "--profile",
-          "black"
-        ],
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-          "source.organizeImports": "explicit"
-        },
-        "files.exclude": {
-          "**/__pycache__": true,
-          "**/*.pyc": true,
-          "**/.pytest_cache": true,
-          "**/.mypy_cache": true,
-          "**/.ruff_cache": true
-        },
-        "terminal.integrated.defaultProfile.linux": "zsh",
-        "terminal.integrated.profiles.linux": {
-          "zsh": {
-            "path": "/bin/zsh"
-          }
-        }
-      }
+      ]
     }
   },
-  "forwardPorts": [
-    8888,
-    8000
-  ],
+
+  "forwardPorts": [8000, 8888, 5000],
   "portsAttributes": {
-    "8888": {
-      "label": "Jupyter Lab",
+    "8000": {
+      "label": "API Server",
       "onAutoForward": "notify"
     },
-    "8000": {
-      "label": "MLflow UI",
+    "8888": {
+      "label": "Jupyter Lab",
+      "onAutoForward": "openBrowser"
+    },
+    "5000": {
+      "label": "MLflow Server",
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "bash .devcontainer/post-create.sh && bash .devcontainer/setup_shell.sh",
+
+  "postCreateCommand": "echo '🛢️ Petrobras Environment Ready!' && echo 'Available services:' && echo '  - API: http://localhost:8000' && echo '  - Jupyter: http://localhost:8888' && echo '  - MLflow: http://localhost:5000'",
+
+  "postStartCommand": "echo '🚀 Container started successfully!'",
+
   "remoteUser": "python",
-  "workspaceFolder": "/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts"
+
+  "containerEnv": {
+    "TERM": "xterm-256color",
+    "SHELL": "/bin/zsh",
+    "PYTHONPATH": "/home/python/app/src"
+  },
+
+  "mounts": [
+    "source=${localWorkspaceFolder}/.docker/zsh/powerlevel10k/.p10k.zsh,target=/home/python/.p10k.zsh,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.docker/zsh/history,target=/home/python/zsh,type=bind,consistency=cached"
+  ]
 }

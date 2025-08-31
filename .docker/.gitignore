@@ -1,0 +1,11 @@
+# Ignore zsh history files (they can be large and personal)
+zsh/.zsh_history
+zsh/history/
+
+# Ignore any temporary files
+*.tmp
+*.log
+
+# Ignore any local configuration overrides
+local/
+override/
