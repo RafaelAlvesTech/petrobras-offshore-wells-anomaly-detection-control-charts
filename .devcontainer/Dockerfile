@@ -39,6 +39,13 @@ RUN pip install uv
 # Switch to the vscode user to ensure proper permissions
 USER vscode
 
+# Install Powerlevel10k
+RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+
+# Copy local zsh configurations
+COPY .p10k.zsh /home/vscode/.p10k.zsh
+COPY zshrc-personal /home/vscode/.zshrc-personal
+
 # Set the working directory for the project
 WORKDIR /workspaces/petrobras-offshore-wells-anomaly-detection-control-charts
 
@@ -46,8 +53,7 @@ WORKDIR /workspaces/petrobras-offshore-wells-anomaly-detection-control-charts
 RUN mkdir -p ~/.local/bin ~/.cache/uv ~/.jupyter ~/.local/share/jupyter
 
 # Set up the shell environment with a comprehensive configuration
-RUN echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && \
-    echo 'export PYTHONPATH="/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/src:$PYTHONPATH"' >> ~/.zshrc
+RUN echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc &&     echo 'export PYTHONPATH="/workspaces/petrobras-offshore-wells-anomaly-detection-control-charts/src:$PYTHONPATH"' >> ~/.zshrc &&     echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc &&     echo 'source ~/.p10k.zsh' >> ~/.zshrc &&     echo 'source ~/.zshrc-personal' >> ~/.zshrc
 
 # Expose ports for various services
 EXPOSE 8888 8000 5000 6006 8080 3000

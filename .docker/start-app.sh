@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-echo "🚀 Starting API server..."
-exec uvicorn src.api.main:app --host 0.0.0.0 --port ${PORT:-8000}
+echo "Container started. Services (like Jupyter and MLflow) may need to be started manually."
+tail -f /dev/null

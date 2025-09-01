@@ -25,16 +25,12 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/*
 
-# Install uv for Python package management as root
+# Install uv for Python package management globally
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+RUN mv /root/.local/bin/uv /usr/local/bin/uv
 
-# Create app directory and set as working directory
+# Create app directory
 RUN mkdir -p /home/python/app
-WORKDIR /home/python/app
-
-# Copy requirements and install Python dependencies as root
-COPY requirements.txt .
-RUN /root/.local/bin/uv pip install --system -r requirements.txt
 
 # Create user with home directory and set permissions
 RUN useradd -m -s /bin/zsh python && \
@@ -42,9 +38,13 @@ RUN useradd -m -s /bin/zsh python && \
     echo "python ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     chown -R python:python /home/python
 
-# Switch to python user
+# Switch to python user, set workdir, copy files, and install deps
 USER python
-WORKDIR /home/python
+WORKDIR /home/python/app
+COPY --chown=python:python pyproject.toml uv.lock ./
+RUN uv sync
+
+
 
 # Install zsh-in-docker with Powerlevel10k and plugins
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
