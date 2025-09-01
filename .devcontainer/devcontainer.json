@@ -6,7 +6,11 @@
     "service": "app",
     "workspaceFolder": "/home/vscode/app",
     "postCreateCommands": [
+        "git config --global user.signingkey 3E2E96B458A47E2B",
+        "git config --global commit.gpgsign true",
         "uv sync",
+        "pre-commit install",
+        "pre-commit run --all-files || true",
         "echo '🛢️ Petrobras Environment Ready!' && echo 'Available services:' && echo '  - Jupyter: http://localhost:8888' && echo '  - MLflow: http://localhost:5000'"
     ],
     "postStartCommands": [
