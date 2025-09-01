@@ -1,91 +1,53 @@
-# Use Python 3.11 slim image with latest security updates
-FROM python:3.11.7-slim-bookworm
+# Use the official Microsoft-maintained Python dev container image
+# This image comes with Python, pip, and other common tools pre-installed.
+FROM mcr.microsoft.com/devcontainers/python:1-3.11-bookworm
 
-# Set environment variables
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TERM=xterm-256color
-ENV SHELL=/bin/zsh
+# Set environment variables to prevent interactive prompts during build
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1
 
-# Install system dependencies and security updates
-RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+# Install system dependencies, including zsh and other tools
+RUN apt-get update && apt-get install -y \
+    zsh \
+    git \
     curl \
     wget \
-    git \
-    zsh \
-    vim \
-    nano \
-    build-essential \
-    software-properties-common \
-    apt-transport-https \
-    ca-certificates \
-    gnupg \
-    lsb-release \
+    fzf \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/*
+    && curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | sh \
+    && curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash \
+    && pip install thefuck
 
-# Install uv for Python package management globally
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-RUN mv /root/.local/bin/uv /usr/local/bin/uv
+# The base image creates a non-root user 'vscode'. We'll use it.
+# The user's home directory is /home/vscode.
+USER vscode
+WORKDIR /home/vscode/app
 
-# Create app directory
-RUN mkdir -p /home/python/app
+# Install uv using pipx to ensure it's isolated and in the PATH
+RUN pipx install uv
 
-# Create user with home directory and set permissions
-RUN useradd -m -s /bin/zsh python && \
-    usermod -aG sudo python && \
-    echo "python ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-    chown -R python:python /home/python
+# Copy project dependency files
+COPY --chown=vscode:vscode pyproject.toml uv.lock ./
 
-# Switch to python user, set workdir, copy files, and install deps
-USER python
-WORKDIR /home/python/app
-COPY --chown=python:python pyproject.toml uv.lock ./
+# Add pipx bin to PATH and install dependencies
+ENV PATH="/home/vscode/.local/bin:${PATH}"
 RUN uv sync
 
+# Install Oh My Zsh, Powerlevel10k, and other plugins for the vscode user
+RUN rm -rf /home/vscode/.oh-my-zsh && \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended \
+    && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k \
+    && git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab \
+    && git clone https://github.com/wfxr/forgit ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/forgit \
+    && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
+    && git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions \
+    && git clone https://github.com/MichaelAquilina/zsh-you-should-use ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use \
+    && git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 
 
-# Install zsh-in-docker with Powerlevel10k and plugins
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
-    -t https://github.com/romkatv/powerlevel10k \
-    -p git \
-    -p git-flow \
-    -p https://github.com/zdharma-continuum/fast-syntax-highlighting \
-    -p https://github.com/zsh-users/zsh-autosuggestions \
-    -p https://github.com/zsh-users/zsh-completions \
-    -a 'export TERM=xterm-256color'
+# The devcontainer.json will mount the local .zshrc and .p10k.zsh,
+# so we don't need to configure them here in the image.
 
-# Configure zsh history and additional settings
-RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc && \
-    echo 'HISTFILE=/home/python/zsh/.zsh_history' >> ~/.zshrc && \
-    echo 'HISTSIZE=10000' >> ~/.zshrc && \
-    echo 'SAVEHIST=10000' >> ~/.zshrc && \
-    echo 'setopt SHARE_HISTORY' >> ~/.zshrc && \
-    echo 'setopt HIST_IGNORE_DUPS' >> ~/.zshrc && \
-    echo 'setopt HIST_IGNORE_ALL_DUPS' >> ~/.zshrc && \
-    echo 'setopt HIST_REDUCE_BLANKS' >> ~/.zshrc && \
-    echo 'setopt HIST_SAVE_NO_DUPS' >> ~/.zshrc
-
-# Create zsh history directory
-RUN mkdir -p /home/python/zsh
-
-# Add uv to PATH for the python user
-ENV PATH="/home/python/.local/bin:$PATH"
-RUN echo 'export PATH="/home/python/.local/bin:$PATH"' >> ~/.zshrc && \
-    echo 'export PATH="/home/python/.local/bin:$PATH"' >> ~/.bashrc
-
-# Set working directory to app
-WORKDIR /home/python/app
-
-# Copy the rest of the application
-COPY --chown=python:python . .
-
-# Make start script executable
-RUN chmod +x ./.docker/start-app.sh
-
-# Expose port
-EXPOSE 8000
-
-# Set default command
-CMD ["./.docker/start-app.sh", "api"]
+# Copy the rest of the application code
+COPY --chown=vscode:vscode . .

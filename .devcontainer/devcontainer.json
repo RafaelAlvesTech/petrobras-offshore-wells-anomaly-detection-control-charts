@@ -4,11 +4,13 @@
         "../.docker/docker-compose.yml"
     ],
     "service": "app",
-    "workspaceFolder": "/home/python/app",
+    "workspaceFolder": "/home/vscode/app",
     "postCreateCommands": [
+        "uv sync",
         "echo '🛢️ Petrobras Environment Ready!' && echo 'Available services:' && echo '  - Jupyter: http://localhost:8888' && echo '  - MLflow: http://localhost:5000'"
     ],
     "postStartCommands": [
+        "uv sync",
         "echo '🚀 Container started successfully!'"
     ],
     "shutdownAction": "stopCompose",

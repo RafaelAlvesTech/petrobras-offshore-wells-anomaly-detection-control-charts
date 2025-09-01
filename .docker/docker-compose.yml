@@ -9,13 +9,13 @@ services:
     command: ./.docker/start-app.sh
     volumes:
       # Mount application code
-      - ..:/home/python/app:delegated
+      - ..:/home/vscode/app:delegated
       # Mount zsh configuration files for persistence
-      - ../.docker/zsh/powerlevel10k/.p10k.zsh:/home/python/.p10k.zsh:delegated
-      - ../.docker/zsh/history:/home/python/zsh:delegated
+      - ../.docker/zsh/powerlevel10k/.p10k.zsh:/home/vscode/.p10k.zsh:delegated
+      - ../.docker/zsh/history:/home/vscode/zsh:delegated
       # Mount additional zsh configs
-      - ../.docker/zsh/.zshrc:/home/python/.zshrc:delegated
-      - ../.docker/zsh/.zsh_history:/home/python/.zsh_history:delegated
+      - ../.docker/zsh/.zshrc:/home/vscode/.zshrc:delegated
+      - ../.docker/zsh/.zsh_history:/home/vscode/.zsh_history:delegated
     ports:
       - "8000:8000"
       - "8888:8888" # Jupyter
@@ -23,7 +23,7 @@ services:
     environment:
       - TERM=xterm-256color
       - SHELL=/bin/zsh
-      - PYTHONPATH=/home/python/app/src
+      - PYTHONPATH=/home/vscode/app/src
       - GEMINI_API_KEY=AIzaSyBaFyO_LDBCkDokJq-wwwBZAcrkC8BVMqo
       - GEMINI_MODEL=gemini-2.0-flash-exp
       - GEMINI_DEBUG=false

@@ -10,8 +10,30 @@ fi
 
 # Zsh plugins and theme configuration from zsh-in-docker
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git git-flow fast-syntax-highlighting zsh-autosuggestions zsh-completions)
+plugins=(
+    git
+    git-flow
+    sudo
+    fzf-tab
+    forgit
+    zsh-autosuggestions
+    zsh-completions
+    you-should-use
+    fast-syntax-highlighting
+)
 source $ZSH/oh-my-zsh.sh
+
+# -- Tool Initializations --
+
+# Atuin - Magical Shell History
+eval "$(atuin init zsh)"
+
+# Zoxide - A smarter cd command
+eval "$(zoxide init zsh)"
+
+# The Fuck - Corrects your previous console command
+eval "$(thefuck --alias)"
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -31,3 +53,6 @@ export PATH="/home/python/.local/bin:$PATH"
 
 # Set TERM for color support
 export TERM=xterm-256color
+
+# Activate the virtual environment
+source /home/vscode/app/.venv/bin/activate
