@@ -3,6 +3,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Add uv and other local binaries to PATH
+export PATH="/home/python/.local/bin:$PATH"
+
 # Source Oh My Zsh if it exists
 if [ -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then
     source ~/.oh-my-zsh/oh-my-zsh.sh
@@ -47,9 +50,6 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
-
-# Add uv to PATH
-export PATH="/home/python/.local/bin:$PATH"
 
 # Set TERM for color support
 export TERM=xterm-256color
