@@ -33,6 +33,10 @@ RUN apt-get update && apt-get install -y \
     lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Atuin and Zoxide for enhanced shell history and navigation
+RUN curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh && \
+    curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh | bash
+
 # Install uv for fast Python package management
 RUN pip install uv
 
