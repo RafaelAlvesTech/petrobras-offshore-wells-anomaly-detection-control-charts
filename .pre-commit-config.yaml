@@ -49,7 +49,7 @@ repos:
     rev: 1.8.6
     hooks:
       - id: bandit
-        args: [-c, .bandit, -f, json, -o, bandit-report.json, --exit-zero]
+        args: [-f, json, -o, bandit-report.json, --exit-zero]
         exclude: ^tests/
 
   # Safety hook removido temporariamente devido a problemas de acesso ao repositório

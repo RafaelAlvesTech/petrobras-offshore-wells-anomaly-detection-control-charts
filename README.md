@@ -203,6 +203,37 @@ See [ZSH Configuration Documentation](docs/ZSH_CONFIGURATION.md) for detailed se
    pytest tests/
    ```
 
+### Task Runner with `just`
+
+This project uses `just` as a command runner to simplify common development tasks. The `justfile` at the root of the project contains various recipes for linting, formatting, testing, and running the application.
+
+**1. Install `just`**
+
+You need to install `just` on your system. Follow the instructions for your OS here: [**`just` installation guide**](https://github.com/casey/just#installation).
+
+For example, on macOS or Linux with Homebrew:
+
+```bash
+brew install just
+```
+
+**2. List available commands**
+
+To see all available commands, run:
+
+```bash
+just --list
+```
+
+**3. Common commands**
+
+- `just install`: Install all project dependencies.
+- `just lint`: Check code quality.
+- `just format`: Format all code.
+- `just test`: Run all tests.
+- `just run`: Run the main application.
+- `just clean`: Remove cache and build files.
+
 ## 📊 Usage Examples
 
 ### Basic Anomaly Detection
