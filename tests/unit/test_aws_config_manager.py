@@ -1,8 +1,11 @@
 import unittest
 from unittest.mock import patch, mock_open, MagicMock
 import yaml
+import sys
 
-from src.aws_config_manager import AWSConfigManager
+sys.path.insert(0, ".")
+
+from src.anomaly_detection.aws.aws_config_manager import AWSConfigManager
 
 
 class TestAWSConfigManager(unittest.TestCase):

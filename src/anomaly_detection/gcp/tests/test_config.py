@@ -4,8 +4,6 @@ Tests for GCP configuration (simplified for CI)
 
 import os
 import pytest
-import sys
-from pathlib import Path
 
 
 def test_basic_imports():
@@ -28,11 +26,8 @@ def test_gcp_config_isolated():
     os.environ["GCP_REGION"] = "us-central1"
 
     try:
-        # Add src to path for imports
-        sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-
         # Import only the config module
-        from config.gcp_env_config import GCPEnvConfig
+        from anomaly_detection.config.gcp_env_config import GCPEnvConfig
 
         config = GCPEnvConfig()
 

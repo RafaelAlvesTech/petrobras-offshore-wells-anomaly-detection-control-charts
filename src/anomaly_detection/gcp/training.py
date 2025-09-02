@@ -479,9 +479,9 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, '/app/src')
 
-from gcp.config import GCPConfig
-from gcp.auth import GCPAuthenticator
-from gcp.vertex_ai import VertexAIManager
+from anomaly_detection.gcp.config import GCPConfig
+from anomaly_detection.gcp.auth import GCPAuthenticator
+from anomaly_detection.gcp.vertex_ai import VertexAIManager
 
 def setup_logging():
     """Setup logging configuration."""
