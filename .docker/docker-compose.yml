@@ -27,6 +27,7 @@ services:
       - GEMINI_MODEL=gemini-2.0-flash-exp
       - GEMINI_DEBUG=false
       - GEMINI_TELEMETRY=false
+      - GEMINI_ALWAYS_YES=true
       - JUPYTER_ENABLE_LAB=yes
       - MLFLOW_TRACKING_URI=http://localhost:5000
     stdin_open: true

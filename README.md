@@ -57,28 +57,6 @@ petrobras-offshore-wells-anomaly-detection/
 └── scripts/               # Automation scripts
 ```
 
-## 🔬 CER-UFBA Research Project
-
-### 📋 Project Details
-
-- **Research Type**: PIBIC (Graduate Research) Project
-- **Institution**: Federal University of Bahia (UFBA)
-- **Research Center**: Risk Studies Center (CER-UFBA)
-- **Department**: Department of Statistics (DEst)
-- **Academic Year**: 2025-2026
-- **Research Area**: Statistical Anomaly Detection in Industrial Systems with Control Charts
-
-### 🎯 CER-UFBA Contribution
-
-This project represents a significant contribution to CER-UFBA's research portfolio in:
-
-- **Statistical Risk Assessment**: Developing novel methodologies for offshore well monitoring
-- **Industrial Data Science**: Applying advanced statistical techniques to real-world oil & gas data
-- **Time Series Analysis**: Advancing multivariate time series anomaly detection
-- **Machine Learning Integration**: Combining traditional statistics with modern ML approaches
-
-### 📚 Academic Context
-
 The project aligns with CER-UFBA's mission to:
 
 - Foster interdisciplinary research in statistical risk analysis

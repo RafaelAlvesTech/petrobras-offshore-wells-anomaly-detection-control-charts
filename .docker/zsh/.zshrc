@@ -3,8 +3,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Add uv and other local binaries to PATH
-export PATH="/home/python/.local/bin:$PATH"
+# Add user's local binaries to PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # Source Oh My Zsh if it exists
 if [ -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then

@@ -15,14 +15,15 @@ RUN apt-get update && apt-get install -y \
     fzf \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | sh \
-    && curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash \
-    && pip install thefuck
-
-# The base image creates a non-root user 'vscode'. We'll use it.
+    # The base image creates a non-root user 'vscode'. We'll use it.
 # The user's home directory is /home/vscode.
 USER vscode
 WORKDIR /home/vscode/app
+
+# Install user-specific tools
+RUN curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | sh && \
+    curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash && \
+    pip install thefuck
 
 # Install uv using pipx to ensure it's isolated and in the PATH
 RUN pipx install uv
