@@ -1,78 +1,25 @@
-# 📚 Índice de Documentação - Detecção de Anomalias em Poços Offshore da Petrobras
+# 🛢️ Detecção de Anomalias em Poços Offshore da Petrobras
 
-> **🇺🇸 [View documentation index in English](README.md)**
+[![Python 3.11](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Linting: ruff](https://img.shields.io/badge/linting-ruff-red.svg)](https://github.com/astral-sh/ruff)
 
-## 🎯 Bem-vindo à Documentação!
+> **🇺🇸 [View documentation in English](README.md)**
 
-Esta documentação cobre todos os aspectos do projeto **Detecção de Anomalias em Poços Offshore da Petrobras**, uma iniciativa PIBIC (Programa Institucional de Bolsas de Iniciação Científica) focada na detecção de anomalias em séries temporais multivariadas de poços offshore usando técnicas de machine learning de última geração.
+## 🎯 Visão Geral do Projeto
 
-## 📖 Estrutura da Documentação
+Este é um projeto PIBIC (Programa Institucional de Bolsas de Iniciação Científica) focado na **detecção de anomalias em séries temporais multivariadas** de poços offshore da Petrobras. O projeto utiliza técnicas de machine learning e deep learning de última geração para identificar anomalias operacionais em dados de perfuração e produção em tempo real.
 
-### 🚀 Primeiros Passos
+## 🚀 Principais Características
 
-- **[README Principal](../README.md)** - Visão geral do projeto e guia de início rápido
-- **[Guia de Configuração](setup-guide.md)** - Configuração completa do ambiente de desenvolvimento
-- **[Diretrizes de Contribuição](../CONTRIBUTING.md)** - Como contribuir para o projeto
+- **Análise de Séries Temporais Multivariadas**: Gerencia interdependências complexas entre múltiplos parâmetros dos poços
+- **Modelos de Última Geração**: Implementa algoritmos TranAD, LSTM-VAE, USAD e ECOD
+- **Processamento em Tempo Real**: Otimizado para fluxos de dados de alta frequência de sensores offshore
+- **Resultados Interpretáveis**: Explicações baseadas em SHAP para decisões operacionais
+- **Pronto para Cloud**: Configurações de implantação AWS e GCP incluídas
 
-### 🔧 Documentação Principal
-
-- **[Integração 3W](3W_INTEGRATION.md)** - Integração com dataset 3W da Petrobras
-- **[Configuração AWS](AWS_SETUP.md)** - Implantação e configuração AWS
-- **[Configuração GCP](GCP_SETUP.md)** - Configuração Google Cloud Platform
-- **[Commits Convencionais](CONVENTIONAL_COMMITS.md)** - Padrões de commits Git
-- **[Autores e Contribuidores](AUTHORS.pt-BR.md)** - Conheça a equipe do projeto
-
-### 🌐 Versões em Idiomas
-
-| Documento                | Inglês                                 | Português (pt-BR)                                  |
-| ------------------------ | -------------------------------------- | -------------------------------------------------- |
-| **README Principal**     | [README.md](../README.md)              | [README.pt-BR.md](../README.pt-BR.md)              |
-| **Guia de Configuração** | [setup-guide.md](setup-guide.md)       | [setup-guide.pt-BR.md](setup-guide.pt-BR.md)       |
-| **Contribuição**         | [CONTRIBUTING.md](../CONTRIBUTING.md)  | [CONTRIBUTING.pt-BR.md](../CONTRIBUTING.pt-BR.md)  |
-| **Integração 3W**        | [3W_INTEGRATION.md](3W_INTEGRATION.md) | [3W_INTEGRATION.pt-BR.md](3W_INTEGRATION.pt-BR.md) |
-| **Autores**              | [AUTHORS.md](AUTHORS.md)               | [AUTHORS.pt-BR.md](AUTHORS.pt-BR.md)               |
-
-## 🎯 Navegação Rápida
-
-### 🚀 Para Novos Usuários
-
-1. **Comece com** [README Principal](../README.md) para visão geral do projeto
-2. **Siga** [Guia de Configuração](setup-guide.md) para preparar seu ambiente
-3. **Explore** [Integração 3W](3W_INTEGRATION.md) para entender o dataset
-
-### 🔧 Para Desenvolvedores
-
-1. **Revise** [Diretrizes de Contribuição](../CONTRIBUTING.md) para padrões de desenvolvimento
-2. **Verifique** [Commits Convencionais](CONVENTIONAL_COMMITS.md) para padrões de commits
-3. **Use** [Configuração AWS](AWS_SETUP.md) ou [Configuração GCP](GCP_SETUP.md) para implantação
-
-### 🌍 Para Falantes de Português
-
-Toda a documentação está disponível em Português Brasileiro:
-
-- **Documentação Principal**: [README.pt-BR.md](../README.pt-BR.md)
-- **Guia de Configuração**: [setup-guide.pt-BR.md](setup-guide.pt-BR.md)
-- **Diretrizes de Contribuição**: [CONTRIBUTING.pt-BR.md](../CONTRIBUTING.pt-BR.md)
-- **Integração 3W**: [3W_INTEGRATION.pt-BR.md](3W_INTEGRATION.pt-BR.md)
-
-## 📊 Visão Geral do Projeto
-
-### 🎯 Foco da Pesquisa
-
-- **Detecção de Anomalias**: Análise de séries temporais multivariadas
-- **Poços Offshore**: Dados operacionais da Petrobras
-- **Machine Learning**: Algoritmos de última geração (TranAD, LSTM-VAE, USAD, ECOD)
-- **Processamento em Tempo Real**: Fluxos de dados de sensores de alta frequência
-
-### 🛠️ Stack Tecnológico
-
-- **Python 3.11+**: Python moderno com type hints
-- **Polars**: Manipulação de dados de alta performance
-- **Marimo**: Notebooks interativos para desenvolvimento colaborativo
-- **PyTorch**: Framework de deep learning
-- **uv**: Gerenciamento rápido de pacotes Python
-
-### 🏗️ Arquitetura
+## 🏗️ Arquitetura
 
 ```
 petrobras-offshore-wells-anomaly-detection/
@@ -84,79 +31,256 @@ petrobras-offshore-wells-anomaly-detection/
 ├── notebooks/             # Notebooks interativos Marimo
 ├── data/                  # Datasets e dados processados
 ├── tests/                 # Suite de testes automatizados
-├── docs/                  # Documentação (este diretório)
+├── docs/                  # Documentação
 ├── config/                # Arquivos de configuração
 ├── docker/                # Containerização
 └── scripts/               # Scripts de automação
 ```
 
-## 🔍 Buscar na Documentação
+## 🛠️ Stack Tecnológico
 
-### 📝 Por Tópico
+### Tecnologias Principais
 
-- **Configuração & Instalação**: [setup-guide.md](setup-guide.md)
-- **Dados & Datasets**: [3W_INTEGRATION.md](3W_INTEGRATION.md)
-- **Desenvolvimento**: [CONTRIBUTING.md](../CONTRIBUTING.md)
-- **Implantação**: [AWS_SETUP.md](AWS_SETUP.md), [GCP_SETUP.md](GCP_SETUP.md)
+- **Python 3.11+** - Python moderno com type hints
+- **Polars** - Manipulação de dados de alta performance (mais rápido que Pandas)
+- **Marimo** - Notebooks interativos para desenvolvimento colaborativo
+- **uv** - Gerenciador de pacotes Python rápido e gerenciamento de ambiente
 
-### 🐍 Por Tecnologia
+### Machine Learning & Deep Learning
 
-- **Python**: [setup-guide.md](setup-guide.md), [CONTRIBUTING.md](../CONTRIBUTING.md)
-- **Machine Learning**: [3W_INTEGRATION.md](3W_INTEGRATION.md)
-- **Cloud**: [AWS_SETUP.md](AWS_SETUP.md), [GCP_SETUP.md](GCP_SETUP.md)
-- **Git**: [CONVENTIONAL_COMMITS.md](CONVENTIONAL_COMMITS.md)
+- **PyTorch** - Framework de deep learning
+- **Scikit-learn** - Algoritmos tradicionais de ML
+- **Optuna** - Otimização de hiperparâmetros
+- **SHAP** - Interpretabilidade de modelos
 
-## 🚀 Obtendo Ajuda
+### Data Science & Visualização
 
-### 📚 Auto-atendimento
+- **Plotly** - Visualizações interativas
+- **ydata-profiling** - EDA automatizado
+- **tslearn** - Utilitários para aprendizado de séries temporais
 
-1. **Verifique este índice** para documentação relevante
-2. **Use a busca** no seu navegador (Ctrl+F / Cmd+F)
-3. **Siga referências cruzadas** entre documentos
+### Cloud & Implantação
 
-### 🆘 Precisa de Mais Ajuda?
+- **AWS** - Infraestrutura cloud e serviços de ML
+- **GCP** - Integração com Google Cloud Platform
+- **MLflow** - Gerenciamento do ciclo de vida dos modelos
+- **Docker** - Containerização
 
-- **GitHub Issues**: [Issues do Projeto](https://github.com/seu-repo/issues)
-- **GitHub Discussions**: [Discussões do Projeto](https://github.com/seu-repo/discussions)
-- **Email**: [seu.email@universidade.edu]
-- **Problemas na Documentação**: Reporte problemas com a documentação
+## 🚀 Início Rápido
 
-## 🔄 Mantendo a Documentação Atualizada
+### Pré-requisitos
 
-### 📝 Contribuindo para a Documentação
+- Python 3.11+
+- Gerenciador de pacotes uv
+- Git
 
-1. **Siga** [Diretrizes de Contribuição](../CONTRIBUTING.md)
-2. **Atualize** versões em inglês e português
-3. **Mantenha** consistência entre versões de idioma
-4. **Teste** todos os links e exemplos
+### Instalação
 
-### 🌐 Diretrizes de Tradução
+1. **Clone o repositório**
 
-- **Idioma principal**: Inglês (documentação principal)
-- **Idioma secundário**: Português Brasileiro (pt-BR)
-- **Links cruzados**: Sempre inclua links entre versões de idioma
-- **Consistência**: Mantenha ambas as versões sincronizadas
+   ```bash
+   git clone https://github.com/your-username/petrobras-offshore-wells-anomaly-detection.git
+   cd petrobras-offshore-wells-anomaly-detection
+   ```
 
-## 📈 Métricas da Documentação
+2. **Instale o uv (se ainda não estiver instalado)**
 
-### 📊 Status Atual
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
 
-- **Total de Documentos**: 8 (4 Inglês + 4 Português)
-- **Cobertura**: 100% bilíngue
-- **Última Atualização**: [Data Atual]
-- **Mantido Por**: Equipe do Projeto
+3. **Crie o ambiente virtual e instale as dependências**
 
-### 🎯 Objetivos de Qualidade
+   ```bash
+   uv sync
+   ```
 
-- **Precisão**: Toda informação técnica verificada
-- **Completude**: Cobrir todos os aspectos principais do projeto
-- **Acessibilidade**: Navegação clara e referências cruzadas
-- **Bilíngue**: Qualidade igual em ambos os idiomas
+4. **Ative o ambiente**
+   ```bash
+   source .venv/bin/activate  # Linux/macOS
+   # ou
+   .venv\Scripts\activate     # Windows
+   ```
+
+### Executando o Projeto
+
+1. **Inicie o servidor de notebooks Marimo**
+
+   ```bash
+   marimo edit notebooks/
+   ```
+
+2. **Execute os modelos de detecção de anomalias**
+
+   ```bash
+   python src/main.py
+   ```
+
+3. **Execute os testes**
+   ```bash
+   pytest tests/
+   ```
+
+## 📊 Exemplos de Uso
+
+### Detecção Básica de Anomalias
+
+```python
+from src.models import TranADModel
+from src.data import WellDataProcessor
+
+# Carrega e pré-processa dados do poço
+processor = WellDataProcessor()
+data = processor.load_data("well_001.csv")
+
+# Inicializa e treina o modelo
+model = TranADModel()
+model.train(data)
+
+# Detecta anomalias
+anomalies = model.detect_anomalies(data)
+```
+
+### Análise Interativa com Marimo
+
+```python
+# No notebook Marimo
+import marimo as mo
+import polars as pl
+
+# Carrega dados
+df = pl.read_csv("data/well_data.csv")
+
+# Visualização interativa
+mo.md(f"## Análise de Dados do Poço\n\nFormato do dataset: {df.shape}")
+```
+
+## 📚 Documentação
+
+### Documentação Principal
+
+- **[Guia de Configuração](docs/setup-guide.md)** - Instruções completas de configuração do projeto
+- **[Integração 3W](docs/3W_INTEGRATION.md)** - Integração com sistema 3W
+- **[Visão Geral do Projeto 3W](docs/3W_OVERVIEW.md)** - Visão completa do projeto 3W da Petrobras
+- **[Configuração AWS](docs/AWS_SETUP.md)** - Implantação e configuração AWS
+- **[Configuração GCP](docs/GCP_SETUP.md)** - Configuração Google Cloud Platform
+- **[Autores e Contribuidores](docs/AUTHORS.pt-BR.md)** - Conheça a equipe do projeto
+
+### Diretrizes de Desenvolvimento
+
+- **[Commits Convencionais](docs/CONVENTIONAL_COMMITS.md)** - Padrões de commits Git
+- **[Diretrizes de Contribuição](CONTRIBUTING.md)** - Como contribuir para o projeto
+
+## 🔬 Foco da Pesquisa
+
+### Desafios da Detecção de Anomalias
+
+- **Dependências Multivariadas**: Relacionamentos complexos entre parâmetros dos poços
+- **Processamento em Tempo Real**: Fluxos de dados de alta frequência de sensores offshore
+- **Contexto Operacional**: Definições de anomalias específicas do domínio
+- **Interpretabilidade**: IA explicável para decisões operacionais
+
+### Métricas de Performance dos Modelos
+
+- **AUC-PR**: Curvas Precision-Recall para dados desbalanceados
+- **F1-Score**: Precisão e recall balanceados
+- **Latência de Detecção**: Tempo para identificação de anomalias
+- **Taxa de Falsos Positivos**: Considerações de eficiência operacional
+
+## 👨‍💻 Autores e Contribuidores
+
+### 🎓 Rafael - Desenvolvedor Principal
+
+<div align="center">
+  <img src="https://github.com/rafael.png" alt="Rafael" width="150" height="150" style="border-radius: 50%;">
+</div>
+
+#### 🇧🇷 Português
+
+Atualmente no Bacharelado em Engenharia de Controle e Automação em Processos na UFBA, sou um entusiasta apaixonado por lógica e conhecimento, especialmente em Inteligência Artificial (IA).
+
+Ao longo da minha jornada, tenho buscado projetos que aprimoraram minhas habilidades em:
+
+- **Machine Learning** - Desenvolvimento e implementação de modelos de IA
+- **Análise de Dados** - Processamento e visualização de dados complexos
+- **Python** - Desenvolvimento de soluções robustas e escaláveis
+
+Além de aspirante à engenheiro e cientista de dados, sou gestor de marketing digital com especialidade em Google Ads e micro empresário, fortalecendo minha visão holística.
+
+#### 🇺🇸 English
+
+Currently pursuing a Bachelor's degree in Control and Process Automation Engineering at UFBA, I am an enthusiast passionate about logic and knowledge, especially in Artificial Intelligence (AI).
+
+Throughout my journey, I have sought projects that have enhanced my skills in:
+
+- **Machine Learning** - Development and implementation of AI models
+- **Data Analysis** - Processing and visualization of complex data
+- **Python** - Development of robust and scalable solutions
+
+In addition to being an aspiring engineer and data scientist, I am a digital marketing manager specializing in Google Ads and a micro-entrepreneur, strengthening my holistic vision.
 
 ---
 
-> **🇺🇸 [Ver índice em Inglês](README.md)**
+## 🧪 Testes
+
+```bash
+# Execute todos os testes
+pytest
+
+# Execute com cobertura
+pytest --cov=src
+
+# Execute categorias específicas de testes
+pytest tests/test_models.py
+pytest tests/test_data_processing.py
+```
+
+## 🚀 Otimização de Performance
+
+- **Polars**: 10-100x mais rápido que Pandas para grandes datasets
+- **Operações Vetorizadas**: Computações numéricas otimizadas
+- **Gerenciamento de Memória**: Estruturas de dados eficientes para séries temporais
+- **Processamento Paralelo**: Suporte multi-core para treinamento de modelos
+
+## 🌟 Contribuindo
+
+Aceitamos contribuições! Por favor, veja nossas [Diretrizes de Contribuição](CONTRIBUTING.md) para detalhes.
+
+### Configuração de Desenvolvimento
+
+```bash
+# Instale dependências de desenvolvimento
+uv sync --group dev
+
+# Instale hooks pre-commit
+pre-commit install
+
+# Execute verificações de qualidade de código
+ruff check src/
+black src/
+mypy src/
+```
+
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE.md) para detalhes.
+
+## 🤝 Agradecimentos
+
+- **Petrobras** - Por fornecer expertise do domínio e acesso aos dados
+- **Programa PIBIC** - Financiamento de pesquisa de graduação
+- **Comunidade Open Source** - Pelas incríveis ferramentas e bibliotecas
+
+## 📞 Contato
+
+- **Líder do Projeto**: [Seu Nome]
+- **Instituição**: [Sua Universidade]
+- **Email**: [seu.email@universidade.edu]
+
+---
+
+> **🇺🇸 [Ver documentação em Inglês](README.md)**
 
 <div align="center">
-  <sub>Documentação organizada com ❤️ para facilitar o desenvolvimento</sub>
+  <sub>Construído com ❤️ para segurança e eficiência de poços offshore</sub>
 </div>

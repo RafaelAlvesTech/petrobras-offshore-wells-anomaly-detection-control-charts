@@ -61,8 +61,8 @@ USER python
 WORKDIR /app
 
 # Install project dependencies
-COPY --chown=python:python requirements.txt /app/requirements.txt
-RUN uv pip install --system -r /app/requirements.txt
+COPY --chown=python:python pyproject.toml uv.lock* /app/
+RUN uv sync --system
 
 # Copy the project code
 COPY --chown=python:python . /app

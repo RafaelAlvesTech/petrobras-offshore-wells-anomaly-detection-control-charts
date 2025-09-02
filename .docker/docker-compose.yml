@@ -1,5 +1,6 @@
 services:
   app:
+    image: petrobras-anomaly-detection-dev:latest
     build:
       context: ..
       dockerfile: .docker/Dockerfile

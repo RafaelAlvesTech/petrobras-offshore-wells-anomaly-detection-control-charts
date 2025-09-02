@@ -19,8 +19,8 @@ RUN useradd --create-home --shell /bin/bash mlflow_user
 WORKDIR /app
 
 # Copy requirements and install dependencies
-COPY requirements.txt .
-RUN uv pip install --no-cache --system -r requirements.txt
+COPY pyproject.toml uv.lock* ./
+RUN uv sync --system
 
 # Copy MLflow server configuration
 COPY mlflow_server.py .
