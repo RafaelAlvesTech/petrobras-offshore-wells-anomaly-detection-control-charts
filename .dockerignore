@@ -1,83 +1,41 @@
 # Git
-.git
+.git/
 .gitignore
+.gitmessage
 
 # Python
+.venv/
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+*.pyc
+*.pyo
+*.pyd
 
-# Virtual environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# IDE
+# IDE/Editor
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
+.cursorrules
 
-# OS
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Local files
+.env*
+.python-version
+.welcome_shown
+.zshrc*
+.history/
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
 
 # Logs
-*.log
 logs/
 
-# Data files (optional - remove if you want to include data)
-data/raw/
-data/processed/
-*.csv
-*.json
-*.parquet
+# Data
+data/
 
-# Models (optional - remove if you want to include models)
-models/
-*.pkl
-*.joblib
-*.h5
-*.pb
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Documentation
-docs/_build/
-
-# Temporary files
-tmp/
-temp/
+# Docker
+.docker/
+docker-compose.gcloud.yml

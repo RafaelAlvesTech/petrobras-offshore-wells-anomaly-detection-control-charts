@@ -49,3 +49,6 @@ gcp-secrets.txt
 gha-creds-*.json
 trabalho-rodrigo.pdf
 logs/logging.txt
+
+# Obsidian Vault Files
+.obsidian/

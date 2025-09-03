@@ -1,0 +1,57 @@
+# Use NVIDIA CUDA base image for GPU support
+FROM nvidia/cuda:12.1-devel-ubuntu22.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    CUDA_VISIBLE_DEVICES=0 \
+    NVIDIA_VISIBLE_DEVICES=all \
+    NVIDIA_DRIVER_CAPABILITIES=compute,utility
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3.11 \
+    python3.11-dev \
+    python3-pip \
+    git \
+    curl \
+    wget \
+    build-essential \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create symbolic link for python
+RUN ln -s /usr/bin/python3.11 /usr/bin/python
+
+# Install uv for fast Python package management
+RUN pip install uv
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency files
+COPY pyproject.toml uv.lock ./
+
+# Install Python dependencies with GPU support
+RUN uv sync
+
+# Copy source code
+COPY src/ ./src/
+COPY main.py .
+
+# Install additional GPU-specific packages
+RUN uv add torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+RUN uv add tensorflow[and-cuda]
+RUN uv add cupy-cuda12x
+RUN uv add accelerate transformers datasets
+
+# Expose port for the application
+EXPOSE 8080
+
+# Set environment variables for GPU
+ENV CUDA_VISIBLE_DEVICES=0
+ENV NVIDIA_VISIBLE_DEVICES=all
+ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
+
+# Command to run the application
+CMD ["python", "main.py"]

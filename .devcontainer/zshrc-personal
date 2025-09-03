@@ -127,4 +127,4 @@ export GPG_TTY=$(tty)
 if [ -f ~/.zshrc.project ]; then
     source ~/.zshrc.project
 fi
-export GEMINI_API_KEY=AIzaSyBaFyO_LDBCkDokJq-wwwBZAcrkC8BVMqo
+export GEMINI_API_KEY=

@@ -72,6 +72,13 @@ repos:
       - id: commitizen
         stages: [commit-msg]
 
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ["--baseline", ".secrets.baseline"]
+        exclude: (poetry\.lock|yarn\.lock)
+
 ci:
   autofix_commit_msg: "true"
   autoupdate_commit_msg: "true"
