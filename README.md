@@ -5,11 +5,29 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: ruff](https://img.shields.io/badge/linting-ruff-red.svg)](https://github.com/astral-sh/ruff)
 
-> **🇧🇷 [Ver documentação em Português Brasileiro](README.pt-BR.md)**
+> **🇧🇷 [Ver documentação em Português Brasileiro](docs/README.pt-BR.md)**
 
 ## 🎯 Project Overview
 
 This is a **PIBIC (Graduate Research) project 2025-2026** focused on **anomaly detection in multivariate time series** from Petrobras offshore wells. The project leverages state-of-the-art machine learning and deep learning techniques to identify operational anomalies in real-time drilling and production data.
+
+## 👨‍💻 Authors and Contributors
+
+### 🎓 Rafael Alves - Lead Developer
+
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/97904425?v=4" alt="Rafael" width="150" height="150" style="border-radius: 50%;">
+</div>
+
+Currently pursuing a Bachelor's degree in Control and Process Automation Engineering at UFBA, I am an enthusiast passionate about logic and knowledge, especially in Artificial Intelligence (AI).
+
+Throughout my journey, I have sought projects that have enhanced my skills in:
+
+- **Machine Learning** - Development and implementation of AI models
+- **Data Analysis** - Processing and visualization of complex data
+- **Python** - Development of robust and scalable solutions
+
+In addition to being an aspiring engineer and data scientist, I am a digital marketing manager specializing in Google Ads and a micro-entrepreneur, strengthening my holistic vision.
 
 ## 🏛️ Institutional Affiliation
 
@@ -323,19 +341,6 @@ mypy src/
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
-## 🙏 Acknowledgments
-
-### 🏛️ CER-UFBA Support
-
-This project is made possible by the academic and research support of the **Risk Studies Center (CER-UFBA)** at the Federal University of Bahia.
-
-**Special thanks to:**
-
-- **CER-UFBA Research Team** - For providing the research infrastructure and statistical expertise
-- **Department of Statistics (DEst)** - For academic supervision and methodological guidance
-- **UFBA Faculty** - For supporting undergraduate research initiatives
-- **Petrobras** - For providing real-world data and industry context
-
 ### 📞 Contact Information
 
 - **CER-UFBA Website**: [cer.ufba.br](https://cer.ufba.br)
@@ -358,198 +363,13 @@ CER-UFBA welcomes collaboration with:
 
 ---
 
-> **🇧🇷 [Ver documentação em Português Brasileiro](README.pt-BR.md)**
+> **🇧🇷 [Ver documentação em Português Brasileiro](docs/README.pt-BR.md)**
 
 <div align="center">
   <sub>Built with ❤️ for offshore well safety and efficiency</sub>
 </div>
 
 ---
-
-🎉 **GitHub Achievements Update - August 2025** 🏆
-
-## 🔌 VS Code/Cursor Extensions
-
-### Essential Extensions
-
-- **ms-python.python**: Complete Python support
-- **ms-python.vscode-pylance**: Advanced IntelliSense for Python
-- **charliermarsh.ruff**: Fast linting and formatting
-- **ms-toolsai.jupyter**: Complete Jupyter support
-- **ms-toolsai.jupyter-keymap**: Jupyter keyboard shortcuts
-- **ms-vscode.vscode-json**: JSON support
-- **yzhang.markdown-all-in-one**: Advanced Markdown editor
-- **ms-azuretools.vscode-docker**: Docker support
-- **eamodio.gitlens**: Git supercharged
-- **pkief.material-icon-theme**: Material Design icons
-- **littlefoxteam.vscode-python-test-adapter**: Python test runner
-- **GitHub.copilot**: AI code assistant
-- **GitHub.copilot-chat**: AI development chat
-
-## 🤖 Claude Code Configuration
-
-### Development Tools
-
-- **ms-python.black-formatter**: Automatic Python code formatting
-- **ms-python.isort**: Automatic import organization
-- **ms-python.flake8**: Advanced Python linting
-- **ms-python.mypy-type-checker**: Static type checking
-- **ms-python.pylint**: Python code analysis
-- **ms-python.autopep8**: Automatic PEP 8 formatting
-- **ms-toolsai.jupyter-renderers**: Renderers for different formats
-
-### ⚙️ Project Specific Settings
-
-#### Python Interpreter
-
-```json
-{
-  "python.defaultInterpreterPath": "./.venv/bin/python",
-  "python.terminal.activateEnvironment": true
-}
-```
-
-#### Formatação Automática
-
-```json
-{
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length", "88"],
-  "editor.formatOnSave": true,
-  "python.sortImports.args": ["--profile", "black"]
-}
-```
-
-#### Linting e Qualidade
-
-```json
-{
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true
-}
-```
-
-#### Jupyter e Notebooks
-
-```json
-{
-  "jupyter.defaultKernel": "Python 3.11",
-  "jupyter.askForKernelRestart": false,
-  "jupyter.enableAutoMatcher": true
-}
-```
-
-### 🎯 Recommended Settings for Claude Code
-
-#### 1. **Python Environment Setup**
-
-- Use virtual environment `.venv` created by `uv`
-- Configure Python interpreter to `./.venv/bin/python`
-- Activate environment automatically in terminal
-
-#### 2. **Formatting and Linting**
-
-- Black for automatic formatting (line 88)
-- isort for import organization
-- Flake8 for code linting
-- MyPy for type checking
-
-#### 3. **Notebooks and Jupyter**
-
-- Complete Jupyter support
-- Python 3.11 kernel configured
-- Renderers for different data formats
-
-#### 4. **Scientific Development**
-
-- Advanced IntelliSense for scientific libraries
-- Support for Polars, PyTorch, TensorFlow
-- Integration with ML tools
-
-### 🚀 Automatic Setup for Claude Code
-
-#### Linux/macOS
-
-```bash
-chmod +x scripts/install_claude_extensions.sh
-./scripts/install_claude_extensions.sh
-```
-
-#### Windows (PowerShell)
-
-```powershell
-.\scripts\install_claude_extensions.ps1
-```
-
-#### Cross-platform (Python)
-
-```bash
-python scripts/install_claude_extensions.py
-```
-
-### 📁 Configuration Structure
-
-```
-.vscode/
-├── settings.json          # Workspace settings
-├── extensions.json        # Recommended extensions
-├── launch.json           # Debug configurations
-└── tasks.json            # Automated tasks
-```
-
-### 🔧 Advanced Settings
-
-#### Debug and Testing
-
-```json
-{
-  "python.testing.pytestEnabled": true,
-  "python.testing.pytestArgs": ["tests"],
-  "python.testing.unittestEnabled": false,
-  "python.testing.nosetestsEnabled": false
-}
-```
-
-#### Terminal and Environment
-
-```json
-{
-  "terminal.integrated.defaultProfile.linux": "zsh",
-  "terminal.integrated.env.linux": {
-    "PYTHONPATH": "${workspaceFolder}/src"
-  }
-}
-```
-
-#### Git and Versioning
-
-```json
-{
-  "git.enableSmartCommit": true,
-  "git.confirmSync": false,
-  "git.autofetch": true
-}
-```
-
-## 👨‍💻 Authors and Contributors
-
-### 🎓 Rafael Alves - Lead Developer
-
-<div align="center">
-  <img src="https://avatars.githubusercontent.com/u/97904425?v=4" alt="Rafael" width="150" height="150" style="border-radius: 50%;">
-</div>
-
-Currently pursuing a Bachelor's degree in Control and Process Automation Engineering at UFBA, I am an enthusiast passionate about logic and knowledge, especially in Artificial Intelligence (AI).
-
-Throughout my journey, I have sought projects that have enhanced my skills in:
-
-- **Machine Learning** - Development and implementation of AI models
-- **Data Analysis** - Processing and visualization of complex data
-- **Python** - Development of robust and scalable solutions
-
-In addition to being an aspiring engineer and data scientist, I am a digital marketing manager specializing in Google Ads and a micro-entrepreneur, strengthening my holistic vision.
 
 ### ✅ Implemented
 
