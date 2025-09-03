@@ -284,3 +284,303 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 <div align="center">
   <sub>Construído com ❤️ para segurança e eficiência de poços offshore</sub>
 </div>
+
+🎉 **Atualização de Conquistas do GitHub - Agosto 2025** 🏆
+
+## 🔌 Extensões VS Code/Cursor
+
+### Extensões Essenciais
+
+- **ms-python.python**: Suporte completo para Python
+- **ms-python.vscode-pylance**: IntelliSense avançado para Python
+- **charliermarsh.ruff**: Linting e formatação rápidos
+- **ms-toolsai.jupyter**: Suporte completo para Jupyter
+- **ms-toolsai.jupyter-keymap**: Atalhos de teclado do Jupyter
+- **ms-vscode.vscode-json**: Suporte para JSON
+- **yzhang.markdown-all-in-one**: Editor Markdown avançado
+- **ms-azuretools.vscode-docker**: Suporte para Docker
+- **eamodio.gitlens**: Git supercharged
+- **pkief.material-icon-theme**: Ícones Material Design
+- **littlefoxteam.vscode-python-test-adapter**: Executor de testes Python
+- **GitHub.copilot**: Assistente de código AI
+- **GitHub.copilot-chat**: Chat de desenvolvimento AI
+
+## 🤖 Configuração Claude Code
+
+### Ferramentas de Desenvolvimento
+
+- **ms-python.black-formatter**: Formatação automática de código Python
+- **ms-python.isort**: Organização automática de imports
+- **ms-python.flake8**: Linting avançado de Python
+- **ms-python.mypy-type-checker**: Verificação estática de tipos
+- **ms-python.pylint**: Análise de código Python
+- **ms-python.autopep8**: Formatação automática PEP 8
+- **ms-toolsai.jupyter-renderers**: Renderizadores para diferentes formatos
+
+### ⚙️ Configurações Específicas do Projeto
+
+#### Interpretador Python
+
+```json
+{
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  "python.terminal.activateEnvironment": true
+}
+```
+
+#### Formatação Automática
+
+```json
+{
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "88"],
+  "editor.formatOnSave": true,
+  "python.sortImports.args": ["--profile", "black"]
+}
+```
+
+#### Linting e Qualidade
+
+```json
+{
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true
+}
+```
+
+#### Jupyter e Notebooks
+
+```json
+{
+  "jupyter.defaultKernel": "Python 3.11",
+  "jupyter.askForKernelRestart": false,
+  "jupyter.enableAutoMatcher": true
+}
+```
+
+### 🎯 Configurações Recomendadas para Claude Code
+
+#### 1. **Configuração do Ambiente Python**
+
+- Usar ambiente virtual `.venv` criado pelo `uv`
+- Configurar interpretador Python para `./.venv/bin/python`
+- Ativar ambiente automaticamente no terminal
+
+#### 2. **Formatação e Linting**
+
+- Black para formatação automática (linha 88)
+- isort para organização de imports
+- Flake8 para linting de código
+- MyPy para verificação de tipos
+
+#### 3. **Notebooks e Jupyter**
+
+- Suporte completo para Jupyter
+- Kernel Python 3.11 configurado
+- Renderizadores para diferentes formatos de dados
+
+#### 4. **Desenvolvimento Científico**
+
+- IntelliSense avançado para bibliotecas científicas
+- Suporte para Polars, PyTorch, TensorFlow
+- Integração com ferramentas de ML
+
+### 🚀 Configuração Automática para Claude Code
+
+#### Linux/macOS
+
+```bash
+chmod +x scripts/install_claude_extensions.sh
+./scripts/install_claude_extensions.sh
+```
+
+#### Windows (PowerShell)
+
+```powershell
+.\scripts\install_claude_extensions.ps1
+```
+
+#### Multiplataforma (Python)
+
+```bash
+python scripts/install_claude_extensions.py
+```
+
+### 📁 Estrutura de Configuração
+
+```
+.vscode/
+├── settings.json          # Configurações do workspace
+├── extensions.json        # Extensões recomendadas
+├── launch.json           # Configurações de debug
+└── tasks.json            # Tarefas automatizadas
+```
+
+### 🔧 Configurações Avançadas
+
+#### Debug e Testes
+
+```json
+{
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false
+}
+```
+
+#### Terminal e Ambiente
+
+```json
+{
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.env.linux": {
+    "PYTHONPATH": "${workspaceFolder}/src"
+  }
+}
+```
+
+#### Git e Versionamento
+
+```json
+{
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true
+}
+```
+
+### ✅ Implementadas
+
+- [ ] Análise exploratória de dados (EDA)
+- [ ] Pré-processamento e limpeza de dados
+- [ ] Engenharia de atributos avançada
+- [ ] Implementação de modelos SOTA
+- [ ] Avaliação comparativa de performance
+- [ ] Protótipo de API para inferência
+- [ ] Containerização com Docker
+- [ ] CI/CD básico com GitHub Actions
+
+### 🔄 Em Desenvolvimento
+
+- [ ] Treinamento dos modelos selecionados
+- [ ] Otimização de hiperparâmetros
+- [ ] Análise de interpretabilidade
+
+### 📋 Planejadas
+
+- [ ] Interface de usuário para monitorament
+
+- [ ] Relatório final PIBIC
+
+## 📊 Dataset
+
+### Dataset 3W da Petrobras
+
+- **Tipo**: Séries temporais multivariadas
+- **Variáveis**: Pressão, temperatura, vazão, vibração
+- **Características**:
+  - Grande volume de dados
+  - Alta dimensionalidade
+  - Interdependência entre variáveis
+  - Eventos anômalos raros e imprevisíveis
+
+### 🎯 Foco Especial
+
+- **Falhas de equipamento**: Identificação de problemas incipientes
+- **Instabilidades de fluxo**: Monitoramento de operações anormais ## 📈 Metodologia
+
+### 🔄 CRISP-DM Adaptado
+
+```mermaid
+graph TD
+    A[Entendimento do Negócio] --> B[Entendimento dos Dados]
+    B --> C[Preparação dos Dados]
+    C --> D[Modelagem]
+    D --> E[Avaliação]
+    E --> F[Deployment]
+    F --> G[Monitoramento]
+```
+
+### 📊 Fases do Projeto
+
+| Fase          | Duração  | Atividades Principais                      |
+| ------------- | -------- | ------------------------------------------ |
+| 🎯 **Fase 1** | Mês 1-2  | Revisão bibliográfica, EDA inicial         |
+| 🔧 **Fase 2** | Mês 3-4  | Pré-processamento, engenharia de atributos |
+| 🤖 **Fase 3** | Mês 5-8  | Implementação e treinamento dos modelos    |
+| 📊 **Fase 4** | Mês 9-10 | Avaliação, interpretabilidade              |
+| 🚀 **Fase 5** | Mês 11   | Prototipagem, MLOps                        |
+| 📝 **Fase 6** | Mês 12   | Documentação, relatório final              |
+
+## 📅 Cronograma
+
+### 📅 Visão Geral (12 meses)
+
+```mermaid
+gantt
+    title Cronograma do Projeto PIBIC
+    dateFormat  YYYY-MM-DD
+    section Fase 1
+    Revisão Bibliográfica    :done,    des1, 2024-01-01, 2024-02-29
+    EDA Inicial             :active,  des2, 2024-02-01, 2024-02-29
+    section Fase 2
+    Pré-processamento       :         des3, 2024-03-01, 2024-04-30
+    Engenharia de Atributos :         des4, 2024-04-01, 2024-04-30
+    section Fase 3
+    Modelo 1 (LSTM-VAE)     :         des5, 2024-05-01, 2024-06-30
+    Modelo 2 (TranAD)       :         des6, 2024-06-01, 2024-07-31
+    Modelo 3 (ECOD)         :         des7, 2024-07-01, 2024-08-31
+    section Fase 4
+    Avaliação               :         des8, 2024-09-01, 2024-10-31
+    section Fase 5
+    Prototipagem            :         des9, 2024-11-01, 2024-11-30
+    section Fase 6
+    Documentação            :         des10, 2024-12-01, 2024-12-31
+```
+
+### 📋 Marcos Principais
+
+- [x] **Mês 2**: EDA completa e dicionário de dados
+- [ ] **Mês 4**: Dataset limpo e pré-processado
+- [ ] **Mês 8**: 3+ modelos implementados e treinados
+- [ ] **Mês 10**: Avaliação comparativa completa
+- [ ] **Mês 11**: Protótipo funcional
+- [ ] **Mês 12**: Relatório final PIBIC
+
+## 🔬 Modelos Implementados
+
+### 🏆 Modelos Selecionados (SOTA - Últimos 3 anos)
+
+| Modelo       | Tipo                    | Características               | Status              |
+| ------------ | ----------------------- | ----------------------------- | ------------------- |
+| **TranAD**   | Transformer             | Dependências temporais longas | 🔄 Em implementação |
+| **LSTM-VAE** | RNN + Autoencoder       | Modelagem de sequências       | 🔄 Em implementação |
+| **USAD**     | Autoencoder Adversarial | Treinamento rápido            | ⏳ Pendente         |
+| **ECOD**     | Não-paramétrico         | Interpretável, escalável      | ⏳ Pendente         |
+
+### 🎯 Foco Especial: Detecção de Anomalias
+
+- **Features específicas**: Taxas de variação de pressão/vazão
+- **Correlações cruzadas**: Relações entre múltiplos sensores
+- **Análise temporal**: Padrões de evolução das anomalias
+- **Processamento eficiente**: Uso do Polars para análise de grandes volumes de dados em tempo real
+
+## 📊 Métricas de Avaliação
+
+### 🎯 Métricas Principais
+
+| Métrica         | Descrição                            | Importância                 |
+| --------------- | ------------------------------------ | --------------------------- |
+| **AUC-PR**      | Área sob curva Precision-Recall      | Alta (dados desbalanceados) |
+| **F1-Score**    | Média harmônica de precisão e recall | Alta                        |
+| **Precision@k** | Precisão nos top-k predições         | Média                       |
+| **Recall@k**    | Recall nos top-k predições           | Média                       |
+
+### 📈 Baselines de Comparação
+
+- **Isolation Forest**: Algoritmo clássico de detecção de outliers
+- **One-Class SVM**: Método de separação de classes
+- **LOF (Local Outlier Factor)**: Detecção baseada em densidade local

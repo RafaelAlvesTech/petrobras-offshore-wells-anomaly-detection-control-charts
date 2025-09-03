@@ -130,9 +130,9 @@ The project aligns with CER-UFBA's mission to:
    ./scripts/setup_zsh.sh
 
    # Or manually copy configurations
-   cp .zshrc ~/.zshrc
-   cp .zshrc.project ~/.zshrc.project
-   source ~/.zshrc
+   cp .zshrc ~/
+   cp .zshrc.project ~/
+   source ~/
    ```
 
 5. **Activate the environment**
@@ -550,3 +550,153 @@ Throughout my journey, I have sought projects that have enhanced my skills in:
 - **Python** - Development of robust and scalable solutions
 
 In addition to being an aspiring engineer and data scientist, I am a digital marketing manager specializing in Google Ads and a micro-entrepreneur, strengthening my holistic vision.
+
+### ✅ Implemented
+
+- [ ] Exploratory Data Analysis (EDA)
+- [ ] Data Preprocessing and Cleaning
+- [ ] Advanced Feature Engineering
+- [ ] Implementation of SOTA Models
+- [ ] Comparative Performance Evaluation
+- [ ] API Prototype for Inference
+- [ ] Containerization with Docker
+- [ ] Basic CI/CD with GitHub Actions
+
+### 🔄 In Development
+
+- [ ] Training of Selected Models
+- [ ] Hyperparameter Optimization
+- [ ] Interpretability Analysis
+
+### 📋 Planned
+
+- [ ] User Interface for Monitoring
+- [ ] Final PIBIC Report
+
+## 📊 Dataset
+
+### Petrobras 3W Dataset
+
+- **Type**: Multivariate Time Series
+- **Variables**: Pressure, temperature, flow rate, vibration
+- **Characteristics**:
+  - Large volume of data
+  - High dimensionality
+  - Interdependence between variables
+  - Rare and unpredictable anomalous events
+
+### 🎯 Special Focus
+
+- **Equipment Failures**: Identification of incipient problems
+- **Flow Instabilities**: Monitoring of abnormal operations
+
+## 📈 Methodology
+
+### 🔄 Adapted CRISP-DM
+
+```mermaid
+graph TD
+    A[Business Understanding] --> B[Data Understanding]
+    B --> C[Data Preparation]
+    C --> D[Modeling]
+    D --> E[Evaluation]
+    E --> F[Deployment]
+    F --> G[Monitoring]
+```
+
+### 📊 Project Phases
+
+| Phase          | Duration   | Main Activities                       |
+| -------------- | ---------- | ------------------------------------- |
+| 🎯 **Phase 1** | Month 1-2  | Literature review, initial EDA        |
+| 🔧 **Phase 2** | Month 3-4  | Preprocessing, feature engineering    |
+| 🤖 **Phase 3** | Month 5-8  | Implementation and training of models |
+| 📊 **Phase 4** | Month 9-10 | Evaluation, interpretability          |
+| 🚀 **Phase 5** | Month 11   | Prototyping, MLOps                    |
+| 📝 **Phase 6** | Month 12   | Documentation, final report           |
+
+## 📅 Schedule
+
+### 📅 Overview (12 months)
+
+```mermaid
+gantt
+    title PIBIC Project Schedule
+    dateFormat  YYYY-MM-DD
+    section Phase 1
+    Literature Review    :done,    des1, 2024-01-01, 2024-02-29
+    Initial EDA             :active,  des2, 2024-02-01, 2024-02-29
+    section Phase 2
+    Preprocessing       :         des3, 2024-03-01, 2024-04-30
+    Feature Engineering :         des4, 2024-04-01, 2024-04-30
+    section Phase 3
+    Model 1 (LSTM-VAE)     :         des5, 2024-05-01, 2024-06-30
+    Model 2 (TranAD)       :         des6, 2024-06-01, 2024-07-31
+    Model 3 (ECOD)         :         des7, 2024-07-01, 2024-08-31
+    section Phase 4
+    Evaluation               :         des8, 2024-09-01, 2024-10-31
+    section Phase 5
+    Prototyping            :         des9, 2024-11-01, 2024-11-30
+    section Phase 6
+    Documentation            :         des10, 2024-12-01, 2024-12-31
+```
+
+### 📋 Key Milestones
+
+- [x] **Month 2**: Complete EDA and data dictionary
+- [ ] **Month 4**: Clean and preprocessed dataset
+- [ ] **Month 8**: 3+ models implemented and trained
+- [ ] **Month 10**: Complete comparative evaluation
+- [ ] **Month 11**: Functional prototype
+- [ ] **Month 12**: Final PIBIC report
+
+## 🎯 SMART Goals
+
+### 🎯 Main Objective
+
+**Investigate, implement, and evaluate the effectiveness of innovative ML/DL models for anomaly detection in multivariate time series from the 3W dataset.**
+
+### 📊 Key Results (KRs)
+
+| KR      | Description                                               | Deadline | Status         |
+| ------- | --------------------------------------------------------- | -------- | -------------- |
+| **KR1** | Complete exploratory analysis and preprocessing           | Month 4  | 🔄 In progress |
+| **KR2** | Implementation of 3+ SOTA models                          | Month 8  | ⏳ Pending     |
+| **KR3** | Comparative analysis and identification of the best model | Month 10 | ⏳ Pending     |
+| **KR4** | Basic containerized prototype                             | Month 11 | ⏳ Pending     |
+| **KR5** | Final PIBIC report and documentation                      | Month 12 | ⏳ Pending     |
+
+## 🔬 Implemented Models
+
+### 🏆 Selected Models (SOTA - Last 3 years)
+
+| Model        | Type                    | Characteristics            | Status               |
+| ------------ | ----------------------- | -------------------------- | -------------------- |
+| **TranAD**   | Transformer             | Long temporal dependencies | 🔄 In implementation |
+| **LSTM-VAE** | RNN + Autoencoder       | Sequence modeling          | 🔄 In implementation |
+| **USAD**     | Adversarial Autoencoder | Fast training              | ⏳ Pending           |
+| **ECOD**     | Non-parametric          | Interpretable, scalable    | ⏳ Pending           |
+
+### 🎯 Special Focus: Anomaly Detection
+
+- **Specific features**: Pressure/flow rate variation rates
+- **Cross-correlations**: Relationships between multiple sensors
+- **Temporal analysis**: Evolution patterns of anomalies
+- **Efficient processing**: Use of Polars for real-time analysis of large data volumes
+
+## 📊 Evaluation Metrics
+
+### 🎯 Main Metrics
+
+| Metric          | Description                           | Importance             |
+| --------------- | ------------------------------------- | ---------------------- |
+| **AUC-PR**      | Area under the Precision-Recall curve | High (imbalanced data) |
+| **F1-Score**    | Harmonic mean of precision and recall | High                   |
+| **Precision@k** | Precision in the top-k predictions    | Medium                 |
+| **Recall@k**    | Recall in the top-k predictions       | Medium                 |
+
+### 📈 Comparison Baselines
+
+- **Isolation Forest**: Classic outlier detection algorithm
+- **One-Class SVM**: Class separation method
+- **LOF (Local Outlier Factor)**: Density-based detection
